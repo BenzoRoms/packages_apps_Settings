@@ -130,6 +130,13 @@
             android:key="headset_notification"
             android:title="@string/headset_notification_title"
             android:persistent="false" />
+
+        <!-- Headset -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:summary="@string/headset_connect_player_summary"
+                android:defaultValue="false" />
     </PreferenceCategory>
 
 </PreferenceScreen>
