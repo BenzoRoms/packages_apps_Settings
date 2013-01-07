@@ -117,6 +117,13 @@
                 android:summary="@string/safe_headset_volume_summary"
                 android:defaultValue="true"/>
 
+        <!-- Headset -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:summary="@string/headset_connect_player_summary"
+                android:defaultValue="false" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
