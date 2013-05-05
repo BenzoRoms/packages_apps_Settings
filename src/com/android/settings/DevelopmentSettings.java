@@ -326,7 +326,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
         mEnableAdb = findAndInitSwitchPref(ENABLE_ADB);
-        mAdbNotify = findAndInitSwitchPref(ADB_NOTIFY);
+        mAdbNotify = (SwitchPreference) findPreference(ADB_NOTIFY);
+        mAllPrefs.add(mAdbNotify);
         mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
         if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
             if (debugDebuggingCategory != null) {
@@ -368,7 +369,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mMockLocationAppPref = findPreference(MOCK_LOCATION_APP_KEY);
         mAllPrefs.add(mMockLocationAppPref);
 
-        mVerifyAppsOverUsb = findAndInitSwitchPref(VERIFY_APPS_OVER_USB_KEY);
+        mVerifyAppsOverUsb = (SwitchPreference) findPreference(VERIFY_APPS_OVER_USB_KEY);
+        mAllPrefs.add(mVerifyAppsOverUsb);
         if (!showVerifierSetting()) {
             if (debugDebuggingCategory != null) {
                 debugDebuggingCategory.removePreference(mVerifyAppsOverUsb);
@@ -681,6 +683,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
         resetDebuggerOptions();
         writeLogdSizeOption(null);
+        resetAdbNotifyOptions();
+        resetVerifyAppsOverUsbOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -695,6 +699,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mDontPokeProperties = false;
         pokeSystemProperties();
         mShowUnacAndOvercounted.setChecked(false);
+    }
+
+    private void resetAdbNotifyOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.ADB_NOTIFY, 1);
     }
 
     private void updateHdcpValues() {
@@ -855,6 +864,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private void writeVerifyAppsOverUsbOptions() {
         Settings.Global.putInt(getActivity().getContentResolver(),
               Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, mVerifyAppsOverUsb.isChecked() ? 1 : 0);
+    }
+
+    private void resetVerifyAppsOverUsbOptions() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+              Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, 1);
     }
 
     private boolean enableVerifierSetting() {
