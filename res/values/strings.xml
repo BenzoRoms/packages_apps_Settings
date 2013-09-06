@@ -3355,6 +3355,7 @@
     <string name="app_ops_turn_on_screen">turn the screen on</string>
     <string name="app_ops_get_accounts">get device accounts</string>
     <string name="app_ops_boot_completed">start at boot</string>
+    <string name="app_ops_wlan_change">wlan change</string>
 
     <!-- [CHAR LIMIT=25] Text shown when there are no default Apps -->
     <string name="no_default_apps">No default Apps.</string>

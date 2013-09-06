@@ -199,7 +199,9 @@ public class AppOpsState {
                     AppOpsManager.OP_PROJECT_MEDIA,
                     AppOpsManager.OP_ACTIVATE_VPN,
                     AppOpsManager.OP_ASSIST_STRUCTURE,
-                    AppOpsManager.OP_ASSIST_SCREENSHOT},
+                    AppOpsManager.OP_ASSIST_SCREENSHOT,
+                    AppOpsManager.OP_WIFI_CHANGE,
+                    AppOpsManager.OP_BLUETOOTH_CHANGE},
             new boolean[] { false,
                     true,
                     true,
@@ -209,7 +211,9 @@ public class AppOpsState {
                     false,
                     false,
                     false,
-                    false }
+                    false,
+                    true,
+                    true }
             );
 
     public static final OpsTemplate BOOTUP_TEMPLATE = new OpsTemplate(
