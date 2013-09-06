@@ -701,7 +701,7 @@
         <item>write external storage</item>
         <item>turn screen on</item>
         <item>get accounts</item>
-        <item>change wifi</item>
+        <item>toggle wi-fi</item>
         <item>toggle bluetooth</item>
         <item>start at boot</item>
         <item>toggle nfc</item>
