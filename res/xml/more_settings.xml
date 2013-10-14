@@ -28,6 +28,11 @@
         android:summary="@string/toast_icon_summary"
         android:defaultValue="true" />
 
+    <SwitchPreference
+        android:key="show_cpu_info"
+        android:title="@string/show_cpu_info"
+        android:summary="@string/show_cpu_info_summary"/>
+
     <PreferenceCategory
         android:key="screenshot_cat"
         android:title="@string/screenshot_cat_title"/>
