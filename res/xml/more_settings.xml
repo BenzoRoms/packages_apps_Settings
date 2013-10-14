@@ -30,6 +30,11 @@
             android:entries="@array/media_scanner_on_boot_entries"
             android:entryValues="@array/media_scanner_on_boot_values" />
 
+        <SwitchPreference
+            android:key="show_cpu_info"
+            android:title="@string/show_cpu_info"
+            android:summary="@string/show_cpu_info_summary"/>
+
         <com.android.settings.benzo.SeekBarPreference
             android:key="transparent_volume_dialog"
             android:title="@string/volume_dialog_transparency"
