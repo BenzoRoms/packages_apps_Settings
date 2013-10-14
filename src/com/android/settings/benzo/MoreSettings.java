@@ -39,8 +39,10 @@ public class MoreSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
     private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
+    private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
 
     private ListPreference mMsob;
+    private SwitchPreference mShowCpuInfo;
 
     @Override
     protected int getMetricsCategory() {
@@ -54,6 +56,10 @@ public class MoreSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.more_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        mShowCpuInfo = (SwitchPreference) findPreference(SHOW_CPU_INFO_KEY);
+        mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
+            Settings.Global.SHOW_CPU, 0) == 1);
+
         mMsob = (ListPreference) findPreference(MEDIA_SCANNER_ON_BOOT);
         mMsob.setValue(String.valueOf(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.MEDIA_SCANNER_ON_BOOT, 0)));
@@ -63,7 +69,12 @@ public class MoreSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        return super.onPreferenceTreeClick(preference);
+        if (preference == mShowCpuInfo) {
+            writeCpuInfoOptions();
+        } else {
+            return super.onPreferenceTreeClick(preference);
+        }
+        return false;
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -76,5 +87,18 @@ public class MoreSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    private void writeCpuInfoOptions() {
+        boolean value = mShowCpuInfo.isChecked();
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.SHOW_CPU, value ? 1 : 0);
+        Intent service = (new Intent())
+                .setClassName("com.android.systemui", "com.android.systemui.CPUInfoService");
+        if (value) {
+            getActivity().startService(service);
+        } else {
+            getActivity().stopService(service);
+        }
     }
 }
