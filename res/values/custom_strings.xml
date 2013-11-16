@@ -70,4 +70,7 @@
     <string name="custom_density_dialog_button_got">Got it!</string>
     <string name="custom_density_dialog_button_reboot">Reboot now</string>
 
+    <!-- Font size sample text -->
+    <string name="font_size_sample">Font Size</string>
+
 </resources>
