@@ -66,19 +66,27 @@
             android:order="6"
             android:persistent="false" />
 
+    <!-- Halo -->
+    <SwitchPreference
+            android:key="halo"
+            android:title="@string/app_notification_halo_title"
+            android:summary="@string/app_notification_halo_summary"
+            android:order="7"
+            android:persistent="false" />
+
     <!-- Sensitive -->
     <SwitchPreference
             android:key="sensitive"
             android:title="@string/app_notification_sensitive_title"
             android:summary="@string/app_notification_sensitive_summary"
-            android:order="7"
+            android:order="8"
             android:persistent="false" />
 
     <!-- App notification preferences -->
     <Preference
             android:key="app_settings"
             android:title="@string/app_notification_preferences"
-            android:order="8"
+            android:order="9"
             android:persistent="false" />
 
 </PreferenceScreen>

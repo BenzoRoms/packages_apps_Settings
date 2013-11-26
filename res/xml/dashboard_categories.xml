@@ -131,6 +131,13 @@
                     android:targetClass="com.lovejoy777.rroandlayersmanager.menu" />
         </dashboard-tile>
 
+        <!-- Halo -->
+        <dashboard-tile
+               android:id="@+id/halo_settings"
+               android:title="@string/halo_settings_title"
+               android:fragment="com.android.settings.paranoid.Halo"
+               android:icon="@drawable/ic_settings_location" />
+
         <!-- Substratum -->
         <dashboard-tile
                 android:id="@+id/substratum"
