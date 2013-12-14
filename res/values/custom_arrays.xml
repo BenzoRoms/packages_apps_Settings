@@ -675,6 +675,57 @@
         <item>0</item>
     </string-array>
 
+    <!-- Slim Actions For Shortcuts -->
+    <string-array name="shortcut_action_launcher_entries">
+        <item>@string/shortcut_action_home</item>
+        <item>@string/shortcut_action_back</item>
+        <item>@string/shortcut_action_search</item>
+        <item>@string/shortcut_action_voice_search</item>
+        <item>@string/shortcut_action_power</item>
+        <item>@string/shortcut_action_notifications</item>
+        <item>@string/shortcut_action_settings_panel</item>
+        <item>@string/shortcut_action_smart</item>
+        <item>@string/shortcut_action_recents</item>
+        <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_kill</item>
+        <item>@string/shortcut_action_ring_vib</item>
+        <item>@string/shortcut_action_ring_silent</item>
+        <item>@string/shortcut_action_ring_vib_silent</item>
+        <item>@string/shortcut_action_power_menu</item>
+        <item>@string/shortcut_action_expanded_desktop</item>
+        <item>@string/shortcut_action_camera</item>
+        <item>@string/shortcut_action_media_previous</item>
+        <item>@string/shortcut_action_media_next</item>
+        <item>@string/shortcut_action_media_play_pause</item>
+    </string-array>
+
+    <string-array name="shortcut_action_launcher_values" translatable="false">
+        <item>**home**</item>
+        <item>**back**</item>
+        <item>**search**</item>
+        <item>**voice_search**</item>
+        <item>**power**</item>
+        <item>**notifications**</item>
+        <item>**settings_panel**</item>
+        <item>**smart_pulldown**</item>
+        <item>**recents**</item>
+        <item>**screenshot**</item>
+        <item>**ime**</item>
+        <item>**lastapp**</item>
+        <item>**kill**</item>
+        <item>**ring_vib**</item>
+        <item>**ring_silent**</item>
+        <item>**ring_vib_silent**</item>
+        <item>**power_menu**</item>
+        <item>**expanded_desktop**</item>
+        <item>**camera**</item>
+        <item>**media_previous**</item>
+        <item>**media_next**</item>
+        <item>**media_play_pause**</item>
+    </string-array>
+
     <!-- MediaScanner behavior on boot -->
     <string-array name="media_scanner_on_boot_entries">
         <item>@string/media_scanner_on_boot_enabled</item>
