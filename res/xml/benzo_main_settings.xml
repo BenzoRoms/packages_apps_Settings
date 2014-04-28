@@ -9,6 +9,14 @@
         android:key="benzo_ex_apps"
         android:title="@string/benzo_ex_apps_title">
 
+        <!-- App sidebar -->
+        <PreferenceScreen
+            android:key="app_sidebar"
+            android:fragment="com.android.settings.benzo.AppSidebar"
+            android:title="@string/app_sidebar_title"
+            android:layout="@layout/preference_benzoextra_appbar" 
+            />
+
         <!-- Bettery Bar -->
         <PreferenceScreen
             android:key="battery_bar"
