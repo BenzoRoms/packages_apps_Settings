@@ -23,6 +23,14 @@
             android:layout="@layout/preference_benzoextra_animations" 
 	    />
 
+        <!-- App sidebar -->
+        <PreferenceScreen
+            android:key="app_sidebar"
+            android:fragment="com.android.settings.benzo.AppSidebar"
+            android:title="@string/app_sidebar_title"
+            android:layout="@layout/preference_benzoextra_appbar" 
+            />
+
         <!-- Buttons -->
         <PreferenceScreen
 	    android:id="@+id/button_settings"
