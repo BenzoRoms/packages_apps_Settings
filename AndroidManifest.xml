@@ -221,6 +221,14 @@
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
 
+        <!-- Extra info -->
+        <activity android:name="com.android.settings.benzo.extrainfo.MainActivity"
+                  android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="Settings$KernelAdiutorActivity"
                 android:label="@string/kerneladiutor_title"
                 android:icon="@drawable/ic_xd_kernel"
