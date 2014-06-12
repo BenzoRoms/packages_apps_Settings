@@ -24,6 +24,15 @@
                 android:summary="@string/changelog_summary"
                 android:fragment="com.android.settings.benzo.Changelog" />
 
+        <!-- Extra Info -->
+        <PreferenceScreen android:key="extrainfo"
+                android:title="@string/lsextrainfo"
+                android:summary="@string/lsextrainfo_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.benzo.extrainfo.MainActivity" />
+        </PreferenceScreen>
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"

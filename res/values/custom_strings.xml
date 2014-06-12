@@ -777,4 +777,8 @@
     <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
     <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
 
+    <!-- Extra Info -->
+    <string name="lsextrainfo">Extra information</string>
+    <string name="lsextrainfo_summary">Display extra info for cpu, display, etc</string>
+
 </resources>

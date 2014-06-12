@@ -1912,6 +1912,14 @@
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
 
+        <!-- Extra info -->
+        <activity android:name="com.android.settings.benzo.extrainfo.MainActivity"
+                  android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <!-- Development settings -->
 
         <!-- DeviceInfo adds the user's requested build to stats upload.  -->
