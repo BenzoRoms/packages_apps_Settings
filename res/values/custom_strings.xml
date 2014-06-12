@@ -694,4 +694,8 @@
     <string name="force_expanded_notifications_title">Force Expanded</string>
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
+    <!-- Extra Info -->
+    <string name="lsextrainfo">Extra information</string>
+    <string name="lsextrainfo_summary">Display extra info for cpu, display, etc</string>
+
 </resources>
