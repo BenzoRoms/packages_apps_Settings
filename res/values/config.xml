@@ -51,4 +51,9 @@
         <item>128</item>
     </integer-array>
 
+    <!-- Determines whether location confirmation dialog is shown -->
+    <bool name="config_showLocationDialog">false</bool>
+    <!-- Determines whether "Don't ask me again" option is shown under location confirmation dialog -->
+    <bool name="config_showCheckBoxOnLocationDialog">true</bool>
+
 </resources>
