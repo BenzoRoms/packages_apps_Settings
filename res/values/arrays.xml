@@ -704,6 +704,7 @@
         <item>get accounts</item>
         <item>start at boot</item>
         <item>wlan change</item>
+        <item>data change</item>
     </string-array>
 
     <!-- User display names for app ops codes -->
@@ -773,6 +774,7 @@
         <item>@string/app_ops_get_accounts</item>
         <item>@string/app_ops_boot_completed</item>
         <item>@string/app_ops_wlan_change</item>
+        <item>@string/app_ops_data_change</item>
     </string-array>
 
     <!-- Titles for the list of long press timeout options. -->
