@@ -3356,6 +3356,7 @@
     <string name="app_ops_get_accounts">get device accounts</string>
     <string name="app_ops_boot_completed">start at boot</string>
     <string name="app_ops_wlan_change">wlan change</string>
+    <string name="app_ops_data_change">data change</string>
 
     <!-- [CHAR LIMIT=25] Text shown when there are no default Apps -->
     <string name="no_default_apps">No default Apps.</string>
