@@ -86,6 +86,12 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- Mod version -->
+        <Preference android:key="mod_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/mod_version"
+                android:summary="@string/mod_version_default" />
+
         <!-- Device Baseband version -->
         <com.android.settings.DividerPreference
                 android:key="baseband_version"
