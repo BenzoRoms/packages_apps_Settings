@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- About phone screen,  Mod Version -->
+    <string name="mod_version">Build version</string>
+    <string name="mod_version_default">Unknown</string>
+
     <!-- GCC version info -->
     <string name="sm_android">Gcc android</string>
     <string name="sm_android_default">Unknown</string>
