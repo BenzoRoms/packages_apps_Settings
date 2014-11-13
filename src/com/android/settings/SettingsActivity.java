@@ -80,6 +80,7 @@ import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.benzo.DisplayRotation;
 import com.android.settings.benzo.MainSettings;
+import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardSummary;
@@ -359,7 +360,9 @@ public class SettingsActivity extends Activity
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
             MainSettings.class.getName(),
-            DisplayRotation.class.getName()
+            DisplayRotation.class.getName(),
+            com.android.settings.cyanogenmod.PrivacySettings.class.getName()
+            BlacklistSettings.class.getName()
     };
 
 
