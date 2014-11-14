@@ -53,6 +53,7 @@ import android.net.LinkProperties;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.os.INetworkManagementService;
 import android.os.RemoteException;
@@ -93,6 +94,7 @@ import com.android.settingslib.applications.ApplicationsState;
 import com.android.settingslib.drawable.CircleFramedDrawable;
 import com.android.settings.bluetooth.BluetoothSettings;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
@@ -101,6 +103,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static android.content.Intent.EXTRA_USER;
 
@@ -151,6 +155,8 @@ public final class Utils {
     private static final int SECONDS_PER_DAY = 24 * 60 * 60;
 
     public static final String OS_PKG = "os";
+
+    private static final long GB_IN_BYTES = 1024 * 1024 * 1024;
 
     private static SparseArray<Bitmap> sDarkDefaultUserBitmapCache = new SparseArray<Bitmap>();
 
@@ -1203,5 +1209,29 @@ public final class Utils {
 
     public static boolean isPackageInstalled(Context context, String pkg) {
         return isPackageInstalled(context, pkg, true);
+    }
+
+    public static long getSystemTotalSpace() {
+        File system = Environment.getRootDirectory();
+        return system.getTotalSpace();
+    }
+
+    public static long estimateTotalSpace(Context context, long approximateTotalSpace) {
+        int[] possibleSizeBases = context.getResources()
+                .getIntArray(R.array.config_storageSizes);
+
+        SortedSet<Long> possibleSizes = new TreeSet<Long>();
+        for (int possibleSizeBase : possibleSizeBases) {
+            possibleSizes.add(possibleSizeBase * GB_IN_BYTES);
+        }
+
+        long estimatedTotal = approximateTotalSpace;
+        for (long possibleSize : possibleSizes) {
+            if (possibleSize > approximateTotalSpace) {
+                estimatedTotal = possibleSize;
+                break;
+            }
+        }
+        return estimatedTotal;
     }
 }
