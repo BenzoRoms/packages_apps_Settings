@@ -17,11 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/privacy_settings_title">
 
-        <PreferenceScreen
-            android:id="@+id/app_ops"
-            android:title="@string/app_ops_settings"
-            android:summary="@string/app_ops_summary"
-            android:fragment="com.android.settings.applications.AppOpsSummary" />
+        <Preference
+            android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+            android:key="privacy_guard_manager"
+            android:summary="@string/privacy_guard_manager_summary"
+            android:title="@string/privacy_guard_manager_title" />
 
         <PreferenceScreen
             android:key="blacklist"

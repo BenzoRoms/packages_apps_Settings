@@ -19,6 +19,7 @@ package com.android.settings.cyanogenmod;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceScreen;
+import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
