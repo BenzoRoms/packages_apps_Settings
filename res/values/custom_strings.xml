@@ -1245,4 +1245,8 @@
     <string name="battery_stats_message">Battery history stats are going to be reset</string>
     <string name="ok_string">Ok</string>
 
+    <!-- Instant reboot -->
+    <string name="advanced_reboot_oneclick">One click reboot</string>
+    <string name="advanced_reboot_oneclick_summary">Instantly trigger reboot action</string>
+
 </resources>
