@@ -26,6 +26,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.internal.util.slim.Action;
 import com.android.internal.logging.MetricsLogger;
 
@@ -41,6 +42,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String DIM_NAV_BUTTONS_ANIMATE = "dim_nav_buttons_animate";
     private static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
     private static final String DIM_NAV_BUTTONS_TOUCH_ANYWHERE = "dim_nav_buttons_touch_anywhere";
+    private static final String LONG_PRESS_KILL_DELAY = "long_press_kill_delay";
 
     private ColorPickerPreference mNavbarButtonTint;
     private SwitchPreference mDimNavButtons;
@@ -49,6 +51,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDimNavButtonsAnimate;
     private SlimSeekBarPreference mDimNavButtonsAnimateDuration;
     private SwitchPreference mDimNavButtonsTouchAnywhere;
+    private SeekBarPreference mLongpressKillDelay;
 
     @Override
     protected int getMetricsCategory() {
@@ -68,6 +71,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
         mNavbarButtonTint.setSummary(hexColor);
         mNavbarButtonTint.setNewPreviewColor(intColor);
+
+        mLongpressKillDelay = (SeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
+        int killconf = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.LONG_PRESS_KILL_DELAY, 1000);
+        mLongpressKillDelay.setValue(killconf);
+        mLongpressKillDelay.setOnPreferenceChangeListener(this);
 
         // SlimDim
         mDimNavButtons = (SwitchPreference) findPreference(DIM_NAV_BUTTONS);
@@ -190,7 +199,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
+        } else if (preference == mLongpressKillDelay) {
+            int killconf = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LONG_PRESS_KILL_DELAY, killconf);
+            return true;
         }
-         return false;
+        return false;
     }
 }
