@@ -217,6 +217,8 @@ public class TetherSettings extends SettingsPreferenceFragment
                     mWifiConfig.SSID,
                     mSecurityType[index]));
         }
+        // Init the switch to current state
+        mEnableWifiAp.setChecked(mWifiManager.isWifiApEnabled());
     }
 
     private BluetoothProfile.ServiceListener mProfileServiceListener =
