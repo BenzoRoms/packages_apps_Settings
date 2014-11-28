@@ -24,10 +24,13 @@ import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.util.Log;
 
 import com.android.settings.R;
@@ -42,6 +45,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mVolumeKeyCursorControl;
 
+    private static final String CATEGORY_POWER = "power_menu_category";
+
+    private static final String KEY_POWER_END_CALL = "power_end_call";
+
+    private SwitchPreference mPowerEndCall;
+
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.DONT_TRACK_ME_BRO;
@@ -51,6 +60,22 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.button_settings);
+
+        final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceCategory powerCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_POWER);
+
+        // Power button ends calls.
+        mPowerEndCall = (SwitchPreference) findPreference(KEY_POWER_END_CALL);
+        if (hasPowerKey) {
+            if (!Utils.isVoiceCapable(getActivity())) {
+                powerCategory.removePreference(mPowerEndCall);
+                mPowerEndCall = null;
+            }
+        } else {
+            prefScreen.removePreference(powerCategory);
+        }
 
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
         if(mVolumeKeyCursorControl != null) {
@@ -64,6 +89,25 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+        // Power button ends calls.
+        if (mPowerEndCall != null) {
+            final int incallPowerBehavior = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT);
+            final boolean powerButtonEndsCall =
+                      (incallPowerBehavior == Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
+            mPowerEndCall.setChecked(powerButtonEndsCall);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mPowerEndCall) {
+            handleTogglePowerButtonEndsCallPreferenceClick();
+            return true;
+        }
+
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -77,6 +121,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void handleTogglePowerButtonEndsCallPreferenceClick() {
+        Settings.Secure.putInt(getContentResolver(),
+                Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR, (mPowerEndCall.isChecked()
+                        ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
+                        : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
     }
 
 }

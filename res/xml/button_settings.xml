@@ -13,6 +13,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/button_settings_title">
 
     <PreferenceCategory android:key="power_menu_category"
@@ -32,6 +33,12 @@
                 <extra android:name="actionEntries" android:value="shortcut_action_power_menu_entries" />
                 <extra android:name="fragment" android:value="com.android.settings.slim.fragments.PowerMenuFragment" />
         </PreferenceScreen>
+
+
+        <SwitchPreference
+            android:key="power_end_call"
+            android:title="@string/accessibility_power_button_ends_call_prerefence_title"
+            android:persistent="false"/>
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="lockscreen_enable_power_menu"
