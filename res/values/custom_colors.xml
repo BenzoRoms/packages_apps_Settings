@@ -18,6 +18,7 @@
 
     <!-- General colors -->
     <color name="white">@android:color/white</color>
+    <color name="dslv_float_background_color">#ff1b1f23</color>
 
     <!-- Expanded desktop -->
     <drawable name="expanded_item_bg_activated">#ffEEEEEE</drawable>
