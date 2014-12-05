@@ -557,6 +557,8 @@ public class ActionListViewSettings extends ListFragment implements
 
     private ArrayList<ActionConfig> getConfig() {
         switch (mActionMode) {
+            case LOCKSCREEN_SHORTCUT:
+                return ActionHelper.getLockscreenShortcutConfig(mActivity);
             case POWER_MENU_SHORTCUT:
                 return ActionHelper.getPowerMenuConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
@@ -573,8 +575,6 @@ public class ActionListViewSettings extends ListFragment implements
             case PIE_SECOND:
                 return ActionHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            case LOCKSCREEN_SHORTCUT:
-                return ActionHelper.getLockscreenShortcutConfig(mActivity);
             case SHAKE_EVENTS_DISABLED:
                 return ActionHelper.getDisabledShakeApps(mActivity);
 */
@@ -587,6 +587,10 @@ public class ActionListViewSettings extends ListFragment implements
 
     private void setConfig(ArrayList<ActionConfig> actionConfigs, boolean reset) {
         switch (mActionMode) {
+            case LOCKSCREEN_SHORTCUT:
+                ActionHelper.setLockscreenShortcutConfig(mActivity, actionConfigs, reset);
+                updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
+                break;
             case POWER_MENU_SHORTCUT:
                 ActionHelper.setPowerMenuConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
@@ -605,10 +609,6 @@ public class ActionListViewSettings extends ListFragment implements
                 break;
             case PIE_SECOND:
                 ActionHelper.setPieSecondLayerConfig(mActivity, actionConfigs, reset);
-                updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;
-            case LOCKSCREEN_SHORTCUT:
-                ActionHelper.setLockscreenShortcutConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
             case SHAKE_EVENTS_DISABLED:
