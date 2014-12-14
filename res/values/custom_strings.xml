@@ -1276,6 +1276,11 @@
     <string name="weather_number_of_notifications_title">Number of notifications</string>
     <string name="weather_settings_options_title">Location settings</string>
     <string name="weather_settings_summary">Choose location and other settings</string>
+    <string name="weather_cat_lockscreen">Lockscreen</string>
+    <!-- Weather in status bar -->
+    <string name="status_bar_show_weather_title">Show weather</string>
+    <string name="status_bar_show_weather_summary">Show the weather in the status bar header</string>
+    <string name="weather_cat_statusbar_title">Statusbar</string>
 
     <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Carrier Label</string>
