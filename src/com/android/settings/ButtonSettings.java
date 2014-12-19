@@ -21,6 +21,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 
 public class ButtonSettings extends SettingsPreferenceFragment {
+    private static final String TAG = ButtonSettings.class.getSimpleName();
 
     @Override
     protected int getMetricsCategory() {
