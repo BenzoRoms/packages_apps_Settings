@@ -39,6 +39,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
+    private static final String TAG = ButtonSettings.class.getSimpleName();
 
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
