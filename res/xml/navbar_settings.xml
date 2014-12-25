@@ -33,6 +33,12 @@
             android:dependency="enable_nav_bar"
             android:defaultValue="false" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="navigation_bar_left"
+            android:title="@string/navigation_bar_left_title"
+            android:summary="@string/navigation_bar_left_summary"
+            android:defaultValue="false" />
+
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="overview_nav_bar_gesture"
             android:title="@string/nav_gesture_title"
