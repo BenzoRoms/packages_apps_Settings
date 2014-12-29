@@ -1503,4 +1503,8 @@
     <string name="volume_up_leave_zen_title">Volume up exits do not disturb</string>
     <string name="volume_up_leave_zen_summary">Allows volume up in do not disturb to exit dnd mode</string>
 
+    <!-- EdgeGesture service -->
+    <string name="edge_gesture_service_title">Block gesture touch events</string>
+    <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+
 </resources>
