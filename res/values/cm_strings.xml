@@ -79,4 +79,9 @@
     <string name="keep_screen_on_never">Never</string>
     <string name="keep_screen_on_debugging">While USB debugging</string>
     <string name="keep_screen_on_charging">While charging</string>
+
+    <!-- Qucik unlock -->
+    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
+    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
+
 </resources>
