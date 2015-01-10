@@ -9,6 +9,14 @@
         android:key="benzo_ex_apps"
         android:title="@string/benzo_ex_apps_title">
 
+        <!-- Bettery Bar -->
+        <PreferenceScreen
+            android:key="battery_bar"
+            android:fragment="com.android.settings.benzo.BatteryBar"
+            android:title="@string/battery_bar"
+            android:layout="@layout/preference_benzoextra_batterybar" 
+            />
+
         <!-- Equalizer -->
         <Preference
             android:id="@+id/equalizer_settings"
