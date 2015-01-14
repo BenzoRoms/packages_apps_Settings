@@ -32,6 +32,10 @@
     <string name="mod_version">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
 
+    <!-- GCC kernel version info -->
+    <string name="sm_kernel">Gcc kernel</string>
+    <string name="sm_kernel_default">Unknown</string>
+
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
     <string name="volume_settings_title">Volume</string>
