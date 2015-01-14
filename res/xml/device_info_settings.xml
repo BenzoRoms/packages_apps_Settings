@@ -121,6 +121,13 @@
                 settings:allowDividerBelow="true"
                 android:selectable="false" />
 
+        <!-- GCC kernel info -->
+        <Preference android:key="sm_kernel"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/sm_kernel"
+                android:summary="@string/sm_kernel_default"
+                android:selectable="false" />
+
         <!-- Detailed build version -->
         <Preference android:key="build_number"
                 android:enabled="false"
