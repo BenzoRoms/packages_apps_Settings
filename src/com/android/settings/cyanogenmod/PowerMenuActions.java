@@ -35,6 +35,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.cm.PowerMenuConstants;
+import com.android.settings.widget.NumberPickerPreference;
 
 import static com.android.internal.util.cm.PowerMenuConstants.*;
 
@@ -51,6 +52,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
     private static final String PREF_TRANSPARENT_POWER_MENU = "transparent_power_menu";
     private static final String PREF_TRANSPARENT_POWER_DIALOG_DIM = "transparent_power_dialog_dim";
+    private static final String SCREENSHOT_DELAY = "screenshot_delay";
 
     private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
@@ -66,6 +68,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SlimSeekBarPreference mOnTheGoAlphaPref;
     private SeekBarPreference mPowerMenuAlpha;
     private SeekBarPreference mPowerDialogDim;
+    private NumberPickerPreference mScreenshotDelay;
+
+    private static final int MIN_DELAY_VALUE = 1;
+    private static final int MAX_DELAY_VALUE = 30;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -136,6 +142,14 @@ public class PowerMenuActions extends SettingsPreferenceFragment
                 mSilentPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
             }
         }
+ 
+        mScreenshotDelay = (NumberPickerPreference) findPreference(SCREENSHOT_DELAY);
+        mScreenshotDelay.setOnPreferenceChangeListener(this);
+        mScreenshotDelay.setMinValue(MIN_DELAY_VALUE);
+        mScreenshotDelay.setMaxValue(MAX_DELAY_VALUE);
+        int ssDelay = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREENSHOT_DELAY, 1);
+        mScreenshotDelay.setCurrentValue(ssDelay);
 
         getUserConfig();
     }
@@ -221,6 +235,12 @@ public class PowerMenuActions extends SettingsPreferenceFragment
              int alpha = (Integer) newValue;
              Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_DIALOG_DIM,
                    alpha * 1);
+            return true;
+        }
+        if (preference == mScreenshotDelay) {
+            int value = Integer.parseInt(newValue.toString());
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREENSHOT_DELAY,
+                    value);
             return true;
         }
         return false;
