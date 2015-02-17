@@ -72,6 +72,12 @@
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
 
+        <!-- Prevent audio ducking -->
+        <com.android.settings.preference.GlobalSettingSwitchPreference
+                android:key="zen_disable_ducking_during_media_playback"
+                android:title="@string/interruptions_ignore_while_media_title"
+                android:summary="@string/interruptions_ignore_while_media_summary" />
+
         <!-- Interruptions -->
         <PreferenceScreen
                 android:key="zen_mode"
