@@ -61,6 +61,20 @@
             android:title="@string/qs_four_columns_title"
             android:defaultValue="true" />
 
+        <PreferenceScreen
+            android:key="quick_tile_config"
+            android:fragment="com.android.settings.slim.dslv.ActionListViewSettings"
+            android:title="@string/qs_slim_action_title"
+            android:summary="@string/qs_slim_action_summary">
+                <extra android:name="actionMode" android:value="8" />
+                <extra android:name="maxAllowedActions" android:value="5" />
+                <extra android:name="disableLongpress" android:value="true" />
+                <extra android:name="disableDeleteLastEntry" android:value="true" />
+                <extra android:name="actionValues" android:value="shortcut_action_tile_values" />
+                <extra android:name="actionEntries" android:value="shortcut_action_tile_entries" />
+                <extra android:name="fragment" android:value="com.android.settings.slim.fragments.QuickTileFragment" />
+        </PreferenceScreen>
+
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="quick_settings_vibrate"
             android:title="@string/quick_settings_vibrate_title"

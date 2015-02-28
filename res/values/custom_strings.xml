@@ -1055,6 +1055,8 @@
 
     <!-- Slim Shortcuts -->
     <string name="slim_shortcut_picker">Slim Actions</string>
+    <string name="qs_slim_action_title">SlimActions Tile</string>
+    <string name="qs_slim_action_summary">Add and set the order of SlimActions for the tile</string>
 
     <!-- Chamber of Secrets -->
     <string name="chamber_title">Chamber of secrets</string>

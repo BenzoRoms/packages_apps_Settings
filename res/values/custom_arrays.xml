@@ -736,6 +736,45 @@
         <item>**media_play_pause**</item>
     </string-array>
 
+    <!-- Slim Actions QS -->
+    <string-array name="shortcut_action_tile_entries">
+        <item>@string/shortcut_action_power</item>
+        <item>@string/shortcut_action_power_menu</item>
+        <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_screenrecord</item>
+        <item>@string/shortcut_action_recents</item>
+	<item>@string/shortcut_action_floating_windows</item>
+        <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_kill</item>
+        <item>@string/shortcut_action_expanded_desktop</item>
+        <item>@string/shortcut_action_camera</item>
+        <item>@string/shortcut_action_voice_search</item>
+        <item>@string/shortcut_action_search</item>
+        <item>@string/shortcut_action_ring_vib</item>
+        <item>@string/shortcut_action_ring_silent</item>
+        <item>@string/shortcut_action_ring_vib_silent</item>
+    </string-array>
+
+    <string-array name="shortcut_action_tile_values" translatable="false">
+        <item>**power**</item>
+        <item>**power_menu**</item>
+        <item>**screenshot**</item>
+        <item>**screenrecord**</item>
+        <item>**recents**</item>
+	<item>**floating_windows**</item>
+        <item>**ime**</item>
+        <item>**lastapp**</item>
+        <item>**kill**</item>
+        <item>**expanded_desktop**</item>
+        <item>**camera**</item>
+        <item>**voice_search**</item>
+        <item>**search**</item>
+        <item>**ring_vib**</item>
+        <item>**ring_silent**</item>
+        <item>**ring_vib_silent**</item>
+    </string-array>
+
     <!-- MediaScanner behavior on boot -->
     <string-array name="media_scanner_on_boot_entries">
         <item>@string/media_scanner_on_boot_enabled</item>

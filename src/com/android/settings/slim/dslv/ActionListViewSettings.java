@@ -102,6 +102,7 @@ public class ActionListViewSettings extends ListFragment implements
     private static final int POWER_MENU_SHORTCUT   = 5;
     private static final int SHAKE_EVENTS_DISABLED = 6;
     private static final int RECENT_APP_SIDEBAR    = 7;
+    private static final int QUICKTILE             = 8;
 
     private static final int DEFAULT_MAX_ACTION_NUMBER = 7;
     private static final int DEFAULT_NUMBER_OF_ACTIONS = 3;
@@ -572,6 +573,9 @@ public class ActionListViewSettings extends ListFragment implements
             case PIE_SECOND:
                 return ActionHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
+            case QUICKTILE:
+                return ActionHelper.getQuickTileConfigWithDescription(
+                    mActivity, mActionValuesKey, mActionEntriesKey);
 /* Disabled for now till all features are back. Enable it step per step!!!!!!
             case SHAKE_EVENTS_DISABLED:
                 return ActionHelper.getDisabledShakeApps(mActivity);
@@ -603,6 +607,10 @@ public class ActionListViewSettings extends ListFragment implements
                 break;
             case PIE_SECOND:
                 ActionHelper.setPieSecondLayerConfig(mActivity, actionConfigs, reset);
+                updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
+                break;
+            case QUICKTILE:
+                ActionHelper.setQuickTileConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
 /* Disabled for now till all features are back. Enable it step per step!!!!!!
