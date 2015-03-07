@@ -79,6 +79,7 @@ import com.android.settings.applications.ProcessStatsSummary;
 import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.WriteSettingsDetails;
+import com.android.settings.benzo.DisplayRotation;
 import com.android.settings.benzo.FloatingWindows;
 import com.android.settings.benzo.MainSettings;
 import com.android.settings.blacklist.BlacklistSettings;
@@ -370,7 +371,8 @@ public class SettingsActivity extends Activity
             ExpandedDesktopPreferenceFragment.class.getName(),
             FloatingWindows.class.getName(),
             AmbientSettings.class.getName(),
-            HeadsUpSettings.class.getName()
+            HeadsUpSettings.class.getName(),
+            DisplayRotation.class.getName()
     };
 
 
