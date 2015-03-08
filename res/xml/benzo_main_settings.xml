@@ -39,6 +39,14 @@
                 android:targetClass="com.android.lmt.LMT" />
         </Preference>
 
+        <!-- Wakelock blocker -->
+        <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:fragment="com.android.settings.benzo.WakeLockBlocker"
+            android:title="@string/wakelock_blocker_title"
+            android:layout="@layout/preference_benzoextra_wakelock" 
+            />
+
     </PreferenceCategory>
 
 
