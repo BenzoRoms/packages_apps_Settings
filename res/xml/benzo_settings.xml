@@ -5,4 +5,12 @@
     android:title="@string/benzo_settings_title" >
 
 
+        <!-- Wakelock blocker -->
+        <PreferenceScreen
+             android:key="wakelock_blocker"
+             android:fragment="com.android.settings.benzo.WakeLockBlocker"
+             android:title="@string/wakelock_blocker_title"
+	     android:icon="@drawable/ic_xd_wakelock"
+            />
+
 </PreferenceScreen>
