@@ -15,18 +15,29 @@
 */
 package com.android.settings.benzo;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 
-public class StatusBarSettings extends SettingsPreferenceFragment {
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
+public class StatusBarSettings extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
+
+    private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
+
+    private ListPreference mShowCarrierLabel;
 
     @Override
     protected int getMetricsCategory() {
@@ -38,4 +49,44 @@ public class StatusBarSettings extends SettingsPreferenceFragment {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.statusbar_settings);
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mShowCarrierLabel =
+                (ListPreference) findPreference(SHOW_CARRIER_LABEL);
+        int showCarrierLabel = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+        mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
+        mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
+        mShowCarrierLabel.setOnPreferenceChangeListener(this);
+
+        if (!Utils.isVoiceCapable(getActivity())) {
+            prefSet.removePreference(mShowCarrierLabel);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getContentResolver();
+        if (preference == mShowCarrierLabel) {
+            int showCarrierLabel = Integer.valueOf((String) newValue);
+            int index = mShowCarrierLabel.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.
+                STATUS_BAR_SHOW_CARRIER, showCarrierLabel, UserHandle.USER_CURRENT);
+            mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
+            return true;
+        }
+        return false;
+    }
+
 }

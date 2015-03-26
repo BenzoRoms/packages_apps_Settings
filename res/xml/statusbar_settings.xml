@@ -16,14 +16,28 @@
     android:title="@string/statusbar_settings_title">
 
     <PreferenceCategory
+        android:key="category_statusbar_options"
+        android:title="@string/statusbar_options_title" >
+
+       <ListPreference
+           android:key="status_bar_show_carrier"
+           android:title="@string/show_carrier_title"
+           android:dialogTitle="@string/show_carrier_title"
+           android:entries="@array/carrier_label_entries"
+           android:entryValues="@array/carrier_label_values" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="category_battery_options"
         android:title="@string/battery_title" >
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.benzo.BatterySettings"
-        android:key="battery_style_pref"
-        android:title="@string/battery_title"
-    	android:summary="@string/battery2_summary" />
+       <PreferenceScreen
+           android:fragment="com.android.settings.benzo.BatterySettings"
+           android:key="battery_style_pref"
+           android:title="@string/battery_title"
+    	   android:summary="@string/battery2_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
