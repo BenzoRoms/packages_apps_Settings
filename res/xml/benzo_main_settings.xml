@@ -28,6 +28,14 @@
             android:layout="@layout/preference_benzoextra_density" 
             />
 
+        <!-- Gesture anywhere -->
+        <PreferenceScreen
+            android:key="gesture_anywhere"
+            android:fragment="com.android.settings.benzo.gestureanywhere.GestureAnywhereSettings"
+            android:title="@string/gesture_anywhere_title"
+            android:layout="@layout/preference_benzoextra_gesture" 
+            />
+
         <!-- LMT PIE -->
         <Preference
             android:id="@+id/lmt_settings"
