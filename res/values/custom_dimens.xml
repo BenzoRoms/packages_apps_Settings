@@ -37,4 +37,8 @@
     <dimen name="dashboard_radius_top_left">0dip</dimen>
     <dimen name="dashboard_radius_top_right">0dip</dimen>
 
+    <!-- Gesture Anywhere -->
+    <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
+    <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
+
 </resources>

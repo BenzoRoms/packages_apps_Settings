@@ -1891,6 +1891,9 @@
 
 	<activity android:name=".benzo.Density" />
 
+        <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
+
         <!-- Development settings -->
 
         <!-- DeviceInfo adds the user's requested build to stats upload.  -->
