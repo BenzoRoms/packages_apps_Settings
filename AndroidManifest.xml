@@ -218,6 +218,9 @@
 
 	<activity android:name=".benzo.Density" />
 
+        <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
+
         <activity android:name="Settings$KernelAdiutorActivity"
                 android:label="@string/kerneladiutor_title"
                 android:icon="@drawable/ic_xd_kernel"
