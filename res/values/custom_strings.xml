@@ -1461,4 +1461,8 @@
     <string name="appsidebar_float_mode_title">App Sidebar</string>
     <string name="appsidebar_float_mode_summary">Launch App Sidebar apps in floating window</string>
 
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">Chamber of secrets</string>
+    <string name="chamber_toast">The chamber of secrets has opened</string>
+
 </resources>
