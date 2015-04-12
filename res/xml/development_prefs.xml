@@ -405,4 +405,13 @@
             android:title="@string/reset_shortcut_manager_throttling" />
      </PreferenceCategory>
 
+     <!-- Must remain at bottom -->
+     <Preference
+         android:key="chamber_of_secrets"
+         android:title="\n \n" />
+
+     <SwitchPreference
+         android:key="chamber_of_unlocked_secrets"
+         android:title="@string/chamber_title" />
+
 </PreferenceScreen>
