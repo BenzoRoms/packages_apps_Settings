@@ -2750,5 +2750,7 @@
                 android:value="com.android.settings.applications.WriteSettingsDetails" />
         </activity>
 
+        <activity android:name=".headsup.HeadsUpSettings" />
+
     </application>
 </manifest>
