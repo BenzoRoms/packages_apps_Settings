@@ -20,4 +20,7 @@
     <string name="mod_version">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
 
+    <!-- Dev Options Enabled by Default -->
+    <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
+
 </resources>
