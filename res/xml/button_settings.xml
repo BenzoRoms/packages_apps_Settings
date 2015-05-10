@@ -25,6 +25,12 @@
             android:title="@string/power_menu_title"
             android:fragment="com.android.settings.cyanogenmod.PowerMenuActions" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/lockscreen_enable_power_menu_title"
+            android:summary="@string/lockscreen_enable_power_menu_summary"
+            android:defaultValue="true" />
+
         <SwitchPreference
             android:key="power_end_call"
             android:title="@string/accessibility_power_button_ends_call_prerefence_title"
