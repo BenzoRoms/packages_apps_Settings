@@ -1317,4 +1317,9 @@
     <string name="status_bar_br_logo_title">Benzo Rom logo</string>
     <string name="status_bar_br_logo_summary">Enable to show the Benzo logo on the left side of statusbar</string>
 
+    <!--Power menu -->
+    <string name="power_category">Power menu</string>
+    <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
+    <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
+
 </resources>
