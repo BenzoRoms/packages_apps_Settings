@@ -89,6 +89,10 @@
     <string name="power_menu_bug_report_disabled">Bug reporting is disabled in development settings</string>
     <string name="power_menu_torch">Flashlight</string>
 
+    <!-- Power menu on lockscreen -->
+    <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
+    <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
+
     <!-- Volume key cursor control -->
     <string name="hardware_keys_volume_keys_title">Volume buttons</string>
     <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
