@@ -74,6 +74,14 @@
                 android:targetClass="com.noname81.lmt.LMT" />
         </Preference>
 
+        <!-- SlimPIE -->
+        <PreferenceScreen
+             android:key="pie_settings"
+             android:title="@string/pie_control_title"
+             android:fragment="com.android.settings.slim.PieControl"
+             android:layout="@layout/preference_benzoextra_slimpie" 
+             />
+
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"

@@ -16,7 +16,16 @@
 
 package com.android.settings.slim;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.preference.SwitchPreference;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -28,6 +37,7 @@ import android.provider.Settings;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.slim.DeviceUtils;
+import com.android.internal.util.slim.Action;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -50,6 +60,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String DIM_NAV_BUTTONS_ALPHA = "dim_nav_buttons_alpha";
     private static final String DIM_NAV_BUTTONS_ANIMATE = "dim_nav_buttons_animate";
     private static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
+
+    private static final int DLG_NAVIGATION_WARNING = 0;
 
     private int mNavBarMenuDisplayValue;
 
@@ -74,6 +86,26 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         return MetricsLogger.INPUTMETHOD_LANGUAGE;
     }
 
+    private SettingsObserver mSettingsObserver = new SettingsObserver(new Handler());
+    private final class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = getActivity().getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVIGATION_BAR_SHOW), false, this,
+                    UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            super.onChange(selfChange);
+            updateSettings();
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,33 +116,26 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         PreferenceScreen prefs = getPreferenceScreen();
 
         mMenuDisplayLocation = (ListPreference) findPreference(PREF_MENU_LOCATION);
-        mMenuDisplayLocation.setValue(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.MENU_LOCATION,
-                0) + "");
         mMenuDisplayLocation.setOnPreferenceChangeListener(this);
 
         mNavBarMenuDisplay = (ListPreference) findPreference(PREF_NAVBAR_MENU_DISPLAY);
-        mNavBarMenuDisplayValue = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.MENU_VISIBILITY,
-                2);
-        mNavBarMenuDisplay.setValue(mNavBarMenuDisplayValue + "");
         mNavBarMenuDisplay.setOnPreferenceChangeListener(this);
 
         mButtonPreference = (PreferenceScreen) findPreference(PREF_BUTTON);
         mButtonStylePreference = (PreferenceScreen) findPreference(PREF_BUTTON_STYLE);
         mStyleDimenPreference = (PreferenceScreen) findPreference(PREF_STYLE_DIMEN);
 
-        // A Nexus will always have a NavBar by default
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, 1) == 1;
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
         mEnableNavigationBar.setOnPreferenceChangeListener(this);
 
         mNavigationBarCanMove = (SwitchPreference) findPreference(PREF_NAVIGATION_BAR_CAN_MOVE);
-        mNavigationBarCanMove.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_CAN_MOVE,
-                DeviceUtils.isPhone(getActivity()) ? 1 : 0) == 0);
-        mNavigationBarCanMove.setOnPreferenceChangeListener(this);
+
+        if (DeviceUtils.isPhone(getActivity())) {
+            mNavigationBarCanMove.setOnPreferenceChangeListener(this);
+        } else {
+            prefs.removePreference(mNavigationBarCanMove);
+            mNavigationBarCanMove = null;
+        }
 
         mStatusBarImeArrows = (SwitchPreference) findPreference(STATUS_BAR_IME_ARROWS);
         mStatusBarImeArrows.setChecked(Settings.System.getInt(getContentResolver(),
@@ -181,16 +206,39 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             // minimum 100 is 1 interval of the 100 multiplier
             mDimNavButtonsAnimateDuration.setInitValue((animateDuration / 100) - 1);
         }
+        updateSettings();
+    }
 
+    private void updateSettings() {
+        mMenuDisplayLocation.setValue(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.MENU_LOCATION,
+                0) + "");
+        mNavBarMenuDisplayValue = Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.MENU_VISIBILITY,
+                2);
+        mNavBarMenuDisplay.setValue(mNavBarMenuDisplayValue + "");
+
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW,
+                Action.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
+        mEnableNavigationBar.setChecked(enableNavigationBar);
+
+        if (mNavigationBarCanMove != null) {
+            mNavigationBarCanMove.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_CAN_MOVE, 1) == 0);
+        }
         updateNavbarPreferences(enableNavigationBar);
     }
+
 
     private void updateNavbarPreferences(boolean show) {
         mNavBarMenuDisplay.setEnabled(show);
         mButtonPreference.setEnabled(show);
         mButtonStylePreference.setEnabled(show);
         mStyleDimenPreference.setEnabled(show);
-        mNavigationBarCanMove.setEnabled(show);
+        if (mNavigationBarCanMove != null) {
+            mNavigationBarCanMove.setEnabled(show);
+        }
         mMenuDisplayLocation.setEnabled(show
             && mNavBarMenuDisplayValue != 1);
         mStatusBarImeArrows.setEnabled(show);
@@ -215,6 +263,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mMenuDisplayLocation.setEnabled(mNavBarMenuDisplayValue != 1);
             return true;
         } else if (preference == mEnableNavigationBar) {
+            if (!((Boolean) newValue) && !Action.isPieEnabled(getActivity())
+                    && Action.isNavBarDefault(getActivity())) {
+                showDialogInner(DLG_NAVIGATION_WARNING);
+                return true;
+            }
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW,
                     ((Boolean) newValue) ? 1 : 0);
@@ -265,6 +318,79 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+        updateSettings();
+        mSettingsObserver.observe();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().getContentResolver().unregisterContentObserver(mSettingsObserver);
+    }
+
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        NavbarSettings getOwner() {
+            return (NavbarSettings) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_NAVIGATION_WARNING:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.attention)
+                    .setMessage(R.string.navigation_bar_warning_no_navigation_present)
+                    .setNegativeButton(R.string.dlg_no,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.PIE_CONTROLS, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_SHOW, 0);
+                            getOwner().updateNavbarPreferences(false);
+                        }
+                    })
+                    .setPositiveButton(R.string.dlg_yes,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.PIE_CONTROLS, 1);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_SHOW, 0);
+                            getOwner().updateNavbarPreferences(false);
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_NAVIGATION_WARNING:
+                    getOwner().mEnableNavigationBar.setChecked(true);
+                    getOwner().updateNavbarPreferences(true);
+                    break;
+            }
+        }
     }
 
 }
