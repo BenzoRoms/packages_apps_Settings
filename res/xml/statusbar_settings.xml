@@ -38,6 +38,11 @@
            android:summary="@string/breathing_notifications_summary" />
 
        <PreferenceScreen
+           android:key="carrier_options"
+           android:fragment="com.android.settings.benzo.CarrierLabel"
+           android:title="@string/carrier_options" />
+
+       <PreferenceScreen
            android:key="clock_styles"
            android:title="@string/clock_styles_title"
            android:summary="@string/clock_styles_summary"
