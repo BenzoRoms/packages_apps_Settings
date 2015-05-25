@@ -299,11 +299,11 @@ public final class BluetoothDevicePreference extends Preference implements
             return new Pair<Integer, String>(resId, null);
         }
         if (btClass != null) {
-            if (btClass.doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
-                return new Pair<Integer, String>(R.drawable.ic_bt_headphones_a2dp, HEADPHONE);
-            }
-            if (btClass.doesClassMatch(BluetoothClass.PROFILE_HEADSET)) {
+          if (btClass.doesClassMatch(BluetoothClass.PROFILE_HEADSET)) {
                 return new Pair<Integer, String>(R.drawable.ic_bt_headset_hfp, HEADSET);
+            }
+          if (btClass.doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
+                return new Pair<Integer, String>(R.drawable.ic_bt_headphones_a2dp, HEADPHONE);
             }
         }
         return new Pair<Integer, String>(R.drawable.ic_settings_bluetooth, BLUETOOTH);
