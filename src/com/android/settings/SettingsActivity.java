@@ -749,6 +749,13 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTitleFromBackStack();
     }
 
+    @Override
+    public boolean onSearchRequested() { // Search key pressed.
+        mSearchMenuItem.expandActionView();
+        switchToSearchResultsFragmentIfNeeded();
+        return true;
+    }
+
     private int setTitleFromBackStack() {
         final int count = getFragmentManager().getBackStackEntryCount();
 
