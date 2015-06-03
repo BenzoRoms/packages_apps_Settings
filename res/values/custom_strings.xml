@@ -1339,4 +1339,7 @@
     <string name="updater_title">Updates</string>
     <string name="updater_summary">Check for updates and more</string>
 
+    <!-- WiFi auto-configure priorities -->
+    <string name="wifi_auto_config_priorities">Automatic priority</string>
+
 </resources>
