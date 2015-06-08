@@ -63,6 +63,14 @@
                 android:targetPackage="com.vipercn.viper4android_v2" />
         </Preference>
 
+        <!--PA Pie Control -->
+        <PreferenceScreen
+             android:key="pa_pie_control"
+             android:title="@string/pa_pie_control_title"
+             android:fragment="com.android.settings.benzo.PieControl"
+             android:layout="@layout/preference_benzoextra_papie" 
+             />
+
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"
