@@ -278,4 +278,9 @@
     <string name="display_rotation_180_title">180 degrees</string>
     <string name="display_rotation_270_title">270 degrees</string>
 
+    <!-- Changelog -->
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">See some of the recent commits.</string>
+    <string name="changelog_error">Unable to load changelog</string>
+
 </resources>
