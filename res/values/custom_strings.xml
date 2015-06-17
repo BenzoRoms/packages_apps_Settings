@@ -1404,4 +1404,11 @@
     <string name="pa_pie_always_right_title">Pie always on the right</string>
     <string name="pa_pie_always_right_summary">Pie will be always shown on the right while in landscape</string>
 
+    <!-- Whether the keyguard will directly pass to password entry -->
+    <string name="lock_directly_show_password">Directly show password entry</string>
+    <!-- Whether the keyguard will directly pass to pattern view -->
+    <string name="lock_directly_show_pattern">Directly show pattern view</string>
+    <!-- Whether the keyguard will directly pass to PIN entry -->
+    <string name="lock_directly_show_pin">Directly show PIN entry</string>
+
 </resources>

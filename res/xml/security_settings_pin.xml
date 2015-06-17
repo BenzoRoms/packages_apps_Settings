@@ -38,6 +38,11 @@
             android:title="@string/unlock_quick_unlock_control_title"
             android:summary="@string/unlock_quick_unlock_control_summary" />
 
+        <SwitchPreference
+            android:key="directlyshow"
+            android:persistent="false"
+            android:title="@string/lock_directly_show_pin"/>
+
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="lockscreen_charging_current"
             android:title="@string/lockscreen_charging_current_title"
