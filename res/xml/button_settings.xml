@@ -81,6 +81,12 @@
             android:entryValues="@array/volbtn_cursor_control_values"
             android:persistent="false" />
 
+        <PreferenceScreen
+            android:key="vol_steps"
+            android:fragment="com.android.settings.benzo.fragments.VolumeStepsFragment"
+            android:title="@string/volume_steps_fragment_title"
+            android:summary="@string/volume_steps_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
