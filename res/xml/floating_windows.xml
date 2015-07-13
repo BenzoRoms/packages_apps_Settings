@@ -33,6 +33,14 @@
 	<PreferenceCategory
         android:title="@string/floating_additional_options">
 
+        <!-- App Sidebar Switch -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+           android:key="appsidebar_floating"
+            android:title="@string/appsidebar_float_mode_title"
+            android:summary="@string/appsidebar_float_mode_summary"
+            android:dependency="floating_window_mode"
+            android:defaultValue="false" />
+
         <!-- Gesture Anywhere Switch -->
         <SwitchPreference
             android:key="gesture_anywhere_floating"

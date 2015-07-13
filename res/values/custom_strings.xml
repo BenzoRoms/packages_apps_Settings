@@ -972,7 +972,7 @@
     <string name="trigger_top_summary">Adjust the vertical postion of the trigger area</string>
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
- 
+
     <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
@@ -1455,5 +1455,7 @@
     <string name="slim_action_floats_summary">Launch Slim &amp; Pie Actions in Floating Window Mode</string>
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
+    <string name="appsidebar_float_mode_title">App Sidebar</string>
+    <string name="appsidebar_float_mode_summary">Launch App Sidebar apps in floating window</string>
 
 </resources>
