@@ -1127,6 +1127,8 @@
     <string name="slim_action_floats_summary">Launch Slim &amp; Pie Actions in Floating Window Mode</string>
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
+    <string name="appsidebar_float_mode_title">App Sidebar</string>
+    <string name="appsidebar_float_mode_summary">Launch App Sidebar apps in floating window</string>
 
     <!-- Breathing Notifications -->
     <string name="breathing_notifications_title">Breathing notifications</string>
