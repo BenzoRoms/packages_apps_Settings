@@ -1313,4 +1313,8 @@
    <string name="usb_data_auto_unlock_summary">Allow unlocked data access to your phone\'s storage through USB (MTP, PTP)</string>
    <string name="usb_data_auto_unlock_warning_summary">Your device will establish unprotected connections, everytime you connect it to a PC. Secured lockscreens disable this option automatically.\n\nThis is still an experimental feature, use with caution.</string>
 
+    <!-- Statusbar Benzo Rom logo -->
+    <string name="status_bar_br_logo_title">Benzo Rom logo</string>
+    <string name="status_bar_br_logo_summary">Enable to show the Benzo logo on the left side of statusbar</string>
+
 </resources>
