@@ -1156,4 +1156,8 @@
     <string name="notification_volume_option_title">Notification volume</string>
     <string name="ring_notification_volume_option_title">Ring and notification volume</string>
 
+    <!-- Statusbar Benzo Rom logo -->
+    <string name="status_bar_br_logo_title">Benzo Rom logo</string>
+    <string name="status_bar_br_logo_summary">Enable to show the Benzo logo on the left side of statusbar</string>
+
 </resources>
