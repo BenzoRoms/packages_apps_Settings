@@ -1158,6 +1158,7 @@
 
     <!-- Statusbar Benzo Rom logo -->
     <string name="status_bar_br_logo_title">Benzo Rom logo</string>
-    <string name="status_bar_br_logo_summary">Enable to show the Benzo logo on the left side of statusbar</string>
+    <string name="status_bar_br_logo_summary">Option to show the Benzo logo on the left side of statusbar</string>
+    <string name="status_bar_br_logo_color">Benzo Rom logo color</string>
 
 </resources>
