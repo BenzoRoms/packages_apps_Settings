@@ -218,6 +218,8 @@
         <activity
              android:name=".benzo.BenzoSettings" />
 
+	<activity android:name=".benzo.Density" />
+
         <!-- Wireless Controls -->
 
         <activity android:name="Settings$WirelessSettingsActivity"
