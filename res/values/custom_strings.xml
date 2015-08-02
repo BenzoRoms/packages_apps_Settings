@@ -34,6 +34,7 @@
     <string name="statusbar_options_title">Options</string>
     <string name="volume_options_title">Volume buttons</string>
     <string name="benzo_extras_systemuituner">SystemUI Tuner</string>
+    <string name="benzo_extras_lockscreen">Lockscreen</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
@@ -313,5 +314,11 @@
     <string name="wakelock_blocker_reload">Reload</string>
     <string name="wakelock_blocker_warning_title">Proceed with caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss</string>
+
+    <!-- Lock screen settings -->
+    <string name="lockscreen_settings_title">Lockscreen wallpaper</string>
+    <string name="lockscreen_wallpaper_title">Wallpaper</string>
+    <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
+    <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
 
 </resources>

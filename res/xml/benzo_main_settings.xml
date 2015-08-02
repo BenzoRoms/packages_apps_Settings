@@ -71,6 +71,13 @@
             android:layout="@layout/preference_benzoextra_home"
             />
 
+       <PreferenceScreen
+            android:key="lock_screen_general_category"
+            android:fragment="com.android.settings.benzo.LockScreenSettings"
+            android:title="@string/benzo_extras_lockscreen" 
+            android:layout="@layout/preference_benzoextra_lockscreen"
+            />
+
         <!-- Navbar -->
         <PreferenceScreen
             android:id="@+id/navbar_settings"
