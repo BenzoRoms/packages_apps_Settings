@@ -405,4 +405,11 @@
     <string name="lockscreen_see_through_title">Blur</string>
     <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen</string>
     <string name="lockscreen_blur_radius">Blur effect intensity</string>
+
+    <!-- Status bar temperature -->
+    <string name="status_bar_temperature_title">Temperature style</string>
+    <string name="status_bar_temperature_hidden">Hidden</string>
+    <string name="status_bar_temperature_show_scale">Scale showing</string>
+    <string name="status_bar_temperature_hide_scale">Scale hidden</string>
+
 </resources>
