@@ -33,6 +33,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.benzo.SeekBarPreference;
@@ -97,6 +98,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mClearWallpaper) {
             clearKeyguardWallpaper();
+            Toast.makeText(getView().getContext(), getString(R.string.reset_lockscreen_wallpaper),
+            Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
