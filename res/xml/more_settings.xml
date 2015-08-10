@@ -33,15 +33,4 @@
         android:title="@string/show_cpu_info"
         android:summary="@string/show_cpu_info_summary"/>
 
-    <PreferenceCategory
-        android:key="screenshot_cat"
-        android:title="@string/screenshot_cat_title"/>
-
-            <com.android.settings.preference.SystemSettingSwitchPreference
-                android:key="screenshot_crop_and_share"
-                android:title="@string/screenshot_crop_and_share_title"
-                android:summary="@string/screenshot_crop_and_share_summary"
-                android:defaultValue="false" />
-
-
 </PreferenceScreen>
