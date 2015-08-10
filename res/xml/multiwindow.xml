@@ -35,6 +35,13 @@
             android:title="@string/enable_multi_window"
             android:summary="@string/enable_multi_window_summary"/>
 
+        <!-- Three-fingers-swipe to screenshot -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="three_finger_gesture"
+            android:title="@string/three_finger_gesture"
+            android:summary="@string/three_finger_gesture_summary"
+            android:defaultValue="false" />
+
         <com.android.settings.benzo.SeekBarPreference
             android:key="transparent_volume_dialog"
             android:title="@string/volume_dialog_transparency"
