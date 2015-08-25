@@ -872,4 +872,7 @@
     <string name="display_rotation_180_title">180 degrees</string>
     <string name="display_rotation_270_title">270 degrees</string>
 
+    <!-- Lock screen rotation -->
+    <string name="display_lockscreen_rotation_title">Lock screen</string>
+
 </resources>
