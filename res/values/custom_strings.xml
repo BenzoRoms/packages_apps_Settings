@@ -362,10 +362,12 @@
 
     <string name="lockscreen_shortcuts_category">Shortcuts</string>
     <!-- Lockscreen shortcuts -->
-    <string name="lockscreen_shortcuts_title">Lockscreen Shortcuts</string>
-    <string name="lockscreen_shortcuts_summary">Change the shortcuts on lockscreen to whatever you want</string>
-    <string name="lockscreen_shorcuts_longpress_title">Shortcuts longpress</string>
-    <string name="lockscreen_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
+    <string name="lockscreen_shortcuts_title">Upper Shortcuts</string>
+    <string name="lockscreen_shortcuts_summary">Change the shortcuts right under the lockscreen clock</string>
+    <string name="lockscreen_shorcuts_launch_type_title">Shortcut click type</string>
+    <string name="lockscreen_shortcuts_single_tap">Click</string>
+    <string name="lockscreen_shortcuts_double_tap">Double tap</string>
+    <string name="lockscreen_shortcuts_longpress">Longpress</string>
 
     <!-- Camera sound switch -->
     <string name="camera_sounds_title">Camera shutter sound</string>
@@ -420,7 +422,8 @@
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
     <!-- CM Lockscreen shortcuts -->
-    <string name="lockscreen_targets_message">Lockscreen shortcuts</string>
+    <string name="lockscreen_targets_message">Bottom shortcuts</string>
+    <string name="lockscreen_targets_summary">Change the shortcuts in the bottom corners of the lockscreen</string>
 
     <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
