@@ -340,8 +340,10 @@
     <!-- Lockscreen shortcuts -->
     <string name="lockscreen_shortcuts_title">Lockscreen Shortcuts</string>
     <string name="lockscreen_shortcuts_summary">Change the shortcuts on lockscreen to whatever you want</string>
-    <string name="lockscreen_shorcuts_longpress_title">Shortcuts longpress</string>
-    <string name="lockscreen_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
+    <string name="lockscreen_shorcuts_launch_type_title">Shortcut click type</string>
+    <string name="lockscreen_shortcuts_single_tap">Click</string>
+    <string name="lockscreen_shortcuts_double_tap">Double tap</string>
+    <string name="lockscreen_shortcuts_longpress">Longpress</string>
 
     <!-- Camera sound switch -->
     <string name="camera_sounds_title">Camera shutter sound</string>
