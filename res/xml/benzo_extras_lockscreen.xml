@@ -36,7 +36,7 @@
              <extra android:name="maxAllowedActions" android:value="5" />
              <extra android:name="disableLongpress" android:value="true" />
              <extra android:name="useAppPickerOnly" android:value="true" />
-             <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
+             <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutsFragment" />
         </PreferenceScreen>
 
     </PreferenceCategory>

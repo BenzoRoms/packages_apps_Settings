@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.SwitchPreference;
+import android.preference.ListPreference;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,13 +31,13 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 
-public class LockscreenShortcutFragment extends SettingsPreferenceFragment implements
+public class LockscreenShortcutsFragment extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS =
-            "lockscreen_shortcuts_longpress";
+    private static final String PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE =
+            "lockscreen_shortcuts_launch_type";
 
-    private SwitchPreference mLockscreenShortcutsLongpress;
+    private ListPreference mLockscreenShortcutsLaunchType;
 
     @Override
     protected int getMetricsCategory() {
@@ -48,15 +48,13 @@ public class LockscreenShortcutFragment extends SettingsPreferenceFragment imple
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.lockscreen_shortcut_fragment);
+        addPreferencesFromResource(R.xml.lockscreen_shortcuts_fragment);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mLockscreenShortcutsLongpress = (SwitchPreference) findPreference(
-                PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS);
-        mLockscreenShortcutsLongpress.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS, 1) == 1);
-        mLockscreenShortcutsLongpress.setOnPreferenceChangeListener(this);
+        mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
+                PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE);
+        mLockscreenShortcutsLaunchType.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(false);
     }
@@ -77,10 +75,10 @@ public class LockscreenShortcutFragment extends SettingsPreferenceFragment imple
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLockscreenShortcutsLongpress) {
+        if (preference == mLockscreenShortcutsLaunchType) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS,
-                    (Boolean) newValue ? 1 : 0);
+                    Integer.valueOf((String) newValue));
         }
         return true;
     }
