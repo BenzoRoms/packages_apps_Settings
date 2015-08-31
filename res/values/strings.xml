@@ -7836,6 +7836,7 @@
     <!-- Message for telling the user the kind of BT device being displayed in list. -->
     <string name="bluetooth_talkback_bluetooth">Bluetooth</string>
 
+<<<<<<< HEAD
     <!-- Used as title on the automatic storage manager settings. [CHAR LIMIT=60] -->
     <string name="automatic_storage_manager_settings">Manage storage</string>
 
@@ -7955,5 +7956,8 @@
     <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Call over the cellular network. If cellular network is not available, use Wi-Fi.</string>
     <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
     <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is lost, call ended.</string>
+
+    <!-- Daily WiFi stats -->
+    <string name="set_data_time_range">Show time range</string>
 
 </resources>
