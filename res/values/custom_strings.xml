@@ -1426,4 +1426,8 @@
     <string name="power_menu_animation_translucent_top">Translucent (top)</string>
     <string name="power_menu_animation_translucent_bottom">Translucent (bottom)</string>
 
+     <!-- OnTheGo  -->
+    <string name="onthego_title">On-The-Go Mode</string>
+    <string name="onthego_summary">Enable On-The-Go for the power menu</string>
+
 </resources>
