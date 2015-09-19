@@ -71,7 +71,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
 
         mTriggerWidthPref = (SeekBarPreferenceCHOS) findPreference(KEY_TRIGGER_WIDTH);
         mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.APP_SIDEBAR_TRIGGER_WIDTH, 10));
+                Settings.System.APP_SIDEBAR_TRIGGER_WIDTH, 20));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
         mTriggerTopPref = (SeekBarPreferenceCHOS) findPreference(KEY_TRIGGER_TOP);
