@@ -36,8 +36,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 
     private ListPreference mShowCarrierLabel;
+    private SwitchPreference mCustomHeader;
 
     @Override
     protected int getMetricsCategory() {
@@ -64,10 +66,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
-
         if (!Utils.isVoiceCapable(getActivity())) {
             prefSet.removePreference(mShowCarrierLabel);
         }
+
+        // Status bar custom header hd
+        mCustomHeader = (SwitchPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeader.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -84,6 +92,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putIntForUser(resolver, Settings.System.
                 STATUS_BAR_SHOW_CARRIER, showCarrierLabel, UserHandle.USER_CURRENT);
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
+            return true;
+        } else if (preference == mCustomHeader) {
+           boolean value = (Boolean) newValue;
+           Settings.System.putInt(resolver,
+                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, value ? 1 : 0);
             return true;
         }
         return false;
