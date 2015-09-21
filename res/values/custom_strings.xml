@@ -844,7 +844,7 @@
     <string name="animation_duration_title">Animation duration</string>
     <string name="title_animation_no_override">Prevent app overrides</string>
     <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
-    <string name="animation_duration_default">Default</string>
+    <string name="animation_duration_default">Duration (in milliseconds) of the above-selected system animations</string>
 
     <!-- Toast Animation -->
     <string name="toast_animation_title">Toast animation</string>
