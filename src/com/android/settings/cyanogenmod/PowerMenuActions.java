@@ -27,6 +27,7 @@ import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -46,6 +47,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     final static String TAG = "PowerMenuActions";
 
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
+    private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
 
     private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
@@ -57,6 +59,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SwitchPreference mBugReportPref;
     private SwitchPreference mSilentPref;
     private SwitchPreference mOnTheGoPowerMenu;
+    private SlimSeekBarPreference mOnTheGoAlphaPref;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -78,6 +81,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
         mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
+
+        mOnTheGoAlphaPref = (SlimSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+        mOnTheGoAlphaPref.setDefault(50);
+        mOnTheGoAlphaPref.setInterval(1);
+        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
 
         for (String action : mAllActions) {
         // Remove preferences not present in the overlay
@@ -172,6 +180,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         if (preference == mOnTheGoPowerMenu) {
             boolean value = ((Boolean)newValue).booleanValue();
             Settings.System.putInt(getContentResolver(), Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mOnTheGoAlphaPref) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
+                    val / 100);
             return true;
         }
         return false;
