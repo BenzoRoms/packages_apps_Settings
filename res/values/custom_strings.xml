@@ -38,6 +38,7 @@
     <string name="benzo_extras_systemuituner">SystemUI Tuner</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
     <string name="weather_settings_title">Weather</string>
+    <string name="lockscreen_options_title">Options</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
@@ -373,7 +374,6 @@
     <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
 
     <!-- Lockscreen weather -->
-    <string name="lockscreen_weather_title">Weather</string>
     <string name="lock_screen_weather_settings_title">Weather options</string>
     <string name="weather_cat_notifications_title">Notifications</string>
     <string name="weather_show_weather_title">Show weather</string>
@@ -401,4 +401,8 @@
     <string name="weather_hide_panel_never_summary">The weather panel won\`t be hidden</string>
     <string name="weather_number_of_notifications_title">Number of notifications</string>
 
+    <!-- Lockscreen blur/see through -->
+    <string name="lockscreen_see_through_title">Blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
 </resources>

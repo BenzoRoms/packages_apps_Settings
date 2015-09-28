@@ -18,7 +18,23 @@
 
     <PreferenceCategory
         android:key="lockscreen_weather_cat"
-        android:title="@string/lockscreen_weather_title" >
+        android:title="@string/lockscreen_options_title" >
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="lockscreen_see_through"
+                android:title="@string/lockscreen_see_through_title"
+                android:summary="@string/lockscreen_see_through_summary"
+                android:defaultValue="false" />
+
+        <com.android.settings.benzo.SeekBarPreference
+                android:key="lockscreen_blur_radius"
+                android:title="@string/lockscreen_blur_radius"
+                android:max="25"
+                settings:minimum="0"
+                settings:unitsLeft=""
+                settings:unitsRight=""
+                android:persistent="false"
+                android:dependency="lockscreen_see_through" />
 
         <PreferenceScreen
                 android:key="lockscreen_weather"
