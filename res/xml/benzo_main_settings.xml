@@ -20,7 +20,7 @@
         <Preference
             android:id="@+id/lmt_settings"
             android:title="@string/lmt_settings"
-            android:icon="@drawable/ic_dt_density">
+            android:icon="@drawable/ic_xd_pie">
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.lmt"
