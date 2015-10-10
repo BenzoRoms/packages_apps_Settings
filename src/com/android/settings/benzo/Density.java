@@ -38,6 +38,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.benzo.util.CMDProcessor;
@@ -60,6 +62,11 @@ public class Density extends SettingsPreferenceFragment implements
     protected Context mContext;
 
     int newDensityValue;
+
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsLogger.DEVELOPMENT;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
