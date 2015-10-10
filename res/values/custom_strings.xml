@@ -28,6 +28,9 @@
     <string name="benzo_ex_settings_title">System Settings</string>
     <string name="lmt_settings">PIE Settings</string>
 
+    <!-- Button settings  -->
+    <string name="button_settings_title">Buttons</string>
+
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
