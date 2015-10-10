@@ -72,10 +72,10 @@
                 android:summary="@string/device_info_default"
                 android:selectable="false" />
 
-        <!-- Mod version -->
+        <!-- Benzo version -->
         <Preference android:key="mod_version"
                 style="?android:preferenceInformationStyle"
-                android:title="@string/mod_version"
+                android:title="@string/benzo_version"
                 android:summary="@string/mod_version_default"
                 android:selectable="false" />
 
