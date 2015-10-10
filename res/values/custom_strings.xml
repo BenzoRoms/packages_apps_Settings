@@ -19,6 +19,13 @@
     <!-- General Strings -->
     <string name="bitsyko_layers">Layers Manager</string>
 
+    <!-- Benzo Extras -->
+    <string name="benzo_category_title">Benzo</string>
+    <string name="benzo_extras_title">Benzo Extras</string>
+    <string name="benzo_kernel_title">Kernel</string>
+    <string name="benzo_ex_apps_title">Applications</string>
+    <string name="benzo_ex_settings_title">System Settings</string>
+
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 

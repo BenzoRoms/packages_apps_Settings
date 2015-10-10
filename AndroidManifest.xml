@@ -1876,6 +1876,20 @@
                 android:value="com.android.settings.wfd.WifiDisplaySettings" />
         </activity>
 
+        <!-- Benzo Extras -->
+        <activity android:name="Settings$MainSettingsActivity"
+            android:label="@string/benzo_extras_title"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.benzo.MainSettings" />
+        </activity>
+
+        <activity
+             android:name=".benzo.MainSettings" />
 
         <!-- Development settings -->
 

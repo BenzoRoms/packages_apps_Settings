@@ -78,6 +78,7 @@ import com.android.settings.applications.ProcessStatsSummary;
 import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.WriteSettingsDetails;
+import com.android.settings.benzo.MainSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardSummary;
@@ -279,7 +280,8 @@ public class SettingsActivity extends Activity
             R.id.nfc_payment_settings,
             R.id.home_settings,
             R.id.dashboard,
-            R.id.bitsyko_layers
+            R.id.bitsyko_layers,
+            R.id.main_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -355,6 +357,7 @@ public class SettingsActivity extends Activity
             ProcessStatsSummary.class.getName(),
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
+            MainSettings.class.getName()
     };
 
 
