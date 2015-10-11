@@ -78,6 +78,7 @@
 
     <!-- Navigation bar -->
     <string name="navigation_bar_category">Navigation bar</string>
+    <string name="navigation_other_category">Options</string>
     <string name="navbar_enable_bar">Enable</string>
     <string name="navbar_dimen_title">Dimensions</string>
     <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
@@ -133,4 +134,9 @@
     <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
     <string name="recents_searchbar_title">Search bar</string>
     <string name="recents_searchbar_summary">Show Google search bar in the recents screen</string>
+
+    <!-- kill app long press back -->
+    <string name="kill_app_longpress_back">Kill app back button</string>
+    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
+
 </resources>

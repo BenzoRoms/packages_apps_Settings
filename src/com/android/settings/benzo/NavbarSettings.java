@@ -16,11 +16,18 @@
 package com.android.settings.benzo;
 
 import android.os.Bundle;
+import android.preference.SwitchPreference;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 
-public class NavbarSettings extends SettingsPreferenceFragment {
+public class NavbarSettings extends SettingsPreferenceFragment
+        OnPreferenceChangeListener {
+
+    private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+
+    private SwitchPreference mKillAppLongPressBack;
 
     @Override
     protected int getMetricsCategory() {
@@ -31,5 +38,22 @@ public class NavbarSettings extends SettingsPreferenceFragment {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.navbar_settings);
+
+        // kill-app long press back
+        mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
+        mKillAppLongPressBack.setOnPreferenceChangeListener(this);
+        int killAppLongPressBack = Settings.Secure.getInt(getContentResolver(),
+                KILL_APP_LONGPRESS_BACK, 0);
+        mKillAppLongPressBack.setChecked(killAppLongPressBack != 0);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mKillAppLongPressBack) {
+            boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), KILL_APP_LONGPRESS_BACK,
+                    value ? 1 : 0);
+        }
+            return true;
     }
 }
