@@ -27,6 +27,12 @@
             android:title="@string/force_expanded_notifications_title"
             android:summary="@string/force_expanded_notifications_summary" />
 
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/qs_brightness_slider_title_eos"
+            android:summary="@string/qs_brightness_slider_summary"
+            android:defaultValue="true" />
+
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="brightness_icon"
             android:title="@string/brightness_icon_title"
