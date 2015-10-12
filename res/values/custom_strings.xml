@@ -182,4 +182,8 @@
     <!-- Quick settings quick pull down -->
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
     <string name="status_bar_quick_qs_pulldown_summary">Right edge of the status bar pulls down Quick Settings</string>
+
+    <!-- Quick Settings brightness slider -->
+    <string name="qs_brightness_slider_title_eos">Brightness slider</string>
+    <string name="qs_brightness_slider_summary">Show a brightness slider in the quick settings panel</string>
 </resources>
