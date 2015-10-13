@@ -9,6 +9,17 @@
         android:key="benzo_ex_apps"
         android:title="@string/benzo_ex_apps_title">
 
+        <!-- Equalizer -->
+        <Preference
+            android:id="@+id/equalizer_settings"
+            android:title="@string/equalizer_settings_title"
+            android:icon="@drawable/ic_xd_eq" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
+                android:targetPackage="com.vipercn.viper4android_v2" />
+        </Preference>
+
         <!-- Density Changer -->
         <PreferenceScreen
             android:key="density_changer"
