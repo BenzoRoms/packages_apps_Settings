@@ -99,6 +99,14 @@
             android:layout="@layout/preference_benzoextra_more"
             />
 
+       <!-- Navbar -->
+       <PreferenceScreen
+            android:id="@+id/navbar_settings"
+            android:fragment="com.android.settings.benzo.NavbarSettings"
+            android:title="@string/navbar_settings_title"
+            android:layout="@layout/preference_benzoextra_navbar"
+            />
+
         <!-- Recents -->
         <PreferenceScreen
             android:id="@+id/recent_panel"
