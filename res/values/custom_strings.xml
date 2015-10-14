@@ -47,6 +47,7 @@
     <string name="lmt_settings">PIE Settings</string>
     <string name="equalizer_settings_title">Equalizer</string>
     <string name="statusbar_settings_title">Status Bar</string>
+    <string name="navbar_settings_title">Navigation Bar</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
