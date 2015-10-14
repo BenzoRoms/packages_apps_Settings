@@ -28,6 +28,7 @@
     <string name="benzo_ex_settings_title">System Settings</string>
     <string name="lmt_settings">PIE Settings</string>
     <string name="equalizer_settings_title">Equalizer</string>
+    <string name="navbar_settings_title">Navigation Bar</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
