@@ -32,6 +32,7 @@
     <string name="recents_settings_title">Recents</string>
     <string name="statusbar_settings_title">Status Bar</string>
     <string name="statusbar_options_title">Options</string>
+    <string name="volume_options_title">Volume buttons</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
@@ -282,5 +283,9 @@
     <string name="changelog_title">Changelog</string>
     <string name="changelog_summary">See some of the recent commits.</string>
     <string name="changelog_error">Unable to load changelog</string>
+
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
 
 </resources>

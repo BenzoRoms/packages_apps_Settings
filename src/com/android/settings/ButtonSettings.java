@@ -17,6 +17,7 @@ package com.android.settings;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -29,14 +30,18 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.internal.logging.MetricsLogger;
 
-public class ButtonSettings extends SettingsPreferenceFragment {
+public class ButtonSettings extends SettingsPreferenceFragment implements
+        OnPreferenceChangeListener {
+
     private static final String TAG = ButtonSettings.class.getSimpleName();
 
     private static final String CATEGORY_POWER = "power_key";
 
     private static final String KEY_POWER_END_CALL = "power_end_call";
+    private static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
 
     private SwitchPreference mPowerEndCall;
+    private SwitchPreference mVolumeRockerWake;
 
     @Override
     protected int getMetricsCategory() {
@@ -65,6 +70,13 @@ public class ButtonSettings extends SettingsPreferenceFragment {
         } else {
             prefScreen.removePreference(powerCategory);
         }
+
+        // volume rocker wake
+        mVolumeRockerWake = (SwitchPreference) findPreference(VOLUME_ROCKER_WAKE);
+        mVolumeRockerWake.setOnPreferenceChangeListener(this);
+        int volumeRockerWake = Settings.System.getInt(getContentResolver(),
+                VOLUME_ROCKER_WAKE, 0);
+        mVolumeRockerWake.setChecked(volumeRockerWake != 0);
     }
 
     @Override
@@ -90,6 +102,16 @@ public class ButtonSettings extends SettingsPreferenceFragment {
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mVolumeRockerWake) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(), VOLUME_ROCKER_WAKE,
+                    value ? 1 : 0);
+       }
+        return true;
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {

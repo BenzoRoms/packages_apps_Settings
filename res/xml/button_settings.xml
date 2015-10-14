@@ -17,18 +17,6 @@
     android:title="@string/button_settings_title">
 
     <PreferenceCategory
-        android:key="navigation_bar"
-        android:title="@string/navigation_bar_category">
-
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-            android:key="double_tap_sleep_navbar"
-            android:title="@string/double_tap_sleep_nav_bar_title"
-            android:summary="@string/double_tap_sleep_nav_bar_summary"
-            android:defaultValue="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="power_key"
         android:title="@string/hardware_keys_power_key_title" >
 
@@ -41,6 +29,17 @@
             android:key="power_end_call"
             android:title="@string/accessibility_power_button_ends_call_prerefence_title"
             android:persistent="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_wakeup_options"
+        android:title="@string/volume_options_title" >
+
+    <SwitchPreference
+        android:key="volume_rocker_wake"
+        android:summary="@string/volume_rocker_wake_summary"
+        android:title="@string/volume_rocker_wake_title" />
 
     </PreferenceCategory>
 
