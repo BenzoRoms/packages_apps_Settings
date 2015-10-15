@@ -16,13 +16,17 @@
 package com.android.settings.benzo;
 
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 
-public class NavbarSettings extends SettingsPreferenceFragment
+public class NavbarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
