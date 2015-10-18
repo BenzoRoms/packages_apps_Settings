@@ -13,7 +13,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <com.android.settings.preference.GlobalSettingSwitchPreference
             android:key="heads_up_notifications_enabled"
@@ -27,6 +29,12 @@
             android:title="@string/force_headsup_title"
             android:summary="@string/force_headsup_summary"
             android:dependency="heads_up_notifications_enabled"
+            android:defaultValue="false" />
+
+    <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="heads_up_show_status_button"
+            android:title="@string/show_headsup_button_title"
+            android:summary="@string/show_headsup_button_summary"
             android:defaultValue="false" />
 
     <ListPreference

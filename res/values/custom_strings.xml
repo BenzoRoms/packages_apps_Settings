@@ -1386,6 +1386,8 @@
     <string name="heads_up_contains_key">Already added this application to the list</string>
     <string name="force_headsup_title">Force heads up</string>
     <string name="force_headsup_summary">Force heads up in all applications</string>
+    <string name="show_headsup_button_title">Quick access button</string>
+    <string name="show_headsup_button_summary">Show a quick access button in the status bar header</string>
 
     <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">Time out</string>

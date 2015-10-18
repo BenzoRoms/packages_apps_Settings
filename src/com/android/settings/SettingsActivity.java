@@ -95,6 +95,7 @@ import com.android.settings.deviceinfo.StorageSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageDetail;
 import com.android.settings.fuelgauge.PowerUsageSummary;
+import com.android.settings.headsup.HeadsUpSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;
 import com.android.settings.inputmethod.SpellCheckersSettings;
@@ -368,7 +369,8 @@ public class SettingsActivity extends Activity
             BlacklistSettings.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName(),
             FloatingWindows.class.getName(),
-            AmbientSettings.class.getName()
+            AmbientSettings.class.getName(),
+            HeadsUpSettings.class.getName()
     };
 
 
