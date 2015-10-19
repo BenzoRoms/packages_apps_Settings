@@ -13,7 +13,7 @@
         <Preference
             android:id="@+id/equalizer_settings"
             android:title="@string/equalizer_settings_title"
-            android:icon="@drawable/ic_xd_eq" >
+            android:layout="@layout/preference_benzoextra_viper4android" >
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
@@ -25,13 +25,14 @@
             android:key="density_changer"
             android:title="@string/lcd_density_title"
             android:fragment="com.android.settings.benzo.Density"
-            android:icon="@drawable/ic_dt_density" />
+            android:layout="@layout/preference_benzoextra_density" 
+            />
 
         <!-- LMT PIE -->
         <Preference
             android:id="@+id/lmt_settings"
             android:title="@string/lmt_settings"
-            android:icon="@drawable/ic_xd_pie">
+            android:layout="@layout/preference_benzoextra_lmt_pie" >
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.lmt"
@@ -51,7 +52,7 @@
             android:id="@+id/button_settings"
             android:fragment="com.android.settings.ButtonSettings"
             android:title="@string/button_settings_title"
-            android:icon="@drawable/ic_settings_buttons"
+            android:layout="@layout/preference_benzoextra_buttons"
             />
 
         <!-- Home -->
@@ -59,7 +60,7 @@
             android:id="@+id/home_settings"
             android:title="@string/home_settings"
             android:fragment="com.android.settings.HomeSettings"
-            android:icon="@drawable/ic_settings_home"
+            android:layout="@layout/preference_benzoextra_home"
             />
 
         <!-- Navbar -->
@@ -67,7 +68,7 @@
             android:id="@+id/navbar_settings"
             android:fragment="com.android.settings.benzo.NavbarSettings"
             android:title="@string/navbar_settings_title"
-            android:icon="@drawable/ic_settings_navbar"
+            android:layout="@layout/preference_benzoextra_navbar"
             />
 
         <!-- Notification drawer -->
@@ -75,15 +76,15 @@
             android:id="@+id/notification_drawer_settings"
             android:title="@string/notification_drawer_title"
             android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
-            android:icon="@drawable/ic_settings_notification_drawer"
-                />
+            android:layout="@layout/preference_benzoextra_notifications"
+            />
 
         <!-- Recents -->
         <PreferenceScreen
             android:id="@+id/recents_settings"
             android:fragment="com.android.settings.benzo.RecentsSettings"
             android:title="@string/recents_settings_title"
-            android:icon="@drawable/ic_xd_recents"
+            android:layout="@layout/preference_benzoextra_recents"
             />
 
         <!-- Statusbar -->
@@ -91,7 +92,7 @@
             android:id="@+id/statusbar_settings"
             android:fragment="com.android.settings.benzo.StatusBarSettings"
             android:title="@string/statusbar_settings_title"
-            android:icon="@drawable/ic_xd_statusbar"
+            android:layout="@layout/preference_benzoextra_statusbar"
             />
 
         <PreferenceScreen
