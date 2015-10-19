@@ -325,8 +325,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         mToggleInversionPreference = (SwitchPreference) findPreference(TOGGLE_INVERSION_PREFERENCE);
         mToggleInversionPreference.setOnPreferenceChangeListener(this);
 
-        }
-
         // Speak passwords.
         mToggleSpeakPasswordPreference =
                 (SwitchPreference) findPreference(TOGGLE_SPEAK_PASSWORD_PREFERENCE);
