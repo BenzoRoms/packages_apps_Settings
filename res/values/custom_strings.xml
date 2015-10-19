@@ -51,6 +51,7 @@
     <string name="recents_settings_title">Recents</string>
     <string name="notification_drawer_title">Notification Drawer</string>
     <string name="benzoblock_settings_title">Ad Blocker</string>
+    <string name="benzo_extras_systemuituner">SystemUI Tuner</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
