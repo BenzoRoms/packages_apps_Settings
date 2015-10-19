@@ -33,6 +33,7 @@
     <string name="statusbar_settings_title">Status Bar</string>
     <string name="statusbar_options_title">Options</string>
     <string name="volume_options_title">Volume buttons</string>
+    <string name="benzo_extras_systemuituner">SystemUI Tuner</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
