@@ -59,6 +59,13 @@
             android:summary="@string/swap_volume_buttons_summary"
             android:defaultValue = "true" />
 
+        <!-- Volume button wake -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_wake_screen"
+            android:title="@string/volbtn_wake_device_title"
+            android:summary="@string/button_wake_summary"
+            android:defaultValue="false" />
+
         <!-- Force use of media stream -->
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_keys_control_media_stream"
