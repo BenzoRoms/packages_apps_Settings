@@ -1353,7 +1353,7 @@
 
     <!-- Volume button wake -->
     <string name="volbtn_wake_device_title">Volume button wake</string>
-    <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
+    <string name="button_wake_summary">Overrides music control</string>
 
     <!-- Lockscreen torch -->
     <string name="keyguard_torch_title">Lockscreen torch</string>
