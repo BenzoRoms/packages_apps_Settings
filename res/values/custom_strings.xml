@@ -316,10 +316,6 @@
     <string name="changelog_summary">See some of the recent commits.</string>
     <string name="changelog_error">Unable to load changelog</string>
 
-    <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
-    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
-
     <!-- MediaScanner behavior on boot -->
     <string name="options_settings_title">Options</string>
     <string name="media_scanner_on_boot_title">MediaScanner behavior on boot</string>
@@ -457,6 +453,8 @@
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_summary">Overrides music control</string>
 
     <!-- Media art -->
     <string name="media_art_title">Media cover art</string>
