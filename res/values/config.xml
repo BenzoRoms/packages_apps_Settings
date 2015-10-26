@@ -58,4 +58,7 @@
     <!-- If the Storage Manager settings are enabled. -->
     <bool name="config_storage_manager_settings_enabled">false</bool>
 
+    <!-- Volume rocker support. Some devices do not have a volume rocker. -->
+    <bool name="has_volume_rocker">true</bool>
+
 </resources>

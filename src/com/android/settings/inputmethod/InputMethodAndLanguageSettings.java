@@ -117,6 +117,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.language_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
 
         final Activity activity = getActivity();
         mImm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
