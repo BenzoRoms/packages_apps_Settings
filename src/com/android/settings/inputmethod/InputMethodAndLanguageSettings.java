@@ -84,6 +84,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
     private static final String KEY_PREVIOUSLY_ENABLED_SUBTYPES = "previously_enabled_subtypes";
+    private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -103,6 +104,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private Intent mIntentWaitingForResult;
     private InputMethodSettingValuesWrapper mInputMethodSettingValues;
     private DevicePolicyManager mDpm;
+    private ListPreference mVolumeKeyCursorControl;
 
     @Override
     protected int getMetricsCategory() {
@@ -114,6 +116,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.language_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
 
         final Activity activity = getActivity();
         mImm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -140,6 +143,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
 
         new VoiceInputOutputSettings(this).onCreate();
+
+        // Cursor volume keys
+        int cursorControlAction = Settings.System.getInt(resolver,
+                Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+        mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
+                cursorControlAction);
 
         // Get references to dynamically constructed categories.
         mHardKeyboardCategory = (PreferenceCategory)findPreference("hard_keyboard");
@@ -299,6 +308,22 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 !mHardKeyboardPreferenceList.isEmpty());
     }
 
+    private ListPreference initActionList(String key, int value) {
+        ListPreference list = (ListPreference) getPreferenceScreen().findPreference(key);
+        list.setValue(Integer.toString(value));
+        list.setSummary(list.getEntry());
+        list.setOnPreferenceChangeListener(this);
+        return list;
+    }
+
+    private void handleActionListChange(ListPreference pref, Object newValue, String setting) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+
+        pref.setSummary(pref.getEntries()[index]);
+        Settings.System.putInt(getContentResolver(), setting, Integer.valueOf(value));
+    }
+
     @Override
     public void onInputDeviceAdded(int deviceId) {
         updateInputDevices();
@@ -372,7 +397,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
-        if (SHOW_INPUT_METHOD_SWITCHER_SETTINGS) {
+        if (preference == mVolumeKeyCursorControl) {
+            handleActionListChange(mVolumeKeyCursorControl, value,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL);
+            return true;
+        } else if (SHOW_INPUT_METHOD_SWITCHER_SETTINGS) {
             if (preference == mShowInputMethodSelectorPref) {
                 if (value instanceof String) {
                     saveInputMethodSelectorVisibility((String)value);
