@@ -726,6 +726,10 @@
     <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
 
+    <!-- Toast Icons -->
+    <string name="toast_icon_title">Toast icon</string>
+    <string name="toast_icon_summary">Display the app icon corresponding with the toast</string>
+
     <!-- Disabling FC notifications -->
     <string name="disable_fc_notifications_title">Diable FC Notifications</string>
     <string name="disable_fc_notifications_summary">This will hide all force close notificaitons</string>
