@@ -70,6 +70,14 @@
         android:key="benzo_ex_settings"
         android:title="@string/benzo_ex_settings_title">
 
+        <!-- Animation Settings -->
+        <PreferenceScreen
+            android:key="animation_settings"
+            android:title="@string/animation_title"
+            android:fragment="com.android.settings.benzo.animation.AnimationSettings" 
+            android:layout="@layout/preference_benzoextra_animation" 
+            />
+
         <!-- Buttons -->
         <PreferenceScreen
             android:id="@+id/button_settings"
