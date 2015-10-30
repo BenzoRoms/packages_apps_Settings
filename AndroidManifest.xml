@@ -1917,6 +1917,9 @@
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
 
+        <!-- Hide Apps from Recents (HAFR) -->
+        <activity android:name=".benzo.recentshidden.HAFRAppListActivity" />
+
         <!-- Extra info -->
         <activity android:name="com.android.settings.benzo.extrainfo.MainActivity"
                   android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar.MinWidth">
