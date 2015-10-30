@@ -1427,4 +1427,9 @@
     <string name="three_finger_gesture">Three finger gesture</string>
     <string name="three_finger_gesture_summary">Swipe three finger to screenshot</string>
 
+    <!-- Hide Apps from Recents -->
+    <string name="hide_apps_from_recents_title">Hidden Apps</string>
+    <string name="hide_apps_from_recents_summary">Choose apps which do not appear in recents panel</string>
+    <string name="hide_from_recents_add_app">Add App</string>
+
 </resources>
