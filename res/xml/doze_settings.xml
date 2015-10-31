@@ -58,7 +58,7 @@
             android:title="@string/doze_notification_color_invert_title"
             android:summaryOn="@string/doze_notification_color_invert_summary_on"
             android:summaryOff="@string/doze_notification_color_invert_summary_off"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
     <SlimSeekBarPreference
             android:key="doze_brightness"
