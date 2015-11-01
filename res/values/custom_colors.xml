@@ -22,4 +22,7 @@
     <color name="expanded_button_color_normal">#4CAF50</color>
     <color name="expanded_button_color_close">#F44336</color>
 
+    <!-- Dashboard boarder color -->
+    <color name="dashboard_border_color">?android:attr/colorAccent</color>
+
 </resources>
