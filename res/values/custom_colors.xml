@@ -23,4 +23,7 @@
     <!-- Gesture Anywhere -->
     <color name="ga_gesture_color">@android:color/holo_blue_light</color>
 
+    <!-- Dashboard boarder color -->
+    <color name="dashboard_border_color">?android:attr/colorAccent</color>
+
 </resources>
