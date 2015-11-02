@@ -26,6 +26,7 @@ import android.os.RemoteException;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
@@ -50,10 +51,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
     private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
             = "camera_double_tap_power_gesture";
+    private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
 
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mVolumeRockerWake;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
+    private SwitchPreference mVolumeControlRingStream;
 
     @Override
     protected int getMetricsCategory() {
@@ -64,6 +67,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.button_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
 
@@ -96,6 +100,15 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+        }
+
+        // volume controls volume
+        mVolumeControlRingStream = (SwitchPreference)
+                findPreference(KEY_VOLUME_CONTROL_RING_STREAM);
+        int volumeControlRingtone = Settings.System.getInt(resolver,
+                Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1);
+        if (mVolumeControlRingStream != null) {
+            mVolumeControlRingStream.setChecked(volumeControlRingtone > 0);
         }
     }
 
@@ -135,6 +148,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             handleTogglePowerButtonEndsCallPreferenceClick();
             return true;
         }
+        if (preference == mVolumeControlRingStream) {
+            int value = mVolumeControlRingStream.isChecked() ? 1 : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, value);
+            return true;
+        }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -145,13 +164,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), VOLUME_ROCKER_WAKE,
                     value ? 1 : 0);
-        }
-        if (preference == mCameraDoubleTapPowerGesturePreference) {
+            return true;
+        } else if (preference == mCameraDoubleTapPowerGesturePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                     value ? 0 : 1 /* Backwards because setting is for disabling */);
+            return true;
         }
-        return true;
+       return false;
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {
