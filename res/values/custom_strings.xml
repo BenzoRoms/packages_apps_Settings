@@ -335,5 +335,7 @@
     <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
     <string name="volume_rocker_music_controls_title">Playback control</string>
     <string name="volume_rocker_music_controls_summary">When the screen is off, long-pressing the volume keys will seek music tracks</string>
+    <string name="volume_keys_control_media_stream_title">Controls media volume</string>
+    <string name="volume_keys_control_media_stream_summary">Force the volume keys to always control media stream</string>
 
 </resources>
