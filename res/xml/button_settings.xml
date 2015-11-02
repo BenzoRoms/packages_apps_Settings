@@ -36,6 +36,13 @@
         android:key="volume_key"
         android:title="@string/volume_settings_title" >
 
+        <!-- Force use of media stream -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_keys_control_media_stream"
+            android:title="@string/volume_keys_control_media_stream_title"
+            android:summary="@string/volume_keys_control_media_stream_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="volume_key_cursor_control"
             android:dialogTitle="@string/volbtn_cursor_control_title"
