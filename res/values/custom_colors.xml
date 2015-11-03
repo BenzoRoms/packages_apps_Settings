@@ -82,5 +82,7 @@
     <!-- dashboard category and tile color -->
     <color name="dashboard_category_title_background">@color/card_background</color>
     <color name="selectable_card_background">@color/card_background</color>
+    <!-- Storage Summary Title -->
+    <color name="storage_summary_title_color">@*android:color/accent_device_default_light</color>
 
 </resources>
