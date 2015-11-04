@@ -53,6 +53,7 @@
     <string name="expanded_desktop_style">Expanded desktop style</string>
     <string name="expanded_desktop_style_description">Choose a default expanded desktop style</string>
     <string name="expanded_desktop_title">Expanded desktop options</string>
+    <string name="expanded_desktop_summary">Hide the status bar or navigation bar or both</string>
 
     <!-- Volume keys skip track -->
     <string name="volbtn_music_controls_title">Playback control</string>
