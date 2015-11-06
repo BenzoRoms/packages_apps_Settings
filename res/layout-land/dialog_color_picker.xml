@@ -35,7 +35,7 @@
             android:layout_alignParentStart="true"
             android:paddingRight="4dp"
             android:gravity="center_vertical"
-            android:background="@color/theme_primary"
+            android:background="?android:attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <ImageButton
