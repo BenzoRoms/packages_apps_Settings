@@ -44,17 +44,6 @@
             android:layout="@layout/preference_benzoextra_density" 
             />
 
-        <!-- Doze Editor -->
-        <Preference
-            android:id="@+id/doze_editor"
-            android:title="@string/doze_editor_title"
-            android:layout="@layout/preference_benzoextra_dozeeditor" >
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.isaacparker.dozesettingseditor"
-                android:targetClass="com.isaacparker.dozesettingseditor.MainActivity" />
-        </Preference>
-
         <!-- Gesture anywhere -->
         <PreferenceScreen
             android:key="gesture_anywhere"
