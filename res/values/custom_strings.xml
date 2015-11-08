@@ -19,6 +19,7 @@
     <!-- General Strings -->
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
+    <string name="ok_string">Okay</string>
     <string name="reset">Reset</string>
     <string name="help">Help</string>
     <string name="add">Add</string>
@@ -799,5 +800,9 @@
     <string name="lockscreen_wallpaper_title">Wallpaper</string>
     <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
+
+    <!-- CM Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message">Bottom shortcuts</string>
+    <string name="lockscreen_targets_summary">Change the bottom corner shortcuts</string>
 
 </resources>
