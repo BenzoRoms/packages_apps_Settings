@@ -830,4 +830,7 @@
     <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
+    <!-- CM Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message">Bottom shortcuts</string>
+
 </resources>
