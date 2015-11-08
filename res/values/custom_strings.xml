@@ -352,4 +352,7 @@
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
+    <!-- CM Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message">Lockscreen shortcuts</string>
+
 </resources>
