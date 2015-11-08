@@ -797,10 +797,6 @@
     <string name="disable_animations">Disable animations</string>
     <string name="disable_animations_summary">Disables transition animations such as when launching an app</string>
 
-    <!-- Lockscreen voice or phone -->
-    <string name="lockscreen_voice_title">Voice shortcut</string>
-    <string name="lockscreen_voice_summary">Enables voice shortcut instead of phone</string>
-
     <!-- App sidebar -->
     <string name="app_sidebar_title">App Sidebar</string>
     <string name="app_sidebar_enable_title">Enable App Sidebar</string>

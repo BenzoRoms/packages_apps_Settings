@@ -65,12 +65,6 @@
              <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutsFragment" />
         </PreferenceScreen>
 
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="lockscreen_voice_shortcut"
-            android:title="@string/lockscreen_voice_title"
-            android:summary="@string/lockscreen_voice_summary"
-            android:defaultValue="true" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
