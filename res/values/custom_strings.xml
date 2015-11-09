@@ -833,4 +833,10 @@
     <!-- CM Lockscreen shortcuts -->
     <string name="lockscreen_targets_message">Bottom shortcuts</string>
 
+    <!-- AOSP MultiWindow -->
+    <string name="multiwindow_settings_title">Multi-window</string>
+    <string name="enable_multi_window">Multi-window mode</string>
+    <string name="enable_multi_window_summary">Multiple activities on screen at the same time.</string>
+    <string name="warning_multi_window_text">WARNING: This is a highly experimental feature that allows multiple activities on-screen at the same time through the Recent apps UI. Some apps may crash or not function correctly when used with this feature.</string>
+
 </resources>
