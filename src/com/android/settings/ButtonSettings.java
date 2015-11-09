@@ -15,7 +15,14 @@
 */
 package com.android.settings;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.RemoteException;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -30,6 +37,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.internal.logging.MetricsLogger;
 
+import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
+
 public class ButtonSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -39,9 +48,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_POWER_END_CALL = "power_end_call";
     private static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
+    private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
+            = "camera_double_tap_power_gesture";
 
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mVolumeRockerWake;
+    private SwitchPreference mCameraDoubleTapPowerGesturePreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -77,11 +89,20 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         int volumeRockerWake = Settings.System.getInt(getContentResolver(),
                 VOLUME_ROCKER_WAKE, 0);
         mVolumeRockerWake.setChecked(volumeRockerWake != 0);
+
+        if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
+            mCameraDoubleTapPowerGesturePreference
+                    = (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+            mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        updateState();
 
         // Power button ends calls.
         if (mPowerEndCall != null) {
@@ -91,6 +112,20 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             final boolean powerButtonEndsCall =
                       (incallPowerBehavior == Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
             mPowerEndCall.setChecked(powerButtonEndsCall);
+        }
+    }
+
+    private static boolean isCameraDoubleTapPowerGestureAvailable(Resources res) {
+        return res.getBoolean(
+                com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
+    }
+
+    private void updateState() {
+        // Update camera gesture #2 if it is available.
+        if (mCameraDoubleTapPowerGesturePreference != null) {
+            int value = Settings.Secure.getInt(
+                    getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
+            mCameraDoubleTapPowerGesturePreference.setChecked(value == 0);
         }
     }
 
@@ -110,7 +145,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), VOLUME_ROCKER_WAKE,
                     value ? 1 : 0);
-       }
+        }
+        if (preference == mCameraDoubleTapPowerGesturePreference) {
+            boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
+                    value ? 0 : 1 /* Backwards because setting is for disabling */);
+        }
         return true;
     }
 
