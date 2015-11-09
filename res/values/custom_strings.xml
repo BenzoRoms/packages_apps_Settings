@@ -19,6 +19,7 @@
     <!-- General Strings -->
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
+    <string name="ok_string">Okay</string>
     <string name="reset">Reset</string>
     <string name="default_string">Default</string>
     <string name="add">Add</string>
@@ -836,6 +837,7 @@
 
     <!-- CM Lockscreen shortcuts -->
     <string name="lockscreen_targets_message">Bottom shortcuts</string>
+    <string name="lockscreen_targets_summary">Change the bottom corner shortcuts</string>
 
     <!-- AOSP MultiWindow -->
     <string name="multiwindow_settings_title">Multi-window</string>
