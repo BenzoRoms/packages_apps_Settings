@@ -61,11 +61,11 @@
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
 
-        <SwitchPreference
+        <!--SwitchPreference
                 android:key="camera_gesture"
                 android:title="@string/camera_gesture_title"
                 android:summary="@string/camera_gesture_desc"
-                android:persistent="false" />
+                android:persistent="false" /-->
 
         <SwitchPreference
                 android:key="camera_double_tap_power_gesture"
