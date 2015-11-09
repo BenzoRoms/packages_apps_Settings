@@ -30,6 +30,7 @@ import com.android.internal.logging.MetricsLogger;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.util.Helpers;
 
 public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -100,6 +101,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
            boolean value = (Boolean) newValue;
            Settings.System.putInt(resolver,
                    Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, value ? 1 : 0);
+            Helpers.restartSystemUI();
             return true;
         } else if (preference == mStatusBarTemperature) {
             int temperatureShow = Integer.valueOf((String) newValue);
