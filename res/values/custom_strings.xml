@@ -48,6 +48,10 @@
     <string name="equalizer_settings_title">ViPER4Android</string>
     <string name="benzo_extras_notifications">Notifications</string>
 
+    <!-- Updater -->
+    <string name="updater_title">Updates</string>
+    <string name="updater_summary">Check for Benzo updates and more</string>
+
     <!-- Navigation bar options -->
     <string name="navbar_settings_title">Navigation Bar</string>
     <string name="navigation_main_category">Main Options</string>
