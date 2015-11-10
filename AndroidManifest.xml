@@ -1932,6 +1932,9 @@
 
 	<activity android:name=".benzo.Density" />
 
+        <!-- Benzo OTA Update -->
+        <activity android:name="com.benzo.ota.activities.MainActivity" />
+
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
 
