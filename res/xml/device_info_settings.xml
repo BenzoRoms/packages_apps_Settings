@@ -17,6 +17,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
+        <!-- BenzoOTA -->
+        <PreferenceScreen
+                android:key="update_settings"
+                android:title="@string/updater_title"
+                android:summary="@string/updater_summary">
+                <intent
+                  android:action="android.intent.action.MAIN"
+    		  android:targetPackage="com.benzo.ota"
+                  android:targetClass="com.benzo.ota.activities.MainActivity" />
+        </PreferenceScreen>
+
         <!-- Changelog -->
         <PreferenceScreen 
                 android:key="changelog"
@@ -116,6 +127,13 @@
                 android:summary="@string/device_info_default"
                 android:selectable="true" />
 
+        <!-- SELinux status information -->
+        <Preference android:key="selinux_status"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/selinux_status"
+                android:summary="@string/selinux_status_enforcing"
+                android:selectable="false" />
+
         <!-- GCC build info -->
         <Preference android:key="sm_android"
                 style="?android:preferenceInformationStyle"
@@ -139,13 +157,6 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/sm_flags"
                 android:summary="@string/sm_flags_default"
-                android:selectable="false" />
-
-        <!-- SELinux status information -->
-        <Preference android:key="selinux_status"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/selinux_status"
-                android:summary="@string/selinux_status_enforcing"
                 android:selectable="false" />
 
 </PreferenceScreen>
