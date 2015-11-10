@@ -18,6 +18,7 @@ package com.android.settings.benzo;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceFragment;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SlimSeekBarPreference;
 import android.preference.SwitchPreference;
@@ -28,9 +29,12 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.slim.Action;
 import com.android.internal.logging.MetricsLogger;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 public class NavbarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
     private static final String DIM_NAV_BUTTONS = "dim_nav_buttons";
     private static final String DIM_NAV_BUTTONS_TIMEOUT = "dim_nav_buttons_timeout";
     private static final String DIM_NAV_BUTTONS_ALPHA = "dim_nav_buttons_alpha";
@@ -38,6 +42,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
     private static final String DIM_NAV_BUTTONS_TOUCH_ANYWHERE = "dim_nav_buttons_touch_anywhere";
 
+    private ColorPickerPreference mNavbarButtonTint;
     private SwitchPreference mDimNavButtons;
     private SlimSeekBarPreference mDimNavButtonsTimeout;
     private SlimSeekBarPreference mDimNavButtonsAlpha;
@@ -54,6 +59,15 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.navbar_settings);
+
+        // Navigation bar button color
+        mNavbarButtonTint = (ColorPickerPreference) findPreference(NAVIGATION_BAR_TINT);
+        mNavbarButtonTint.setOnPreferenceChangeListener(this);
+        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NAVIGATION_BAR_TINT, 0xffffffff);
+        String hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mNavbarButtonTint.setSummary(hexColor);
+        mNavbarButtonTint.setNewPreviewColor(intColor);
 
         // SlimDim
         mDimNavButtons = (SwitchPreference) findPreference(DIM_NAV_BUTTONS);
@@ -167,6 +181,14 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_ANIMATE_DURATION,
                 Integer.parseInt((String) newValue));
+            return true;
+        } else if (preference == mNavbarButtonTint) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
         }
          return false;
