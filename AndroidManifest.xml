@@ -226,6 +226,9 @@
 
 	<activity android:name=".benzo.Changelog" />
 
+        <!-- Benzo OTA Update -->
+        <activity android:name="com.benzo.ota.activities.MainActivity" />
+
         <activity android:name="Settings$KernelAdiutorActivity"
                 android:label="@string/kerneladiutor_title"
                 android:icon="@drawable/ic_xd_kernel"
