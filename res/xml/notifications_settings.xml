@@ -15,5 +15,11 @@
     android:title="@string/benzo_extras_notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+        <ListPreference
+            android:key="quick_pulldown"
+            android:title="@string/quick_pulldown_title"
+            android:entries="@array/quick_pulldown_entries"
+            android:entryValues="@array/quick_pulldown_values"
+            android:persistent="false" />
 
 </PreferenceScreen>
