@@ -9,6 +9,17 @@
         android:key="benzo_ex_apps"
         android:title="@string/benzo_ex_apps_title">
 
+        <!-- Ad Blocker -->
+        <Preference
+             android:id="@+id/benzoblock_settings"
+             android:title="@string/benzoblock_settings_title" 
+             android:layout="@layout/preference_benzoextra_adblock" >
+             <intent
+                 android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.adaway"
+                 android:targetClass="org.adaway.ui.BaseActivity" />
+        </Preference>
+
         <!-- App sidebar -->
         <PreferenceScreen
             android:key="app_sidebar"
