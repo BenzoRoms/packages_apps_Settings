@@ -57,6 +57,7 @@
     <string name="benzo_extras_lockscreen">Lockscreen</string>
     <string name="weather_settings_title">Weather</string>
     <string name="lockscreen_options_title">Options</string>
+    <string name="benzoblock_settings_title">Ad Blocker</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
