@@ -25,4 +25,7 @@
     <!-- Dashboard boarder color -->
     <color name="dashboard_border_color">?android:attr/colorAccent</color>
 
+    <!-- DSLV fab color -->
+    <color name="floating_action_button_touch_tint">#80ffffff</color>
+
 </resources>
