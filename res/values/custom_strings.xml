@@ -740,4 +740,12 @@
     <string name="enable_multi_window_summary">Multiple activities on screen at the same time.</string>
     <string name="warning_multi_window_text">WARNING: This is a highly experimental feature that allows multiple activities on-screen at the same time through the Recent apps UI. Some apps may crash or not function correctly when used with this feature.</string>
 
+    <!-- Option to enable/disable scrolling cache -->
+    <string name="pref_scrollingcache_title">Scrolling cache</string>
+    <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
+    <string name="pref_scrollingcache_force_enable">Force enable</string>
+    <string name="pref_scrollingcache_default_enable">Default enable</string>
+    <string name="pref_scrollingcache_default_disable">Default disable</string>
+    <string name="pref_scrollingcache_force_disable">Force disable</string>
+
 </resources>
