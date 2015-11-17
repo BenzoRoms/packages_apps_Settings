@@ -26,6 +26,7 @@
         <item>airplane</item>
         <item>users</item>
         <item>bugreport</item>
+        <item>silent</item>
     </string-array>
 
     <string-array name="expanded_desktop_entries" translatable="false">
