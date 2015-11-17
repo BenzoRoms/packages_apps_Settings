@@ -895,4 +895,8 @@
     <string name="swap_volume_buttons_title">Swap on rotation</string>
     <string name="swap_volume_buttons_summary">Adjust volume buttons action based on current rotation</string>
 
+    <!-- Wake on Plug -->
+    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
+
 </resources>
