@@ -59,6 +59,10 @@
     <string name="lockscreen_options_title">Options</string>
     <string name="benzoblock_settings_title">Ad Blocker</string>
 
+    <!-- Category strings  -->
+    <string name="category_display_interface_title">Interface</string>
+    <string name="category_display_wakesleep_title">Wake/Sleep</string>
+
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
 
