@@ -36,6 +36,12 @@
         android:defaultValue="false" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.benzo.CarrierLabel"
+        android:key="carrier_options"
+        android:title="@string/carrier_title"
+        android:summary="@string/carrier_options_summary" />
+
+    <PreferenceScreen
         android:fragment="com.android.settings.slim.StatusBarClockStyle"
         android:key="clock_style_pref"
         android:title="@string/status_bar_clock" />
