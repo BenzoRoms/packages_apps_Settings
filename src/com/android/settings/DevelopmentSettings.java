@@ -180,6 +180,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String SHOW_ALL_ANRS_KEY = "show_all_anrs";
 
+    private static final String LAZY_DEXOPT = "dexopt_lazy";
+
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
@@ -192,6 +194,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
 
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
+
+    private static final String PROP_LAZY_DEXOPT = "persist.sys.lazy.dexopt";
 
     private static final int REQUEST_CODE_ENABLE_OEM_UNLOCK = 0;
 
@@ -268,6 +272,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private ListPreference mAppProcessLimit;
 
     private SwitchPreference mShowAllANRs;
+
+    private SwitchPreference mLazyDexopt;
 
     private ColorModePreference mColorModePreference;
 
@@ -421,6 +427,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 SHOW_ALL_ANRS_KEY);
         mAllPrefs.add(mShowAllANRs);
         mResetSwitchPrefs.add(mShowAllANRs);
+
+        mLazyDexopt = (SwitchPreference) findPreference(LAZY_DEXOPT);
+        mLazyDexopt.setChecked(SystemProperties.getBoolean(PROP_LAZY_DEXOPT, false));
+        mLazyDexopt.setOnPreferenceChangeListener(this);
+        mAllPrefs.add(mLazyDexopt);
 
         Preference hdcpChecking = findPreference(HDCP_CHECKING_KEY);
         if (hdcpChecking != null) {
@@ -1796,6 +1807,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.CHAMBER_OF_SECRETS,
                     (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mLazyDexopt) {
+            final boolean enabled = (Boolean) newValue;
+            SystemProperties.set(PROP_LAZY_DEXOPT, enabled ? "true" : "false");
             return true;
         }
         return false;

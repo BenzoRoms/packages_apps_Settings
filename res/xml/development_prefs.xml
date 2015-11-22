@@ -369,6 +369,12 @@
             android:inputType="textNoSuggestions"
             android:persistent="false" />
 
+        <SwitchPreference
+            android:key="dexopt_lazy"
+            android:title="@string/dexopt_lazy"
+            android:persistent="false"
+            android:summary="@string/dexopt_lazy_summary" />
+
      </PreferenceCategory>
 
      <!-- Must remain at bottom -->

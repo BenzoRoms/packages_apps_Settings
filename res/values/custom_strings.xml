@@ -1568,4 +1568,8 @@
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking</string>
 
+    <!-- Lazy Dexopt -->
+    <string name="dexopt_lazy">Lazy dexopt</string>
+    <string name="dexopt_lazy_summary">Optimize user apps when first starting the app instead of at boot up</string>
+
 </resources>
