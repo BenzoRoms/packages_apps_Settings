@@ -56,4 +56,7 @@
        <item name="android:background">@drawable/dashboard_tile_icon_bg</item>
    </style>
 
+   <!-- Unlink this dialog from framework -->
+   <style name="Theme.Material.Light.Dialog.NoActionBar" parent="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
+
 </resources>
