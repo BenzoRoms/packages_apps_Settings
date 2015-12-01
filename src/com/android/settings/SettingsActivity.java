@@ -63,6 +63,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.nispok.snackbar.SnackbarManager;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.XmlUtils;
@@ -854,6 +856,13 @@ public class SettingsActivity extends Activity
         }
         unregisterReceiver(mBatteryInfoReceiver);
         mDynamicIndexableContentMonitor.unregister();
+        SnackbarManager.dismiss();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        SnackbarManager.dismiss();
     }
 
     @Override

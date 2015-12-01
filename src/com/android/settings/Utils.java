@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.annotation.Nullable;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
@@ -85,6 +86,11 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 import android.widget.TabWidget;
+
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
+import com.nispok.snackbar.enums.SnackbarType;
+import com.nispok.snackbar.listeners.ActionClickListener;
 
 import com.android.internal.util.UserIcons;
 import com.android.settings.UserAdapter.UserDetails;
@@ -1194,5 +1200,30 @@ public final class Utils {
 
     public static boolean isPackageInstalled(Context context, String pkg) {
         return isPackageInstalled(context, pkg, true);
+    }
+
+    // Snackbar with action button
+    public static void showSnackbar(final String message, Snackbar.SnackbarDuration duration,
+            final String label, final Intent intent, final Context context) {
+        Activity realActivity = ((Activity)context).getParent();
+        if (realActivity == null) {
+            realActivity = (Activity)context;
+        }
+        final Activity activity = realActivity;
+        SnackbarManager.show(
+            Snackbar.with(context)
+                .type(SnackbarType.MULTI_LINE)
+                .duration(duration)
+                .text(message)
+                .color(context.getResources()
+                        .getColor(R.color.theme_primary_dark))
+                .actionLabel(label)
+                .actionListener(new ActionClickListener() {
+                    @Override
+                    public void onActionClicked(Snackbar snackbar) {
+                        activity.startActivity(intent);
+                    }
+                })
+                , activity);
     }
 }

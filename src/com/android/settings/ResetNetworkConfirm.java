@@ -32,11 +32,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
 
 import com.android.ims.ImsManager;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.telephony.PhoneConstants;
+
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,8 +106,10 @@ public class ResetNetworkConfirm extends InstrumentedFragment {
 
             ImsManager.factoryReset(context);
 
-            Toast.makeText(context, R.string.reset_network_complete_toast, Toast.LENGTH_SHORT)
-                    .show();
+            final String message = context.getString(
+                    R.string.reset_network_complete_toast);
+            Utils.showSnackbar(message, Snackbar.SnackbarDuration.LENGTH_SHORT,
+                    null, null, context);
         }
     };
 
