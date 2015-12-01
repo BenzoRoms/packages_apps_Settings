@@ -49,6 +49,11 @@
             android:title="@string/swap_volume_buttons_title"
             android:summary="@string/swap_volume_buttons_summary" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_rocker_wake"
+            android:summary="@string/volume_rocker_wake_summary"
+            android:title="@string/volume_rocker_wake_title" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
