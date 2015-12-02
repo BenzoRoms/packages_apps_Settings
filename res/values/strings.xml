@@ -7114,4 +7114,8 @@
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
 
+    <!-- randomize MAC addresses -->
+    <string name="randomize_mac_title">Randomize MAC addresses</string>
+    <string name="randomize_mac_summary">Assign random MAC addresses when network devices are enabled</string>
+
 </resources>
