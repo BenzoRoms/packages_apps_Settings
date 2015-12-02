@@ -359,6 +359,7 @@ public class SettingsActivity extends Activity
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
             MainSettings.class.getName(),
+            com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName()
     };
 
