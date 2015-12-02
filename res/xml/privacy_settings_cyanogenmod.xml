@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The CyanogenMod Project
+<!--
+     Copyright (C) 2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,19 +14,19 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/privacy_settings_title">
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <PreferenceCategory
-        android:key="app_security"
-        android:title="@string/app_security_title">
+        <PreferenceScreen
+            android:id="@+id/app_ops"
+            android:title="@string/app_ops_settings"
+            android:summary="@string/app_ops_summary"
+            android:fragment="com.android.settings.applications.AppOpsSummary" />
 
         <PreferenceScreen
             android:key="blacklist"
             android:title="@string/blacklist_title"
+            android:summary="@string/blacklist_summary"
             android:fragment="com.android.settings.blacklist.BlacklistSettings" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
