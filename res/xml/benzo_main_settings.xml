@@ -20,6 +20,14 @@
                  android:targetClass="org.adaway.ui.BaseActivity" />
         </Preference>
 
+        <!-- App Circle Bar -->
+        <PreferenceScreen
+            android:key="app_circle_bar"
+            android:fragment="com.android.settings.benzo.AppCircleBar"
+            android:title="@string/app_circle_bar_title"
+            android:layout="@layout/preference_benzoextra_appcirclebar" 
+            />
+
         <!-- App sidebar -->
         <PreferenceScreen
             android:key="app_sidebar"
