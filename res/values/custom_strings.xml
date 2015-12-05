@@ -357,10 +357,6 @@
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
 
-    <!-- Battery saver color -->
-    <string name="battery_saver_color_title">Warning color</string>
-    <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
-
     <!-- Clock and date -->
     <string name="clock_styles_title">Clock and date</string>  
     <string name="clock_styles_summary">Customize clock styles and date format</string>
