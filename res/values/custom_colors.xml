@@ -24,6 +24,7 @@
     <color name="secondary_text_material_dark">#b3ffffff</color>
     <color name="divider">#1fffffff</color>
     <color name="ripple_material_dark">#4dffffff</color>
+    <color name="fab_color">?android:attr/colorAccent</color>
 
     <!-- Expanded desktop -->
     <drawable name="expanded_item_bg_activated">#ffEEEEEE</drawable>
