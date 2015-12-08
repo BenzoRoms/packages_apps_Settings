@@ -53,6 +53,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     private static final String DEFAULT_WEATHER_ICON_PACKAGE = "org.omnirom.omnijaws";
     private static final String WEATHER_SERVICE_PACKAGE = "org.omnirom.omnijaws";
     private static final String LOCK_CLOCK_PACKAGE="com.cyanogenmod.lockclock";
+    private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
+    private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
+    private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
+
+    private ListPreference mDaylightHeaderPack;
+    private SwitchPreference mCustomHeaderImage;
 
     private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
@@ -75,6 +81,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 
+        // weather icon
         mWeatherCategory = (PreferenceCategory) prefSet.findPreference(CATEGORY_WEATHER);
         if (mWeatherCategory != null && !isOmniJawsServiceInstalled()) {
             prefSet.removePreference(mWeatherCategory);
@@ -100,6 +107,34 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             mWeatherIconPack.setSummary(mWeatherIconPack.getEntry());
             mWeatherIconPack.setOnPreferenceChangeListener(this);
         }
+
+        // header image packs
+        final boolean customHeaderImage = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1;
+        mCustomHeaderImage = (SwitchPreference) findPreference(CUSTOM_HEADER_IMAGE);
+        mCustomHeaderImage.setChecked(customHeaderImage);
+
+        String imageHeaderPackage = Settings.System.getString(getContentResolver(),
+                Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK);
+        if (imageHeaderPackage == null) {
+            imageHeaderPackage = DEFAULT_HEADER_PACKAGE;
+        }
+        mDaylightHeaderPack = (ListPreference) findPreference(DAYLIGHT_HEADER_PACK);
+        mDaylightHeaderPack.setEntries(getAvailableHeaderPacksEntries());
+        mDaylightHeaderPack.setEntryValues(getAvailableHeaderPacksValues());
+
+        int valueIndexHeader = mDaylightHeaderPack.findIndexOfValue(imageHeaderPackage);
+        if (valueIndexHeader == -1) {
+            // no longer found
+            imageHeaderPackage = DEFAULT_HEADER_PACKAGE;
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, imageHeaderPackage);
+            valueIndexHeader = mDaylightHeaderPack.findIndexOfValue(imageHeaderPackage);
+        }
+        mDaylightHeaderPack.setValueIndex(valueIndexHeader >= 0 ? valueIndexHeader : 0);
+        mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntry());
+        mDaylightHeaderPack.setOnPreferenceChangeListener(this);
+        mDaylightHeaderPack.setEnabled(customHeaderImage);
     }
 
     @Override
@@ -146,6 +181,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ENABLE_TASK_MANAGER, checked ? 1:0);
             return true;
+        } else if (preference == mCustomHeaderImage) {
+            final boolean value = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
+            mDaylightHeaderPack.setEnabled(value);
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -166,10 +207,18 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
                     Settings.System.STATUS_BAR_WEATHER_ICON_PACK, value);
             int valueIndex = mWeatherIconPack.findIndexOfValue(value);
             mWeatherIconPack.setSummary(mWeatherIconPack.getEntries()[valueIndex]);
+            return true;
         } else if (preference == mSmartPulldown) {
             int smartPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
             updateSmartPulldownSummary(smartPulldown);
+            return true;
+        } else if (preference == mDaylightHeaderPack) {
+            String value = (String) newValue;
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, value);
+            int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
+            mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
             return true;
         }
         return false;
@@ -222,9 +271,9 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             }
         }
         if (isLockClockInstalled()) {
-            headerPacks.add(LOCK_CLOCK_PACKAGE + ".weather");
-            headerPacks.add(LOCK_CLOCK_PACKAGE + ".weather_color");
-            headerPacks.add(LOCK_CLOCK_PACKAGE + ".weather_vclouds");
+            headerPacks.add(LOCK_CLOCK_PACKAGE ".weather");
+            headerPacks.add(LOCK_CLOCK_PACKAGE ".weather_color");
+            headerPacks.add(LOCK_CLOCK_PACKAGE ".weather_vclouds");
         }
         return headerPacks.toArray(new String[headerPacks.size()]);
     }
@@ -250,6 +299,42 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             headerPacks.add("LockClock (white)");
             headerPacks.add("LockClock (color)");
             headerPacks.add("LockClock (vclouds)");
+        }
+        return headerPacks.toArray(new String[headerPacks.size()]);
+    }
+
+    private String[] getAvailableHeaderPacksValues() {
+        List<String> headerPacks = new ArrayList<String>();
+        Intent i = new Intent();
+        PackageManager packageManager = getPackageManager();
+        i.setAction("org.omnirom.DaylightHeaderPack");
+        for (ResolveInfo r : packageManager.queryIntentActivities(i, 0)) {
+            String packageName = r.activityInfo.packageName;
+            if (packageName.equals(DEFAULT_HEADER_PACKAGE)) {
+                headerPacks.add(0, packageName);
+            } else {
+                headerPacks.add(packageName);
+            }
+        }
+        return headerPacks.toArray(new String[headerPacks.size()]);
+    }
+
+    private String[] getAvailableHeaderPacksEntries() {
+        List<String> headerPacks = new ArrayList<String>();
+        Intent i = new Intent();
+        PackageManager packageManager = getPackageManager();
+        i.setAction("org.omnirom.DaylightHeaderPack");
+        for (ResolveInfo r : packageManager.queryIntentActivities(i, 0)) {
+            String packageName = r.activityInfo.packageName;
+            String label = r.activityInfo.loadLabel(getPackageManager()).toString();
+            if (label == null) {
+                label = r.activityInfo.packageName;
+            }
+            if (packageName.equals(DEFAULT_HEADER_PACKAGE)) {
+                headerPacks.add(0, label);
+            } else {
+                headerPacks.add(label);
+            }
         }
         return headerPacks.toArray(new String[headerPacks.size()]);
     }
