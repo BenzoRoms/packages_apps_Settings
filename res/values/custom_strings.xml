@@ -1084,6 +1084,7 @@
     <string name="contexual_header_title">Contexual header</string>
     <string name="status_bar_custom_header_title">Custom header image</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+    <string name="daylight_header_pack_title">Header image pack</string>
 
     <!-- Omni Weather -->
     <string name="weather_title">Weather</string>
