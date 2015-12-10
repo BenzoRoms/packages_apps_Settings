@@ -209,6 +209,13 @@
 
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification Drawer</string>
+    <string name="notification_qstiles_title">Quick Settings</string>
+    <string name="quick_settings_title">QS Tiles</string>
+    <string name="quick_settings_summary">Configure quick settings tiles</string>
+
+    <!-- Status bar settings -->
+    <string name="status_bar_icon_blacklist_title">Status bar icons</string>
+    <string name="status_bar_icon_blacklist_summary">Configure what icons are shown on status bar</string>
 
     <!-- Double Tap Navbar to Sleep -->
     <string name="double_tap_sleep_nav_bar_title">Double-tap to sleep</string>

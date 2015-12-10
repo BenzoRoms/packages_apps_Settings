@@ -178,17 +178,6 @@
             android:layout="@layout/preference_benzoextra_statusbar"
             />
 
-        <!-- SystemUI Tuner -->
-        <PreferenceScreen
-            android:key="systemuituner"
-            android:title="@string/benzo_extras_systemuituner"
-            android:layout="@layout/preference_benzoextra_systemui_tuner" >
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.tuner.TunerActivity" />
-       </PreferenceScreen>
-
         <!-- Weather Settings -->
        <Preference
            android:id="@+id/weather_settings"
