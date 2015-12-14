@@ -85,10 +85,10 @@
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
 
         <!-- Cast -->
-        <PreferenceScreen
+        <!--PreferenceScreen
                 android:key="wifi_display"
                 android:title="@string/wifi_display_settings_title"
-                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+                android:fragment="com.android.settings.wfd.WifiDisplaySettings" /-->
 
     </PreferenceCategory>
 
