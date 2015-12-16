@@ -41,15 +41,11 @@ public class PieTargets extends SettingsPreferenceFragment implements OnPreferen
     private static final String PA_PIE_MENU = "pa_pie_menu";
     private static final String PA_PIE_LASTAPP = "pa_pie_lastapp";
     private static final String PA_PIE_KILLTASK = "pa_pie_killtask";
-    private static final String PA_PIE_NOTIFICATIONS = "pa_pie_notifications";
-    private static final String PA_PIE_SETTINGS_PANEL = "pa_pie_settings_panel";
     private static final String PA_PIE_SCREENSHOT = "pa_pie_screenshot";
 
     private SwitchPreference mPieMenu;
     private SwitchPreference mPieLastApp;
     private SwitchPreference mPieKillTask;
-    private SwitchPreference mPieNotifications;
-    private SwitchPreference mPieQsPanel;
     private SwitchPreference mPieScreenshot;
 
     private ContentResolver mResolver;
@@ -82,14 +78,6 @@ public class PieTargets extends SettingsPreferenceFragment implements OnPreferen
         mPieKillTask.setChecked(Settings.System.getInt(mResolver,
                 Settings.System.PA_PIE_KILL_TASK, 0) != 0);
 
-        mPieNotifications = (SwitchPreference) prefSet.findPreference(PA_PIE_NOTIFICATIONS);
-        mPieNotifications.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.PA_PIE_NOTIFICATIONS, 0) != 0);
-
-        mPieQsPanel = (SwitchPreference) prefSet.findPreference(PA_PIE_SETTINGS_PANEL);
-        mPieQsPanel.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.PA_PIE_SETTINGS_PANEL, 0) != 0);
-
         mPieScreenshot = (SwitchPreference) prefSet.findPreference(PA_PIE_SCREENSHOT);
         mPieScreenshot.setChecked(Settings.System.getInt(mResolver,
                 Settings.System.PA_PIE_SCREENSHOT, 0) != 0);
@@ -110,14 +98,6 @@ public class PieTargets extends SettingsPreferenceFragment implements OnPreferen
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PA_PIE_KILL_TASK,
                     mPieKillTask.isChecked() ? 1 : 0);
-        } else if (preference == mPieNotifications) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.PA_PIE_NOTIFICATIONS,
-                    mPieNotifications.isChecked() ? 1 : 0);
-        } else if (preference == mPieQsPanel) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.PA_PIE_SETTINGS_PANEL,
-                    mPieQsPanel.isChecked() ? 1 : 0);
         } else if (preference == mPieScreenshot) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PA_PIE_SCREENSHOT,

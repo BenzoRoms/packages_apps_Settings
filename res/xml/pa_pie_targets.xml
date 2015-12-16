@@ -16,16 +16,6 @@
         android:title="@string/pa_pie_lastapp_title"
         android:summary="@string/pa_pie_lastapp_summary" />
 
-    <!--SwitchPreference
-        android:key="pa_pie_notifications"
-        android:title="@string/pa_pie_notifications_title"
-        android:summary="@string/pa_pie_notifications_summary" />
-
-    <SwitchPreference
-        android:key="pa_pie_settings_panel"
-        android:title="@string/pa_pie_settings_panel_title"
-        android:summary="@string/pa_pie_settings_panel_summary" /-->
-
     <SwitchPreference
         android:key="pa_pie_screenshot"
         android:title="@string/pa_pie_screenshot_title"
