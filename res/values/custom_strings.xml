@@ -1100,4 +1100,8 @@
     <string name="onthego_alpha_title">On-The-Go Alpha</string>
     <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay. Needs re-toggling.</string>
 
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area</string>
+
 </resources>

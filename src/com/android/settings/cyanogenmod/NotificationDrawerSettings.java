@@ -36,9 +36,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+    private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
 
     private SwitchPreference mForceExpanded;
     private ListPreference mQuickPulldown;
+    private SwitchPreference mEnableTaskManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,10 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
 
 	mForceExpanded = (SwitchPreference) findPreference(FORCE_EXPANDED_NOTIFICATIONS);
         mForceExpanded.setChecked((Settings.System.getInt(resolver, Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
+
+        mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
+        mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
+                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
     }
 
     @Override
@@ -82,6 +88,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FORCE_EXPANDED_NOTIFICATIONS, checked ? 1:0);
+            return true;
+        } else if  (preference == mEnableTaskManager) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ENABLE_TASK_MANAGER, checked ? 1:0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
