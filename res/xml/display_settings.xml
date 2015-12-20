@@ -126,19 +126,25 @@
         android:key="gesture"
         android:title="@string/gesture_cat_label">
 
-        <SwitchPreference
+        <!--SwitchPreference
                 android:key="camera_gesture"
                 android:title="@string/camera_gesture_title"
-                android:summary="@string/camera_gesture_desc" />
+                android:summary="@string/camera_gesture_desc" /-->
 
         <SwitchPreference
                 android:key="camera_double_tap_power_gesture"
                 android:title="@string/camera_double_tap_power_gesture_title"
                 android:summary="@string/camera_double_tap_power_gesture_desc" />
 
-        <SwitchPreference
+        <!--SwitchPreference
                 android:key="lift_to_wake"
-                android:title="@string/lift_to_wake_title" />
+                android:title="@string/lift_to_wake_title" /-->
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="double_tap_sleep_gesture"
+                android:title="@string/double_tap_to_sleep_title"
+                android:summary="@string/double_tap_to_sleep_summary"
+                android:defaultValue="false" />
 
         <SwitchPreference
                 android:key="doze"
