@@ -152,4 +152,8 @@
     <string name="app_notification_no_ongoing_on_keyguard_title">Disable ongoing on lockscreen</string>
     <string name="app_notification_no_ongoing_on_keyguard_summary">Never show ongoing notifications from this app on the lockscreen</string>
 
+    <!-- tap-to-sleep -->
+    <string name="double_tap_to_sleep_title">Tap statusbar to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double tap status bar to put device to sleep</string>
+
 </resources>
