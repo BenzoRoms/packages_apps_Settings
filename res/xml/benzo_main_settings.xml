@@ -164,8 +164,8 @@
 
         <!-- Recents -->
         <PreferenceScreen
-            android:id="@+id/recents_settings"
-            android:fragment="com.android.settings.benzo.RecentsSettings"
+            android:id="@+id/recent_panel"
+            android:fragment="com.android.settings.benzo.RecentPanel"
             android:title="@string/recents_settings_title"
             android:layout="@layout/preference_benzoextra_recents"
             />
