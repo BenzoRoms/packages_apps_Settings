@@ -473,7 +473,7 @@
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
 
     <!-- Recents panel -->
-    <string name="recents_panel_category">Recents panel</string>
+    <string name="recents_panel_category">AOSP Recents</string>
     <string name="show_clear_all_recents_button_title">Clear all button</string>
     <string name="show_clear_all_recents_button_summary">Show clear all button</string>
     <string name="recents_clear_all_location_title">Clear all location</string>
@@ -489,6 +489,7 @@
     <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
     <string name="recents_clear_all_dismiss_all_title">Clear all tasks</string>
     <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
+    <string name="other_recents_category">OmniSwitch</string>
 
     <!-- Preference category for LAN development settings. [CHAR LIMIT=25] -->
     <string name="debug_LAN_category">LAN Settings</string>    
@@ -804,5 +805,28 @@
     <!-- CM Lockscreen shortcuts -->
     <string name="lockscreen_targets_message">Bottom shortcuts</string>
     <string name="lockscreen_targets_summary">Change the bottom corner shortcuts</string>
+
+    <!-- Slim Recents -->
+    <string name="slim_recents_panel">Slim Recents</string>
+    <string name="use_slim_recents_title">Slim recents</string>
+    <string name="show_running_tasks_title">Only show running apps</string>
+    <string name="recents_max_apps_title">Max allowed apps</string>
+    <string name="recent_panel_scale_title">Size</string>
+    <string name="recent_panel_expanded_mode_title">Expanded mode</string>
+    <string name="recent_panel_expanded_mode_summary">Recent tasks expanded preview mode</string>
+    <string name="recent_panel_expanded_mode_auto">Auto (default)</string>
+    <string name="recent_panel_expanded_mode_always">Always</string>
+    <string name="recent_panel_expanded_mode_never">Never</string>
+    <string name="recent_panel_show_topmost_title">Show topmost task</string>
+    <string name="recent_panel_show_topmost_summary">Don\'t exclude the topmost task in recents view</string>
+    <string name="recent_panel_bg_color_title">Panel background color</string>
+    <string name="recent_card_bg_color_title">Card background color</string>
+    <string name="recent_card_text_color_title">Card text color</string>
+
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
+    <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>
+
+    <string name="default_string">Default</string>
 
 </resources>
