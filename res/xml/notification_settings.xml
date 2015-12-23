@@ -54,12 +54,12 @@
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
 
-        <!-- Camera Duble-Tap vibration -->
-        <com.android.settings.preference.SystemSettingSwitchPreference
-                android:key="double_tap_vibrate"
-                android:title="@string/dbl_tap_vib_title"
-                android:summary="@string/dbl_tap_vib_summary"
-                android:defaultValue="true" />
+        <!-- Audio ducking -->
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="zen_disable_ducking_during_media_playback"
+            android:title="@string/interruptions_ignore_while_media_title"
+            android:summary="@string/interruptions_ignore_while_media_summary"
+            android:defaultValue="false" />
 
         <!-- Interruptions -->
         <PreferenceScreen
@@ -103,12 +103,12 @@
         android:key="notification"
         android:title="@string/notification_section_header" >
 
-        <!-- Audio ducking -->
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="zen_disable_ducking_during_media_playback"
-            android:title="@string/interruptions_ignore_while_media_title"
-            android:summary="@string/interruptions_ignore_while_media_summary"
-            android:defaultValue="false" />
+        <!-- Camera Duble-Tap vibration -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="double_tap_vibrate"
+                android:title="@string/dbl_tap_vib_title"
+                android:summary="@string/dbl_tap_vib_summary"
+                android:defaultValue="true" />
 
         <!-- Pulse notification light -->
         <PreferenceScreen
