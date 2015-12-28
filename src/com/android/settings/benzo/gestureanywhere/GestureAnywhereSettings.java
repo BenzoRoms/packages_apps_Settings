@@ -53,7 +53,7 @@ public class GestureAnywhereSettings extends SettingsPreferenceFragment implemen
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

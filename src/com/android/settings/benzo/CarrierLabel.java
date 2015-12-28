@@ -63,7 +63,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements OnPrefer
     @Override
     protected int getMetricsCategory() {
         // todo add a constant in MetricsLogger.java
-        return MetricsLogger.APPLICATION;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

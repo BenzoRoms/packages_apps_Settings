@@ -118,7 +118,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_DRAWER_SETTINGS;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

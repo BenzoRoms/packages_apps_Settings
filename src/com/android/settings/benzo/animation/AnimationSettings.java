@@ -60,7 +60,7 @@ public class AnimationSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVELOPMENT;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

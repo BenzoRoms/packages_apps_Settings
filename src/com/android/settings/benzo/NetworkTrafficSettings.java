@@ -44,7 +44,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

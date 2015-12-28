@@ -55,7 +55,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
     @Override
      protected int getMetricsCategory() {
-        return MetricsLogger.DEVELOPMENT;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     private static final String TAG = "RecentPanelSettings";

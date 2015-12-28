@@ -106,7 +106,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

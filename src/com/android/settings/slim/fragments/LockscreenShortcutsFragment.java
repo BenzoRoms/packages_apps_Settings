@@ -41,7 +41,7 @@ public class LockscreenShortcutsFragment extends SettingsPreferenceFragment impl
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

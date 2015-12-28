@@ -71,7 +71,7 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVELOPMENT;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override

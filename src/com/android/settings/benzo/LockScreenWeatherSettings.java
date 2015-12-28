@@ -82,7 +82,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.LOCKSCREEN_WEATHER_SETTINGS;
+        return MetricsLogger.DONT_TRACK_ME_BRO;
     }
 
     @Override
