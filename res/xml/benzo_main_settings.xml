@@ -138,12 +138,12 @@
             android:layout="@layout/preference_benzoextra_lockscreen"
             />
 
-        <!-- Multiwindow -->
+        <!-- More Settings -->
          <PreferenceScreen
             android:key="multitwindow"
             android:fragment="com.android.settings.benzo.fragments.MultiWindow"
             android:layout="@layout/preference_benzoextra_multiwindow"
-            android:title="@string/multiwindow_settings_title" 
+            android:title="@string/more_settings_title" 
             />
 
         <!-- Navbar -->

@@ -15,12 +15,20 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/multiwindow_settings_title" >
+    android:title="@string/more_settings_title" >
 
-         <Preference
-            android:key="warning_multi_window"
-            android:summary="@string/warning_multi_window_text"
-            android:selectable="false"/>
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="disable_fc_notifications"
+            android:title="@string/disable_fc_notifications_title"
+            android:summary="@string/disable_fc_notifications_summary"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:key="media_scanner_on_boot"
+            android:title="@string/media_scanner_on_boot_title"
+            android:persistent="false"
+            android:entries="@array/media_scanner_on_boot_entries"
+            android:entryValues="@array/media_scanner_on_boot_values" />
 
         <SwitchPreference
             android:key="enable_multi_window"
