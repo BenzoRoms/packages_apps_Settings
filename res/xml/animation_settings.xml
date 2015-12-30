@@ -37,6 +37,11 @@
         android:summary="@string/toast_icon_summary"
         android:defaultValue="true" />
 
+    <PreferenceScreen
+        android:key="ime_animations"
+        android:fragment="com.android.settings.benzo.KeyboardAnimationInterfaceSettings"
+        android:title="@string/ime_animation_title" />
+
     <ListPreference
         android:key="listview_animation"
         android:dialogTitle="@string/listview_animation_title"

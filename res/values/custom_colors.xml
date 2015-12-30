@@ -4,6 +4,7 @@
     <color name="setting_separator">#ff484848</color>
     <color name="extension_list_item_color">#ff999999</color>
     <color name="floating_action_button_touch_tint">#80ffffff</color>
+    <color name="secondary_text_material_dark">#b3ffffff</color>
 
     <!-- DSLV colors -->
     <color name="dslv_icon_dark">#80000000</color>
