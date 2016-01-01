@@ -64,7 +64,7 @@ public class Settings extends SettingsActivity {
                 return true;
             }
             return super.isValidFragment(className);
-            }
+        }
     }
     public static class BackgroundCheckSummaryActivity extends SettingsActivity { /* empty */ }
     public static class StorageUseActivity extends SettingsActivity { /* empty */ }
