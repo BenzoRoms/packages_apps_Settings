@@ -312,6 +312,12 @@
             android:entries="@array/enable_opengl_traces_entries"
             android:entryValues="@array/enable_opengl_traces_values" />
 
+        <SwitchPreference
+            android:key="show_unac_and_overcounted_stats"
+            android:title="@string/show_unac_and_overcounted_stats_title"
+            android:summary="@string/show_unac_and_overcounted_stats_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="debug_applications_category"
