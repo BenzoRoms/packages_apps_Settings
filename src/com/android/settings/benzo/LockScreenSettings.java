@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.android.settings.R;
+import com.android.settings.SeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
@@ -41,8 +42,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     private static final String PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE =
             "lockscreen_shortcuts_launch_type";
+    private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
 
     private ListPreference mLockscreenShortcutsLaunchType;
+    private SeekBarPreference mMaxKeyguardNotifConfig;
 
     @Override
     protected int getMetricsCategory() {
@@ -53,10 +56,16 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         addPreferencesFromResource(R.xml.lockscreen_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
 
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        mMaxKeyguardNotifConfig = (SeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
+        int kgconf = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
+        mMaxKeyguardNotifConfig.setProgress(kgconf);
+        mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
 
         mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
                 PREF_LOCKSCREEN_SHORTCUTS_LAUNCH_TYPE);
@@ -81,11 +90,18 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mLockscreenShortcutsLaunchType) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS,
                     Integer.valueOf((String) newValue));
+            return true;
+        } else if (preference == mMaxKeyguardNotifConfig) {
+            int kgconf = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
+            return true;
         }
-        return true;
+        return false;
     }
 }

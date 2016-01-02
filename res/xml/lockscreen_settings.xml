@@ -50,6 +50,22 @@
             android:summary="@string/media_art_summary"
             android:defaultValue="true" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+               android:key="lock_screen_custom_notif"
+               android:title="@string/lockscreen_maxnotif_title"
+               android:summary="@string/lockscreen_maxnotif_sumary"
+               android:defaultValue="false" />
+
+        <com.android.settings.SeekBarPreference
+               android:key="lockscreen_max_notif_cofig"
+               android:title="@string/lockscreen_maxnotif_config"
+               android:max="8"
+               settings:minimum="3"
+               settings:unitsLeft=""
+               settings:unitsRight=""
+               android:persistent="false"
+               android:dependency="lock_screen_custom_notif" />
+
      <PreferenceCategory
          android:key="locksystem_category"
          android:title="@string/lockscreen_shortcuts_category">
