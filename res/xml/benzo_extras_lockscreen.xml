@@ -47,6 +47,23 @@
                 android:title="@string/lock_screen_weather_settings_title"
                 android:fragment="com.android.settings.benzo.LockScreenWeatherSettings" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+               android:key="lock_screen_custom_notif"
+               android:title="@string/lockscreen_maxnotif_title"
+               android:summary="@string/lockscreen_maxnotif_sumary"
+               android:defaultValue="false" />
+
+        <com.android.settings.benzo.SeekBarPreference
+               android:key="lockscreen_max_notif_cofig"
+               android:title="@string/lockscreen_maxnotif_config"
+               android:max="5"
+               settings:minimum="3"
+               settings:interval="1"
+               settings:unitsLeft=""
+               settings:unitsRight=""
+               android:persistent="false"
+               android:dependency="lock_screen_custom_notif" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
