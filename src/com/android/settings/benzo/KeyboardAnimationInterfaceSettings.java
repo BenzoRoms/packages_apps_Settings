@@ -42,6 +42,7 @@ import com.android.internal.util.benzo.AwesomeAnimationHelper;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class KeyboardAnimationInterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
