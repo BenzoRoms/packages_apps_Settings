@@ -76,7 +76,7 @@
             android:key="lockscreen_weather"
             android:title="@string/lockscreen_weather_title"
             android:fragment="com.android.settings.benzo.LockScreenWeatherSettings"
-            android:layout="@layout/preference_benzoextra_wakelock" 
+            android:layout="@layout/preference_benzoextra_weather" 
             />
 
     </PreferenceCategory>

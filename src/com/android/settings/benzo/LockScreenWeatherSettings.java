@@ -22,6 +22,7 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -31,7 +32,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.benzo.SeekBarPreference;
 
 public class LockScreenWeatherSettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener {
 
     private static final String PREF_CONDITION_ICON =
             "weather_condition_icon";
