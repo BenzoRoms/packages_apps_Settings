@@ -59,6 +59,12 @@
                android:persistent="false"
                android:dependency="lock_screen_custom_notif" />
 
+        <PreferenceScreen
+               android:key="lock_clock_fonts"
+               android:title="@string/lock_clock_font_title"
+               android:summary="@string/lock_clock_font_summary"
+               android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
