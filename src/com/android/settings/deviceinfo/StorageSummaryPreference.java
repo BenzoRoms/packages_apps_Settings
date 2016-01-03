@@ -49,8 +49,10 @@ public class StorageSummaryPreference extends Preference {
             progress.setVisibility(View.GONE);
         }
 
-        final TextView summary = (TextView) view.findViewById(android.R.id.summary);
-        summary.setTextColor(Color.parseColor("#8a000000"));
+// This breaks Layers themability
+//
+//        final TextView summary = (TextView) view.findViewById(android.R.id.summary);
+//        summary.setTextColor(Color.parseColor("#8a000000"));
 
         super.onBindView(view);
     }
