@@ -21,6 +21,12 @@
         android:summary="@string/media_art_summary"
         android:defaultValue="true" />
 
+    <PreferenceScreen
+        android:key="lock_clock_fonts"
+        android:title="@string/lock_clock_font_title"
+        android:summary="@string/lock_clock_font_summary"
+        android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
+
     <PreferenceCategory
         android:key="locksystem_category"
         android:title="@string/lockscreen_shortcuts_category">
