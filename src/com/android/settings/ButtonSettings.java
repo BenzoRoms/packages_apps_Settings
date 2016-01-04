@@ -23,6 +23,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
+import android.os.UserHandle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -52,11 +54,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
             = "camera_double_tap_power_gesture";
     private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
+    private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mVolumeRockerWake;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mVolumeControlRingStream;
+    private ListPreference mVolumeKeyCursorControl;
 
     @Override
     protected int getMetricsCategory() {
@@ -68,10 +72,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.button_settings);
         ContentResolver resolver = getActivity().getContentResolver();
+        final Resources res = getResources();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
-
-        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         final PreferenceCategory powerCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_POWER);
@@ -110,6 +114,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         if (mVolumeControlRingStream != null) {
             mVolumeControlRingStream.setChecked(volumeControlRingtone > 0);
         }
+
+        // Cursor volume keys
+        int cursorControlAction = Settings.System.getInt(resolver,
+                Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+        mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
+                cursorControlAction);
     }
 
     @Override
@@ -142,6 +152,22 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private ListPreference initActionList(String key, int value) {
+        ListPreference list = (ListPreference) getPreferenceScreen().findPreference(key);
+        list.setValue(Integer.toString(value));
+        list.setSummary(list.getEntry());
+        list.setOnPreferenceChangeListener(this);
+        return list;
+    }
+
+    private void handleActionListChange(ListPreference pref, Object newValue, String setting) {
+        String value = (String) newValue;
+        int index = pref.findIndexOfValue(value);
+
+        pref.setSummary(pref.getEntries()[index]);
+        Settings.System.putInt(getContentResolver(), setting, Integer.valueOf(value));
+    }
+
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mPowerEndCall) {
@@ -169,6 +195,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                     value ? 0 : 1 /* Backwards because setting is for disabling */);
+            return true;
+        } else if (preference == mVolumeKeyCursorControl) {
+            handleActionListChange(mVolumeKeyCursorControl, objValue,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL);
             return true;
         }
        return false;
