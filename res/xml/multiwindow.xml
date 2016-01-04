@@ -30,11 +30,6 @@
             android:entries="@array/media_scanner_on_boot_entries"
             android:entryValues="@array/media_scanner_on_boot_values" />
 
-        <SwitchPreference
-            android:key="enable_multi_window"
-            android:title="@string/enable_multi_window"
-            android:summary="@string/enable_multi_window_summary"/>
-
         <!-- Three-fingers-swipe to screenshot -->
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="three_finger_gesture"
@@ -50,6 +45,22 @@
             settings:unitsLeft=""
             settings:unitsRight=""
             android:persistent="false" />
+
+    <PreferenceCategory
+        android:key="windows_category_settings"
+        android:title="@string/windows_title_category" >
+
+        <SwitchPreference
+            android:key="enable_multi_window"
+            android:title="@string/enable_multi_window"
+            android:summary="@string/enable_multi_window_summary"/>
+
+        <PreferenceScreen
+            android:key="floating_windows"
+            android:title="@string/floating_windows"
+            android:fragment="com.android.settings.benzo.FloatingWindows" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
 

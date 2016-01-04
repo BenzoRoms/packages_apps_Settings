@@ -80,6 +80,7 @@ import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.benzo.DisplayRotation;
+import com.android.settings.benzo.FloatingWindows;
 import com.android.settings.benzo.MainSettings;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
@@ -363,7 +364,8 @@ public class SettingsActivity extends Activity
             DisplayRotation.class.getName(),
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
-            ExpandedDesktopPreferenceFragment.class.getName()
+            ExpandedDesktopPreferenceFragment.class.getName(),
+            FloatingWindows.class.getName(),
     };
 
 

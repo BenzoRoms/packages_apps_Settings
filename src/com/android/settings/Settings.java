@@ -123,4 +123,5 @@ public class Settings extends SettingsActivity {
     public static class DisplayRotationActivity extends SettingsActivity { /* empty */ }
     public static class BlacklistSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class FloatingWindowsSettingsActivity extends SettingsActivity { /* empty */ }
 }
