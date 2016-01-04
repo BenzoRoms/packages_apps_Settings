@@ -184,9 +184,15 @@
     <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
     <string name="recents_clear_all_dismiss_all_title">Clear all tasks</string>
     <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
+    <string name="other_recents_category">OmniSwitch</string>
+
+    <!-- Fullscreen recents -->
     <string name="recents_full_screen_title">Full screen</string>
     <string name="recents_full_screen_summary">Makes the recents screen go into immersive mode</string>
-    <string name="other_recents_category">OmniSwitch</string>
+    <string name="recents_full_screen_clock_title">Show clock</string>
+    <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
+    <string name="recents_full_screen_date_title">Show date</string>
+    <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
 
     <!-- Bettery options -->
     <string name="battery_title">Battery</string>
