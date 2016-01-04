@@ -526,6 +526,7 @@
     <!-- NavBar specific actions options -->
     <string-array name="shortcut_action_entries">
         <item>@string/shortcut_action_app</item>
+	<item>@string/shortcut_action_floating_windows</item>
         <item>@string/shortcut_action_back</item>
         <item>@string/shortcut_action_home</item>
         <item>@string/shortcut_action_recent</item>
@@ -550,6 +551,7 @@
 
     <string-array name="shortcut_action_values" translatable="false">
         <item>**app**</item>
+	<item>**floating_windows**</item>
         <item>**back**</item>
         <item>**home**</item>
         <item>**recents**</item>
