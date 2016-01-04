@@ -17,7 +17,7 @@
 
 
     <PreferenceCategory
-        android:key="lockscreen_weather_cat"
+        android:key="lockscreen_options_cat"
         android:title="@string/lockscreen_options_title" >
 
         <com.android.settings.preference.SystemSettingSwitchPreference
@@ -37,15 +37,10 @@
                 android:dependency="lockscreen_see_through" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="lockscreen_media_metadata"
-            android:title="@string/media_art_title"
-            android:summary="@string/media_art_summary"
-            android:defaultValue="true" />
-
-        <PreferenceScreen
-                android:key="lockscreen_weather"
-                android:title="@string/lock_screen_weather_settings_title"
-                android:fragment="com.android.settings.benzo.LockScreenWeatherSettings" />
+                android:key="lockscreen_media_metadata"
+                android:title="@string/media_art_title"
+                android:summary="@string/media_art_summary"
+                android:defaultValue="true" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
                android:key="lock_screen_custom_notif"
@@ -63,6 +58,32 @@
                settings:unitsRight=""
                android:persistent="false"
                android:dependency="lock_screen_custom_notif" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_weather_cat"
+        android:title="@string/lockscreen_weather_title" >
+
+        <PreferenceScreen
+                android:key="lockscreen_weather"
+                android:title="@string/lock_screen_weather_settings_title"
+                android:summary="@string/lock_screen_weather_summary"
+                android:fragment="com.android.settings.benzo.LockScreenWeatherSettings" />
+
+        <!-- Weather Settings -->
+       <Preference
+               android:id="@+id/weather_settings"
+               android:title="@string/weather_settings_options_title"
+               android:summary="@string/lockscreen_maxnotif_sumary">
+               <intent
+                   android:action="android.intent.action.MAIN"
+                   android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+                   android:targetPackage="com.cyanogenmod.lockclock" >
+                   <extra android:name=":android:show_fragment"
+                       android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
+               </intent>
+       </Preference>
 
     </PreferenceCategory>
 
