@@ -384,6 +384,7 @@
     <string name="remove_tile_summaries_summary">Remove tiles summaries that display underneath tile titles</string>
 
     <!-- Immersive Recents -->
+    <string name="immersive_recents_category">Immersive recents</string>
     <string name="immersive_recents_title">Immersive Recents</string>
     <string name="immersive_recents_summary">Change the view of the recents screen</string>
     <string name="immersive_recents_dialog_title">Select recents view</string>
@@ -1027,5 +1028,11 @@
     <string name="smart_pulldown_none">no notifications</string>
     <string name="smart_pulldown_dismissable">no dismissable</string>
     <string name="smart_pulldown_ongoing">no ongoing</string>
+
+    <!-- Clock and date immersive recents-->
+    <string name="recents_full_screen_clock_title">Show clock</string>
+    <string name="recents_full_screen_clock_summary">Shows clock at the top while in immersive</string>
+    <string name="recents_full_screen_date_title">Show date</string>
+    <string name="recents_full_screen_date_summary">Shows date at the top while in immersive</string>
 
 </resources>
