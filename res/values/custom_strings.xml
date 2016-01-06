@@ -86,6 +86,13 @@
     <string name="sm_flags">Build flags</string>
     <string name="sm_flags_default">None</string>
 
+    <!-- Other sound summaries -->
+    <string name="dial_pad_tones_summary">Enable dial tones when using the phone</string>
+    <string name="screen_locking_sounds_summary">Enable sound when locking or unlocking phone</string>
+    <string name="charging_sounds_summary">Enable sound whenever phone is plugged in</string>
+    <string name="touch_sounds_summary">Enable sound whenever screen is touched</string>
+    <string name="vibrate_on_touch_summary">Enable vibration whenever phone is touched</string>
+
     <!-- Density changer -->
     <string name="dpi">DPI</string>
     <string name="su_dialog_error_title">Warning</string>
