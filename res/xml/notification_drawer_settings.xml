@@ -26,6 +26,14 @@
             android:key="force_expanded_notifications"
             android:title="@string/force_expanded_notifications_title"
             android:summary="@string/force_expanded_notifications_summary" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="brightness_icon"
+            android:title="@string/brightness_icon_title"
+            android:summary="@string/brightness_icon_summary"
+            android:dependency="qs_show_brightness_slider"
+            android:defaultValue="false"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
