@@ -15,6 +15,12 @@
     android:title="@string/benzo_extras_notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_icon"
+            android:title="@string/brightness_icon_title"
+            android:summary="@string/brightness_icon_summary"
+            android:defaultValue="false"/>
+
         <ListPreference
             android:key="quick_pulldown"
             android:title="@string/quick_pulldown_title"

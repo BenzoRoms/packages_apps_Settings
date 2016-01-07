@@ -1087,4 +1087,8 @@
     <string name="recents_full_screen_date_title">Show date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in immersive</string>
 
+    <!-- Brightness icon-->
+    <string name="brightness_icon_title">Brightness icon </string>
+    <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
+
 </resources>
