@@ -78,6 +78,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="other_recents_panel"
+        android:title="@string/other_recents_category" >
+
+        <!-- OmniSwitch -->
+        <PreferenceScreen
+            android:key="omniswitch"
+            android:id="@+id/omniswitch"
+            android:title="@string/omniswitch_settings_title"
+            android:fragment="com.android.settings.benzo.OmniSwitch" />
+	
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="slim_recents_panel"
         android:title="@string/slim_recents_panel" >
 
@@ -158,19 +171,6 @@
             android:defaultValue="0x00ffffff"
             alphaSlider="true" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="other_recents_panel"
-        android:title="@string/other_recents_category" >
-
-        <!-- OmniSwitch -->
-        <PreferenceScreen
-            android:key="omniswitch"
-            android:id="@+id/omniswitch"
-            android:title="@string/omniswitch_settings_title"
-            android:fragment="com.android.settings.benzo.OmniSwitch" />
-	
     </PreferenceCategory>
 
 </PreferenceScreen>
