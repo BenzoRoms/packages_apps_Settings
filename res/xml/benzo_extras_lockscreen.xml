@@ -77,11 +77,11 @@
                 android:summary="@string/lock_screen_weather_summary"
                 android:fragment="com.android.settings.benzo.LockScreenWeatherSettings" />
 
-        <!-- Weather Settings -->
+       <!-- Weather Settings -->
        <Preference
                android:id="@+id/weather_settings"
                android:title="@string/weather_settings_options_title"
-               android:summary="@string/lockscreen_maxnotif_sumary">
+               android:summary="@string/weather_settings_summary">
                <intent
                    android:action="android.intent.action.MAIN"
                    android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
