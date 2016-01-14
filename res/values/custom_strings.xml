@@ -1141,4 +1141,9 @@
     <string name="qs_transparent_header">Header transparency</string>
     <string name="volume_dialog_transparency">Volume dialog transparency</string>
 
+    <!-- Improved usage stats screen -->
+    <string name="app_name_label_cm">App:</string>
+    <string name="last_time_used_label_cm">Last time used:</string>
+    <string name="usage_time_label_cm">Usage time:</string>
+
 </resources>
