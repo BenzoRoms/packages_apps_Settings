@@ -1249,4 +1249,9 @@
     <string name="advanced_reboot_oneclick">One click reboot</string>
     <string name="advanced_reboot_oneclick_summary">Instantly trigger reboot action</string>
 
+    <!-- Improved usage stats screen -->
+    <string name="app_name_label_cm">App:</string>
+    <string name="last_time_used_label_cm">Last time used:</string>
+    <string name="usage_time_label_cm">Usage time:</string>
+
 </resources>
