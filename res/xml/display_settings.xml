@@ -124,6 +124,13 @@
                 android:title="@string/camera_double_tap_power_gesture_title"
                 android:summary="@string/camera_double_tap_power_gesture_desc" />
 
+        <!-- Fingerprint vibration -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="fingerprint_success_vib"
+                android:title="@string/fprint_sucess_vib_title"
+                android:summary="@string/fprint_sucess_vib_summary"
+                android:defaultValue="true" />
+
         <!--SwitchPreference
                 android:key="lift_to_wake"
                 android:title="@string/lift_to_wake_title" /-->
