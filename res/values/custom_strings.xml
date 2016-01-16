@@ -1476,4 +1476,15 @@
     <string name="volume_dialog_force_expanded_title">Force expanded</string>
     <string name="volume_dialog_force_expanded_summary">Force the volume panel to always appear in expanded mode. First time you need to press on expand button.</string>
 
+    <!-- Immersive recents -->
+    <string name="immersive_recents_title">Immersive Recents</string>
+    <string name="immersive_recents_default">Default</string>
+    <string name="immersive_recents_fullscreen">Fullscreen</string>
+    <string name="immersive_recents_statusbar">Statusbar only</string>
+    <string name="immersive_recents_navbar">Navbar only</string>
+    <string name="recents_full_screen_clock_title">Show clock</string>
+    <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
+    <string name="recents_full_screen_date_title">Show date</string>
+    <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
+
 </resources>

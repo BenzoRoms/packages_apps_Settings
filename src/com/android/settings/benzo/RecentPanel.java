@@ -65,6 +65,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_DISMISS_ALL = "recents_clear_all_dismiss_all";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+    private static final String IMMERSIVE_RECENTS = "immersive_recents";
 
     // Preferences
     private static final String USE_SLIM_RECENTS = "use_slim_recents";
@@ -101,6 +102,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
     private ColorPickerPreference mRecentPanelBgColor;
     private ColorPickerPreference mRecentCardBgColor;
     private ColorPickerPreference mRecentCardTextColor;
+    private ListPreference mImmersiveRecents;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DEFAULT_BACKGROUND_COLOR = 0x00ffffff;
@@ -120,6 +122,12 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,
             Settings.System.SHOW_CLEAR_ALL_RECENTS, 1, UserHandle.USER_CURRENT) == 1);
         mRecentsClearAll.setOnPreferenceChangeListener(this);
+
+        mImmersiveRecents = (ListPreference) findPreference(IMMERSIVE_RECENTS);
+        mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
+                resolver, Settings.System.IMMERSIVE_RECENTS, 0)));
+        mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
+        mImmersiveRecents.setOnPreferenceChangeListener(this);
 
         mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
         int location = Settings.System.getIntForUser(resolver,
@@ -238,6 +246,12 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
             int value = Integer.parseInt((String) newValue);
             Settings.System.putInt(getContentResolver(),
                 Settings.System.RECENTS_MAX_APPS, value);
+            return true;
+        } else if (preference == mImmersiveRecents) {
+            Settings.System.putInt(resolver, Settings.System.IMMERSIVE_RECENTS,
+                    Integer.valueOf((String) newValue));
+            mImmersiveRecents.setValue(String.valueOf(newValue));
+            mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
             return true;
         }
         return false;

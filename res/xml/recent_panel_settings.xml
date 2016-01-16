@@ -43,6 +43,13 @@
                 android:targetClass="com.android.settings.benzo.recentshidden.HAFRAppListActivity" />
         </PreferenceScreen>
 
+         <ListPreference
+            android:key="immersive_recents"
+            android:title="@string/immersive_recents_title"
+            android:entries="@array/immersive_recents_entries"
+            android:entryValues="@array/immersive_recents_values"
+            android:persistent="false" />
+
         <SwitchPreference
             android:key="show_clear_all_recents"
             android:title="@string/show_clear_all_recents_button_title"
