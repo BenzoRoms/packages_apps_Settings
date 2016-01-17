@@ -366,6 +366,8 @@
     <string name="lockscreen_maxnotif_sumary">Enable adjustment of max lockscreen notifications</string>
     <string name="lockscreen_maxnotif_config">Max lockscreen notifications</string>
     <string name="lockscreen_shortcuts_category">Shortcuts</string>
+    <string name="keyguard_torch_title">Lockscreen torch</string>
+    <string name="keyguard_torch_summary">Longpress power button with screen off turns on torch</string>
     <!-- Lockscreen shortcuts -->
     <string name="lockscreen_shortcuts_title">Lockscreen Shortcuts</string>
     <string name="lockscreen_shortcuts_summary">Change the shortcuts on lockscreen to whatever you want</string>
