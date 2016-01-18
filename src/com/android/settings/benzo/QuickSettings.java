@@ -18,6 +18,7 @@ package com.android.settings.benzo;
 import android.os.Bundle;
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
@@ -36,6 +37,10 @@ import com.android.internal.logging.MetricsLogger;
 public class QuickSettings  extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
+    private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
+
+    private SeekBarPreference mQSShadeAlpha;
+
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.DONT_TRACK_ME_BRO;
@@ -48,10 +53,24 @@ public class QuickSettings  extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.quick_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        // QS shade alpha
+        mQSShadeAlpha = (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_SHADE);
+        int qSShadeAlpha = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_TRANSPARENT_SHADE, 255);
+        mQSShadeAlpha.setValue(qSShadeAlpha / 1);
+        mQSShadeAlpha.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mQSShadeAlpha) {
+            int alpha = (Integer) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
+            return true;
+        }
+         return false;
     }
 
 }

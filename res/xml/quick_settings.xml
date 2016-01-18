@@ -51,4 +51,13 @@
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
 
+        <com.android.settings.benzo.SeekBarPreference
+            android:key="qs_transparent_shade"
+            android:title="@string/qs_transparent_shade"
+            android:max="255"
+            settings:minimum="0"
+            settings:unitsLeft=""
+            settings:unitsRight=""
+            android:persistent="false" />
+
 </PreferenceScreen>
