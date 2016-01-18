@@ -1135,8 +1135,9 @@
     <string name="voicemail_breath_title">Breathing Voicemail</string>
     <string name="voicemail_breath_summary">Will give your voicemail notifications a breathing effect in the statusbar</string>
 
-    <!-- QS transparency -->
-    <string name="qs_transparent_shade">QS shade transparency</string>
-    <string name="qs_transparent_header">QS header transparency</string>
+    <!-- Transparency -->
+    <string name="qs_transparent_cat_title">QS Transparency</string>
+    <string name="qs_transparent_shade">Shade transparency</string>
+    <string name="qs_transparent_header">Header transparency</string>
 
 </resources>
