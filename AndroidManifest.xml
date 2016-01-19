@@ -886,6 +886,8 @@
 
         <activity
              android:name=".benzo.BenzoSettings" />
+        <!-- Hide Apps from Recents (HAFR) -->
+        <activity android:name=".benzo.hideappfromrecents.HAFRAppListActivity" />
 
         <activity android:name="Settings$DisplaySettingsActivity"
                 android:label="@string/display_settings"
