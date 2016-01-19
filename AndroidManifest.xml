@@ -220,7 +220,8 @@
 
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".benzo.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
-
+        <!-- Hide Apps from Recents (HAFR) -->
+        <activity android:name=".benzo.hideappfromrecents.HAFRAppListActivity" />
 	<activity android:name=".benzo.Changelog" />
 
         <!-- Benzo OTA Update -->
