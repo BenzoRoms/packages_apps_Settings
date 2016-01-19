@@ -65,7 +65,7 @@
         <!-- Navbar -->
         <PreferenceScreen
             android:id="@+id/navbar_settings"
-            android:fragment="com.android.settings.benzo.NavbarSettings"
+            android:fragment="com.android.settings.slim.NavbarSettings"
             android:title="@string/navbar_settings_title"
             android:icon="@drawable/ic_settings_navbar"
             />
