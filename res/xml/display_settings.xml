@@ -89,6 +89,19 @@
                 android:summary="@string/expanded_desktop_summary"
                 android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
 
+        <com.android.settings.FontDialogPreference
+                android:key="font_size"
+                android:title="@string/title_font_size"
+                settings:keywords="@string/keywords_display_font_size"
+                android:summary="@string/summary_font_size"
+                android:dialogTitle="@string/dialog_title_font_size" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+      android:key="dashboard_category"
+      android:title="@string/dashboard_category">
+
         <ListPreference
                 android:key="dashboard_columns"
                 android:title="@string/dashboard_columns_title"
@@ -98,14 +111,14 @@
                 android:summary="@string/dashboard_columns_summary"
                 android:persistent="false" />
 
-        <com.android.settings.FontDialogPreference
-                android:key="font_size"
-                android:title="@string/title_font_size"
-                settings:keywords="@string/keywords_display_font_size"
-                android:summary="@string/summary_font_size"
-                android:dialogTitle="@string/dialog_title_font_size" />
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="dashboard_tileview_double_lines"
+                android:title="@string/dashboard_tileview_double_lines_title"
+                android:summaryOn="@string/dashboard_tileview_double_lines_summary_on"
+                android:summaryOff="@string/dashboard_tileview_double_lines_summary_off"
+                android:defaultValue="false" />
 
-    </PreferenceCategory>
+        </PreferenceCategory>
 
     <PreferenceCategory
       android:key="category_doze_options"
