@@ -1139,5 +1139,6 @@
     <string name="qs_transparent_cat_title">QS Transparency</string>
     <string name="qs_transparent_shade">Shade transparency</string>
     <string name="qs_transparent_header">Header transparency</string>
+    <string name="volume_dialog_transparency">Volume dialog transparency</string>
 
 </resources>
