@@ -1300,4 +1300,7 @@
     <string name="qs_transparent_shade">QS shade transparency</string>
     <string name="qs_transparent_header">QS header transparency</string>
 
+    <!-- Power menu and dialogs transparency -->
+    <string name="power_menu_transparency">Power menu transparency</string>
+    
 </resources>

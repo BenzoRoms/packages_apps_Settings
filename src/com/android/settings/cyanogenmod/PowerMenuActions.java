@@ -30,6 +30,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
@@ -48,7 +49,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
 
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
     private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
-
+    private static final String PREF_TRANSPARENT_POWER_MENU = "transparent_power_menu";
     private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
     private SwitchPreference mScreenrecordPref;
@@ -60,6 +61,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SwitchPreference mSilentPref;
     private SwitchPreference mOnTheGoPowerMenu;
     private SlimSeekBarPreference mOnTheGoAlphaPref;
+    private SeekBarPreference mPowerMenuAlpha;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -86,6 +88,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         mOnTheGoAlphaPref.setDefault(50);
         mOnTheGoAlphaPref.setInterval(1);
         mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
+
+        // Power menu alpha
+    	mPowerMenuAlpha = (SeekBarPreference) findPreference(PREF_TRANSPARENT_POWER_MENU);
+        int powerMenuAlpha = Settings.System.getInt(getContentResolver(),
+        	Settings.System.TRANSPARENT_POWER_MENU, 100);
+        mPowerMenuAlpha.setValue(powerMenuAlpha / 1);
+        mPowerMenuAlpha.setOnPreferenceChangeListener(this);
 
         for (String action : mAllActions) {
         // Remove preferences not present in the overlay
@@ -186,6 +195,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment
             Settings.System.putFloat(getContentResolver(), Settings.System.ON_THE_GO_ALPHA,
                     val / 100);
             return true;
+        } else if (preference == mPowerMenuAlpha) {
+             int alpha = (Integer) newValue;
+             Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_MENU,
+                    alpha * 1);
+            return true;	
         }
         return false;
     }
