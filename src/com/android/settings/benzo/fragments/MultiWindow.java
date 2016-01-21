@@ -32,6 +32,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 
 import com.android.settings.R;
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.Utils;
@@ -41,9 +42,11 @@ public class MultiWindow extends SettingsPreferenceFragment implements OnPrefere
     private static final String ENABLE_MULTI_WINDOW_KEY = "enable_multi_window";
     private static final String MULTI_WINDOW_SYSTEM_PROPERTY = "persist.sys.debug.multi_window";
     private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
+    private static final String PREF_TRANSPARENT_VOLUME_DIALOG = "transparent_volume_dialog";
 
     private SwitchPreference mEnableMultiWindow;
     private ListPreference mMsob;
+    private SeekBarPreference mVolumeDialogAlpha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,13 @@ public class MultiWindow extends SettingsPreferenceFragment implements OnPrefere
                 Settings.System.MEDIA_SCANNER_ON_BOOT, 0)));
         mMsob.setSummary(mMsob.getEntry());
         mMsob.setOnPreferenceChangeListener(this);
+
+        // Volume dialog alpha
+        mVolumeDialogAlpha = (SeekBarPreference) findPreference(PREF_TRANSPARENT_VOLUME_DIALOG);
+        int volumeDialogAlpha = Settings.System.getInt(resolver,
+                Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
+        mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
+        mVolumeDialogAlpha.setOnPreferenceChangeListener(this);
 
     }
 
@@ -101,6 +111,11 @@ public class MultiWindow extends SettingsPreferenceFragment implements OnPrefere
 
             mMsob.setValue(String.valueOf(newValue));
             mMsob.setSummary(mMsob.getEntry());
+            return true;
+        } else if (preference == mVolumeDialogAlpha) {
+            int alpha = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
             return true;
          }
          return false;

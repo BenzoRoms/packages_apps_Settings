@@ -1307,13 +1307,12 @@
     <string name="less_notification_sounds_2m">2 minutes</string>
     <string name="less_notification_sounds_5m">5 minutes</string>
 
-    <!-- QS transparency -->
+    <!-- Transparency -->
     <string name="qs_transparent_shade">QS shade transparency</string>
     <string name="qs_transparent_header">QS header transparency</string>
-
-    <!-- Power menu transparency -->
     <string name="power_menu_transparency">Power Menu</string>
     <string name="powermenu_options_title">Options</string>
     <string name="powermenu_transparency_title">Transparency</string>
+    <string name="volume_dialog_transparency">Volume dialog transparency</string>
 
 </resources>
