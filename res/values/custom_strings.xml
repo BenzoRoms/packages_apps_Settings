@@ -396,6 +396,7 @@
 
     <!-- Global menu actions -->
     <string name="power_menu_category_title">Power menu</string>
+    <string name="power_button_category_title">Power menu</string>
     <string name="power_menu_title">Menu entries</string>
     <string name="power_menu_summary">Configure the entries to show in power menu (up to 6)</string>
     <string name="shortcut_action_airplane">Airplane mode</string>
@@ -1399,4 +1400,7 @@
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
 
+    <!-- Power menu and dialogs transparency -->
+    <string name="power_menu_transparency">Power menu transparency</string>
+    
 </resources>

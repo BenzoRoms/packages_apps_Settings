@@ -34,6 +34,20 @@
                 <extra android:name="fragment" android:value="com.android.settings.slim.fragments.PowerMenuFragment" />
         </PreferenceScreen>
 
+        <com.android.settings.benzo.SeekBarPreference
+            android:key="transparent_power_menu"
+            android:title="@string/power_menu_transparency"
+            android:max="100"
+            settings:minimum="0"
+            settings:unitsLeft=""
+            settings:unitsRight="%"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="power_button_category"
+            android:title="@string/power_button_category_title"
+            android:persistent="false">
 
         <SwitchPreference
             android:key="power_end_call"
