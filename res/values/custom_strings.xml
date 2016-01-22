@@ -1296,7 +1296,8 @@
     <string name="less_notification_sounds_2m">2 minutes</string>
     <string name="less_notification_sounds_5m">5 minutes</string>
 
-    <!-- QS shade transparency -->
+    <!-- QS transparency -->
     <string name="qs_transparent_shade">QS shade transparency</string>
+    <string name="qs_transparent_header">QS header transparency</string>
 
 </resources>

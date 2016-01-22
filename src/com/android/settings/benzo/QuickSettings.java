@@ -38,7 +38,9 @@ public class QuickSettings  extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
     private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
+    private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
 
+    private SeekBarPreference mQSHeaderAlpha;
     private SeekBarPreference mQSShadeAlpha;
 
     @Override
@@ -53,6 +55,13 @@ public class QuickSettings  extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.quick_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        // QS header alpha
+        mQSHeaderAlpha = (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_HEADER);
+        int qSHeaderAlpha = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_TRANSPARENT_HEADER, 255);
+        mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
+        mQSHeaderAlpha.setOnPreferenceChangeListener(this);
+
         // QS shade alpha
         mQSShadeAlpha = (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_SHADE);
         int qSShadeAlpha = Settings.System.getInt(getContentResolver(),
@@ -64,13 +73,17 @@ public class QuickSettings  extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mQSShadeAlpha) {
-            int alpha = (Integer) objValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
-            return true;
-        }
-         return false;
+        if (preference == mQSHeaderAlpha) {
+          int alpha = (Integer) objValue;
+          Settings.System.putInt(getContentResolver(),
+                  Settings.System.QS_TRANSPARENT_HEADER, alpha * 1);
+          return true;
+        } else if (preference == mQSShadeAlpha) {
+          int alpha = (Integer) objValue;
+          Settings.System.putInt(getContentResolver(),
+                  Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
+          return true;
+      }
+      return false;
     }
-
 }
