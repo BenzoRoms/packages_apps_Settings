@@ -44,8 +44,11 @@ public class QuickSettings  extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
 
+    private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
+
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
+    private SeekBarPreference mQSHeaderAlpha;
 
     @Override
     protected int getMetricsCategory() {
@@ -68,6 +71,13 @@ public class QuickSettings  extends SettingsPreferenceFragment
         updateTileAnimationStyleSummary(tileAnimationStyle);
         updateAnimTileDuration(tileAnimationStyle);
         mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+        // QS header alpha
+        mQSHeaderAlpha = (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_HEADER);
+        int qSHeaderAlpha = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_TRANSPARENT_HEADER, 255);
+        mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
+        mQSHeaderAlpha.setOnPreferenceChangeListener(this);
 
         mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
         int tileAnimationDuration = Settings.System.getIntForUser(getContentResolver(),
@@ -93,6 +103,11 @@ public class QuickSettings  extends SettingsPreferenceFragment
                     tileAnimationDuration, UserHandle.USER_CURRENT);
             updateTileAnimationDurationSummary(tileAnimationDuration);
             return true;
+       } else if (preference == mQSHeaderAlpha) {
+          int alpha = (Integer) objValue;
+          Settings.System.putInt(getContentResolver(),
+                  Settings.System.QS_TRANSPARENT_HEADER, alpha * 1);
+          return true;
       }
       return false;
     }
