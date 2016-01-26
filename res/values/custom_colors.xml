@@ -42,4 +42,8 @@
     <!-- Gesture Anywhere -->
     <color name="ga_gesture_color">@android:color/holo_blue_light</color>
 
+    <!-- BlackList colors -->
+    <color name="blacklist_enabled">#DD2C00</color>
+    <color name="blacklist_disabled">#D7D7D7</color>
+
 </resources>
