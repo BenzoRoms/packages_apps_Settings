@@ -51,4 +51,8 @@
     <color name="colorpick_primary_dark">@*android:color/material_blue_grey_950</color>
     <color name="colorpick_accent">@*android:color/material_deep_teal_500</color>
 
+    <!-- BlackList colors -->
+    <color name="blacklist_enabled">#DD2C00</color>
+    <color name="blacklist_disabled">#D7D7D7</color>
+
 </resources>
