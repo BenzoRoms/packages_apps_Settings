@@ -165,12 +165,6 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.NotificationAccessSettings" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="headsup"
-        android:title="@string/headsup_section_header" >
-
         <!-- Heads up -->
         <com.android.settings.cyanogenmod.GlobalSettingSwitchPreference
             android:key="heads_up_notifications_enabled"
