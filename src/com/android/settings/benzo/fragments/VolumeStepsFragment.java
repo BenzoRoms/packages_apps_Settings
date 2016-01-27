@@ -189,6 +189,16 @@ public class VolumeStepsFragment extends SettingsPreferenceFragment implements
         Settings.System.putInt(getActivity().getContentResolver(), pref.getKey(), steps);
         mAudioManager.setStreamMaxVolume(volume_map.get(pref.getKey()), steps);
         updateVolumeStepPrefs(pref, steps);
+        if (volume_map.get(pref.getKey()) == AudioManager.STREAM_MUSIC) {
+            if (Settings.System.getInt(getActivity().getContentResolver(),
+                        Settings.System.STREAM_VOLUME_STEPS_CHANGED, 0) != 0) {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.STREAM_VOLUME_STEPS_CHANGED, 0);
+            } else {
+               Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.STREAM_VOLUME_STEPS_CHANGED, 1);
+            }
+        }
         Log.i(TAG, "Volume steps:" + pref.getKey() + "" + String.valueOf(steps));
     }
 }

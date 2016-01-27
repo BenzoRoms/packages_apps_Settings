@@ -111,6 +111,12 @@
                 android:entryValues="@array/less_notification_sounds_values"
                 android:persistent="false" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="safe_headset_volume"
+                android:title="@string/safe_headset_volume_title"
+                android:summary="@string/safe_headset_volume_summary"
+                android:defaultValue="true"/>
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
