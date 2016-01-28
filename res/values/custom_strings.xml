@@ -1016,6 +1016,10 @@
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
     <string name="qs_main_tiles_summary_off">Three or four tiles on each row</string>
 
+    <!-- Quick Settings edit icon -->
+    <string name="quick_settings_edit_icon_title">Enable QS edit icon</string>
+    <string name="quick_settings_edit_icon_summary">Controls the quick settings edit icon in the drawer</string>
+
     <!-- Tiles animation style  -->
     <string name="qs_tile_animation_style_title">Animation style</string>
     <string name="qs_tile_animation_duration_title">Animation duration</string>
