@@ -17,16 +17,25 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/privacy_settings_title">
 
-        <Preference
-            android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
-            android:key="privacy_guard_manager"
-            android:summary="@string/privacy_guard_manager_summary"
-            android:title="@string/privacy_guard_manager_title" />
+        <!-- App Ops -->
+        <PreferenceScreen
+            android:id="@+id/app_ops"
+            android:title="@string/app_ops_settings"
+            android:summary="@string/app_ops_summary"
+            android:fragment="com.android.settings.applications.AppOpsSummary" />
 
+        <!-- Blacklist -->
         <PreferenceScreen
             android:key="blacklist"
             android:title="@string/blacklist_title"
             android:summary="@string/blacklist_summary"
             android:fragment="com.android.settings.blacklist.BlacklistSettings" />
+
+        <!-- Privacy Guard -->
+        <Preference
+            android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+            android:key="privacy_guard_manager"
+            android:summary="@string/privacy_guard_manager_summary"
+            android:title="@string/privacy_guard_manager_title" />
 
 </PreferenceScreen>

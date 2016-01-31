@@ -272,7 +272,7 @@
     <string name="blacklist_empty_text">You don\'t have any blocked numbers. Add an entry by touching the Add (+) button.</string>
     <string name="blacklist_disabled_empty_text">To prevent phone numbers from calling or messaging you, enable the blocked caller list.</string>
     <string name="blacklist_summary_disabled">Disabled</string>
-    <string name="blacklist_summary">You will not receive incoming calls or messages from phone numbers on the blocked caller list</string>
+    <string name="blacklist_summary">Manage numbers you don\'t want to get messages and phone calls from</string>
     <string name="blacklist_notify">Show notification</string>
     <string name="blacklist_private_numbers_title">Private numbers</string>
     <string name="blacklist_private_numbers_summary_disabled">Don\'t block calls from private numbers</string>
