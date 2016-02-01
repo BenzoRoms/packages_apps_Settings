@@ -52,6 +52,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     private static final String DEFAULT_WEATHER_ICON_PACKAGE = "org.omnirom.omnijaws";
     private static final String WEATHER_SERVICE_PACKAGE = "org.omnirom.omnijaws";
     private static final String LOCK_CLOCK_PACKAGE="com.cyanogenmod.lockclock";
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 
     private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
@@ -59,6 +60,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     private SwitchPreference mForceExpanded;
     private ListPreference mQuickPulldown;
     private SwitchPreference mEnableTaskManager;
+    private SwitchPreference mCustomHeader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+
+        // Status bar custom header hd
+        mCustomHeader = (SwitchPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeader.setOnPreferenceChangeListener(this);
 
         mWeatherCategory = (PreferenceCategory) prefSet.findPreference(CATEGORY_WEATHER);
         if (mWeatherCategory != null && !isOmniJawsServiceInstalled()) {
@@ -158,6 +166,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
                     Settings.System.STATUS_BAR_WEATHER_ICON_PACK, value);
             int valueIndex = mWeatherIconPack.findIndexOfValue(value);
             mWeatherIconPack.setSummary(mWeatherIconPack.getEntries()[valueIndex]);
+        } else if (preference == mCustomHeader) {
+           boolean value = (Boolean) newValue;
+           Settings.System.putInt(getContentResolver(),
+                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, value ? 1 : 0);
+            return true;
         }
         return false;
     }

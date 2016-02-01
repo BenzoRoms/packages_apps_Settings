@@ -35,13 +35,11 @@ import com.android.settings.util.Helpers;
 public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
-    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
     private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
 
     private ListPreference mStatusBarTemperature;
     private ListPreference mStatusBarTemperatureStyle;
-    private SwitchPreference mCustomHeader;
 
     @Override
     protected int getMetricsCategory() {
@@ -60,13 +58,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
-
-        // Status bar custom header hd
-        mCustomHeader = (SwitchPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
-        mCustomHeader.setOnPreferenceChangeListener(this);
-
 
         // tempature
         mStatusBarTemperature = (ListPreference) findPreference(STATUS_BAR_TEMPERATURE);
@@ -97,12 +88,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
-        if (preference == mCustomHeader) {
-           boolean value = (Boolean) newValue;
-           Settings.System.putInt(resolver,
-                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, value ? 1 : 0);
-            return true;
-        } else if (preference == mStatusBarTemperature) {
+        if (preference == mStatusBarTemperature) {
             int temperatureShow = Integer.valueOf((String) newValue);
             int index = mStatusBarTemperature.findIndexOfValue((String) newValue);
             Settings.System.putIntForUser(
