@@ -42,12 +42,6 @@
         android:dependency="qs_show_brightness_slider"
         android:defaultValue="false"/>
 
-    <com.android.settings.preference.SecureSettingSwitchPreference
-        android:key="quick_settings_vibrate"
-        android:title="@string/quick_settings_vibrate_title"
-        android:summary="@string/quick_settings_vibrate_summary"
-        android:defaultValue="false"/>
-
     <com.android.settings.preference.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
         android:title="@string/force_expanded_notifications_title"
@@ -82,38 +76,6 @@
                     android:targetPackage="org.omnirom.omnijaws"
                     android:targetClass="org.omnirom.omnijaws.SettingsActivity" />
          </PreferenceScreen>
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="category_qstiles_options"
-        android:title="@string/notification_qstiles_title" >
-
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="qs_use_four_columns"
-            android:title="@string/qs_four_columns_title"
-            android:defaultValue="true" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="quick_settings_edit_icon"
-            android:title="@string/quick_settings_edit_icon_title"
-            android:summary="@string/quick_settings_edit_icon_summary"
-            android:defaultValue="true" />
-
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="sysui_qs_main_tiles"
-            android:title="@string/qs_main_tiles_title"
-            android:summaryOn="@string/qs_main_tiles_summary_on"
-            android:summaryOff="@string/qs_main_tiles_summary_off"
-            android:defaultValue="true" />
-
-        <PreferenceScreen
-                android:title="@string/quick_settings_title"
-                android:summary="@string/quick_settings_summary" >
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.systemui"
-                    android:targetClass="com.android.systemui.tuner.QsActivity" />
-        </PreferenceScreen>
-
     </PreferenceCategory>
 
 </PreferenceScreen>

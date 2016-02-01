@@ -162,6 +162,14 @@
             android:layout="@layout/preference_benzoextra_notifications"
             />
 
+        <!-- Quick Settings -->
+        <PreferenceScreen
+            android:id="@+id/quick_settings"
+            android:title="@string/quicksettings_title"
+            android:fragment="com.android.settings.benzo.QuickSettings"
+            android:layout="@layout/preference_benzoextra_quicksettings"
+            />
+
         <!-- Recents -->
         <PreferenceScreen
             android:id="@+id/recent_panel"

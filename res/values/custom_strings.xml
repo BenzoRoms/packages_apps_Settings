@@ -61,6 +61,7 @@
     <string name="more_settings_title">More Settings</string>
     <string name="reset_paranoid">Paranoid</string>
     <string name="reset_android">Android</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
     <!-- Category strings  -->
     <string name="category_display_interface_title">Interface</string>
