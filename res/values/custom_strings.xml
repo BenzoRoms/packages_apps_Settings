@@ -53,6 +53,7 @@
     <string name="benzo_extras_systemuituner">SystemUI Tuner</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
     <string name="more_settings_title">More Settings</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification Drawer</string>
