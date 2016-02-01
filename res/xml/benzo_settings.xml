@@ -36,6 +36,14 @@
             android:icon="@drawable/ic_dt_density"
             />
 
+        <!-- Quick Settings -->
+        <PreferenceScreen
+            android:id="@+id/quick_settings"
+            android:title="@string/quicksettings_title"
+            android:fragment="com.android.settings.benzo.QuickSettings"
+            android:icon="@drawable/ic_xd_quicksettings"
+            />
+
         <!-- Statusbar -->
         <PreferenceScreen
             android:id="@+id/statusbar_settings"
