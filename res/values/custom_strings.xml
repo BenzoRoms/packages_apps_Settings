@@ -22,6 +22,7 @@
     <string name="statusbar_settings_title">Statusbar</string>
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
+    <string name="quicksettings_title">Quick Settings</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Benzo version</string>
@@ -36,6 +37,9 @@
     <string name="display_cat_label">Display</string>
     <string name="gesture_cat_label">Gesture</string>
     <string name="external_cat_label">External</string>
+
+    <!-- Qucik Settings  -->
+    <string name="notification_qstiles_title">Quick Settings</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
