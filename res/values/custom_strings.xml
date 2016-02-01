@@ -1007,6 +1007,7 @@
 
     <!-- Navigation bar button color -->
     <string name="navbar_button_tint_title">Button color</string>
+    <string name="navbar_button_tint_switch_title">Navigation button tinting</string>
 
     <!-- Option to enable/disable scrolling cache -->
     <string name="pref_scrollingcache_title">Scrolling cache</string>
