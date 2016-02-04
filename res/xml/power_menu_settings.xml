@@ -19,76 +19,88 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <SwitchPreference
-        android:key="reboot"
-        android:title="@string/power_menu_reboot_title"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="category_powermenu_options"
+        android:title="@string/powermenu_options_title" >
 
-    <com.android.settings.preference.SecureSettingSwitchPreference
-        android:key="advanced_reboot_oneclick"
-        android:title="@string/advanced_reboot_oneclick"
-        android:summary="@string/advanced_reboot_oneclick_summary"
-        android:dependency="reboot"
-        android:defaultValue="true" />
+       <SwitchPreference
+           android:key="reboot"
+           android:title="@string/power_menu_reboot_title"
+           android:defaultValue="true" />
 
-    <SwitchPreference
-        android:key="screenshot"
-        android:title="@string/power_menu_screenshot_title"
-        android:defaultValue="false" />
+       <com.android.settings.preference.SecureSettingSwitchPreference
+           android:key="advanced_reboot_oneclick"
+           android:title="@string/advanced_reboot_oneclick"
+           android:summary="@string/advanced_reboot_oneclick_summary"
+           android:dependency="reboot"
+           android:defaultValue="true" />
 
-    <SwitchPreference
-        android:key="screenrecord"
-        android:title="@string/power_menu_screenrecord_title"
-        android:defaultValue="false" />
+       <SwitchPreference
+           android:key="screenshot"
+           android:title="@string/power_menu_screenshot_title"
+           android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="power_menu_onthego_enabled"
-        android:title="@string/power_menu_onthego_title"
-        android:defaultValue="false" />
+       <SwitchPreference
+           android:key="screenrecord"
+           android:title="@string/power_menu_screenrecord_title"
+           android:defaultValue="false" />
 
-    <SlimSeekBarPreference
-        android:key="on_the_go_alpha"
-        android:title="@string/onthego_alpha_title"
-        android:summary="@string/onthego_alpha_summary"
-        android:dependency="power_menu_onthego_enabled" />
+       <SwitchPreference
+           android:key="power_menu_onthego_enabled"
+           android:title="@string/power_menu_onthego_title"
+           android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="airplane"
-        android:title="@string/power_menu_airplane_title"
-        android:defaultValue="true" />
+       <SwitchPreference
+           android:key="airplane"
+           android:title="@string/power_menu_airplane_title"
+           android:defaultValue="true" />
 
-    <SwitchPreference
-        android:key="users"
-        android:title="@string/power_menu_users_title"
-        android:defaultValue="false" />
+       <SwitchPreference
+           android:key="users"
+           android:title="@string/power_menu_users_title"
+           android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="settings"
-        android:title="@string/power_menu_settings_title"
-        android:defaultValue="false" />
+       <SwitchPreference
+           android:key="settings"
+           android:title="@string/power_menu_settings_title"
+           android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="lockdown"
-        android:title="@string/power_menu_lockdown_title"
-        android:defaultValue="false" />
+       <SwitchPreference
+           android:key="lockdown"
+           android:title="@string/power_menu_lockdown_title"
+           android:defaultValue="false" />
 
     <!--SwitchPreference
         android:key="bugreport"
         android:title="@string/power_menu_bug_report_title"
         android:defaultValue="false" /-->
 
-    <SwitchPreference
-        android:key="silent"
-        android:title="@string/power_menu_sound_title"
-        android:defaultValue="true" />
+       <SwitchPreference
+           android:key="silent"
+           android:title="@string/power_menu_sound_title"
+           android:defaultValue="true" />
 
-   <com.android.settings.benzo.SeekBarPreference
-        android:key="transparent_power_menu"
-        android:title="@string/power_menu_transparency"
-        android:max="100"
-        settings:minimum="0"
-        settings:unitsLeft=""
-        settings:unitsRight="%"
-        android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_powermenu_transparency"
+        android:title="@string/powermenu_transparency_title" >
+
+       <SlimSeekBarPreference
+           android:key="on_the_go_alpha"
+           android:title="@string/onthego_alpha_title"
+           android:summary="@string/onthego_alpha_summary"
+           android:dependency="power_menu_onthego_enabled" />
+
+       <com.android.settings.benzo.SeekBarPreference
+           android:key="transparent_power_menu"
+           android:title="@string/power_menu_transparency"
+           android:max="100"
+           settings:minimum="0"
+           settings:unitsLeft=""
+           settings:unitsRight="%"
+           android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
