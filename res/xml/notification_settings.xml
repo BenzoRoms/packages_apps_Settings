@@ -185,12 +185,6 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.NotificationAccessSettings" />
 
-        <!-- Heads up -->
-        <Preference
-               android:key="heads_up_notifications"
-               android:title="@string/heads_up_notifications"
-               android:fragment="com.android.settings.headsup.HeadsUpSettings" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
