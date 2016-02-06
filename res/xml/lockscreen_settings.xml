@@ -15,6 +15,16 @@
     android:title="@string/benzo_extras_lockscreen"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+     <com.android.settings.preference.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_clock"
+        android:title="@string/hide_lockscreen_clock_title"
+        android:defaultValue="true" />
+
+     <com.android.settings.preference.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_date"
+        android:title="@string/hide_lockscreen_date_title"
+        android:defaultValue="true" />
+
      <PreferenceCategory
          android:key="locksystem_category"
          android:title="@string/lockscreen_shortcuts_category">
