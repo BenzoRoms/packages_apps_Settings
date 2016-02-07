@@ -19,10 +19,6 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
-        android:key="category_powermenu_options"
-        android:title="@string/powermenu_options_title" >
-
        <SwitchPreference
            android:key="reboot"
            android:title="@string/power_menu_reboot_title"
@@ -80,11 +76,9 @@
            android:title="@string/power_menu_sound_title"
            android:defaultValue="true" />
 
-    </PreferenceCategory>
-
     <PreferenceCategory
         android:key="category_powermenu_transparency"
-        android:title="@string/powermenu_transparency_title" >
+        android:title="@string/powermenu_transparency_title" />
 
        <SlimSeekBarPreference
            android:key="on_the_go_alpha"
@@ -100,7 +94,5 @@
            settings:unitsLeft=""
            settings:unitsRight="%"
            android:persistent="false" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
