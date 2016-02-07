@@ -123,12 +123,9 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         mRecentsFullscreen = (SwitchPreference) prefSet.findPreference(SHOW_FULLSCREEN_RECENTS);
         mRecentsFullscreenClock = (SwitchPreference) prefSet.findPreference(FULLSCREEN_RECENTS_CLOCK);
         mRecentsFullscreenDate = (SwitchPreference) prefSet.findPreference(FULLSCREEN_RECENTS_DATE);
+        mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
         mRecentsDismissAll = (SwitchPreference) prefSet.findPreference(RECENTS_DISMISS_ALL);
 
-        mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
-        mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,
-            Settings.System.SHOW_CLEAR_ALL_RECENTS, 1, UserHandle.USER_CURRENT) == 1);
-        mRecentsClearAll.setOnPreferenceChangeListener(this);
 
         mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
         int location = Settings.System.getIntForUser(resolver,
