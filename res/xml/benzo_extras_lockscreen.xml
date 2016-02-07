@@ -27,6 +27,16 @@
         android:summary="@string/lock_clock_font_summary"
         android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="hide_lockscreen_clock"
+            android:title="@string/hide_lockscreen_clock_title"
+            android:defaultValue="true" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="hide_lockscreen_date"
+            android:title="@string/hide_lockscreen_date_title"
+            android:defaultValue="true" />
+
     <PreferenceCategory
         android:key="locksystem_category"
         android:title="@string/lockscreen_shortcuts_category">
