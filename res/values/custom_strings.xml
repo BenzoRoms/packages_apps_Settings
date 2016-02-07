@@ -391,6 +391,10 @@
     <string name="lockscreen_shortcuts_single_tap">Click</string>
     <string name="lockscreen_shortcuts_double_tap">Double tap</string>
     <string name="lockscreen_shortcuts_longpress">Longpress</string>
+    <!-- Hide Lockscreen clock & date -->
+    <string name="hide_lockscreen_items_title">Lockscreen items</string>
+    <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
+    <string name="hide_lockscreen_date_title">Show lockscreen date</string>
 
     <!-- Camera sound switch -->
     <string name="camera_sounds_title">Camera shutter sound</string>
