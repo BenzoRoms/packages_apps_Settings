@@ -63,6 +63,13 @@
             android:dependency="navigation_bar_show"
             android:defaultValue="false" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="nav_buttons_rotation"
+            android:title="@string/nav_buttons_rotation_title"
+            android:summary="@string/nav_buttons_rotation_summary"
+            android:defaultValue="true"
+            android:dependency="navigation_bar_show" />
+
         <SwitchPreference
             android:key="dim_nav_buttons"
             android:title="@string/dim_nav_buttons_title"

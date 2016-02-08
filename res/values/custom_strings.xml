@@ -148,6 +148,9 @@
     <string name="navigation_edit_button_text">Edit</string>
     <string name="navigation_save_button_text">Save</string>
     <string name="navigation_bar_reset_message">Delete current settings and restore the default layout?</string>
+    <!-- Navbar buttons rotating icons -->
+    <string name="nav_buttons_rotation_title">Rotation animation for icons</string>
+    <string name="nav_buttons_rotation_summary">Enable for icons to rotate when screen is rotated or navbar recreated.</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
