@@ -318,7 +318,6 @@
 
     <!-- Heads up -->
     <string name="headsup_section_header">Heads up notifications</string>
-    <string name="headsup_options_header">Heads Up Options</string>
     <string name="heads_up_notifications">Heads Up</string>
     <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
     <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
@@ -330,9 +329,6 @@
     <string name="heads_up_blacklist_title">Blacklist</string>
     <string name="heads_up_whitelist_title">Whitelist</string>
     <string name="heads_up_contains_key">Already added this application to the list</string>
-    <string name="heads_up_snooze_title">Snooze</string>
-    <string name="heads_up_snooze">Snooze</string>
-    <string name="heads_up_timeout">Timeout</string>
 
     <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotation</string>
