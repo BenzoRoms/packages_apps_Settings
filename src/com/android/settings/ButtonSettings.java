@@ -45,6 +45,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String PREF_TRANSPARENT_POWER_MENU = "transparent_power_menu";
+    private static final String PREF_TRANSPARENT_POWER_DIALOG_DIM = "transparent_power_dialog_dim";
 
     private ListPreference mVolumeKeyCursorControl;
 
@@ -54,6 +55,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private SwitchPreference mPowerEndCall;
     private SeekBarPreference mPowerMenuAlpha;
+    private SeekBarPreference mPowerDialogDim;
 
     @Override
     protected int getMetricsCategory() {
@@ -95,6 +97,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         	Settings.System.TRANSPARENT_POWER_MENU, 100);
         mPowerMenuAlpha.setValue(powerMenuAlpha / 1);
         mPowerMenuAlpha.setOnPreferenceChangeListener(this);
+
+        // Power dialog dim
+        mPowerDialogDim = (SeekBarPreference) findPreference(PREF_TRANSPARENT_POWER_DIALOG_DIM);
+        int powerDialogDim = Settings.System.getInt(getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_DIALOG_DIM, 50);
+        mPowerDialogDim.setValue(powerDialogDim / 1);
+        mPowerDialogDim.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -134,6 +143,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
              int alpha = (Integer) objValue;
              Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_MENU,
                     alpha * 1);
+            return true;
+        } else if (preference == mPowerDialogDim) {
+             int alpha = (Integer) objValue;
+             Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_DIALOG_DIM,
+                   alpha * 1);
             return true;
         }
         return false;

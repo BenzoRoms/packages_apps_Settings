@@ -34,11 +34,28 @@
                 <extra android:name="fragment" android:value="com.android.settings.slim.fragments.PowerMenuFragment" />
         </PreferenceScreen>
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/lockscreen_enable_power_menu_title"
+            android:summary="@string/lockscreen_enable_power_menu_summary"
+            android:defaultValue="true" />
+
         <com.android.settings.benzo.SeekBarPreference
             android:key="transparent_power_menu"
-            android:title="@string/power_menu_transparency"
+            android:title="@string/power_menu_transparency_title"
+            android:summary="@string/power_menu_transparency_summary"
             android:max="100"
             settings:minimum="0"
+            settings:unitsLeft=""
+            settings:unitsRight="%"
+            android:persistent="false" />
+
+        <com.android.settings.benzo.SeekBarPreference
+            android:key="transparent_power_dialog_dim"
+            android:title="@string/power_menu_dialog_dim_title"
+            android:summary="@string/power_menu_dialog_dim_summary"
+            android:max="100"
+            settings:min="0"
             settings:unitsLeft=""
             settings:unitsRight="%"
             android:persistent="false" />
@@ -53,12 +70,6 @@
             android:key="power_end_call"
             android:title="@string/accessibility_power_button_ends_call_prerefence_title"
             android:persistent="false"/>
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="lockscreen_enable_power_menu"
-            android:title="@string/lockscreen_enable_power_menu_title"
-            android:summary="@string/lockscreen_enable_power_menu_summary"
-            android:defaultValue="true" />
 
     </PreferenceCategory>
 
