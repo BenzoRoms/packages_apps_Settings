@@ -50,6 +50,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
     private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
     private static final String PREF_TRANSPARENT_POWER_MENU = "transparent_power_menu";
+    private static final String PREF_TRANSPARENT_POWER_DIALOG_DIM = "transparent_power_dialog_dim";
+
     private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
     private SwitchPreference mScreenrecordPref;
@@ -62,6 +64,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SwitchPreference mOnTheGoPowerMenu;
     private SlimSeekBarPreference mOnTheGoAlphaPref;
     private SeekBarPreference mPowerMenuAlpha;
+    private SeekBarPreference mPowerDialogDim;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -95,6 +98,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         	Settings.System.TRANSPARENT_POWER_MENU, 100);
         mPowerMenuAlpha.setValue(powerMenuAlpha / 1);
         mPowerMenuAlpha.setOnPreferenceChangeListener(this);
+
+        // Power dialog dim
+        mPowerDialogDim = (SeekBarPreference) findPreference(PREF_TRANSPARENT_POWER_DIALOG_DIM);
+        int powerDialogDim = Settings.System.getInt(getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_DIALOG_DIM, 50);
+        mPowerDialogDim.setValue(powerDialogDim / 1);
+        mPowerDialogDim.setOnPreferenceChangeListener(this);
 
         for (String action : mAllActions) {
         // Remove preferences not present in the overlay
@@ -199,7 +209,12 @@ public class PowerMenuActions extends SettingsPreferenceFragment
              int alpha = (Integer) newValue;
              Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_MENU,
                     alpha * 1);
-            return true;	
+            return true;
+        } else if (preference == mPowerDialogDim) {
+             int alpha = (Integer) newValue;
+             Settings.System.putInt(getContentResolver(), Settings.System.TRANSPARENT_POWER_DIALOG_DIM,
+                   alpha * 1);
+            return true;
         }
         return false;
     }

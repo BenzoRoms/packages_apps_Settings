@@ -1322,10 +1322,16 @@
     <!-- Transparency -->
     <string name="qs_transparent_shade">QS shade transparency</string>
     <string name="qs_transparent_header">QS header transparency</string>
-    <string name="power_menu_transparency">Power Menu</string>
+    <string name="power_menu_transparency_title">Power menu</string>
+    <string name="power_menu_transparency_summary">Change the transparency of the power menu</string>
     <string name="powermenu_options_title">Options</string>
     <string name="powermenu_transparency_title">Transparency</string>
     <string name="volume_dialog_transparency">Volume dialog transparency</string>
+
+    <!-- Power dialogs dim amount -->
+    <string name="powermenu_background_title">Background</string>
+    <string name="power_menu_dialog_dim_title">Power dialog dim</string>
+    <string name="power_menu_dialog_dim_summary">How dark the screen behind the power menu is</string>
 
     <!-- IME animations -->
     <string name="ime_animation_title">IME animations</string>
