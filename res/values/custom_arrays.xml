@@ -523,6 +523,7 @@
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_notifications</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_qs</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_screenshot</item>
@@ -546,6 +547,7 @@
         <item>**power**</item>
         <item>**power_menu**</item>
         <item>**notifications**</item>
+        <item>**smart_pulldown**</item>
         <item>**settings_panel**</item>
         <item>**ime**</item>
         <item>**screenshot**</item>
