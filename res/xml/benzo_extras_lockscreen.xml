@@ -66,6 +66,11 @@
                android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="keyguard_show_clock"
+            android:title="@string/keyguard_statusbar_clock_title"
+            android:summary="@string/keyguard_statusbar_clock_summary" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="hide_lockscreen_clock"
             android:title="@string/hide_lockscreen_clock_title"
             android:defaultValue="true" />
