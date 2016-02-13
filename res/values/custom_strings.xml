@@ -69,7 +69,7 @@
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
-
+    <string name="power_menu_summary">What to show on power menu and transparency</string>
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
