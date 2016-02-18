@@ -31,6 +31,7 @@ import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.util.Log;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.omni.PackageUtils;
@@ -38,6 +39,7 @@ import com.android.internal.util.omni.PackageUtils;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -57,9 +59,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
+    private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
 
     private ListPreference mDaylightHeaderPack;
     private SwitchPreference mCustomHeaderImage;
+    private SeekBarPreference mHeaderShadow;
 
     private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
@@ -142,6 +146,13 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntry());
         mDaylightHeaderPack.setOnPreferenceChangeListener(this);
         mDaylightHeaderPack.setEnabled(customHeaderImage);
+
+        // header image shadows
+        mHeaderShadow = (SeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+        final int headerShadow = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
+        mHeaderShadow.setValue((int)((headerShadow / 255) * 100));
+        mHeaderShadow.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -226,6 +237,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
                     Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, value);
             int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
             mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
+            return true;
+         } else if (preference == mHeaderShadow) {
+            Integer headerShadow = (Integer) newValue;
+            int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
             return true;
         }
         return false;
