@@ -140,6 +140,12 @@
                 android:summary="@string/sm_kernel_default"
                 android:selectable="false" />
 
+        <Preference android:key="dtc_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/dtc_version"
+                android:summary="@string/dtc_version_default"
+                android:selectable="false" />
+
         <Preference android:key="sm_flags"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/sm_flags"
