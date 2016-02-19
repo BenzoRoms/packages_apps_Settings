@@ -124,6 +124,13 @@
                 android:summary="@string/sm_kernel_default"
                 android:selectable="false" />
 
+        <!-- DTC Clang info -->
+        <Preference android:key="dtc_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/dtc_version"
+                android:summary="@string/dtc_version_default"
+                android:selectable="false" />
+
         <!-- Detailed build version -->
         <Preference android:key="build_number"
                 android:enabled="false"
