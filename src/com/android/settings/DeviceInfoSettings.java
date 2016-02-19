@@ -68,6 +68,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_SM_KERNEL = "sm_kernel";
     private static final String PROPERTY_SM_KERNEL = "ro.sm.kernel";
+    private static final String KEY_DTC_VERSION = "dtc_version";
+    private static final String PROPERTY_DTC_VERSION = "ro.dtc.version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -118,6 +120,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_KERNEL_VERSION).setSummary(DeviceInfoUtils.getFormattedKernelVersion());
         setValueSummary(KEY_MOD_VERSION, "ro.benzo.version");
         setValueSummary(KEY_SM_KERNEL,  PROPERTY_SM_KERNEL);
+        setValueSummary(KEY_DTC_VERSION, "ro.dtc.version");
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -134,6 +137,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // Remove SM GCC kernel version if not found
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SM_KERNEL,
                 PROPERTY_SM_KERNEL);
+
+        // Remove DTC Clang version if not found
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_DTC_VERSION,
+                PROPERTY_DTC_VERSION);
 
         // Remove Equipment id preference if FCC ID is not set by RIL
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_EQUIPMENT_ID,
