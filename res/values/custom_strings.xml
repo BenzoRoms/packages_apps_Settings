@@ -251,11 +251,13 @@
     <!-- Quick settings quick pull down -->
     <string name="quick_pulldown_title">Quick pulldown</string>
     <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
+    <string name="quick_pulldown_summary_always">Always show Quick Settings on status bar pulldown</string>
     <string name="quick_pulldown_summary_left">Left</string>
     <string name="quick_pulldown_summary_right">Right</string>
     <string name="quick_pulldown_off">Off</string>
     <string name="quick_pulldown_left">Left</string>
     <string name="quick_pulldown_right">Right</string>
+    <string name="quick_pulldown_always">Always</string>
     <string name="smart_pulldown_title">Smart pulldown</string>
     <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
     <string name="smart_pulldown_off">Off</string>
