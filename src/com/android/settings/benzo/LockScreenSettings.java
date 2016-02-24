@@ -46,10 +46,14 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
     private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
     private static final String KEY_BLUR_RADIUS = "lockscreen_blur_radius";
+    private static final String LOCKSCREEN_ALPHA = "lockscreen_alpha";
+    private static final String LOCKSCREEN_SECURITY_ALPHA = "lockscreen_security_alpha";
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
     private SeekBarPreference mBlurRadius;
+    private SeekBarPreference mLsAlpha;
+    private SeekBarPreference mLsSecurityAlpha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,18 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             mBlurRadius.setValue(blurRadius);
             mBlurRadius.setOnPreferenceChangeListener(this);
         }
+
+        mLsAlpha = (SeekBarPreference) findPreference(LOCKSCREEN_ALPHA);
+        float alpha = Settings.System.getFloat(getContentResolver(),
+                Settings.System.LOCKSCREEN_ALPHA, 0.45f);
+        mLsAlpha.setValue((int)(100 * alpha));
+        mLsAlpha.setOnPreferenceChangeListener(this);
+
+        mLsSecurityAlpha = (SeekBarPreference) findPreference(LOCKSCREEN_SECURITY_ALPHA);
+        float alpha2 = Settings.System.getFloat(getContentResolver(),
+                Settings.System.LOCKSCREEN_SECURITY_ALPHA, 0.75f);
+        mLsSecurityAlpha.setValue((int)(100 * alpha2));
+        mLsSecurityAlpha.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -93,6 +109,16 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             int bluRadius = (Integer) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LOCKSCREEN_BLUR_RADIUS, bluRadius);
+            return true;
+        } else if (preference == mLsAlpha) {
+            int alpha = (Integer) newValue;
+            Settings.System.putFloat(resolver,
+                    Settings.System.LOCKSCREEN_ALPHA, alpha / 100.0f);
+            return true;
+        } else if (preference == mLsSecurityAlpha) {
+            int alpha2 = (Integer) newValue;
+            Settings.System.putFloat(resolver,
+                    Settings.System.LOCKSCREEN_SECURITY_ALPHA, alpha2 / 100.0f);
             return true;
         }
         return false;

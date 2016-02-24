@@ -1468,4 +1468,8 @@
     <!-- Volume dialog timeout -->
     <string name="volume_dialog_timeout_title">Volume dialog timeout</string>
 
+    <!-- Keyguard bouncer alpha -->
+    <string name="lockscreen_alpha">Lockscreen alpha</string>
+    <string name="lockscreen_security_alpha">Lockscreen bouncer alpha</string>
+
 </resources>
