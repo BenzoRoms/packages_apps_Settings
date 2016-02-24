@@ -1393,4 +1393,8 @@
     <string name="keyguard_statusbar_clock_title">Keyguard statusbar clock</string>
     <string name="keyguard_statusbar_clock_summary">Enables the statusbar clock in the keyguard on the left side</string>
 
+    <!-- Keyguard bouncer alpha -->
+    <string name="lockscreen_alpha">Lockscreen alpha</string>
+    <string name="lockscreen_security_alpha">Lockscreen bouncer alpha</string>
+
 </resources>
