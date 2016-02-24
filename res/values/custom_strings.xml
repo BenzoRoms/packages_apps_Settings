@@ -1432,4 +1432,10 @@
     <string name="hide_apps_from_recents_summary">Choose apps which do not appear in recents panel</string>
     <string name="hide_from_recents_add_app">Add App</string>
 
+    <!-- Nfc settings -->
+    <string name="nfc_polling_mode_title">NFC Polling Mode</string>
+    <string name="nfc_polling_mode_screen_off">Screen off</string>
+    <string name="nfc_polling_mode_screen_locked">Screen on, locked</string>
+    <string name="nfc_polling_mode_screen_unlocked">Screen on, unlocked (default)</string>
+
 </resources>
