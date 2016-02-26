@@ -56,4 +56,7 @@
     <!-- Determines whether "Don't ask me again" option is shown under location confirmation dialog -->
     <bool name="config_showCheckBoxOnLocationDialog">true</bool>
 
+    <!-- If true, IMS registration state menu is displayed. -->
+    <bool name="config_showImsRegistrationState">false</bool>
+
 </resources>

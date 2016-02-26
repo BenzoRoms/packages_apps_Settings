@@ -7136,4 +7136,11 @@
     <!-- String set in checkbox where the user can opt out of showing the dialog again. -->
     <string name="settings_dialog_dont_ask_me_again">Don\'t ask me again</string>
 
+    <!--Label of IMS registration header -->
+    <string name="ims_reg_title">"IMS registration state"</string>
+    <!--Used when IMS registration state is registered -->
+    <string name="ims_reg_status_registered">"Registered"</string>
+    <!--Used when IMS registration state is not registered -->
+    <string name="ims_reg_status_not_registered">"Not registered"</string>
+
 </resources>
