@@ -39,6 +39,7 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
     private final SwitchPreference mSwitch;
     private final PreferenceScreen mAndroidBeam;
     private final ListPreference mNfcPollingMode;
+    private final ListPreference mNfcSoundMode;
     private final NfcAdapter mNfcAdapter;
     private final IntentFilter mIntentFilter;
     private boolean mBeamDisallowed;
@@ -55,11 +56,13 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
     };
 
     public NfcEnabler(Context context, SwitchPreference switchPreference,
-            PreferenceScreen androidBeam, ListPreference nfcPollingMode) {
+            PreferenceScreen androidBeam, ListPreference nfcPollingMode,
+            ListPreference nfcSoundMode) {
         mContext = context;
         mSwitch = switchPreference;
         mAndroidBeam = androidBeam;
         mNfcPollingMode = nfcPollingMode;
+        mNfcSoundMode = nfcSoundMode;
         mNfcAdapter = NfcAdapter.getDefaultAdapter(context);
         mBeamDisallowed = ((UserManager) mContext.getSystemService(Context.USER_SERVICE))
                 .hasUserRestriction(UserManager.DISALLOW_OUTGOING_BEAM);
@@ -69,6 +72,7 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
             mSwitch.setEnabled(false);
             mAndroidBeam.setEnabled(false);
             mNfcPollingMode.setEnabled(false);
+            mNfcSoundMode.setEnabled(false);
             mIntentFilter = null;
             return;
         }
@@ -118,6 +122,7 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
             mAndroidBeam.setEnabled(false);
             mAndroidBeam.setSummary(R.string.android_beam_disabled_summary);
             mNfcPollingMode.setEnabled(false);
+            mNfcSoundMode.setEnabled(false);
             break;
         case NfcAdapter.STATE_ON:
             mSwitch.setChecked(true);
@@ -129,18 +134,21 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
                 mAndroidBeam.setSummary(R.string.android_beam_off_summary);
             }
             mNfcPollingMode.setEnabled(true);
+            mNfcSoundMode.setEnabled(true);
             break;
         case NfcAdapter.STATE_TURNING_ON:
             mSwitch.setChecked(true);
             mSwitch.setEnabled(false);
             mAndroidBeam.setEnabled(false);
             mNfcPollingMode.setEnabled(false);
+            mNfcSoundMode.setEnabled(false);
             break;
         case NfcAdapter.STATE_TURNING_OFF:
             mSwitch.setChecked(false);
             mSwitch.setEnabled(false);
             mAndroidBeam.setEnabled(false);
             mNfcPollingMode.setEnabled(false);
+            mNfcSoundMode.setEnabled(false);
             break;
         }
     }
