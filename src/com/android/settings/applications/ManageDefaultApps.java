@@ -38,7 +38,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
-import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -159,8 +158,7 @@ public class ManageDefaultApps extends SettingsPreferenceFragment
 
         // Restricted users cannot currently read/write SMS.
         // Remove SMS Application if the device does not support SMS
-        if (isRestrictedUser || !Utils.canUserMakeCallsSms(getActivity())
-                || !DefaultSmsPreference.isAvailable(getActivity())) {
+        if (isRestrictedUser || !DefaultSmsPreference.isAvailable(getActivity())) {
             removePreference(KEY_SMS_APPLICATION);
         }
 

@@ -17,17 +17,12 @@
 
 package com.android.settings.notification;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.NotificationManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -98,8 +93,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_FINGERP_VIBRATE = "fingerprint_success_vib";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
     private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
-    private static final int DLG_SAFE_HEADSET_VOLUME = 0;
-    private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -152,7 +145,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintVib;
     private ListPreference mAnnoyingNotifications;
-    private SwitchPreference mSafeHeadsetVolume;
 
     private UserManager mUserManager;
 
@@ -204,11 +196,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 		        Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
         mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
         mAnnoyingNotifications.setOnPreferenceChangeListener(this);
-
-        mSafeHeadsetVolume = (SwitchPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
-        mSafeHeadsetVolume.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.SAFE_HEADSET_VOLUME, 1) != 0);
-        mSafeHeadsetVolume.setOnPreferenceChangeListener(this);
 
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         mFingerprintVib = (SystemSettingSwitchPreference) findPreference(KEY_FINGERP_VIBRATE);
@@ -395,7 +382,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     private void initRingtones(PreferenceCategory root) {
         mPhoneRingtonePreference = root.findPreference(KEY_PHONE_RINGTONE);
-        if (mPhoneRingtonePreference != null && (!mVoiceCapable || !Utils.isUserOwner())) {
+        if (mPhoneRingtonePreference != null && !mVoiceCapable) {
             root.removePreference(mPhoneRingtonePreference);
             mPhoneRingtonePreference = null;
         }
@@ -495,7 +482,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             Log.i(TAG, "Preference not found: " + KEY_VIBRATE_WHEN_RINGING);
             return;
         }
-        if (!mVoiceCapable || !Utils.isUserOwner()) {
+        if (!mVoiceCapable) {
             root.removePreference(mVibrateWhenRinging);
             mVibrateWhenRinging = null;
             return;
@@ -833,77 +820,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
    public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
-        if (KEY_SAFE_HEADSET_VOLUME.equals(key)) {
-            if ((Boolean) objValue) {
-                Settings.System.putInt(getContentResolver(),
-                        Settings.System.SAFE_HEADSET_VOLUME, 1);
-            } else {
-                showDialogInner(DLG_SAFE_HEADSET_VOLUME);
-            }
-        }
         if (PREF_LESS_NOTIFICATION_SOUNDS.equals(key)) {
             final int val = Integer.valueOf((String) objValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
         }
         return true;
-    }
-
-    private void showDialogInner(int id) {
-        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
-        newFragment.setTargetFragment(this, 0);
-        newFragment.show(getFragmentManager(), "dialog " + id);
-    }
-
-    public static class MyAlertDialogFragment extends DialogFragment {
-
-        public static MyAlertDialogFragment newInstance(int id) {
-            MyAlertDialogFragment frag = new MyAlertDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("id", id);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        NotificationSettings getOwner() {
-            return (NotificationSettings) getTargetFragment();
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            int id = getArguments().getInt("id");
-            switch (id) {
-                case DLG_SAFE_HEADSET_VOLUME:
-                    return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.attention)
-                    .setMessage(R.string.safe_headset_volume_warning_dialog_text)
-                    .setPositiveButton(R.string.dlg_ok,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getOwner().getContentResolver(),
-                                    Settings.System.SAFE_HEADSET_VOLUME, 0);
-                        }
-                    })
-                    .setNegativeButton(R.string.dlg_cancel,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    })
-                    .create();
-            }
-            throw new IllegalArgumentException("unknown id " + id);
-        }
-
-        @Override
-        public void onCancel(DialogInterface dialog) {
-            int id = getArguments().getInt("id");
-            switch (id) {
-                case DLG_SAFE_HEADSET_VOLUME:
-                    getOwner().mSafeHeadsetVolume.setChecked(true);
-                    break;
-            }
-        }
     }
 
     // === Indexing ===

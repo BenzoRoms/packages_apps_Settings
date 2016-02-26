@@ -114,7 +114,8 @@
         <com.android.settings.preference.SystemSettingSwitchPreference
                 android:key="dashboard_tileview_double_lines"
                 android:title="@string/dashboard_tileview_double_lines_title"
-                android:summary="@string/dashboard_tileview_double_lines_summary"
+                android:summaryOn="@string/dashboard_tileview_double_lines_summary_on"
+                android:summaryOff="@string/dashboard_tileview_double_lines_summary_off"
                 android:defaultValue="false" />
 
         </PreferenceCategory>

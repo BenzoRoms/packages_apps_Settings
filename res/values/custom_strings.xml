@@ -1302,8 +1302,9 @@
 
     <!-- Dashboard tileview double lines -->
     <string name="dashboard_category">Dashboard settings</string>
-    <string name="dashboard_tileview_double_lines_title">Title view</string>
-    <string name="dashboard_tileview_double_lines_summary">Show dashboard tile titles in 2 lines</string>
+    <string name="dashboard_tileview_double_lines_title">Tile view title</string>
+    <string name="dashboard_tileview_double_lines_summary_on">Show dashboard tile titles in 2 lines</string>
+    <string name="dashboard_tileview_double_lines_summary_off">Show dashboard tile titles in 1 line</string>
 
     <!-- Quick Settings edit icon -->
     <string name="quick_settings_edit_icon_title">Enable QS edit icon</string>
@@ -1379,11 +1380,6 @@
     <string name="keyboard_rotation_dialog">This feature forces auto-rotate to turn on temporarily while the keyboard is shown.  It has no effect when auto-rotate is already enabled.</string>
     <string name="show_enter_key_title">Show enter key</string>
     <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
-
-    <!-- Safe headset volume restore checkbox -->
-    <string name="safe_headset_volume_title">Safe headset volume</string>
-    <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is plugged in</string>
-    <string name="safe_headset_volume_warning_dialog_text">Listening at high volume for long periods may damage your hearing. Disable it with caution.</string>
 
     <!-- Launch music player when headset is connected -->
     <string name="headset_connect_player_title">Launch music app</string>

@@ -19,7 +19,6 @@ package com.android.settings.cyanogenmod;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceScreen;
-import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
@@ -33,7 +32,6 @@ import com.android.internal.telephony.util.BlacklistUtils;
 public class PrivacySettings extends SettingsPreferenceFragment {
 
     private static final String KEY_BLACKLIST = "blacklist";
-    private static final String KEY_STATS = "cmstats";
 
     private PreferenceScreen mBlacklist;
 
@@ -47,14 +45,8 @@ public class PrivacySettings extends SettingsPreferenceFragment {
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
 
-        boolean isOwner = Utils.isUserOwner();
-        if (!isOwner) {
-            PreferenceScreen root = getPreferenceScreen();
-            root.removePreference(findPreference(KEY_STATS));
-        }
-
         // Determine options based on device telephony support
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) || !isOwner) {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
             // No telephony, remove dependent options
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(mBlacklist);

@@ -118,7 +118,6 @@ import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.search.DynamicIndexableContentMonitor;
 import com.android.settings.search.Index;
-import com.android.settings.privacyguard.PrivacyGuardPrefs;
 import com.android.settings.sim.SimSettings;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
@@ -285,8 +284,7 @@ public class SettingsActivity extends Activity
             R.id.home_settings,
             R.id.dashboard,
             R.id.bitsyko_layers,
-            R.id.main_settings,
-            R.id.privacy_settings_cyanogenmod
+            R.id.main_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -364,9 +362,9 @@ public class SettingsActivity extends Activity
             WriteSettingsDetails.class.getName(),
             MainSettings.class.getName(),
             DisplayRotation.class.getName(),
+            com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
-            ExpandedDesktopPreferenceFragment.class.getName(),
-            com.android.settings.cyanogenmod.PrivacySettings.class.getName()
+            ExpandedDesktopPreferenceFragment.class.getName()
     };
 
 
