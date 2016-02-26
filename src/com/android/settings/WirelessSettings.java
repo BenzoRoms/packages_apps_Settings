@@ -75,6 +75,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
     private static final String KEY_WFC_SETTINGS = "wifi_calling_settings";
     private static final String KEY_NFC_POLLING_MODE = "nfc_polling_mode";
+    private static final String KEY_NFC_SOUND_MODE = "nfc_sound_mode";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -85,6 +86,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     private NfcAdapter mNfcAdapter;
     private NsdEnabler mNsdEnabler;
     private ListPreference mNfcPollingMode;
+    private ListPreference mNfcSoundMode;
 
     private ConnectivityManager mCm;
     private TelephonyManager mTm;
@@ -244,8 +246,14 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
                 Settings.System.NFC_POLLING_MODE, 3)) + "");
         updateNfcPolling();
 
+        mNfcSoundMode = (ListPreference) findPreference(KEY_NFC_SOUND_MODE);
+        mNfcSoundMode.setOnPreferenceChangeListener(this);
+        mNfcSoundMode.setValue((Settings.System.getInt(activity.getContentResolver(),
+                Settings.System.NFC_SOUND_MODE, 0)) + "");
+        updateNfcSoundMode();
+
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
-        mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam, mNfcPollingMode);
+        mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam, mNfcPollingMode, mNfcSoundMode);
 
         mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
 
@@ -298,6 +306,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(nfc);
             getPreferenceScreen().removePreference(androidBeam);
             getPreferenceScreen().removePreference(mNfcPollingMode);
+            getPreferenceScreen().removePreference(mNfcSoundMode);
             mNfcEnabler = null;
         }
 
@@ -387,6 +396,25 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
         mNfcPollingMode.setSummary(getResources().getString(resId));
     }
 
+    private void updateNfcSoundMode() {
+        int resId;
+        String value = Settings.System.getString(getContentResolver(),
+                Settings.System.NFC_SOUND_MODE);
+        String[] soundModeArray = getResources().getStringArray(R.array.nfc_sound_mode_values);
+
+        if (soundModeArray[0].equals(value)) {
+            resId = R.string.nfc_sound_mode_default;
+            mNfcSoundMode.setValueIndex(0);
+        } else if (soundModeArray[1].equals(value)) {
+            resId = R.string.nfc_sound_mode_vibration;
+            mNfcSoundMode.setValueIndex(1);
+        } else {
+            resId = R.string.nfc_sound_mode_mute;
+            mNfcSoundMode.setValueIndex(2);
+        }
+        mNfcSoundMode.setSummary(getResources().getString(resId));
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -456,6 +484,12 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NFC_POLLING_MODE, newVal);
             updateNfcPolling();
+            return true;
+        } else if (preference == mNfcSoundMode) {
+            int newVal = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NFC_SOUND_MODE, newVal);
+            updateNfcSoundMode();
             return true;
         }
         return false;
