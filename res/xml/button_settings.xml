@@ -35,4 +35,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:key="volume_menu_category"
+            android:title="@string/volume_keys_category_title"
+            android:persistent="false">
+
+        <!-- Skip tracks on longpress volume buttons -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
