@@ -919,4 +919,9 @@
     <string name="notification_light_missed_call_title">Missed call</string>
     <string name="notification_light_voicemail_title">Voicemail</string>
 
+    <!-- Skip tracks on longpress volume buttons -->
+    <string name="volume_keys_category_title">Volume keys</string>
+    <string name="volbtn_music_controls_title">Volume rocker music controls</string>
+    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will skip music tracks</string>
+
 </resources>
