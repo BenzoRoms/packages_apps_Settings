@@ -18,7 +18,7 @@
     android:viewportHeight="24.0"
     android:viewportWidth="24.0"
     android:width="32.0dp"
-    android:tint="?android:attr/colorAccent">
+    android:tint="?android:attr/colorControlNormal">
 
     <path
         android:fillColor="@color/black"
