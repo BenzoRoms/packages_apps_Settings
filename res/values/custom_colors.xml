@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="card_background">#ffffffff</color>
     <color name="setting_separator">#ff484848</color>
     <color name="extension_list_item_color">#ff999999</color>
     <color name="floating_action_button_touch_tint">#80ffffff</color>
