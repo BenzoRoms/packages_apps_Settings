@@ -19,10 +19,6 @@
                   android:title="@string/display_settings"
                   settings:keywords="@string/keywords_display">
 
-    <PreferenceCategory
-        android:key="display"
-        android:title="@string/display_label">
-
         <PreferenceScreen
                 android:key="brightness"
                 android:title="@string/brightness"
@@ -36,6 +32,11 @@
                 settings:keywords="@string/keywords_display_auto_brightness"
                 android:summary="@string/auto_brightness_summary"
                 android:persistent="false" />
+
+        <PreferenceScreen
+                android:key="doze_fragment"
+                android:title="@string/doze_title"
+                android:fragment="com.android.settings.nexus.ambientdisplay.AmbientSettings" />
 
         <!-- Hide night mode for now
         <ListPreference
@@ -86,12 +87,6 @@
         <SwitchPreference
                 android:key="lift_to_wake"
                 android:title="@string/lift_to_wake_title"
-                android:persistent="false" />
-
-        <SwitchPreference
-                android:key="doze"
-                android:title="@string/doze_title"
-                android:summary="@string/doze_summary"
                 android:persistent="false" />
 
         <SwitchPreference
