@@ -60,6 +60,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SwitchPreference mSettingsPref;
     private SwitchPreference mLockdownPref;
     private SwitchPreference mBugReportPref;
+    private SwitchPreference mFlashlightPref;
     private SwitchPreference mSilentPref;
     private SwitchPreference mOnTheGoPowerMenu;
     private SlimSeekBarPreference mOnTheGoAlphaPref;
@@ -129,6 +130,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment
                 mLockdownPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_LOCKDOWN);
             } else if (action.equals(GLOBAL_ACTION_KEY_BUGREPORT)) {
                 mBugReportPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
+            } else if (action.equals(GLOBAL_ACTION_KEY_TORCH)) {
+                mFlashlightPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_TORCH);
             } else if (action.equals(GLOBAL_ACTION_KEY_SILENT)) {
                 mSilentPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
             }
@@ -184,6 +187,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment
 
         if (mBugReportPref != null) {
             mBugReportPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_BUGREPORT));
+        }
+
+        if (mScreenrecordPref != null) {
+            mFlashlightPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_TORCH));
         }
 
         if (mSilentPref != null) {
@@ -260,6 +267,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         } else if (preference == mBugReportPref) {
             value = mBugReportPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_BUGREPORT);
+
+        } else if (preference == mFlashlightPref) {
+            value = mFlashlightPref.isChecked();
+            updateUserConfig(value, GLOBAL_ACTION_KEY_TORCH);
 
         } else if (preference == mSilentPref) {
             value = mSilentPref.isChecked();
