@@ -22,6 +22,7 @@
         <item>screenshot</item>
         <item>screenrecord</item>
         <item>airplane</item>
+        <item>torch</item>
         <item>users</item>
         <item>silent</item>
     </string-array>
