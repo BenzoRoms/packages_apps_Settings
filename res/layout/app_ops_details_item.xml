@@ -78,7 +78,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dip"
         android:layout_column="2"
-        android:layout_row="1"
+        android:layout_row="0"
+        android:layout_rowSpan="3"
         android:padding="8dip"
         android:focusable="false"
         android:entries="@+array/app_ops_permissions" />
@@ -90,7 +91,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dip"
         android:layout_column="2"
-        android:layout_row="1"
+        android:layout_row="0"
+        android:layout_rowSpan="3"
         android:padding="8dip"
         android:focusable="false"
         android:clickable="true" />
