@@ -7118,4 +7118,8 @@
     <string name="randomize_mac_title">Randomize MAC addresses</string>
     <string name="randomize_mac_summary">Assign random MAC addresses when network devices are enabled</string>
 
+    <!-- randomize hostname -->
+    <string name="randomize_hostname_title">Randomize network hostname</string>
+    <string name="randomize_hostname_summary">Assign random network hostname on boot</string>
+
 </resources>

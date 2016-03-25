@@ -25,6 +25,12 @@
         android:persistent="false" />
 
     <SwitchPreference
+        android:key="randomize_hostname"
+        android:title="@string/randomize_hostname_title"
+        android:summary="@string/randomize_hostname_summary"
+        android:persistent="false" />
+
+    <SwitchPreference
         android:key="toggle_airplane"
         android:title="@string/airplane_mode"
         android:persistent="false"
