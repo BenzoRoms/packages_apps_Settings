@@ -19,55 +19,50 @@ package net.margaritov.preference.colorpicker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.PorterDuff.Mode;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
+import android.widget.FrameLayout;
+import android.view.View;
 
 import com.android.settings.R;
 
-public class ColorPickerColorButton extends LinearLayout {
+public class ApplyColorView extends FrameLayout {
 
 	private ImageView mColorView;
-	private TextView mHexView;
+	private ImageView mColorSet;
 
 	private int mBorderColor = 0xff6E6E6E;
 	private int mColor = Color.WHITE;
 
-	public ColorPickerColorButton(Context context) {
+	public ApplyColorView(Context context) {
 		this(context, null);
 	}
 
-	public ColorPickerColorButton(Context context, AttributeSet attrs) {
+	public ApplyColorView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public ColorPickerColorButton(Context context, AttributeSet attrs, int defStyle) {
+	public ApplyColorView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        final Resources res = getContext().getResources();
+        final int drawableSize = (int) res.getDimension(R.dimen.color_picker_button_drawable_size);
 
-	    mColorView = (ImageView) findViewById(R.id.color_button_color);
-	    mHexView = (TextView) findViewById(R.id.color_button_hex);
+	    mColorView = (ImageView) findViewById(R.id.apply_color_action_color);
+	    mColorSet = (ImageView) findViewById(R.id.apply_color_action_set);
+        mColorView.setImageDrawable(new ColorViewCircleDrawable(getContext(), drawableSize));
     }
 
 	public void setColor(int color) {
 		mColor = color;
-        if (mColorView == null || mHexView == null) {
+        if (mColorView == null) {
             return;
         }
-        if (mColorView.getDrawable() != null
-                && mColorView.getDrawable() instanceof LayerDrawable) {
-            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.color_fill)
-                    .setColorFilter(mColor, Mode.MULTIPLY);
-        }
-        mHexView.setText(ColorPickerPreference.convertToARGB(mColor));
-
+        ((ColorViewCircleDrawable) mColorView.getDrawable()).setColor(mColor);
 	}
 
 	public int getColor() {
@@ -79,25 +74,31 @@ public class ColorPickerColorButton extends LinearLayout {
         if (mColorView == null) {
             return;
         }
-        if (mColorView.getDrawable() != null
-                && mColorView.getDrawable() instanceof LayerDrawable) {
-            ((LayerDrawable) mColorView.getDrawable()).findDrawableByLayerId(R.id.boarder)
-                    .setColorFilter(mBorderColor, Mode.MULTIPLY);
-        }
+        ((ColorViewCircleDrawable) mColorView.getDrawable()).setBorderColor(mBorderColor);
 	}
 
 	public int getBorderColor() {
 		return mBorderColor;
 	}
 
-    public void setImageResource(int resId) {
-        if (mColorView == null) {
+    public void showSetIcon(boolean show) {
+        if (mColorSet == null) {
             return;
         }
-
-        if (resId > 0) {
-            mColorView.setImageResource(resId);
-        }
+        mColorSet.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
     }
 
+    public void applySetIconAlpha(float alpha) {
+        if (mColorSet == null) {
+            return;
+        }
+        mColorSet.setAlpha(alpha);
+    }
+
+    public void setColorPreviewTranslationX(float x) {
+        if (mColorSet == null) {
+            return;
+        }
+        mColorView.setTranslationX(x);
+    }
 }

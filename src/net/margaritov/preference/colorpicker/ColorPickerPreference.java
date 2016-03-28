@@ -18,22 +18,23 @@
 
 package net.margaritov.preference.colorpicker;
 
-import android.app.Dialog;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
-import android.preference.DialogPreference;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.android.settings.SettingsActivity;
 import com.android.settings.R;
 
 /**
@@ -41,37 +42,83 @@ import com.android.settings.R;
  * 
  * @author Sergey Margaritov
  */
-public class ColorPickerPreference extends DialogPreference implements
-        ColorPickerDialog.OnColorChangedListener {
+public class ColorPickerPreference extends Preference implements
+        Preference.OnPreferenceClickListener, ColorPickerFragment.OnColorChangedListener {
+    public static final String TAG = "ColorPickerPreference";
 
-    View mView;
-    LinearLayout widgetFrameView;
-    ColorPickerDialog mDialog;
+    private static final String sAndroidns = "http://schemas.android.com/apk/res/android";
 
-    int mDefaultValue = Color.BLACK;
-    int mAndroidColor = 0x00000000;
-    int mDarkKatColor = mAndroidColor;
-    private int mValue = Color.BLACK;
-    private float mDensity = 0;
-    private boolean mAlphaSliderEnabled = false;
+    private View mView;
+    private View mPreview;
 
-    private static final String androidns = "http://schemas.android.com/apk/res/android";
+    private ColorPickerFragment mPickerFragment;
 
-    private EditText mEditText;
+    private final Resources mResources;
+    private int mDefaultValue = Color.BLACK;
+    private int mResetColor1 = Color.TRANSPARENT;
+    private int mResetColor2 = Color.TRANSPARENT;
+    private String mResetColor1Title = null;
+    private String mResetColor2Title = null;
+    private int mValue;
+    private boolean mAlphaSliderVisible = false;
 
     public ColorPickerPreference(Context context) {
-        super(context);
-        init(context, null);
+        this(context, null);
     }
 
     public ColorPickerPreference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
+        this(context, attrs, com.android.internal.R.attr.preferenceStyle);
     }
 
-    public ColorPickerPreference(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init(context, attrs);
+    public ColorPickerPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+        this(context, attrs, defStyleAttr, 0);
+    }
+
+    public ColorPickerPreference(Context context, AttributeSet attrs, int defStyleAttr,
+            int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+
+        mResources = context.getResources();
+        setOnPreferenceClickListener(this);
+
+        if (attrs != null) {
+            TypedArray a = context.obtainStyledAttributes(
+                    attrs, R.styleable.ColorPickerPreference, defStyleAttr, defStyleRes);
+            mDefaultValue = a.getColor(R.styleable.ColorPickerPreference_defaultColor,
+                    Color.TRANSPARENT);
+            mResetColor1 = a.getColor(R.styleable.ColorPickerPreference_resetColor1,
+                    Color.TRANSPARENT);
+            mResetColor2 = a.getColor(R.styleable.ColorPickerPreference_resetColor2,
+                    Color.TRANSPARENT);
+            mResetColor1Title = a.getString(R.styleable.ColorPickerPreference_resetColor1Title);
+            mResetColor2Title = a.getString(R.styleable.ColorPickerPreference_resetColor2Title);
+            mAlphaSliderVisible = a.getBoolean(
+                    R.styleable.ColorPickerPreference_alphaSliderVisible, false);
+            a.recycle();
+
+            if (mDefaultValue == Color.TRANSPARENT) {
+                String defaultValue = attrs.getAttributeValue(sAndroidns, "defaultValue");
+                if (defaultValue != null) {
+                    if (defaultValue.startsWith("#")) {
+                        try {
+                            mDefaultValue = convertToColorInt(defaultValue);
+                        } catch (NumberFormatException e) {
+                            Log.e(TAG, "Wrong color: " + defaultValue);
+                        }
+                    } else {
+                        int resourceId = attrs.getAttributeResourceValue(sAndroidns, "defaultValue", 0);
+                        if (resourceId != 0) {
+                            mDefaultValue = mResources.getInteger(resourceId);
+                        }
+                    }
+                }
+            }
+            if (mDefaultValue == Color.TRANSPARENT) {
+                mDefaultValue = Color.BLACK;
+            }
+
+            mValue = mDefaultValue;
+        }
     }
 
     @Override
@@ -79,83 +126,49 @@ public class ColorPickerPreference extends DialogPreference implements
         onColorChanged(restoreValue ? getValue() : (Integer) defaultValue);
     }
 
-    private void init(Context context, AttributeSet attrs) {
-        mDensity = getContext().getResources().getDisplayMetrics().density;
-        if (attrs != null) {
-            String defaultValue = attrs.getAttributeValue(androidns, "defaultValue");
-            if (defaultValue.startsWith("#")) {
-                try {
-                    mDefaultValue = convertToColorInt(defaultValue);
-                } catch (NumberFormatException e) {
-                    Log.e("ColorPickerPreference", "Wrong color: " + defaultValue);
-                    mDefaultValue = convertToColorInt("#FF000000");
-                }
-            } else {
-                int resourceId = attrs.getAttributeResourceValue(androidns, "defaultValue", 0);
-                if (resourceId != 0) {
-                    mDefaultValue = context.getResources().getInteger(resourceId);
-                }
-            }
-            mAlphaSliderEnabled = attrs.getAttributeBooleanValue(null, "alphaSlider", false);
-        }
-        mValue = mDefaultValue;
-    }
-
     @Override
     protected void onBindView(View view) {
         mView = view;
         super.onBindView(view);
 
-        widgetFrameView = ((LinearLayout) view
-                .findViewById(android.R.id.widget_frame));
-
-        setPreviewColor();
+        setPreview();
     }
 
-    private void setPreviewColor() {
+    private void setPreview() {
         if (mView == null)
             return;
 
         LinearLayout widgetFrameView = ((LinearLayout) mView
                 .findViewById(android.R.id.widget_frame));
-        if (widgetFrameView == null)
+        if (widgetFrameView == null) {
             return;
+        }
+
+        float density = mResources.getDisplayMetrics().density;
 
         widgetFrameView.setVisibility(View.VISIBLE);
         widgetFrameView.setPadding(
                 widgetFrameView.getPaddingLeft(),
                 widgetFrameView.getPaddingTop(),
-                (int) (mDensity * 8),
+                (int) (density * 8),
                 widgetFrameView.getPaddingBottom()
                 );
-        // remove already create preview image
-        int count = widgetFrameView.getChildCount();
-        if (count > 0) {
-            widgetFrameView.removeViews(0, count);
-        }
-        widgetFrameView.addView(getPreview());
+
+        final int size = (int) mResources.getDimension(
+                R.dimen.color_picker_preference_preview_width_height);
+
+        mPreview = new View(getContext());
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
+        mPreview.setLayoutParams(lp);
+        mPreview.setBackground(new ColorViewCircleDrawable(getContext(), size));
+        ((ColorViewCircleDrawable) mPreview.getBackground()).setColor(getValue());
+
+        widgetFrameView.addView(mPreview);
         widgetFrameView.setMinimumWidth(0);
 
     }
 
-    private ImageView getPreview() {
-        final Resources res = getContext().getResources();
-        final int size = (int) res.getDimension(R.dimen.color_picker_preference_preview_width_height);
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
-        LayerDrawable colorPreview = (LayerDrawable) res.getDrawable(
-                R.drawable.color_picker_preference_preview).mutate();
-        ImageView iv = new ImageView(getContext());
-
-        colorPreview.findDrawableByLayerId(R.id.color_fill).setColorFilter(getValue(), Mode.MULTIPLY);
-        iv.setLayoutParams(lp);
-        iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        iv.setImageDrawable(colorPreview);
-
-        return iv;
-    }
-
-    public int getValue() {
+    private int getValue() {
         try {
             if (isPersistent()) {
                 mValue = getPersistedInt(mDefaultValue);
@@ -173,36 +186,107 @@ public class ColorPickerPreference extends DialogPreference implements
             persistInt(color);
         }
         mValue = color;
-        setPreviewColor();
+        if (mPreview != null) {
+            ((ColorViewCircleDrawable) mPreview.getBackground()).setColor(color);
+        }
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, color);
         } catch (NullPointerException e) {
         }
-        try {
-            mEditText.setText(Integer.toString(color, 16));
-        } catch (NullPointerException e) {
-        }
     }
 
     @Override
-    protected void showDialog(Bundle state) {
-        super.showDialog(state);
-
-        final ColorPickerDialog pickerDialog = (ColorPickerDialog) getDialog();
+    public boolean onPreferenceClick(Preference preference) {
+        if (mResetColor1 == Color.TRANSPARENT) {
+            if (mResetColor2 != Color.TRANSPARENT) {
+                mResetColor2 = Color.TRANSPARENT;
+                Log.w(TAG + ".onPreferenceClick",
+                        "Reset color 1 has not been set, ignore reset color 2 value");
+            }
+            if (mResetColor1Title != null) {
+                mResetColor1Title = null;
+                Log.w(TAG + ".onPreferenceClick",
+                        "Reset color 1 has not been set, ignore reset color 1 title");
+            }
+            if (mResetColor2Title != null) {
+                mResetColor2Title = null;
+                Log.w(TAG + ".onPreferenceClick",
+                        "Reset color 1 has not been set, ignore reset color 2 title");
+            }
+        } else if (mResetColor2 == Color.TRANSPARENT) {
+            if (mResetColor2Title != null) {
+                mResetColor2Title = null;
+                Log.w(TAG + ".onPreferenceClick",
+                        "Reset color 2 has not been set, ignore reset color 2 title");
+            }
+        }
+        showFragment(null);
+        return false;
     }
 
-    @Override
-    protected Dialog createDialog() {
-        final ColorPickerDialog pickerDialog = new ColorPickerDialog(
-                getContext(), R.style.Theme_ColorPickerDialog,
-                getValue(), mAndroidColor, mDarkKatColor);
+    private void showFragment(Bundle state) {
+        SettingsActivity sa = (SettingsActivity) getContext();
 
-        if (mAlphaSliderEnabled) {
-            pickerDialog.setAlphaSliderVisible(true);
+        Bundle arguments;
+        if (state != null) {
+            arguments = new Bundle(state);
+        } else {
+            SharedPreferences fallbackPrefs =
+                    sa.getSharedPreferences("color_picker_dialog", Activity.MODE_PRIVATE);
+            SharedPreferences prefs =
+                    sa.getSharedPreferences("color_picker_fragment", Activity.MODE_PRIVATE);
+            boolean fallbackShowHelpScreen = fallbackPrefs.getBoolean("show_help_screen", true);
+            boolean showHelpScreen = prefs.getBoolean("show_help_screen", fallbackShowHelpScreen);
+            arguments = new Bundle();
+
+            arguments.putInt("new_color", getValue());
+            arguments.putInt("old_color", getValue());
+            arguments.putBoolean("help_screen_visible", showHelpScreen);
         }
-        pickerDialog.setOnColorChangedListener(this);
+        arguments.putInt("initial_color", getValue());
+        arguments.putInt("reset_color_1", mResetColor1);
+        arguments.putInt("reset_color_2", mResetColor2);
+        arguments.putCharSequence("reset_color_1_title", mResetColor1Title);
+        arguments.putCharSequence("reset_color_2_title", mResetColor2Title);
+        arguments.putBoolean("alpha_slider_visible", mAlphaSliderVisible);
 
-        return pickerDialog;
+        mPickerFragment = new ColorPickerFragment();
+        mPickerFragment.setArguments(arguments);
+        mPickerFragment.setOnColorChangedListener(this);
+
+        FragmentTransaction transaction = sa.getFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_content, mPickerFragment);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.addToBackStack(":settings:prefs");
+        transaction.setBreadCrumbTitle(R.string.color_picker_fragment_title);
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void setResetColors(int resetColor1, int resetColor2) {
+        mResetColor1 = resetColor1;
+        mResetColor2 = resetColor2;
+    }
+
+    public void setResetColor(int color) {
+        mResetColor1 = color;
+    }
+
+    public void setResetColorsTitle(int title1ResId, int title2ResId) {
+        mResetColor1Title = mResources.getString(title1ResId);
+        mResetColor2Title = mResources.getString(title2ResId);
+    }
+
+    public void setResetColorsTitle(String title1, String title2) {
+        mResetColor1Title = title1;
+        mResetColor2Title = title2;
+    }
+
+    public void setResetColorTitle(int titleResId) {
+        mResetColor1Title = mResources.getString(titleResId);
+    }
+
+    public void setResetColorTitle(String title) {
+        mResetColor1Title = title;
     }
 
     /**
@@ -210,13 +294,8 @@ public class ColorPickerPreference extends DialogPreference implements
      * 
      * @param enable
      */
-    public void setAlphaSliderEnabled(boolean enable) {
-        mAlphaSliderEnabled = enable;
-    }
-
-    public void setDefaultColors(int androidColor, int darkkatColor) {
-        mAndroidColor = androidColor;
-        mDarkKatColor = darkkatColor;
+    public void setAlphaSliderVisible(boolean visible) {
+        mAlphaSliderVisible = visible;
     }
 
     /**
@@ -261,7 +340,7 @@ public class ColorPickerPreference extends DialogPreference implements
     }
 
     /**
-     * For custom purposes. Not used by ColorPickerPreferrence
+     * Converts a aarrggbb- or rrggbb color string to a color int
      * 
      * @param argb
      * @throws NumberFormatException
@@ -290,5 +369,65 @@ public class ColorPickerPreference extends DialogPreference implements
 
         return Color.argb(alpha, red, green, blue);
     }
-}
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (mPickerFragment == null || !mPickerFragment.isVisible()) {
+            return superState;
+        }
+
+        final SavedState myState = new SavedState(superState);
+        myState.isFragmentVisible = true;
+        myState.fragmentState = mPickerFragment.getState();
+        mPickerFragment.onSaveInstanceState(new Bundle());
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        if (myState.isFragmentVisible) {
+            showFragment(myState.fragmentState);
+        }
+    }
+
+    private static class SavedState extends BaseSavedState {
+        boolean isFragmentVisible;
+        Bundle fragmentState;
+
+        public SavedState(Parcel source) {
+            super(source);
+            isFragmentVisible = source.readInt() == 1;
+            fragmentState = source.readBundle();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(isFragmentVisible ? 1 : 0);
+            dest.writeBundle(fragmentState);
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+    }
+}
