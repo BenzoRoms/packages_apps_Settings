@@ -107,6 +107,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_DOZE_BRIGHTNESS_LEVEL = "doze_brightness_level";
+    private static final String KEY_DOZE_WAKEUP_DOUBLETAP = "doze_wakeup_doubletap";
 
     private Preference mFontSizePref;
 
@@ -122,6 +123,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mWakeUpOptions;
     private DozeBrightnessDialog mDozeBrightnessDialog;
     private Preference mDozeBrightness;
+    private SwitchPreference mDozeWakeupDoubleTap;
 
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -255,6 +257,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mWakeUpOptions.removePreference(findPreference(KEY_PROXIMITY_WAKE));
             Settings.System.putInt(resolver, Settings.System.PROXIMITY_ON_WAKE, 0);
         }
+
+        mDozeWakeupDoubleTap = (SwitchPreference) findPreference(KEY_DOZE_WAKEUP_DOUBLETAP);
+        mDozeWakeupDoubleTap.setOnPreferenceChangeListener(this);
 
         mDozeBrightness = (Preference) findPreference(KEY_DOZE_BRIGHTNESS_LEVEL);
     }
@@ -437,6 +442,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int value = Settings.Secure.getInt(getContentResolver(), CAMERA_GESTURE_DISABLED, 0);
             mCameraGesturePreference.setChecked(value == 0);
         }
+
+        if (mDozeWakeupDoubleTap != null) {
+            int value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_WAKEUP_DOUBLETAP, 0);
+            mDozeWakeupDoubleTap.setChecked(value != 0);
+        }
     }
 
     private void updateScreenSaverSummary() {
@@ -501,6 +512,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }
+        }
+        if (preference == mDozeWakeupDoubleTap) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_WAKEUP_DOUBLETAP, value ? 1 : 0);
         }
         return true;
     }
