@@ -38,7 +38,10 @@
     <string name="palette_material_title">Material</string>
     <string name="palette_rgb_title">RGB</string>
     <string name="reset_android_title">Android default</string>
+    <string name="reset_benzo_title">Benzo default</string>
     <string name="reset_darkkat_title">DarkKat default</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="empty_title">Empty</string>
 
     <!-- Benzo Extras -->
     <string name="benzo_category_title">Benzo</string>
