@@ -101,6 +101,7 @@ import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;
 import com.android.settings.inputmethod.SpellCheckersSettings;
 import com.android.settings.inputmethod.UserDictionaryList;
 import com.android.settings.location.LocationSettings;
+import com.android.settings.nexus.ambientdisplay.AmbientSettings;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.notification.AppNotificationSettings;
@@ -366,6 +367,7 @@ public class SettingsActivity extends Activity
             BlacklistSettings.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName(),
             FloatingWindows.class.getName(),
+            AmbientSettings.class.getName()
     };
 
 
