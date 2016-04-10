@@ -124,6 +124,10 @@
     <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
 
+    <!-- Doze options -->
+    <string name="ambient_display_show_battery_title">Battery Status</string>
+    <string name="ambient_display_show_battery_summary">Show battery indicator during pulse</string>
+
     <!-- Density changer -->
     <string name="dpi">DPI</string>
     <string name="su_dialog_error_title">Warning</string>
