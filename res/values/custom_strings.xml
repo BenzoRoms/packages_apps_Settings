@@ -935,10 +935,6 @@
     <string name="lsextrainfo">Extra information</string>
     <string name="lsextrainfo_summary">Display extra info for cpu, display, etc</string>
 
-    <!-- Media ducking -->
-    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
-    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
-
     <!-- Disable animations -->
     <string name="disable_animations">Disable animations</string>
     <string name="disable_animations_summary">Disables transition animations such as when launching an app</string>
@@ -1291,20 +1287,6 @@
     <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
     <string name="increasing_ring_min_volume_title">Start volume</string>
     <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
-
-    <!-- Less notification sounds -->
-    <string name="less_notification_sounds_title">Less frequent notification sounds</string>
-    <string name="less_notification_sounds_summary">Limit the notification sounds of each app to only play once per set time period</string>
-    <string name="less_notification_sounds_default">Default</string>
-    <string name="less_notification_sounds_3s">3 seconds</string>
-    <string name="less_notification_sounds_5s">5 seconds</string>
-    <string name="less_notification_sounds_10s">10 seconds</string>
-    <string name="less_notification_sounds_15s">15 seconds</string>
-    <string name="less_notification_sounds_30s">30 seconds</string>
-    <string name="less_notification_sounds_45s">45 seconds</string>
-    <string name="less_notification_sounds_1m">1 minute</string>
-    <string name="less_notification_sounds_2m">2 minutes</string>
-    <string name="less_notification_sounds_5m">5 minutes</string>
 
     <!-- Transparency -->
     <string name="qs_transparent_shade">QS shade transparency</string>

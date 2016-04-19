@@ -43,7 +43,6 @@ import android.os.Message;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.Vibrator;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -72,7 +71,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class NotificationSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Indexable {
+public class NotificationSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "NotificationSettings";
 
     private static final String KEY_SOUND = "sound";
@@ -92,7 +91,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_FINGERP_VIBRATE = "fingerprint_success_vib";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
-    private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -144,7 +142,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private PreferenceCategory mSoundCategory;
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintVib;
-    private ListPreference mAnnoyingNotifications;
 
     private UserManager mUserManager;
 
@@ -190,12 +187,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             mSoundCategory.removePreference(mSoundCategory.findPreference(KEY_RING_VOLUME));
             mSoundCategory.removePreference(mSoundCategory.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
-
-        mAnnoyingNotifications = (ListPreference) findPreference(PREF_LESS_NOTIFICATION_SOUNDS);
-        int notificationThreshold = Settings.System.getInt(getActivity().getContentResolver(),
-		        Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
-        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
-        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
 
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         mFingerprintVib = (SystemSettingSwitchPreference) findPreference(KEY_FINGERP_VIBRATE);
@@ -816,16 +807,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 : (silent || muted) ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                 : com.android.internal.R.drawable.ic_audio_ring_notif;
         }
-    }
-
-   public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        if (PREF_LESS_NOTIFICATION_SOUNDS.equals(key)) {
-            final int val = Integer.valueOf((String) objValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
-        }
-        return true;
     }
 
     // === Indexing ===

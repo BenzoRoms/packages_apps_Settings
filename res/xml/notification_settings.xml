@@ -72,13 +72,6 @@
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
 
-        <!-- Audio ducking -->
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="zen_disable_ducking_during_media_playback"
-            android:title="@string/interruptions_ignore_while_media_title"
-            android:summary="@string/interruptions_ignore_while_media_summary"
-            android:defaultValue="false" />
-
         <!-- Interruptions -->
         <PreferenceScreen
                 android:key="zen_mode"
@@ -101,15 +94,6 @@
                 android:dialogTitle="@string/notification_ringtone_title"
                 android:persistent="false"
                 android:ringtoneType="notification" />
-
-        <!-- Less notification sounds -->
-        <ListPreference
-                android:key="less_notification_sounds"
-                android:title="@string/less_notification_sounds_title"
-                android:summary="@string/less_notification_sounds_summary"
-                android:entries="@array/less_notification_sounds_entries"
-                android:entryValues="@array/less_notification_sounds_values"
-                android:persistent="false" />
 
         <!-- Headset -->
         <com.android.settings.preference.SystemSettingSwitchPreference
