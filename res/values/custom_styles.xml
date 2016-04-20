@@ -35,6 +35,10 @@
    <!--<item name="android:colorAccent">#HEX</item>-->
    </style>
 
+   <style name="DashboardIcon">
+       <item name="android:background">@drawable/dashboard_tile_icon_bg</item>
+   </style>
+
    <style name="usage_stats_list_label">
        <item name="android:textSize">?android:attr/textAppearanceSmall</item>
        <item name="android:textStyle">bold</item>
