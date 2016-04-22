@@ -1567,4 +1567,9 @@
     <string name="dexopt_lazy">Lazy dexopt</string>
     <string name="dexopt_lazy_summary">Optimize user apps when first starting the app instead of at boot up</string>
 
+    <!-- Floating peeking notifications -->
+    <string name="app_notification_floating_title">Allow floating from peek</string>
+    <string name="app_notification_floating_summary">Let this app open in floating window when peeking notification is tapped</string>
+    <string name="filter_notif_no_floating">No floating</string>
+
 </resources>

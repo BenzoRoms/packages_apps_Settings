@@ -61,6 +61,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
     private static final String KEY_APP_SETTINGS = "app_settings";
     private static final String KEY_SHOW_ON_KEYGUARD = "show_on_keyguard";
     private static final String KEY_NO_ONGOING_ON_KEYGUARD = "no_ongoing_on_keyguard";
+    private static final String KEY_FLOATING = "floating";
 
     private static final Intent APP_NOTIFICATION_PREFS_CATEGORY_INTENT
             = new Intent(Intent.ACTION_MAIN)
@@ -75,6 +76,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
     private SwitchPreference mSensitive;
     private SwitchPreference mShowOnKeyguard;
     private SwitchPreference mShowNoOngoingOnKeyguard;
+    private SwitchPreference mFloating;
     private AppRow mAppRow;
     private boolean mCreated;
     private boolean mIsSystemPackage;
@@ -143,6 +145,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
         mSensitive = (SwitchPreference) findPreference(KEY_SENSITIVE);
         mShowOnKeyguard = (SwitchPreference) findPreference(KEY_SHOW_ON_KEYGUARD);
         mShowNoOngoingOnKeyguard = (SwitchPreference) findPreference(KEY_NO_ONGOING_ON_KEYGUARD);
+        mFloating = (SwitchPreference) findPreference(KEY_FLOATING);
 
         mAppRow = mBackend.loadAppRow(pm, info.applicationInfo);
 
@@ -156,6 +159,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
         mPriority.setChecked(mAppRow.priority);
         mPeekable.setChecked(mAppRow.peekable);
         mSensitive.setChecked(mAppRow.sensitive);
+        mFloating.setChecked(mAppRow.floating);
         mShowOnKeyguard.setChecked((mAppRow.keyguard & Notification.SHOW_ALL_NOTI_ON_KEYGUARD) != 0);
         mShowNoOngoingOnKeyguard.setChecked((mAppRow.keyguard & Notification.SHOW_NO_ONGOING_NOTI_ON_KEYGUARD) != 0);
 
@@ -187,6 +191,14 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 final boolean peekable = (Boolean) newValue;
                 return mBackend.setPeekable(pkg, mUid, peekable);
+            }
+        });
+
+        mFloating.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final boolean status = (Boolean) newValue;
+                return mBackend.setFloating(pkg, status);
             }
         });
 
@@ -264,6 +276,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
         setVisible(mShowNoOngoingOnKeyguard, mIsSystemPackage || !banned);
         setVisible(mPriority, mIsSystemPackage || !banned);
         setVisible(mPeekable, mIsSystemPackage || !banned && headsUpEnabled);
+        setVisible(mFloating, mIsSystemPackage || !banned);
         setVisible(mSensitive, mIsSystemPackage || !banned && lockscreenSecure
                 && lockscreenNotificationsEnabled && allowPrivate);
     }
