@@ -66,6 +66,7 @@
     <string name="reset_android">Android</string>
     <string name="reset_benzo">Benzo</string>
     <string name="quicksettings_title">Quick Settings</string>
+    <string name="benzo_extras_windows_title">Windows</string>
 
     <!-- Category strings  -->
     <string name="category_display_interface_title">Interface</string>

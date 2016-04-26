@@ -15,40 +15,7 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/more_settings_title" >
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="disable_fc_notifications"
-            android:title="@string/disable_fc_notifications_title"
-            android:summary="@string/disable_fc_notifications_summary"
-            android:defaultValue="false" />
-
-        <ListPreference
-            android:key="media_scanner_on_boot"
-            android:title="@string/media_scanner_on_boot_title"
-            android:persistent="false"
-            android:entries="@array/media_scanner_on_boot_entries"
-            android:entryValues="@array/media_scanner_on_boot_values" />
-
-        <!-- Three-fingers-swipe to screenshot -->
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="three_finger_gesture"
-            android:title="@string/three_finger_gesture"
-            android:summary="@string/three_finger_gesture_summary"
-            android:defaultValue="false" />
-
-        <com.android.settings.benzo.SeekBarPreference
-            android:key="transparent_volume_dialog"
-            android:title="@string/volume_dialog_transparency"
-            android:max="255"
-            settings:minimum="0"
-            settings:unitsLeft=""
-            settings:unitsRight=""
-            android:persistent="false" />
-
-    <PreferenceCategory
-        android:key="windows_category_settings"
-        android:title="@string/windows_title_category" >
+    android:title="@string/benzo_extras_windows_title" >
 
         <SwitchPreference
             android:key="enable_multi_window"
@@ -59,8 +26,6 @@
             android:key="floating_windows"
             android:title="@string/floating_windows"
             android:fragment="com.android.settings.benzo.FloatingWindows" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
 

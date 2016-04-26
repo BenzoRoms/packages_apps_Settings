@@ -147,11 +147,11 @@
             />
 
         <!-- More Settings -->
-         <PreferenceScreen
-            android:key="multitwindow"
-            android:fragment="com.android.settings.benzo.fragments.MultiWindow"
-            android:layout="@layout/preference_benzoextra_multiwindow"
-            android:title="@string/more_settings_title" 
+        <PreferenceScreen
+            android:id="@+id/more_settings"
+            android:title="@string/more_settings_title"
+            android:fragment="com.android.settings.benzo.MoreSettings"
+            android:layout="@layout/preference_benzoextra_more"
             />
 
         <!-- Navbar -->
@@ -192,6 +192,14 @@
             android:fragment="com.android.settings.benzo.StatusBarSettings"
             android:title="@string/statusbar_settings_title"
             android:layout="@layout/preference_benzoextra_statusbar"
+            />
+
+        <!-- Window Settings -->
+         <PreferenceScreen
+            android:key="multitwindow"
+            android:fragment="com.android.settings.benzo.fragments.MultiWindow"
+            android:layout="@layout/preference_benzoextra_multiwindow"
+            android:title="@string/benzo_extras_windows_title" 
             />
 
     </PreferenceCategory>
