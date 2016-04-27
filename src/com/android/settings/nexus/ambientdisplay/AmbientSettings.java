@@ -59,6 +59,11 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_BRIGHTNESS_LEVEL = "doze_brightness_level";
     private static final String KEY_DOZE_WAKEUP_DOUBLETAP = "doze_wakeup_doubletap";
 
+    private static final String PREF_SHOW_WEATHER =
+            "ambient_display_show_weather";
+    private static final String PREF_SHOW_WEATHER_LOCATION =
+            "ambient_display_show_weather_location";
+
     private static final String SYSTEMUI_METADATA_NAME = "com.android.systemui";
 
     private SwitchPreference mDozePreference;
@@ -67,6 +72,9 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private ListPreference mDozePulseOut;
     private SystemSettingSwitchPreference mDozeTriggerPickup;
     private SwitchPreference mDozeWakeupDoubleTap;
+
+    private SwitchPreference mShowWeather;
+    private SwitchPreference mShowWeatherLocation;
 
     private DozeBrightnessDialog mDozeBrightnessDialog;
     private Preference mDozeBrightness;
@@ -97,6 +105,12 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
 
         mDozeWakeupDoubleTap = (SwitchPreference) findPreference(KEY_DOZE_WAKEUP_DOUBLETAP);
         mDozeWakeupDoubleTap.setOnPreferenceChangeListener(this);
+
+        mShowWeather = (SwitchPreference) findPreference(PREF_SHOW_WEATHER);
+        mShowWeather.setOnPreferenceChangeListener(this);
+
+        mShowWeatherLocation = (SwitchPreference) findPreference(PREF_SHOW_WEATHER_LOCATION);
+        mShowWeatherLocation.setOnPreferenceChangeListener(this);
 
         if (isPickupSensorUsedByDefault(activity)) {
             mDozeTriggerPickup = (SystemSettingSwitchPreference) findPreference(KEY_DOZE_PULSE_PICKUP);
@@ -207,6 +221,16 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_WAKEUP_DOUBLETAP, value ? 1 : 0);
+        }
+        if (preference == mShowWeather) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.AMBIENT_DISPLAY_SHOW_WEATHER, value ? 1 : 0);
+        }
+        if (preference == mShowWeatherLocation) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.AMBIENT_DISPLAY_SHOW_WEATHER_LOCATION, value ? 1 : 0);
         }
         return true;
     }
