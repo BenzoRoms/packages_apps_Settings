@@ -24,6 +24,12 @@
             android:defaultValue="true" />
 
        <SwitchPreference
+            android:key="statusbar_clock_seconds"
+            android:title="@string/status_bar_show_seconds_title"
+            android:defaultValue="false"
+            android:dependency="status_bar_show_clock" />
+
+       <SwitchPreference
             android:key="statusbar_clock_color_override"
             android:title="@string/status_bar_clock_color_override"
             android:defaultValue="false"
