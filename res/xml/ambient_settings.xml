@@ -49,23 +49,43 @@
         android:defaultValue="true"
         android:dependency="doze" />
 
-    <SwitchPreference
-        android:key="ambient_display_show_weather"
-        android:title="@string/ambient_display_show_weather_title"
-        android:summary="@string/ambient_display_show_weather_summary"
-        android:dependency="doze" />
-
-    <SwitchPreference
-        android:key="ambient_display_show_weather_location"
-        android:title="@string/ambient_display_show_weather_location_title"
-        android:summary="@string/ambient_display_show_weather_location_summary"
-        android:dependency="ambient_display_show_weather" />
-
     <com.android.settings.preference.SystemSettingSwitchPreference
         android:key="doze_overwrite_value"
         android:title="@string/doze_overwrite_value_title"
         android:summary="@string/doze_overwrite_value_summary"
         android:dependency="doze" />
+
+    <PreferenceCategory
+        android:key="doze_weather_category"
+        android:title="@string/doze_weather_title" >
+
+        <SwitchPreference
+            android:key="ambient_display_show_weather"
+            android:title="@string/ambient_display_show_weather_title"
+            android:summary="@string/ambient_display_show_weather_summary"
+            android:dependency="doze" />
+
+        <SwitchPreference
+            android:key="ambient_display_show_weather_location"
+            android:title="@string/ambient_display_show_weather_location_title"
+            android:summary="@string/ambient_display_show_weather_location_summary"
+            android:dependency="ambient_display_show_weather" />
+
+        <Preference
+                android:id="@+id/weather_settings"
+                android:title="@string/ambient_display_weather_settings_options_title"
+                android:summary="@string/ambient_display_weather_settings_summary"
+                android:dependency="ambient_display_show_weather">
+                <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+                    android:targetPackage="com.cyanogenmod.lockclock" >
+                    <extra android:name=":android:show_fragment"
+                       android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
+                </intent>
+        </Preference>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="doze_pulse_category"

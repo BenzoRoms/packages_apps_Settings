@@ -93,6 +93,19 @@
            android:entries="@array/status_bar_temperature_location_entries"
            android:entryValues="@array/status_bar_temperature_location_values" />
 
+       <Preference
+               android:id="@+id/weather_settings"
+               android:title="@string/weather_settings_options_title"
+               android:summary="@string/weather_settings_summary">
+               <intent
+                   android:action="android.intent.action.MAIN"
+                   android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+                   android:targetPackage="com.cyanogenmod.lockclock" >
+                   <extra android:name=":android:show_fragment"
+                       android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
+               </intent>
+       </Preference>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
