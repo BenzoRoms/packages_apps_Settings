@@ -298,6 +298,7 @@ public class EntryEditDialogFragment extends DialogFragment
         public static DialogFragment newInstance(EntryEditDialogFragment parent) {
             DialogFragment fragment = new DeleteConfirmationFragment();
             fragment.setTargetFragment(parent, 0);
+            fragment.setRetainInstance(true);
             return fragment;
         }
 
