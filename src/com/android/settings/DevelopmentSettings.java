@@ -108,6 +108,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String ENABLE_ADB = "enable_adb";
     private static final String ADB_NOTIFY = "adb_notify";
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
+    private static final String ENABLE_PERF = "enable_perf";
     private static final String ADB_TCPIP  = "adb_over_network";
     private static final String ENABLE_TERMINAL = "enable_terminal";
     private static final String RESTART_SYSTEMUI = "restart_systemui";
@@ -212,6 +213,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private SwitchPreference mEnableAdb;
     private SwitchPreference mAdbNotify;
     private Preference mClearAdbKeys;
+    private SwitchPreference mEnablePerf;
     private SwitchPreference mEnableTerminal;
     private Preference mBugreport;
     private SwitchPreference mBugreportInPower;
@@ -341,6 +343,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             mEnableTerminal = null;
         }
 
+        mEnablePerf = findAndInitSwitchPref(ENABLE_PERF);
+
         mBugreport = findPreference(BUGREPORT);
         mBugreportInPower = findAndInitSwitchPref(BUGREPORT_IN_POWER_KEY);
         mRestartSystemUI = findPreference(RESTART_SYSTEMUI);
@@ -361,6 +365,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
+            disableForUser(mEnablePerf);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
             disableForUser(mAdvancedReboot);
@@ -622,6 +627,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 Settings.Global.ADB_ENABLED, 0) != 0);
         mAdbNotify.setChecked(Settings.Secure.getInt(cr,
                 Settings.Secure.ADB_NOTIFY, 1) != 0);
+        updateSwitchPreference(mEnablePerf,
+                SystemProperties.get("persist.security.perf_harden", "1") == "1");
         if (mEnableTerminal != null) {
             updateSwitchPreference(mEnableTerminal,
                     context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
@@ -1718,6 +1725,12 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         .setPositiveButton(android.R.string.ok, this)
                         .setNegativeButton(android.R.string.cancel, null)
                         .show();
+        } else if (preference == mEnablePerf) {
+            if (mEnablePerf.isChecked()) {
+                SystemProperties.set("persist.security.perf_harden", "1");
+            } else {
+                SystemProperties.set("persist.security.perf_harden", "2");
+            }
         } else if (preference == mEnableTerminal) {
             final PackageManager pm = getActivity().getPackageManager();
             pm.setApplicationEnabledSetting(TERMINAL_APP_PACKAGE,
