@@ -72,6 +72,10 @@
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
+    <!-- Display settings  -->
+    <string name="sleep_wake_label">Sleep and wake</string>
+    <string name="display_other_label">Miscellaneous</string>
+
     <!-- About phone screen,  Mod Version -->
     <string name="benzo_version">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
