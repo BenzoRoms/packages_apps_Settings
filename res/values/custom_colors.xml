@@ -18,7 +18,13 @@
 
     <!-- General colors -->
     <color name="white">@android:color/white</color>
-    <color name="dslv_float_background_color">#ff1b1f23</color>
+    <color name="card_background">#ffffffff</color>
+    <color name="setting_separator">#ff484848</color>
+    <color name="extension_list_item_color">#ff999999</color>
+    <color name="floating_action_button_touch_tint">#80ffffff</color>
+    <color name="secondary_text_material_dark">#b3ffffff</color>
+    <color name="divider">#1fffffff</color>
+    <color name="ripple_material_dark">#4dffffff</color>
 
     <!-- Expanded desktop -->
     <drawable name="expanded_item_bg_activated">#ffEEEEEE</drawable>
@@ -31,6 +37,7 @@
 
     <!-- DSLV fab color -->
     <color name="floating_action_button_touch_tint">#80ffffff</color>
+    <color name="dslv_float_background_color">#ff1b1f23</color>
 
     <!-- Gesture Anywhere -->
     <color name="ga_gesture_color">@android:color/holo_blue_light</color>
