@@ -19,6 +19,10 @@
                   android:title="@string/display_settings"
                   settings:keywords="@string/keywords_display">
 
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/display_label">
+
         <PreferenceScreen
                 android:key="brightness"
                 android:title="@string/brightness"
@@ -38,6 +42,17 @@
                 android:title="@string/doze_title"
                 android:fragment="com.android.settings.nexus.ambientdisplay.AmbientSettings" />
 
+        <PreferenceScreen
+                android:key="screensaver"
+                android:title="@string/screensaver_settings_title"
+                android:fragment="com.android.settings.DreamSettings" />
+
+        <PreferenceScreen
+                android:key="expanded_desktop"
+                android:title="@string/power_menu_expanded_desktop"
+                android:summary="@string/expanded_desktop_summary"
+                android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
+
         <!-- Hide night mode for now
         <ListPreference
             android:key="night_mode"
@@ -48,11 +63,17 @@
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" /> -->
 
+        <com.android.settings.FontDialogPreference
+                android:key="font_size"
+                android:title="@string/title_font_size"
+                settings:keywords="@string/keywords_display_font_size"
+                android:summary="@string/summary_font_size"
+                android:dialogTitle="@string/dialog_title_font_size" />
+
         <PreferenceScreen
-                android:key="wallpaper"
-                android:title="@string/wallpaper_settings_title"
-                settings:keywords="@string/keywords_display_wallpaper"
-                android:fragment="com.android.settings.WallpaperTypeSettings" />
+                android:key="display_rotation"
+                android:fragment="com.android.settings.benzo.DisplayRotation"
+                android:title="@string/display_rotation_title" />
 
         <ListPreference
                 android:key="screen_timeout"
@@ -62,28 +83,29 @@
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
 
+        <PreferenceScreen
+                android:key="wallpaper"
+                android:title="@string/wallpaper_settings_title"
+                settings:keywords="@string/keywords_display_wallpaper"
+                android:fragment="com.android.settings.WallpaperTypeSettings" />
+
+        <PreferenceScreen
+                android:key="wifi_display"
+                android:title="@string/wifi_display_settings_title"
+                settings:keywords="@string/keywords_display_cast_screen"
+                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="sleep_wake"
+        android:title="@string/sleep_wake_label">
+
         <!--SwitchPreference
                 android:key="camera_gesture"
                 android:title="@string/camera_gesture_title"
                 android:summary="@string/camera_gesture_desc"
                 android:persistent="false" /-->
-
-        <SwitchPreference
-                android:key="camera_double_tap_power_gesture"
-                android:title="@string/camera_double_tap_power_gesture_title"
-                android:summary="@string/camera_double_tap_power_gesture_desc"
-                android:persistent="false" />
-
-        <PreferenceScreen
-                android:key="expanded_desktop"
-                android:title="@string/power_menu_expanded_desktop"
-                android:summary="@string/expanded_desktop_summary"
-                android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
-
-        <PreferenceScreen
-                android:key="screensaver"
-                android:title="@string/screensaver_settings_title"
-                android:fragment="com.android.settings.DreamSettings" />
 
         <!--SwitchPreference
                 android:key="lift_to_wake"
@@ -108,22 +130,18 @@
                 android:summary="@string/wake_when_plugged_or_unplugged_summary"
                 android:defaultValue="false" />
 
-        <com.android.settings.FontDialogPreference
-                android:key="font_size"
-                android:title="@string/title_font_size"
-                settings:keywords="@string/keywords_display_font_size"
-                android:summary="@string/summary_font_size"
-                android:dialogTitle="@string/dialog_title_font_size" />
+    </PreferenceCategory>
 
-        <PreferenceScreen
-                android:key="display_rotation"
-                android:fragment="com.android.settings.benzo.DisplayRotation"
-                android:title="@string/display_rotation_title" />
+    <PreferenceCategory
+        android:key="display_other"
+        android:title="@string/display_other_label">
 
-        <PreferenceScreen
-                android:key="wifi_display"
-                android:title="@string/wifi_display_settings_title"
-                settings:keywords="@string/keywords_display_cast_screen"
-                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+        <SwitchPreference
+                android:key="camera_double_tap_power_gesture"
+                android:title="@string/camera_double_tap_power_gesture_title"
+                android:summary="@string/camera_double_tap_power_gesture_desc"
+                android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
