@@ -15,14 +15,6 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:title="@string/lockscreen_targets_message" 
-        android:summary="@string/lockscreen_targets_summary" >
-        <intent
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
-    </PreferenceScreen>
-
     <PreferenceCategory
         android:key="locksystem_category"
         android:title="@string/lockscreen_shortcuts_category">
@@ -37,6 +29,14 @@
              <extra android:name="disableLongpress" android:value="true" />
              <extra android:name="useAppPickerOnly" android:value="true" />
              <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutsFragment" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/lockscreen_targets_message" 
+            android:summary="@string/lockscreen_targets_summary" >
+            <intent
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
         </PreferenceScreen>
 
     </PreferenceCategory>
