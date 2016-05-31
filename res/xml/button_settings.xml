@@ -53,6 +53,15 @@
             android:summary="@string/volbtn_music_controls_summary"
             android:defaultValue="false" />
 
+        <!-- Volume key cursor control -->
+        <ListPreference
+            android:key="volume_key_cursor_control"
+            android:persistent="false"
+            android:dialogTitle="@string/volume_key_cursor_control_title"
+            android:title="@string/volume_key_cursor_control_title"
+            android:entries="@array/volume_key_cursor_control_entries"
+            android:entryValues="@array/volume_key_cursor_control_values" />
+
         <PreferenceScreen
             android:key="vol_steps"
             android:fragment="com.android.settings.benzo.fragments.VolumeStepsFragment"
