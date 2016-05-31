@@ -73,7 +73,7 @@
     <!-- Quick Settings  -->
     <string name="qs_tiles_cat_title">Quick Settings</string>
     <string name="qs_options_cat_title">QS Options</string>
-    <string name="qs_options_cat_title">QS Animations</string>
+    <string name="qs_anim_cat_title">QS Animations</string>
 
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
