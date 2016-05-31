@@ -25,7 +25,7 @@
             android:title="@string/power_menu_title"
             android:summary="@string/power_menu_summary">
                 <extra android:name="actionMode" android:value="5" />
-                <extra android:name="maxAllowedActions" android:value="6" />
+                <extra android:name="maxAllowedActions" android:value="8" />
                 <extra android:name="disableLongpress" android:value="true" />
                 <extra android:name="disableDeleteLastEntry" android:value="true" />
                 <extra android:name="actionValues" android:value="shortcut_action_power_menu_values" />
