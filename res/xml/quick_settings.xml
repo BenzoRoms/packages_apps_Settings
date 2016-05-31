@@ -65,7 +65,7 @@
 
     <PreferenceCategory
         android:key="category_qs_animation"
-        android:title="@string/qs_options_cat_title" >
+        android:title="@string/qs_anim_cat_title" >
 
         <ListPreference
             android:key="qs_tile_animation_style"
