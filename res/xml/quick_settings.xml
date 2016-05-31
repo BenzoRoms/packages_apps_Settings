@@ -19,6 +19,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notification_qstiles_title">
 
+    <PreferenceCategory
+        android:key="category_qs_tiles"
+        android:title="@string/qs_tiles_cat_title" >
+
         <PreferenceScreen
                 android:title="@string/quick_settings_title"
                 android:summary="@string/quick_settings_summary" >
@@ -27,19 +31,11 @@
                     android:targetClass="com.android.systemui.tuner.QsActivity" />
         </PreferenceScreen>
 
-        <ListPreference
-            android:key="qs_tile_animation_style"
-            android:title="@string/qs_tile_animation_style_title"
-            android:entries="@array/qs_tile_animation_style_entries"
-            android:entryValues="@array/qs_tile_animation_style_values"
-            android:persistent="false" />
+    </PreferenceCategory>
 
-        <ListPreference
-            android:key="qs_tile_animation_duration"
-            android:title="@string/qs_tile_animation_duration_title"
-            android:entries="@array/qs_tile_animation_duration_entries"
-            android:entryValues="@array/qs_tile_animation_duration_values"
-            android:persistent="false" />
+    <PreferenceCategory
+        android:key="category_qs_options"
+        android:title="@string/qs_options_cat_title" >
 
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="sysui_qs_main_tiles"
@@ -58,5 +54,27 @@
             android:title="@string/quick_settings_vibrate_title"
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_qs_animation"
+        android:title="@string/qs_options_cat_title" >
+
+        <ListPreference
+            android:key="qs_tile_animation_style"
+            android:title="@string/qs_tile_animation_style_title"
+            android:entries="@array/qs_tile_animation_style_entries"
+            android:entryValues="@array/qs_tile_animation_style_values"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="qs_tile_animation_duration"
+            android:title="@string/qs_tile_animation_duration_title"
+            android:entries="@array/qs_tile_animation_duration_entries"
+            android:entryValues="@array/qs_tile_animation_duration_values"
+            android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
