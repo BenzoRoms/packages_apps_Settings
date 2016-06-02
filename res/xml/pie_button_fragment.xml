@@ -39,7 +39,7 @@
             android:title="@string/pie_button_second_layer"
             android:summary="@string/pie_button_second_layer_summary">
         <extra android:name="actionMode" android:value="2" />
-        <extra android:name="disableDeleteLastEntry" android:value="true" />
+        <extra android:name="disableDeleteLastEntry" android:value="false" />
         <extra android:name="maxAllowedButtons" android:value="7" />
     </PreferenceScreen>
 
