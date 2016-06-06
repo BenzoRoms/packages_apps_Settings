@@ -46,12 +46,14 @@ public class QuickSettings  extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
     private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
     private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
+    private static final String PREF_QSCOLUMNS = "sysui_qs_num_columns";
 
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
     private ListPreference mTileAnimationInterpolator;
     private SeekBarPreference mQSHeaderAlpha;
     private SeekBarPreference mQSShadeAlpha;
+    private ListPreference mNumColumns;
 
     @Override
     protected int getMetricsCategory() {
@@ -104,6 +106,15 @@ public class QuickSettings  extends SettingsPreferenceFragment
         mTileAnimationInterpolator.setValue(String.valueOf(tileAnimationInterpolator));
         updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
         mTileAnimationInterpolator.setOnPreferenceChangeListener(this);
+
+        // QS rows
+        mNumColumns = (ListPreference) findPreference(PREF_QSCOLUMNS);
+        int numColumns = Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
+                UserHandle.USER_CURRENT);
+        mNumColumns.setValue(String.valueOf(numColumns));
+        updateNumColumnsSummary(numColumns);
+        mNumColumns.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -137,6 +148,12 @@ public class QuickSettings  extends SettingsPreferenceFragment
                     tileAnimationInterpolator, UserHandle.USER_CURRENT);
             updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
             return true;
+       } else if (preference == mNumColumns) {
+            int numColumns = Integer.valueOf((String) objValue);
+            Settings.Secure.putIntForUser(getContentResolver(), Settings.Secure.QS_NUM_TILE_COLUMNS,
+                    numColumns, UserHandle.USER_CURRENT);
+            updateNumColumnsSummary(numColumns);
+            return true;
       }
       return false;
     }
@@ -168,6 +185,25 @@ public class QuickSettings  extends SettingsPreferenceFragment
                 mTileAnimationDuration.setSelectable(true);
                 mTileAnimationInterpolator.setSelectable(true);
             }
+        }
+    }
+
+    private void updateNumColumnsSummary(int numColumns) {
+        String prefix = (String) mNumColumns.getEntries()[mNumColumns.findIndexOfValue(String
+                .valueOf(numColumns))];
+        mNumColumns.setSummary(getActivity().getResources().getString(R.string.qs_num_columns_showing, prefix));
+    }
+
+    private int getDefaultNumColums() {
+        try {
+            Resources res = getActivity().getPackageManager()
+                    .getResourcesForApplication("com.android.systemui");
+            int val = res.getInteger(res.getIdentifier("quick_settings_num_columns", "integer",
+                    "com.android.systemui")); // better not be larger than 5, that's as high as the
+                                              // list goes atm
+            return Math.max(1, val);
+        } catch (Exception e) {
+            return 3;
         }
     }
 }

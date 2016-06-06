@@ -62,10 +62,12 @@
             android:summaryOff="@string/qs_main_tiles_summary_off"
             android:defaultValue="true" />
 
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="qs_use_four_columns"
-            android:title="@string/qs_four_columns_title"
-            android:defaultValue="true" />
+        <ListPreference
+            android:key="sysui_qs_num_columns"
+            android:title="@string/qs_num_columns_title"
+            android:entries="@array/qs_num_columns_entries"
+            android:entryValues="@array/qs_num_columns_values"
+            android:persistent="false" />
 
         <PreferenceScreen
             android:key="quick_tile_config"
