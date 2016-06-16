@@ -153,38 +153,38 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mDimNavButtons) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS,
-                    ((Boolean) newValue) ? 1 : 0);
+                    ((Boolean) objValue) ? 1 : 0);
             return true;
         } else if (preference == mDimNavButtonsTouchAnywhere) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE,
-                    ((Boolean) newValue) ? 1 : 0);
+                    ((Boolean) objValue) ? 1 : 0);
             return true;
         } else if (preference == mDimNavButtonsTimeout) {
             Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.DIM_NAV_BUTTONS_TIMEOUT, Integer.parseInt((String) newValue));
+                Settings.System.DIM_NAV_BUTTONS_TIMEOUT, Integer.parseInt((String) objValue));
             return true;
         } else if (preference == mDimNavButtonsAlpha) {
             Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.DIM_NAV_BUTTONS_ALPHA, Integer.parseInt((String) newValue));
+                Settings.System.DIM_NAV_BUTTONS_ALPHA, Integer.parseInt((String) objValue));
             return true;
         } else if (preference == mDimNavButtonsAnimate) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_ANIMATE,
-                    ((Boolean) newValue) ? 1 : 0);
+                    ((Boolean) objValue) ? 1 : 0);
             return true;
         } else if (preference == mDimNavButtonsAnimateDuration) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_ANIMATE_DURATION,
-                Integer.parseInt((String) newValue));
+                Integer.parseInt((String) objValue));
             return true;
         } else if (preference == mNavbarButtonTint) {
             String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
+                    Integer.valueOf(String.valueOf(objValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
