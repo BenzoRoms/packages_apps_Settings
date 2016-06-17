@@ -103,7 +103,7 @@ public class ActionListViewSettings extends ListFragment implements
     private static final int SHAKE_EVENTS_DISABLED = 6;
     private static final int RECENT_APP_SIDEBAR    = 7;
 
-    private static final int DEFAULT_MAX_ACTION_NUMBER = 5;
+    private static final int DEFAULT_MAX_ACTION_NUMBER = 7;
     private static final int DEFAULT_NUMBER_OF_ACTIONS = 3;
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 1000;
