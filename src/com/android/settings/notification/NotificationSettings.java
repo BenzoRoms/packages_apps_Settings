@@ -92,6 +92,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_FINGERP_VIBRATE = "fingerprint_success_vib";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
 
+    private static final String KEY_LOCK_SCREEN_NOTIFICATION_PROTECT_ACTIONS =
+            "lock_screen_notification_protect_actions";
+
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
         KEY_ALARM_VOLUME,
@@ -142,6 +145,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private PreferenceCategory mSoundCategory;
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintVib;
+    private SwitchPreference mProtectLockscreenNotificationActions;
 
     private UserManager mUserManager;
 
@@ -537,6 +541,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     // === Lockscreen (public / private) notifications ===
 
     private void initLockscreenNotifications(PreferenceCategory parent) {
+        mProtectLockscreenNotificationActions = (SwitchPreference)
+                findPreference(KEY_LOCK_SCREEN_NOTIFICATION_PROTECT_ACTIONS);
         mLockscreen = (DropDownPreference) parent.findPreference(KEY_LOCK_SCREEN_NOTIFICATIONS);
         if (mLockscreen == null) {
             Log.i(TAG, "Preference not found: " + KEY_LOCK_SCREEN_NOTIFICATIONS);
@@ -572,6 +578,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     Settings.Secure.putInt(getContentResolver(),
                             Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, enabled ? 1 : 0);
                     mLockscreenSelectedValue = val;
+                    mProtectLockscreenNotificationActions.setEnabled(mLockscreenSelectedValue ==
+                            R.string.lock_screen_notifications_summary_show && mSecure);
                     return true;
                 }
             });
@@ -605,6 +613,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 allowPrivate ? R.string.lock_screen_notifications_summary_show :
                 R.string.lock_screen_notifications_summary_hide;
         mLockscreen.setSelectedValue(mLockscreenSelectedValue);
+        mProtectLockscreenNotificationActions.setEnabled(mLockscreenSelectedValue ==
+                R.string.lock_screen_notifications_summary_show && mSecure);
     }
 
     private void initVolumeLinkNotification() {

@@ -135,6 +135,12 @@
                 android:summary="@string/fprint_sucess_vib_summary"
                 android:defaultValue="true" />
 
+        <!-- Protect lockscreen notification actions -->
+        <com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="lock_screen_notification_protect_actions"
+                android:title="@string/lock_screen_protect_notification_actions_title"
+                android:summary="@string/lock_screen_protect_notification_actions_summary" />
+
         <!-- Pulse notification light -->
         <PreferenceScreen
                 android:key="notification_light"

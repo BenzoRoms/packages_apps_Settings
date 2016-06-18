@@ -149,4 +149,6 @@
     <!-- Blacklist country code -->
     <string name="blacklist_country_code_plus" translateable="false">+</string>
 
+    <string name="lock_screen_protect_notification_actions_title">Protect notification actions</string>
+    <string name="lock_screen_protect_notification_actions_summary">Ensure notification actions require authentications</string>
 </resources>
