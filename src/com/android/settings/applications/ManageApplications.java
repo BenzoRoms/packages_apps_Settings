@@ -628,7 +628,9 @@ public class ManageApplications extends InstrumentedFragment
 
     @Override
     public void onResetCompleted() {
-        mApplications.mExtraInfoBridge.onPackageListChanged();
+        if (mApplications != null && mApplications.mExtraInfoBridge != null) {
+            mApplications.mExtraInfoBridge.onPackageListChanged();
+        }
     }
 
     static class FilterSpinnerAdapter extends ArrayAdapter<CharSequence> {
