@@ -146,4 +146,7 @@
     <string name="duplicate_apn_error_title">Duplicate APN</string>
     <string name="duplicate_apn_error_message">This APN already exists. Discard or change parameters.</string>
 
+    <!-- Blacklist country code -->
+    <string name="blacklist_country_code_plus" translateable="false">+</string>
+
 </resources>
