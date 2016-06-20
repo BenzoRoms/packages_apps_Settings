@@ -45,7 +45,6 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class NotificationDrawerSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
-    private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
     private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
@@ -69,9 +68,9 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     private ListPreference mWeatherIconPack;
 
     private SwitchPreference mForceExpanded;
-    private ListPreference mQuickPulldown;
     private SwitchPreference mEnableTaskManager;
     ListPreference mSmartPulldown;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,13 +161,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
-        mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
-        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
-        mQuickPulldown.setSummary(mQuickPulldown.getEntry());
-
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
         mSmartPulldown.setOnPreferenceChangeListener(this);
         int smartPulldown = Settings.System.getInt(resolver,
@@ -212,14 +204,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
-        if (preference == mQuickPulldown) {
-            int quickPulldownValue = Integer.valueOf((String) newValue);
-            int index = mQuickPulldown.findIndexOfValue((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
-                    quickPulldownValue, UserHandle.USER_CURRENT);
-            mQuickPulldown.setSummary(mQuickPulldown.getEntries()[index]);
-            return true;
-        } else if (preference == mWeatherIconPack) {
+        if (preference == mWeatherIconPack) {
             String value = (String) newValue;
             Settings.System.putString(getContentResolver(),
                     Settings.System.STATUS_BAR_WEATHER_ICON_PACK, value);
