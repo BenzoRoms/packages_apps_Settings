@@ -44,12 +44,6 @@
          </PreferenceScreen>
 
         <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="recents_full_screen"
-            android:title="@string/recents_full_screen_title"
-            android:summary="@string/recents_full_screen_summary"
-            android:defaultValue="false" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="recents_full_screen_clock"
             android:title="@string/recents_full_screen_clock_title"
             android:summary="@string/recents_full_screen_clock_summary"

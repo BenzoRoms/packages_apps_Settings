@@ -187,8 +187,6 @@
     <string name="other_recents_category">OmniSwitch</string>
 
     <!-- Fullscreen recents -->
-    <string name="recents_full_screen_title">Full screen</string>
-    <string name="recents_full_screen_summary">Makes the recents screen go into immersive mode</string>
     <string name="recents_full_screen_clock_title">Show clock</string>
     <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
     <string name="recents_full_screen_date_title">Show date</string>
