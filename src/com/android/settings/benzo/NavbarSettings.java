@@ -200,7 +200,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
         } else if (preference == mLongpressKillDelay) {
-            int killconf = (Integer) newValue;
+            int killconf = (Integer) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LONG_PRESS_KILL_DELAY, killconf);
             return true;

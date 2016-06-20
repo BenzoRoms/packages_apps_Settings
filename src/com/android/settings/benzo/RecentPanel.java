@@ -62,9 +62,6 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
     private static final String SHOW_RECENTS_SEARCHBAR = "recents_search_bar";
     private static final String SHOW_MEMBAR_RECENTS = "systemui_recents_mem_display";
-    private static final String SHOW_FULLSCREEN_RECENTS = "recents_full_screen";
-    private static final String FULLSCREEN_RECENTS_CLOCK = "recents_full_screen_clock";
-    private static final String FULLSCREEN_RECENTS_DATE = "recents_full_screen_date";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_DISMISS_ALL = "recents_clear_all_dismiss_all";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
@@ -92,9 +89,6 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
     private SwitchPreference mRecentsSearchBar;
     private SwitchPreference mRecentsMemBar;
-    private SwitchPreference mRecentsFullscreen;
-    private SwitchPreference mRecentsFullscreenClock;
-    private SwitchPreference mRecentsFullscreenDate;
     private SwitchPreference mRecentsClearAll;
     private SwitchPreference mRecentsDismissAll;
     private ListPreference mRecentsClearAllLocation;
@@ -122,9 +116,6 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
         mRecentsSearchBar = (SwitchPreference) prefSet.findPreference(SHOW_RECENTS_SEARCHBAR);
         mRecentsMemBar = (SwitchPreference) prefSet.findPreference(SHOW_MEMBAR_RECENTS);
-        mRecentsFullscreen = (SwitchPreference) prefSet.findPreference(SHOW_FULLSCREEN_RECENTS);
-        mRecentsFullscreenClock = (SwitchPreference) prefSet.findPreference(FULLSCREEN_RECENTS_CLOCK);
-        mRecentsFullscreenDate = (SwitchPreference) prefSet.findPreference(FULLSCREEN_RECENTS_DATE);
         mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
         mRecentsDismissAll = (SwitchPreference) prefSet.findPreference(RECENTS_DISMISS_ALL);
 
@@ -156,9 +147,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         if (slimRecent) {
             mRecentsSearchBar.setEnabled(false);
             mRecentsMemBar.setEnabled(false);
-            mRecentsFullscreen.setEnabled(false);
-            mRecentsFullscreenClock.setEnabled(false);
-            mRecentsFullscreenDate.setEnabled(false);
+            mImmersiveRecents.setEnabled(false);
             mRecentsClearAll.setEnabled(false);
             mRecentsDismissAll.setEnabled(false);
             mRecentsClearAllLocation.setEnabled(false);
@@ -167,9 +156,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         } else {
             mRecentsSearchBar.setEnabled(true);
             mRecentsMemBar.setEnabled(true);
-            mRecentsFullscreen.setEnabled(true);
-            mRecentsFullscreenClock.setEnabled(true);
-            mRecentsFullscreenDate.setEnabled(true);
+            mImmersiveRecents.setEnabled(true);
             mRecentsClearAll.setEnabled(true);
             mRecentsDismissAll.setEnabled(true);
             mRecentsClearAllLocation.setEnabled(true);
