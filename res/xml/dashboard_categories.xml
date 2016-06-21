@@ -131,6 +131,17 @@
                     android:targetClass="com.lovejoy777.rroandlayersmanager.menu" />
         </dashboard-tile>
 
+        <!-- Substratum -->
+        <dashboard-tile
+                android:id="@+id/substratum"
+                android:icon="@drawable/ic_settings_substratum"
+                android:title="@string/substratum">
+		        <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="projekt.substratum"
+                    android:targetClass="projekt.substratum.MainActivity" />
+        </dashboard-tile>
+
     </dashboard-category>
 
     <!-- DEVICE -->

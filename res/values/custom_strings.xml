@@ -36,6 +36,7 @@
     <string name="profiles_add">Add</string>
     <string name="profile_choose_app">Choose app</string>
     <string name="profile_reset_title">Reset</string>
+    <string name="substratum">Substratum</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

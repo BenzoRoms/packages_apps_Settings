@@ -285,7 +285,8 @@ public class SettingsActivity extends Activity
             R.id.home_settings,
             R.id.dashboard,
             R.id.bitsyko_layers,
-            R.id.main_settings
+            R.id.main_settings,
+            R.id.substratum
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -1320,6 +1321,15 @@ public class SettingsActivity extends Activity
                     boolean supported = false;
                     try {
                         supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (!supported) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.substratum) {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("projekt.substratum", 0).versionCode > 0);
                     } catch (PackageManager.NameNotFoundException e) {
                     }
                     if (!supported) {
