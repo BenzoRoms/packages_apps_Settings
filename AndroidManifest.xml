@@ -819,7 +819,7 @@
 
         <activity android:name=".inputmethod.UserDictionaryAddWordActivity"
                   android:label="@string/user_dict_settings_title"
-                  android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar"
+                  android:theme="@style/Theme.Material.Light.Dialog.NoActionBar"
                   android:windowSoftInputMode="stateVisible"
                   android:noHistory="true"
                   android:excludeFromRecents="true">
@@ -1313,7 +1313,7 @@
         </activity>
 
         <activity android:name=".notification.ZenModeVoiceActivity"
-                android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar"
+                android:theme="@style/Theme.Material.Light.Dialog.NoActionBar"
                 android:label="@string/zen_mode_settings_title">
             <intent-filter>
                 <action android:name="android.settings.VOICE_CONTROL_DO_NOT_DISTURB_MODE" />
@@ -2158,7 +2158,7 @@
                   android:excludeFromRecents="true"
                   android:exported="true"
                   android:permission="android.permission.MANAGE_USB"
-                  android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar">
+                  android:theme="@style/Theme.Material.Light.Dialog.NoActionBar">
         </activity>
 
         <activity android:name=".RemoteBugreportActivity"
@@ -2878,7 +2878,7 @@
         </activity>
 
         <activity android:name=".sim.SimPreferenceDialog"
-            android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar"
+            android:theme="@style/Theme.Material.Light.Dialog.NoActionBar"
             android:excludeFromRecents="true">
         </activity>
 
@@ -2896,7 +2896,7 @@
         </activity>
 
         <activity android:name=".sim.SimDialogActivity"
-                android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar"
+                android:theme="@style/Theme.Material.Light.Dialog.NoActionBar"
                 android:label="@string/sim_settings_title"
                 android:excludeFromRecents="true">
             <intent-filter>
