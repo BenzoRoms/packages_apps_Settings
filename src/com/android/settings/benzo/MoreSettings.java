@@ -33,6 +33,7 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -46,10 +47,12 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
     private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
     private static final String PREF_TRANSPARENT_VOLUME_DIALOG = "transparent_volume_dialog";
     private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
+    private static final String KEY_VOLUME_DIALOG_TIMEOUT = "volume_dialog_timeout";
 
     private ListPreference mMsob;
     private SeekBarPreference mVolumeDialogAlpha;
     private SwitchPreference mShowCpuInfo;
+    private SlimSeekBarPreference mVolumeDialogTimeout;
 
     @Override
     protected int getMetricsCategory() {
@@ -74,15 +77,25 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
 
         // Volume dialog alpha
         mVolumeDialogAlpha = (SeekBarPreference) findPreference(PREF_TRANSPARENT_VOLUME_DIALOG);
-        int volumeDialogAlpha = Settings.System.getInt(resolver,
+        int volumeDialogAlpha = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
         mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
         mVolumeDialogAlpha.setOnPreferenceChangeListener(this);
+
+        // Volume dialog timeout seekbar
+        mVolumeDialogTimeout = (SlimSeekBarPreference) findPreference(KEY_VOLUME_DIALOG_TIMEOUT);
+        mVolumeDialogTimeout.setDefault(3000);
+        mVolumeDialogTimeout.isMilliseconds(true);
+        mVolumeDialogTimeout.setInterval(1);
+        mVolumeDialogTimeout.minimumValue(100);
+        mVolumeDialogTimeout.multiplyValue(100);
+        mVolumeDialogTimeout.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        updateState();
     }
 
     @Override
@@ -108,6 +121,10 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
             return true;
+        } else if (preference == mVolumeDialogTimeout) {
+            int volumeDialogTimeout = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.VOLUME_DIALOG_TIMEOUT, volumeDialogTimeout);
         }
         return false;
     }
@@ -122,6 +139,17 @@ public class MoreSettings extends SettingsPreferenceFragment implements OnPrefer
             getActivity().startService(service);
         } else {
             getActivity().stopService(service);
+        }
+    }
+
+    private void updateState() {
+        final Activity activity = getActivity();
+
+        if (mVolumeDialogTimeout != null) {
+            final int volumeDialogTimeout = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_DIALOG_TIMEOUT, 3000);
+            // minimum 100 is 1 interval of the 100 multiplier
+            mVolumeDialogTimeout.setInitValue((volumeDialogTimeout / 100) - 1);
         }
     }
 }

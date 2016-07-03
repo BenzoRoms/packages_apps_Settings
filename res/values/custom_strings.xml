@@ -64,6 +64,7 @@
     <string name="more_settings_title">More Settings</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="benzo_extras_windows_title">Windows</string>
+    <string name="volume_cat_title">Volume Options</string>
 
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification Drawer</string>
@@ -1463,5 +1464,8 @@
     <!-- Audio ducking -->
     <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
     <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+
+    <!-- Volume dialog timeout -->
+    <string name="volume_dialog_timeout_title">Volume dialog timeout</string>
 
 </resources>

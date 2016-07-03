@@ -41,15 +41,6 @@
             android:summary="@string/toast_icon_summary"
             android:defaultValue="true" />
 
-        <com.android.settings.benzo.SeekBarPreference
-            android:key="transparent_volume_dialog"
-            android:title="@string/volume_dialog_transparency"
-            android:max="255"
-            settings:minimum="0"
-            settings:unitsLeft=""
-            settings:unitsRight=""
-            android:persistent="false" />
-
         <PreferenceCategory
                 android:key="screenshot_cat"
                 android:title="@string/screenshot_cat_title">
@@ -71,6 +62,25 @@
                 android:title="@string/screenshot_crop_behavior_title"
                 android:summary="@string/screenshot_crop_behavior_summary"
                 android:defaultValue="false" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
+                android:key="volume_cat"
+                android:title="@string/volume_cat_title">
+
+            <SlimSeekBarPreference
+                android:key="volume_dialog_timeout"
+                android:title="@string/volume_dialog_timeout_title" />
+
+            <com.android.settings.benzo.SeekBarPreference
+                android:key="transparent_volume_dialog"
+                android:title="@string/volume_dialog_transparency"
+                android:max="255"
+                settings:minimum="0"
+                settings:unitsLeft=""
+                settings:unitsRight=""
+                android:persistent="false" />
 
         </PreferenceCategory>
 
