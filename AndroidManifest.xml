@@ -1944,6 +1944,8 @@
 
 	<activity android:name=".benzo.Density" />
 
+	<activity android:name=".benzo.Changelog" />
+
         <!-- Benzo OTA Update -->
         <activity android:name="com.benzo.ota.activities.MainActivity" />
 
