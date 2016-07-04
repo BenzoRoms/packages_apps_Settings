@@ -3141,6 +3141,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter> 
         </activity>
+	<activity android:name=".benzo.Changelog" />
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>
 </manifest>
