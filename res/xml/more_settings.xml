@@ -51,6 +51,12 @@
                 android:key="volume_cat"
                 android:title="@string/volume_cat_title">
 
+            <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="volume_dialog_force_expanded"
+                android:title="@string/volume_dialog_force_expanded_title"
+                android:summary="@string/volume_dialog_force_expanded_summary"
+                android:defaultValue="false" />
+
             <SlimSeekBarPreference
                 android:key="volume_dialog_timeout"
                 android:title="@string/volume_dialog_timeout_title" />
