@@ -64,4 +64,7 @@
     <!-- DSLV fab color -->
     <color name="floating_action_button_touch_tint">#80ffffff</color>
 
+    <!-- Changelog Colors -->
+    <color name="changelog_title_color">@color/theme_accent</color>
+
 </resources>
