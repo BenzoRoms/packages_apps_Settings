@@ -60,7 +60,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.benzo.DisplayRotation;
-import com.android.settings.benzo.util.Helpers;
 import com.android.settings.dashboard.DashboardContainerView;
 
 import java.util.ArrayList;
@@ -563,7 +562,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 final UiModeManager uiManager = (UiModeManager) getSystemService(
                         Context.UI_MODE_SERVICE);
                 uiManager.setNightMode(value);
-                Helpers.restartSystemUI();
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }
