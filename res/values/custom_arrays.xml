@@ -453,6 +453,7 @@
         <item>@string/shortcut_action_ring_vib_silent</item>
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_camera</item>
         <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_assist</item>
@@ -475,6 +476,7 @@
         <item>**ring_vib_silent**</item>
         <item>**power**</item>
         <item>**screenshot**</item>
+        <item>**screenrecord**</item>
         <item>**camera**</item>
         <item>**torch**</item>
         <item>**assist**</item>
@@ -490,6 +492,7 @@
         <item>@string/shortcut_action_reboot</item>
         <item>@string/shortcut_action_airplane</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_sound</item>
@@ -503,6 +506,7 @@
         <item>**reboot**</item>
         <item>**airplane**</item>
         <item>**screenshot**</item>
+        <item>**screenrecord**</item>
         <item>**torch**</item>
         <item>**expanded_desktop**</item>
         <item>**sound**</item>
@@ -540,6 +544,7 @@
         <item>@string/shortcut_action_qs</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_camera</item>
         <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_expanded_desktop</item>
@@ -565,6 +570,7 @@
         <item>**settings_panel**</item>
         <item>**ime**</item>
         <item>**screenshot**</item>
+        <item>**screenrecord**</item>
         <item>**camera**</item>
         <item>**torch**</item>
         <item>**expanded_desktop**</item>
@@ -689,6 +695,7 @@
         <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_recents</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_lastapp</item>
         <item>@string/shortcut_action_kill</item>
@@ -714,6 +721,7 @@
         <item>**smart_pulldown**</item>
         <item>**recents**</item>
         <item>**screenshot**</item>
+        <item>**screenrecord**</item>
         <item>**ime**</item>
         <item>**lastapp**</item>
         <item>**kill**</item>
