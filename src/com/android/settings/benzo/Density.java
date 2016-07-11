@@ -75,7 +75,7 @@ public class Density extends SettingsPreferenceFragment implements
 
         mContext = getActivity().getApplicationContext();
 
-        String currentDensity = SystemProperties.get("persist.sys.lcd_density");
+        String currentDensity = SystemProperties.get("persist.sf.lcd_density");
         PreferenceScreen prefs = getPreferenceScreen();
 
         mStockDensity = (ListPreference) findPreference("stock_density");
@@ -208,7 +208,7 @@ public class Density extends SettingsPreferenceFragment implements
     private boolean setLcdDensity(int newDensity) {
         Helpers.getMount("rw");
         if (!CMDProcessor.runSuCommand(
-        "busybox sed -i 's|persist.sys.lcd_density=.*|" + "persist.sys.lcd_density" + "=" + newDensity + "|' " + "/system/build.prop")
+        "busybox sed -i 's|persist.sf.lcd_density=.*|" + "persist.sf.lcd_density" + "=" + newDensity + "|' " + "/system/build.prop")
         .success()) 
         {
             showRootDeniedInfoDialog();
