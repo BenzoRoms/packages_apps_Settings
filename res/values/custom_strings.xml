@@ -1153,6 +1153,8 @@
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
     <string name="appsidebar_float_mode_title">App Sidebar</string>
     <string name="appsidebar_float_mode_summary">Launch App Sidebar apps in floating window</string>
+    <string name="heads_up_floating">Heads Up</string>
+    <string name="heads_up_floating_summary">Launch Heads Up notifications in float mode</string>
 
     <!-- Breathing Notifications -->
     <string name="breathing_notifications_title">Breathing notifications</string>

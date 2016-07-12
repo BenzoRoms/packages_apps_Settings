@@ -49,6 +49,14 @@
             android:dependency="floating_window_mode"
             android:defaultValue="false" />
 
+        <!-- Heads Up Switch -->
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="floating_headsup"
+            android:title="@string/heads_up_floating"
+            android:summary="@string/heads_up_floating_summary"
+            android:dependency="floating_window_mode"
+            android:defaultValue="false" />
+
         <!-- Slim  and Pie Actions Floating Switch -->
         <SwitchPreference
             android:key="slim_action_floats"
