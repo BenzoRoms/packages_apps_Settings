@@ -528,10 +528,10 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
             updateNfcSoundMode();
             return true;
         } else if (preference == mRandomizeMac) {
-             SystemProperties.set(RANDOMIZE_MAC_PERSIST_PROP, (Boolean) newValue ? "0" : "0");
+             SystemProperties.set(RANDOMIZE_MAC_PERSIST_PROP, (Boolean) newValue ? "1" : "0");
              return true;
         } else if (preference == mRandomizeHost) {
-             SystemProperties.set(RANDOMIZE_HOST_PERSIST_PROP, (Boolean) newValue ? "0" : "0");
+             SystemProperties.set(RANDOMIZE_HOST_PERSIST_PROP, (Boolean) newValue ? "1" : "0");
              return true;
         }
         return false;
