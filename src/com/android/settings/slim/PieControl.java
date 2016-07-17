@@ -43,8 +43,6 @@ public class PieControl extends SettingsPreferenceFragment
     private static final String PIE_CONTROL = "pie_control";
     private static final String PIE_MENU = "pie_menu";
 
-    private static final int DLG_NAVIGATION_WARNING = 0;
-
     private SwitchPreference mPieControl;
     private ListPreference mPieMenuDisplay;
 
@@ -91,11 +89,6 @@ public class PieControl extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mPieControl) {
-            if (!((Boolean) newValue) && !Action.isNavBarEnabled(getActivity())
-                    && Action.isNavBarDefault(getActivity())) {
-                showDialogInner(DLG_NAVIGATION_WARNING);
-                return true;
-            }
             Settings.System.putInt(getContentResolver(),
                     Settings.System.PIE_CONTROLS, (Boolean) newValue ? 1 : 0);
         } else if (preference == mPieMenuDisplay) {
@@ -124,68 +117,5 @@ public class PieControl extends SettingsPreferenceFragment
     public void onPause() {
         super.onPause();
         getActivity().getContentResolver().unregisterContentObserver(mSettingsObserver);
-    }
-
-    private void showDialogInner(int id) {
-        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
-        newFragment.setTargetFragment(this, 0);
-        newFragment.show(getFragmentManager(), "dialog " + id);
-    }
-
-    public static class MyAlertDialogFragment extends DialogFragment {
-
-        public static MyAlertDialogFragment newInstance(int id) {
-            MyAlertDialogFragment frag = new MyAlertDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("id", id);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        PieControl getOwner() {
-            return (PieControl) getTargetFragment();
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            int id = getArguments().getInt("id");
-            switch (id) {
-                case DLG_NAVIGATION_WARNING:
-                    return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.attention)
-                    .setMessage(R.string.pie_warning_no_navigation_present)
-                    .setNegativeButton(R.string.dlg_no,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.PIE_CONTROLS, 0);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_SHOW, 0);
-                        }
-                    })
-                    .setPositiveButton(R.string.dlg_yes,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.PIE_CONTROLS, 0);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_SHOW, 1);
-
-                        }
-                    })
-                    .create();
-            }
-            throw new IllegalArgumentException("unknown id " + id);
-        }
-
-        @Override
-        public void onCancel(DialogInterface dialog) {
-            int id = getArguments().getInt("id");
-            switch (id) {
-                case DLG_NAVIGATION_WARNING:
-                    getOwner().mPieControl.setChecked(true);
-                    break;
-            }
-        }
     }
 }
