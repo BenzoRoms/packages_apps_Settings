@@ -38,7 +38,6 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -64,7 +63,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "WirelessSettings";
 
-    private static final String KEY_RANDOMIZE_MAC = "randomize_mac";
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_NFC_CATEGORY_SETTINGS = "nfc_category_settings";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
@@ -82,12 +80,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NFC_POLLING_MODE = "nfc_polling_mode";
     private static final String KEY_NFC_SOUND_MODE = "nfc_sound_mode";
 
-    private static final String RANDOMIZE_MAC_PERSIST_PROP = "persist.privacy.randomize_mac";
-
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
-
-    private SwitchPreference mRandomizeMac;
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
@@ -244,13 +238,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
         final boolean isSecondaryUser = myUserId != UserHandle.USER_OWNER;
 
         final Activity activity = getActivity();
-        if (isSecondaryUser) {
-            PreferenceScreen root = getPreferenceScreen();
-            root.removePreference(root.findPreference(KEY_RANDOMIZE_MAC));
-        } else {
-            mRandomizeMac = (SwitchPreference) findPreference(KEY_RANDOMIZE_MAC);
-            mRandomizeMac.setOnPreferenceChangeListener(this);
-        }
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
@@ -441,10 +428,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
 
-        if (mRandomizeMac != null) {
-            mRandomizeMac.setChecked(SystemProperties.getBoolean(RANDOMIZE_MAC_PERSIST_PROP, true));
-        }
-
         mAirplaneModeEnabler.resume();
         if (mNfcEnabler != null) {
             mNfcEnabler.resume();
@@ -517,9 +500,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
                     Settings.System.NFC_SOUND_MODE, newVal);
             updateNfcSoundMode();
             return true;
-        } else if (preference == mRandomizeMac) {
-             SystemProperties.set(RANDOMIZE_MAC_PERSIST_PROP, (Boolean) newValue ? "1" : "0");
-             return true;
         }
         return false;
     }
