@@ -65,7 +65,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "WirelessSettings";
 
     private static final String KEY_RANDOMIZE_MAC = "randomize_mac";
-    private static final String KEY_RANDOMIZE_HOST = "randomize_hostname";
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_NFC_CATEGORY_SETTINGS = "nfc_category_settings";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
@@ -84,13 +83,11 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NFC_SOUND_MODE = "nfc_sound_mode";
 
     private static final String RANDOMIZE_MAC_PERSIST_PROP = "persist.privacy.randomize_mac";
-    private static final String RANDOMIZE_HOST_PERSIST_PROP = "persist.privacy.randomize_host";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
     private SwitchPreference mRandomizeMac;
-    private SwitchPreference mRandomizeHost;
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
@@ -250,12 +247,9 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
         if (isSecondaryUser) {
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(root.findPreference(KEY_RANDOMIZE_MAC));
-            root.removePreference(root.findPreference(KEY_RANDOMIZE_HOST));
         } else {
             mRandomizeMac = (SwitchPreference) findPreference(KEY_RANDOMIZE_MAC);
             mRandomizeMac.setOnPreferenceChangeListener(this);
-            mRandomizeHost = (SwitchPreference) findPreference(KEY_RANDOMIZE_HOST);
-            mRandomizeHost.setOnPreferenceChangeListener(this);
         }
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
@@ -451,10 +445,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
             mRandomizeMac.setChecked(SystemProperties.getBoolean(RANDOMIZE_MAC_PERSIST_PROP, true));
         }
 
-        if (mRandomizeHost != null) {
-            mRandomizeHost.setChecked(SystemProperties.getBoolean(RANDOMIZE_HOST_PERSIST_PROP, true));
-        }
-
         mAirplaneModeEnabler.resume();
         if (mNfcEnabler != null) {
             mNfcEnabler.resume();
@@ -529,9 +519,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mRandomizeMac) {
              SystemProperties.set(RANDOMIZE_MAC_PERSIST_PROP, (Boolean) newValue ? "1" : "0");
-             return true;
-        } else if (preference == mRandomizeHost) {
-             SystemProperties.set(RANDOMIZE_HOST_PERSIST_PROP, (Boolean) newValue ? "1" : "0");
              return true;
         }
         return false;
