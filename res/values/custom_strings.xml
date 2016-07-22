@@ -1633,4 +1633,8 @@
     <!-- Memory -->
     <string name="memory_startup_apps_title">Apps started on boot</string>
 
+    <!-- Advanced data quick settings -->
+    <string name="qs_advanced_data_title">Advanced data tile</string>
+    <string name="qs_advanced_data_summary">Enable one tap action to enable or disable data</string>
+
 </resources>
