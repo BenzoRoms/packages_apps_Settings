@@ -150,7 +150,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
                 } catch (PackageManager.NameNotFoundException e) {
                 }
             }
-            if (mAppItem.key == Process.SYSTEM_UID) {
+            if (!UserHandle.isApp(mAppItem.key)) {
                 removePreference(KEY_UNRESTRICTED_DATA);
                 removePreference(KEY_RESTRICT_BACKGROUND);
             } else {
