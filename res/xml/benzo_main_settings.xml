@@ -82,14 +82,6 @@
              android:layout="@layout/preference_benzoextra_slimpie" 
              />
 
-        <!-- System App Remover -->
-        <PreferenceScreen
-            android:key="system_app_remover"
-            android:fragment="com.android.settings.benzo.fragments.SystemappRemover"
-            android:title="@string/system_app_remover"
-            android:layout="@layout/preference_benzoextra_systemappremover" 
-            />
-
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"

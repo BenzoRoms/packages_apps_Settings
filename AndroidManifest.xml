@@ -1964,8 +1964,6 @@
 
 	<activity android:name=".benzo.Changelog" />
 
-	<activity android:name=".benzo.fragments.SystemappRemover" />
-
         <!-- Benzo OTA Update -->
         <activity android:name="com.benzo.ota.activities.MainActivity" />
 

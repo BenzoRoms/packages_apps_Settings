@@ -1531,13 +1531,6 @@
     <string name="recents_full_screen_date_title">Show date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
 
-    <!-- System App Remover  -->
-    <string name="system_app_remover">System App Remover</string>
-    <string name="listsystem">list</string>
-    <string name="cancel">Cancel</string>
-    <string name="message_delete">Are you sure you want to delete this app?</string>
-    <string name="message_noselect">Nothing selected</string>
-
     <!-- Do Not Disturb volume toggle-->
     <string name="dnd_cat_title">Do not disturb</string>
     <string name="volume_down_zen_title">Volume down toggles dnd</string>
