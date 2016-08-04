@@ -64,6 +64,12 @@ limitations under the License.
         android:summary="@string/halo_unlock_ping_summary"
         android:defaultValue="false" />
 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="halo_color"
+        android:title="@string/halo_color_title"
+        android:summary="@string/halo_color_summary"
+        android:defaultValue="0xffbbbbbb" />
+
     <PreferenceScreen
         android:key="floating_windows"
         android:title="@string/halo_floating_windows"
