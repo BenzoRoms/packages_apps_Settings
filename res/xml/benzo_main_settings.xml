@@ -63,6 +63,14 @@
             android:layout="@layout/preference_benzoextra_gesture" 
             />
 
+        <!-- Halo -->
+        <PreferenceScreen
+            android:id="@+id/halo_settings"
+            android:title="@string/halo_settings_title"
+            android:fragment="com.android.settings.paranoid.Halo"
+            android:layout="@layout/preference_benzoextra_halo" 
+            />
+
         <!-- LMT PIE -->
         <Preference
             android:id="@+id/lmt_settings"
