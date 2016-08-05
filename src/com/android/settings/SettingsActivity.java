@@ -117,6 +117,7 @@ import com.android.settings.notification.ZenModeExternalRuleSettings;
 import com.android.settings.notification.ZenModePrioritySettings;
 import com.android.settings.notification.ZenModeSettings;
 import com.android.settings.notification.ZenModeScheduleRuleSettings;
+import com.android.settings.paranoid.Halo;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.search.DynamicIndexableContentMonitor;
@@ -372,7 +373,8 @@ public class SettingsActivity extends Activity
             FloatingWindows.class.getName(),
             AmbientSettings.class.getName(),
             HeadsUpSettings.class.getName(),
-            DisplayRotation.class.getName()
+            DisplayRotation.class.getName(),
+            Halo.class.getName()
     };
 
 
