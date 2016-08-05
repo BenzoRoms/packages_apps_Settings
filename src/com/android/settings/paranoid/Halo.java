@@ -25,6 +25,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.internal.logging.MetricsLogger;
@@ -44,12 +45,12 @@ public class Halo extends SettingsPreferenceFragment
     private static final String KEY_HALO_UNLOCK_PING = "halo_unlock_ping";
 
     private ListPreference mHaloSize;
-    private CheckBoxPreference mHaloHide;
-    private CheckBoxPreference mHaloPause;
+    private SwitchPreference mHaloHide;
+    private SwitchPreference mHaloPause;
     private ListPreference mHaloNotifyCount;
     private ListPreference mHaloMsgAnimate;
-    private CheckBoxPreference mHaloMsgBox;
-    private CheckBoxPreference mHaloUnlockPing;
+    private SwitchPreference mHaloMsgBox;
+    private SwitchPreference mHaloUnlockPing;
 
     private Context mContext;
 
@@ -66,12 +67,12 @@ public class Halo extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         mContext = getActivity();
 
-        mHaloHide = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_HIDE);
+        mHaloHide = (SwitchPreference) prefSet.findPreference(KEY_HALO_HIDE);
         mHaloHide.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.HALO_HIDE, 0) == 1);
 
         int isLowRAM = (!ActivityManager.isLowRamDeviceStatic()) ? 0 : 1;
-        mHaloPause = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_PAUSE);
+        mHaloPause = (SwitchPreference) prefSet.findPreference(KEY_HALO_PAUSE);
         mHaloPause.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.HALO_PAUSE, isLowRAM) == 1);
 
@@ -85,11 +86,11 @@ public class Halo extends SettingsPreferenceFragment
         }
         mHaloSize.setOnPreferenceChangeListener(this);
 
-        mHaloMsgBox = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_MSGBOX);
+        mHaloMsgBox = (SwitchPreference) prefSet.findPreference(KEY_HALO_MSGBOX);
         mHaloMsgBox.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.HALO_MSGBOX, 1) == 1);
 
-        mHaloUnlockPing = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_UNLOCK_PING);
+        mHaloUnlockPing = (SwitchPreference) prefSet.findPreference(KEY_HALO_UNLOCK_PING);
         mHaloUnlockPing.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.HALO_UNLOCK_PING, 0) == 1);
 
