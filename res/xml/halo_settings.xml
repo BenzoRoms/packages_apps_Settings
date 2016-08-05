@@ -64,4 +64,10 @@ limitations under the License.
         android:summary="@string/halo_unlock_ping_summary"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="floating_windows"
+        android:title="@string/halo_floating_windows"
+        android:fragment="com.android.settings.benzo.FloatingWindows"
+        android:summary="@string/halo_floating_windows_summary"/>
+
 </PreferenceScreen>
