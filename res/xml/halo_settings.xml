@@ -17,18 +17,26 @@ limitations under the License.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/halo_settings_title">
 
+    <com.android.settings.preference.SecureSettingSwitchPreference
+        android:key="halo_show_button"
+        android:title="@string/halo_show_button_title"
+        android:summary="@string/halo_show_button_summary"
+        android:defaultValue="true" />
+
     <ListPreference
         android:key="halo_size"
         android:dialogTitle="@string/halo_size_title"
         android:title="@string/halo_size_title"
         android:summary="@string/halo_size_summary"
         android:entries="@array/entries_halo_size"
-        android:entryValues="@array/values_halo_size" />
+        android:entryValues="@array/values_halo_size"
+        android:dependency="halo_show_button" />
 
     <SwitchPreference
         android:key="halo_hide"
         android:title="@string/halo_hide_title"
         android:summary="@string/halo_hide_summary"
+        android:dependency="halo_show_button"
         android:defaultValue="false" />
 
     <ListPreference
@@ -37,13 +45,15 @@ limitations under the License.
         android:title="@string/halo_notification_count_title"
         android:summary="@string/halo_notification_count_summary"
         android:entries="@array/entries_halo_notification_count"
-        android:entryValues="@array/values_halo_notification_count" />
+        android:entryValues="@array/values_halo_notification_count"
+        android:dependency="halo_show_button" />
 
     <SwitchPreference
         android:key="halo_msgbox"
         android:title="@string/halo_notification_msgbox_title"
         android:summary="@string/halo_notification_msgbox_summary"
-        android:defaultValue="true" />
+        android:dependency="halo_show_button"
+        android:defaultValue="true"/>
 
     <ListPreference  
         android:key="halo_msgbox_animation"
@@ -51,23 +61,27 @@ limitations under the License.
         android:title="@string/halo_msgbox_animation_title"
         android:summary="@string/halo_msgbox_animation_summary"
         android:entries="@array/entries_halo_msgbox_animation"
-        android:entryValues="@array/values_halo_msgbox_animation" />
+        android:entryValues="@array/values_halo_msgbox_animation"
+        android:dependency="halo_show_button" />
 
     <SwitchPreference
         android:key="halo_pause"
         android:title="@string/halo_pause_title"
-        android:summary="@string/halo_pause_summary" />
+        android:summary="@string/halo_pause_summary"
+        android:dependency="halo_show_button" />
 
     <SwitchPreference
         android:key="halo_unlock_ping"
         android:title="@string/halo_unlock_ping_title"
         android:summary="@string/halo_unlock_ping_summary"
+        android:dependency="halo_show_button"
         android:defaultValue="false" />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="halo_color"
         android:title="@string/halo_color_title"
         android:summary="@string/halo_color_summary"
+        android:dependency="halo_show_button"
         android:defaultValue="0xffbbbbbb" />
 
     <PreferenceScreen
