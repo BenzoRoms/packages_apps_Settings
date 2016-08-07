@@ -99,6 +99,7 @@ public class Halo extends SettingsPreferenceFragment
                 Settings.Secure.HALO_UNLOCK_PING, 0) == 1);
 
         mHaloColor = (ColorPickerPreference) prefSet.findPreference(KEY_HALO_COLOR);
+        mHaloColor.setAlphaSliderVisible(true);
         mHaloColor.setOnPreferenceChangeListener(this);
 
         mHaloNotifyCount = (ListPreference) prefSet.findPreference(KEY_HALO_NOTIFY_COUNT);
