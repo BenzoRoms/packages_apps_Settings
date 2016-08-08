@@ -702,6 +702,7 @@
         <item>@string/shortcut_action_recents</item>
         <item>@string/shortcut_action_screenshot</item>
         <item>@string/shortcut_action_screenrecord</item>
+        <item>@string/shortcut_action_nowontap</item>
         <item>@string/shortcut_action_onthego</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_lastapp</item>
@@ -729,6 +730,7 @@
         <item>**recents**</item>
         <item>**screenshot**</item>
         <item>**screenrecord**</item>
+        <item>**nowontap**</item>
         <item>**onthego**</item>
         <item>**ime**</item>
         <item>**lastapp**</item>
@@ -757,8 +759,13 @@
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_camera</item>
+        <item>@string/shortcut_action_torch</item>
+        <item>@string/shortcut_action_nowontap</item>
+        <item>@string/shortcut_action_assist</item>
         <item>@string/shortcut_action_voice_search</item>
         <item>@string/shortcut_action_search</item>
+        <item>@string/shortcut_action_onthego</item>
+        <item>@string/shortcut_action_app</item>
         <item>@string/shortcut_action_ring_vib</item>
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib_silent</item>
@@ -776,8 +783,13 @@
         <item>**kill**</item>
         <item>**expanded_desktop**</item>
         <item>**camera**</item>
+        <item>**torch**</item>
+        <item>**nowontap**</item>
+        <item>**assist**</item>
         <item>**voice_search**</item>
         <item>**search**</item>
+        <item>**onthego**</item>
+        <item>**app**</item>
         <item>**ring_vib**</item>
         <item>**ring_silent**</item>
         <item>**ring_vib_silent**</item>
