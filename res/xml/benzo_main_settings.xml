@@ -71,17 +71,6 @@
             android:layout="@layout/preference_benzoextra_halo" 
             />
 
-        <!-- LMT PIE -->
-        <Preference
-            android:id="@+id/lmt_settings"
-            android:title="@string/lmt_settings"
-            android:layout="@layout/preference_benzoextra_lmt_pie" >
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.noname81.lmt"
-                android:targetClass="com.noname81.lmt.LMT" />
-        </Preference>
-
         <!-- SlimPIE -->
         <PreferenceScreen
              android:key="pie_settings"
