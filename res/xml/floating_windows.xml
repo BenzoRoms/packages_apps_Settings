@@ -49,6 +49,13 @@
             android:dependency="floating_window_mode"
             android:defaultValue="false" />
 
+        <!-- HALO Switch -->
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="halo_float_notifications"
+            android:title="@string/halo_floating_notifications_title"
+            android:summary="@string/halo_floating_notifications_summary"
+            android:defaultValue="false" />
+
         <!-- Heads Up Switch -->
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="floating_headsup"
