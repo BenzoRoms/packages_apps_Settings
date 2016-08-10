@@ -78,6 +78,6 @@
     <color name="color_picker_help_summary_text_color">#b3ffffff</color>
 
     <!-- Changelog Colors -->
-    <color name="changelog_title_color">#009db4</color>
+    <color name="changelog_title_color">@color/theme_accent</color>
 
 </resources>
