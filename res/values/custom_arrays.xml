@@ -1581,4 +1581,14 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <!-- App Ops category tabs -->
+    <string-array name="app_ops_categories_benzo" translatable="false">
+        <item>@string/app_ops_categories_location</item>
+        <item>@string/app_ops_categories_personal</item>
+        <item>@string/app_ops_categories_messaging</item>
+        <item>@string/app_ops_categories_media</item>
+        <item>@string/app_ops_categories_device</item>
+        <item>@string/app_ops_categories_bootup</item>
+    </string-array>
 </resources>
