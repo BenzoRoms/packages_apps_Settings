@@ -16,10 +16,21 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/benzo_extras_windows_title">
 
     <PreferenceCategory
-        android:title="@string/floating_master_switch">
+        android:title="@string/windows_multi_title">
+
+        <SwitchPreference
+            android:key="enable_multi_window"
+            android:title="@string/enable_multi_window"
+            android:summary="@string/enable_multi_window_summary"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/windows_floating_options">
 
         <!-- Floating Windows Master Switch -->
         <SwitchPreference
@@ -27,11 +38,6 @@
             android:title="@string/floating_windows"
             android:summary="@string/floating_windows_switch"
             android:defaultValue="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/floating_additional_options">
 
         <!-- App Sidebar Switch -->
         <com.android.settings.preference.SystemSettingSwitchPreference
@@ -54,6 +60,7 @@
             android:key="halo_float_notifications"
             android:title="@string/halo_floating_notifications_title"
             android:summary="@string/halo_floating_notifications_summary"
+            android:dependency="floating_window_mode"
             android:defaultValue="false" />
 
         <!-- Heads Up Switch -->

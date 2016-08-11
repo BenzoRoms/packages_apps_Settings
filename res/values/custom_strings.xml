@@ -104,6 +104,10 @@
     <string name="benzo_extras_windows_title">Windows</string>
     <string name="volume_cat_title">Volume Options</string>
 
+    <!-- Windows options -->
+    <string name="windows_multi_title">Multiwindow</string>
+    <string name="windows_floating_options">Floating Windows</string>
+
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification Drawer</string>
     <string name="notification_drawer_title">Notification Drawer</string>
@@ -1185,8 +1189,6 @@
     <!-- Floating Windows -->
     <string name="windows_title_category">Windows</string>
     <string name="shortcut_action_floating_windows">Floating Windows</string>
-    <string name="floating_master_switch">Master Switch</string>
-    <string name="floating_additional_options">Additional Float Options</string>
     <string name="floating_windows">Floating Windows</string>
     <string name="floating_windows_switch">Whether to allow global use of float mode, if this is off none of the below options will work DUH!!!</string>
     <string name="slim_action_floats">Slim Actions &amp; Pie</string>

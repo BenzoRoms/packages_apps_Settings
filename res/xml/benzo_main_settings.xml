@@ -186,8 +186,8 @@
         <!-- Window Settings -->
          <PreferenceScreen
             android:key="multitwindow"
-            android:fragment="com.android.settings.benzo.fragments.MultiWindow"
-            android:layout="@layout/preference_benzoextra_multiwindow"
+            android:fragment="com.android.settings.benzo.FloatingWindows"
+            android:layout="@layout/preference_benzoextra_windows"
             android:title="@string/benzo_extras_windows_title" 
             />
 

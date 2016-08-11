@@ -19,12 +19,16 @@ package com.android.settings.benzo;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -38,12 +42,15 @@ import android.view.MenuItem;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.List;
 
 public class FloatingWindows extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 
+    private static final String ENABLE_MULTI_WINDOW_KEY = "enable_multi_window";
+    private static final String MULTI_WINDOW_SYSTEM_PROPERTY = "persist.sys.debug.multi_window";
     private static final String FLOATING_WINDOW_MODE = "floating_window_mode";
     private static final String GESTURE_ANYWHERE_FLOATING = "gesture_anywhere_floating";
     private static final String SLIM_ACTION_FLOATS = "slim_action_floats";
@@ -51,6 +58,7 @@ public class FloatingWindows extends SettingsPreferenceFragment
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
+    private SwitchPreference mEnableMultiWindow;
     SwitchPreference mFloatingWindowMode;
     SwitchPreference mGestureAnywhereFloatingWindow;
     SwitchPreference mSlimActionFloatingWindow;
@@ -60,6 +68,8 @@ public class FloatingWindows extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final ContentResolver resolver = getActivity().getContentResolver();
+        mEnableMultiWindow = (SwitchPreference) findPreference(ENABLE_MULTI_WINDOW_KEY);
         refreshSettings();
     }
 
@@ -90,6 +100,14 @@ public class FloatingWindows extends SettingsPreferenceFragment
         setHasOptionsMenu(true);
     }
 
+    private static boolean showEnableMultiWindowPreference() {
+        return !"user".equals(Build.TYPE);
+    }
+
+    private void setEnableMultiWindow(boolean value) {
+        SystemProperties.set(MULTI_WINDOW_SYSTEM_PROPERTY, String.valueOf(value));
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_RESET, 0, R.string.reset)
@@ -106,6 +124,25 @@ public class FloatingWindows extends SettingsPreferenceFragment
              default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mEnableMultiWindow) {
+            if (mEnableMultiWindow.isChecked()) {
+                setEnableMultiWindow(true);
+            } else {
+                setEnableMultiWindow(false);
+            }
+        } else {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+        return false;
     }
 
     @Override
