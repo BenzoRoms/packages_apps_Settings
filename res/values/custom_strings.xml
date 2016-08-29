@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- General -->
+    <string name="header_category_benzo">Benzo</string>
+    <string name="benzo_settings_title">Benzo Extras</string>
+
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
