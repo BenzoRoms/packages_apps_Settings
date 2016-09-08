@@ -101,6 +101,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
         private AppearAnimationUtils mAppearAnimationUtils;
         private DisappearAnimationUtils mDisappearAnimationUtils;
+        private boolean mIsScale = false;
+        private final float mScale = 0.65f;
 
         // required constructor for fragments
         public ConfirmLockPatternFragment() {
@@ -122,6 +124,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
             mErrorTextView = (TextView) view.findViewById(R.id.errorText);
             mLeftSpacerLandscape = view.findViewById(R.id.leftSpacer);
             mRightSpacerLandscape = view.findViewById(R.id.rightSpacer);
+
+            resizePattern();
 
             // make it so unhandled touch events within the unlock screen go to the
             // lock pattern view.
@@ -215,6 +219,27 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                 updateStage(Stage.NeedToUnlock);
             }
             mCredentialCheckResultTracker.setListener(this);
+        }
+
+        private void resizePattern() {
+            if ((getActivity() != null) && getActivity().isInMultiWindowMode()) {
+                mIsScale = true;
+                ViewGroup.LayoutParams lp = mLockPatternView.getLayoutParams();
+                lp.width *=  mScale;
+                lp.height *= mScale;
+                mLockPatternView.setLayoutParams(lp);
+            }
+        }
+
+        @Override
+        public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
+            super.onMultiWindowModeChanged(isInMultiWindowMode);
+            if (!isInMultiWindowMode && mIsScale) {
+                ViewGroup.LayoutParams lp = mLockPatternView.getLayoutParams();
+                lp.width /=  mScale;
+                lp.height /= mScale;
+                mLockPatternView.setLayoutParams(lp);
+            }
         }
 
         @Override
