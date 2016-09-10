@@ -30,6 +30,11 @@
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
 
+    <!-- Display settings  -->
+    <string name="display_cat_label">Display</string>
+    <string name="gesture_cat_label">Gesture</string>
+    <string name="external_cat_label">External</string>
+
     <!-- Dev Options Enabled by Default -->
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
     <!-- ADB debugging notifications -->
