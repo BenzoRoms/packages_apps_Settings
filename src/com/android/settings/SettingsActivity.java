@@ -369,6 +369,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
             BenzoSettings.class.getName(),
+            LightsSettings.class.getName(),
     };
 
 

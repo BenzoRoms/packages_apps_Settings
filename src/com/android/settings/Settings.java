@@ -159,6 +159,7 @@ public class Settings extends SettingsActivity {
     public static class WifiInfoActivity extends SettingsActivity { /* empty */ }
 
     public static class BenzoSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class LightsSettingsActivity extends SettingsActivity { /* empty */ }
 
     // Categories.
     public static class WirelessSettings extends SettingsActivity { /* empty */ }
