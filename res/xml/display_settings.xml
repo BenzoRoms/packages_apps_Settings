@@ -74,12 +74,6 @@
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
 
-        <com.android.settings.preference.SystemSettingSwitchPreference
-                android:key="disable_settings_suggestions"
-                android:title="@string/disable_settings_suggestions_title"
-                android:summary="@string/disable_settings_suggestions_summary"
-                android:defaultValue="false" />
-
         <com.android.settingslib.RestrictedPreference
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"
@@ -95,6 +89,24 @@
             android:summary="@string/night_mode_summary"
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" /> -->
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+                android:key="dashboard_category"
+                android:title="@string/dashboard_category">
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="disable_settings_suggestions"
+                android:title="@string/disable_settings_suggestions_title"
+                android:summary="@string/disable_settings_suggestions_summary"
+                android:defaultValue="false" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="remove_tile_summary"
+                android:title="@string/remove_tile_summaries_title"
+                android:summary="@string/remove_tile_summaries_summary"
+                android:defaultValue="false" />
 
     </PreferenceCategory>
 
@@ -139,5 +151,7 @@
                 android:title="@string/display_vr_pref_title" />
 
     </PreferenceCategory>
+
+
 
 </PreferenceScreen>
