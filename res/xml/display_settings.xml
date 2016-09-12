@@ -81,12 +81,6 @@
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
 
-        <com.android.settings.preference.SystemSettingSwitchPreference
-                android:key="disable_settings_suggestions"
-                android:title="@string/disable_settings_suggestions_title"
-                android:summary="@string/disable_settings_suggestions_summary"
-                android:defaultValue="false" />
-
         <!-- Hide night mode for now
         <ListPreference
             android:key="night_mode"
@@ -105,6 +99,24 @@
                         android:targetPackage="@string/config_wallpaper_picker_package"
                         android:targetClass="@string/config_wallpaper_picker_class" />
         </com.android.settingslib.RestrictedPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+                android:key="dashboard_category"
+                android:title="@string/dashboard_category">
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="disable_settings_suggestions"
+                android:title="@string/disable_settings_suggestions_title"
+                android:summary="@string/disable_settings_suggestions_summary"
+                android:defaultValue="false" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="remove_tile_summary"
+                android:title="@string/remove_tile_summaries_title"
+                android:summary="@string/remove_tile_summaries_summary"
+                android:defaultValue="false" />
 
     </PreferenceCategory>
 
