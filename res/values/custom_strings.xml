@@ -38,6 +38,10 @@
     <string name="gesture_cat_label">Gesture</string>
     <string name="external_cat_label">External</string>
 
+    <!-- Settings suggestions  -->
+    <string name="disable_settings_suggestions_title">Disable suggestions</string>
+    <string name="disable_settings_suggestions_summary">Disable suggestions on the dashboard</string>
+
     <!-- Qucik Settings  -->
     <string name="notification_qstiles_title">Quick Settings</string>
 
