@@ -356,6 +356,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             WifiAPITest.class.getName(),
             WifiInfo.class.getName(),
             BenzoSettings.class.getName(),
+            LightsSettings.class.getName(),
     };
 
 
