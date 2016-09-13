@@ -58,6 +58,14 @@
             android:layout="@layout/preference_benzoextra_density" 
             />
 
+        <!-- Recents -->
+        <PreferenceScreen
+            android:id="@+id/recent_panel"
+            android:fragment="com.android.settings.benzo.RecentPanel"
+            android:title="@string/recents_settings_title"
+            android:layout="@layout/preference_benzoextra_recents"
+            />
+
         <!-- Quick Settings -->
         <PreferenceScreen
             android:id="@+id/quick_settings"
