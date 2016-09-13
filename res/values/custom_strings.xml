@@ -19,6 +19,7 @@
     <!-- General -->
     <string name="benzo_settings_title">Benzo Rom</string>
     <string name="benzo_dashboard_summary">Most extra features added into Benzo.</string>
+    <string name="recents_settings_title">Recents</string>
 
     <!-- Benzo version -->
     <string name="benzo_version">Benzo version</string>
