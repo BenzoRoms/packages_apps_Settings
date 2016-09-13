@@ -25,12 +25,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import android.preference.SwitchPreference;
+import android.support.v14.preference.SwitchPreference;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
@@ -51,6 +52,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "clock_date_display";
     private static final String STATUS_BAR_CLOCK_DATE_STYLE = "clock_date_style";
     private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "clock_date_format";
+    private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -61,6 +63,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private ListPreference mClockDateDisplay;
     private ListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
+    private SwitchPreference mStatusBarBrightnessControl;
 
     @Override
     protected int getMetricsCategory() {
@@ -115,6 +118,20 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             mClockDateFormat.setValue("EEE");
         }
 
+        mStatusBarBrightnessControl = (SwitchPreference) findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
+        mStatusBarBrightnessControl.setOnPreferenceChangeListener(this);
+        int statusBarBrightnessControl = Settings.System.getInt(getContentResolver(),
+                STATUS_BAR_BRIGHTNESS_CONTROL, 0);
+        mStatusBarBrightnessControl.setChecked(statusBarBrightnessControl != 0);
+        try {
+            if (Settings.System.getInt(getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                mStatusBarBrightnessControl.setEnabled(false);
+                mStatusBarBrightnessControl.setSummary(R.string.status_bar_brightness_control_info);
+            }
+        } catch (SettingNotFoundException e) {
+        }
+
         parseClockDateFormats();
     }
 
@@ -132,7 +149,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         AlertDialog dialog;
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mStatusBarClock) {
+        if (preference == mStatusBarBrightnessControl) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(
+                     resolver, STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarClock) {
             int clockStyle = Integer.parseInt((String) newValue);
             int index = mStatusBarClock.findIndexOfValue((String) newValue);
             Settings.System.putInt(
