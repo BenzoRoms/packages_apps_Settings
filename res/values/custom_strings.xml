@@ -25,6 +25,7 @@
     <string name="quicksettings_title">Quick Settings</string>
     <string name="kernel_settings_title">KernelAdiutor</string>
     <string name="benzoblock_settings_title">Adblocker</string>
+    <string name="recents_settings_title">Recents</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Benzo version</string>
