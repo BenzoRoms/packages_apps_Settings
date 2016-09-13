@@ -1,9 +1,9 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
+    <!--Preference
         android:layout="@layout/preference_warning"
-        android:selectable="false" />
+        android:selectable="false" /-->
 
     <Preference
         android:title="@string/su_dialog_error_title"

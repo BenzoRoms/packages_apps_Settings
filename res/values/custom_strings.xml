@@ -23,6 +23,8 @@
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
     <string name="quicksettings_title">Quick Settings</string>
+    <string name="kernel_settings_title">KernelAdiutor</string>
+    <string name="benzoblock_settings_title">Adblocker</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Benzo version</string>
