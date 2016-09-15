@@ -104,4 +104,8 @@
     <!-- Text size of the color picker help screen summary text -->
     <dimen name="color_picker_help_screen_summary_text_size">12sp</dimen>
 
+    <!-- Notification light -->
+    <dimen name="alert_dialog_padding_material">20dp</dimen>
+    <dimen name="oval_notification_size">26dp</dimen>
+
 </resources>
