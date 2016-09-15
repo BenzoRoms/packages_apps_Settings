@@ -60,6 +60,7 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.applications.AdvancedAppSettings;
+import com.android.settings.applications.AppOpsSummary;
 import com.android.settings.applications.DrawOverlayDetails;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
@@ -237,6 +238,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.DataUsageSummaryActivity.class.getName(),
             Settings.SimSettingsActivity.class.getName(),
             Settings.WirelessSettingsActivity.class.getName(),
+            //benzo
+            Settings.AppOpsSummaryActivity.class.getName(),
             //device_section
             Settings.HomeSettingsActivity.class.getName(),
             Settings.SoundSettingsActivity.class.getName(),
