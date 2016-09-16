@@ -31,17 +31,6 @@
             android:layout="@layout/preference_benzoextra_buttons" 
 	    />
 
-        <!-- Kernel -->
-        <Preference
-             android:id="@+id/kernel_settings"
-             android:title="@string/kernel_settings_title" 
-             android:layout="@layout/preference_benzoextra_kernel" >
-             <intent
-                 android:action="android.intent.action.MAIN"
-                 android:targetPackage="com.grarak.kerneladiutor"
-                 android:targetClass="com.grarak.kerneladiutor.activities.MainActivity" />
-        </Preference>
-
         <!-- Density Changer -->
         <PreferenceScreen
             android:key="density_changer"

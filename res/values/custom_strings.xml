@@ -23,7 +23,7 @@
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
     <string name="quicksettings_title">Quick Settings</string>
-    <string name="kernel_settings_title">KernelAdiutor</string>
+    <string name="kerneladiutor_title">Kernel</string>
     <string name="benzoblock_settings_title">Adblocker</string>
     <string name="recents_settings_title">Recents</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
