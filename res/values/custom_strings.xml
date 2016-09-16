@@ -28,6 +28,7 @@
     <string name="benzoblock_settings_title">Adblocker</string>
     <string name="recents_settings_title">Recents</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
+    <string name="benzo_extras_more">More</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Benzo version</string>
