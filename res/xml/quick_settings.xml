@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notification_qstiles_title">
 
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_wifi_easy_toggle"
+            android:title="@string/qs_wifi_easy_toggle_title"
+            android:summary="@string/qs_wifi_easy_toggle_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="qs_tile_animation_style"
             android:title="@string/qs_tile_animation_style_title"
