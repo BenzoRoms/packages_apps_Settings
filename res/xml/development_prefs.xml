@@ -18,13 +18,6 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/development_settings_title">
 
-    <ListPreference
-        android:key="media_scanner_on_boot"
-        android:title="@string/media_scanner_on_boot_title"
-        android:persistent="false"
-        android:entries="@array/media_scanner_on_boot_entries"
-        android:entryValues="@array/media_scanner_on_boot_values" />
-
     <SwitchPreference
         android:key="advanced_reboot"
         android:title="@string/advanced_reboot_title"
@@ -353,11 +346,6 @@
             android:key="show_cpu_usage"
             android:title="@string/show_cpu_usage"
             android:summary="@string/show_cpu_usage_summary"/>
-
-        <SwitchPreference
-            android:key="show_cpu_info"
-            android:title="@string/show_cpu_info"
-            android:summary="@string/show_cpu_info_summary"/>
 
         <ListPreference
             android:key="track_frame_time"

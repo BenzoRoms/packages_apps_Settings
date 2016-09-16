@@ -147,7 +147,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String SIMULATE_COLOR_SPACE = "simulate_color_space";
     private static final String USB_AUDIO_KEY = "usb_audio";
     private static final String SHOW_CPU_USAGE_KEY = "show_cpu_usage";
-    private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
     private static final String FORCE_HARDWARE_UI_KEY = "force_hw_ui";
     private static final String FORCE_MSAA_KEY = "force_msaa";
     private static final String TRACK_FRAME_TIME_KEY = "track_frame_time";
@@ -220,8 +219,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
 
-    private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
-
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
 
@@ -288,7 +285,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mShowHwLayersUpdates;
     private SwitchPreference mDebugLayout;
     private SwitchPreference mForceRtlLayout;
-    private SwitchPreference mShowCpuInfo;
     private ListPreference mDebugHwOverdraw;
     private ListPreference mLogdSize;
     private ListPreference mLogpersist;
@@ -317,8 +313,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mForceResizable;
 
     private SwitchPreference mColorTemperaturePreference;
-
-    private ListPreference mMSOB;
 
     private SwitchPreference mAdvancedReboot;
 
@@ -409,10 +403,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mAllPrefs.add(mPassword);
 	mAdvancedReboot = findAndInitSwitchPref(ADVANCED_REBOOT_KEY);
 
-        mMSOB = (ListPreference) findPreference(MEDIA_SCANNER_ON_BOOT);
-        mAllPrefs.add(mMSOB);
-        mMSOB.setOnPreferenceChangeListener(this);
-
         if (!mUm.isAdminUser()) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
@@ -444,7 +434,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mShowCpuUsage = findAndInitSwitchPref(SHOW_CPU_USAGE_KEY);
         mForceHardwareUi = findAndInitSwitchPref(FORCE_HARDWARE_UI_KEY);
         mForceMsaa = findAndInitSwitchPref(FORCE_MSAA_KEY);
-        mShowCpuInfo = findAndInitSwitchPref(SHOW_CPU_INFO_KEY);
         mTrackFrameTime = addListPreference(TRACK_FRAME_TIME_KEY);
         mShowNonRectClip = addListPreference(SHOW_NON_RECTANGULAR_CLIP_KEY);
         mShowHwScreenUpdates = findAndInitSwitchPref(SHOW_HW_SCREEN_UPDATES_KEY);
@@ -721,7 +710,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateShowTouchesOptions();
         updateFlingerOptions();
         updateCpuUsageOptions();
-        updateCpuInfoOptions();
         updateHardwareUiOptions();
         updateMsaaOptions();
         updateTrackFrameTimeOptions();
@@ -751,7 +739,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateWebViewMultiprocessOptions();
         updateWebViewProviderOptions();
         updateOemUnlockOptions();
-        updateMSOBOptions();
         if (mColorTemperaturePreference != null) {
             updateColorTemperature();
         }
@@ -798,25 +785,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
     }
 
-    private void resetMSOBOptions() {
-        Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.MEDIA_SCANNER_ON_BOOT, 0);
-    }
-
-    private void writeMSOBOptions(Object newValue) {
-        Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.MEDIA_SCANNER_ON_BOOT,
-                Integer.valueOf((String) newValue));
-        updateMSOBOptions();
-    }
-
-    private void updateMSOBOptions() {
-        int value = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.MEDIA_SCANNER_ON_BOOT, 0);
-        mMSOB.setValue(String.valueOf(value));
-        mMSOB.setSummary(mMSOB.getEntry());
-    }
-
     private void resetDangerousOptions() {
         mDontPokeProperties = true;
         for (int i=0; i< mResetSwitchPrefs.size(); i++) {
@@ -828,7 +796,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
         resetDebuggerOptions();
         writeLogpersistOption(null, true);
-        resetMSOBOptions();
         writeLogdSizeOption(null);
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
@@ -1805,25 +1772,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
     }
 
-    private void updateCpuInfoOptions() {
-        updateSwitchPreference(mShowCpuInfo, Settings.Global.getInt(getActivity().getContentResolver(),
-                Settings.Global.SHOW_CPU, 0) != 0);
-    }
-
-    private void writeCpuInfoOptions() {
-        boolean value = mShowCpuInfo.isChecked();
-        Settings.Global.putInt(getActivity().getContentResolver(),
-                Settings.Global.SHOW_CPU, value ? 1 : 0);
-        Intent service = (new Intent())
-                .setClassName("com.android.systemui", "com.android.systemui.CPUInfoService");
-        if (value) {
-            getActivity().startService(service);
-        } else {
-            getActivity().stopService(service);
-        }
-    }
-
-
     private void writeImmediatelyDestroyActivitiesOptions() {
         try {
             ActivityManagerNative.getDefault().setAlwaysFinish(
@@ -2133,8 +2081,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeDisableOverlaysOption();
         } else if (preference == mShowCpuUsage) {
             writeCpuUsageOptions();
-        } else if (preference == mShowCpuInfo) {
-            writeCpuInfoOptions();
         } else if (preference == mImmediatelyDestroyActivities) {
             writeImmediatelyDestroyActivitiesOptions();
         } else if (preference == mShowAllANRs) {
@@ -2260,9 +2206,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == mSimulateColorSpace) {
             writeSimulateColorSpace(newValue);
-            return true;
-        } else if (preference == mMSOB) {
-            writeMSOBOptions(newValue);
             return true;
         }
         return false;
