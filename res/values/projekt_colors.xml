@@ -30,4 +30,8 @@
     <color name="condition_card_first_button_text_color">?android:attr/textColorPrimaryInverse</color>
     <color name="condition_card_second_button_text_color">?android:attr/textColorPrimaryInverse</color>
 
+    <!-- Dashboard category and tile -->
+    <color name="dashboard_category_title_background">@color/card_background</color>
+    <color name="selectable_card_background">@color/card_background</color>
+
 </resources>
