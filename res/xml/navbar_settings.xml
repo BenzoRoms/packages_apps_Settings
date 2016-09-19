@@ -16,4 +16,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/navbar_settings_title">
 
+    <com.android.settings.preference.SystemSettingSwitchPreference
+        android:key="navigation_bar_enabled"
+        android:title="@string/enable_navigation_bar_title"
+        android:summary="@string/enable_navigation_bar_summary"
+        android:defaultValue="true" />
+
 </PreferenceScreen>
