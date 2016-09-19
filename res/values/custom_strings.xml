@@ -833,6 +833,8 @@
     <!-- Navbar Settings -->
     <string name="enable_navigation_bar_title">Enable navigation bar</string>
     <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
+    <string name="navbar_tuner_title">Edit navigation bar</string>
+    <string name="navbar_tuner_summary">Edit the navigation bar through the tuner</string>
 
    <!-- App details: open play store link if app is user installed -->
    <string name="app_play_store">Google Play</string>
