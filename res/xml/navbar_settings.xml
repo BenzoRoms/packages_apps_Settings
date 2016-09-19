@@ -22,4 +22,12 @@
         android:summary="@string/enable_navigation_bar_summary"
         android:defaultValue="true" />
 
+    <PreferenceScreen
+            android:title="@string/navbar_tuner_title"
+            android:summary="@string/navbar_tuner_summary" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.NavbarActivity" />
+    </PreferenceScreen>
+
 </PreferenceScreen>
