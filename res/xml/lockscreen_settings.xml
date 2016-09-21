@@ -15,26 +15,34 @@
     android:title="@string/benzo_extras_lockscreen"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="keyguard_show_clock"
-        android:title="@string/keyguard_statusbar_clock_title"
-        android:summary="@string/keyguard_statusbar_clock_summary" />
+    <PreferenceCategory
+        android:key="lockscreen_clock_and_date"
+        android:title="@string/lockscreen_clock_and_date_category" />
 
-     <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="hide_lockscreen_clock"
-        android:title="@string/hide_lockscreen_clock_title"
-        android:defaultValue="true" />
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="keyguard_show_clock"
+            android:title="@string/keyguard_statusbar_clock_title"
+            android:summary="@string/keyguard_statusbar_clock_summary" />
 
-     <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="hide_lockscreen_date"
-        android:title="@string/hide_lockscreen_date_title"
-        android:defaultValue="true" />
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="hide_lockscreen_clock"
+            android:title="@string/hide_lockscreen_clock_title"
+            android:defaultValue="true" />
 
-     <PreferenceScreen
-        android:key="lock_clock_fonts"
-        android:title="@string/lock_clock_font_title"
-        android:summary="@string/lock_clock_font_summary"
-        android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="hide_lockscreen_date"
+            android:title="@string/hide_lockscreen_date_title"
+            android:defaultValue="true" />
+
+    <PreferenceCategory
+        android:key="lockscreen_other"
+        android:title="@string/lockscreen_other_category" />
+
+        <PreferenceScreen
+            android:key="lock_clock_fonts"
+            android:title="@string/lock_clock_font_title"
+            android:summary="@string/lock_clock_font_summary"
+            android:fragment="com.android.settings.benzo.fragments.LockClockFonts" />
 
      <PreferenceCategory
          android:key="locksystem_category"

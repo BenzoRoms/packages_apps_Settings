@@ -17,23 +17,27 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/navbar_settings_title">
 
-    <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="navigation_bar_enabled"
-        android:title="@string/enable_navigation_bar_title"
-        android:summary="@string/enable_navigation_bar_summary"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="navigation_main"
+        android:title="@string/navigation_main_category" />
 
-    <PreferenceScreen
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="navigation_bar_enabled"
+            android:title="@string/enable_navigation_bar_title"
+            android:summary="@string/enable_navigation_bar_summary"
+            android:defaultValue="true" />
+
+        <PreferenceScreen
             android:title="@string/navbar_tuner_title"
             android:summary="@string/navbar_tuner_summary" >
-        <intent android:action="android.intent.action.MAIN"
+            <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.NavbarActivity" />
-    </PreferenceScreen>
+        </PreferenceScreen>
 
     <PreferenceCategory
         android:key="navigation_other"
-        android:title="@string/navigation_other_category" >
+        android:title="@string/navigation_other_category" />
 
         <SwitchPreference
             android:key="kill_app_longpress_back"
@@ -49,7 +53,5 @@
             settings:unitsRight="ms"
             android:dependency="kill_app_longpress_back"
             android:persistent="false" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

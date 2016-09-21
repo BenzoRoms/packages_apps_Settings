@@ -19,17 +19,9 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notification_qstiles_title">
 
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="qs_wifi_easy_toggle"
-            android:title="@string/qs_wifi_easy_toggle_title"
-            android:summary="@string/qs_wifi_easy_toggle_summary"
-            android:defaultValue="false" />
-
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="quick_settings_vibrate"
-            android:title="@string/quick_settings_vibrate_title"
-            android:summary="@string/quick_settings_vibrate_summary"
-            android:defaultValue="false"/>
+    <PreferenceCategory
+        android:key="quicksettings_animation"
+        android:title="@string/quicksettings_animation_category" />
 
         <ListPreference
             android:key="qs_tile_animation_style"
@@ -51,5 +43,21 @@
             android:entries="@array/qs_tile_animation_interpolator_entries"
             android:entryValues="@array/qs_tile_animation_interpolator_values"
             android:persistent="false" />
+
+    <PreferenceCategory
+        android:key="quicksettings_tiles"
+        android:title="@string/quicksettings_tiles_category" />
+
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_wifi_easy_toggle"
+            android:title="@string/qs_wifi_easy_toggle_title"
+            android:summary="@string/qs_wifi_easy_toggle_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="quick_settings_vibrate"
+            android:title="@string/quick_settings_vibrate_title"
+            android:summary="@string/quick_settings_vibrate_summary"
+            android:defaultValue="false"/>
 
 </PreferenceScreen>
