@@ -33,7 +33,6 @@
     <string name="benzo_settings_title">Benzo Extras</string>
     <string name="benzo_ex_apps_title">Applications</string>
     <string name="benzo_ex_settings_title">System Settings</string>
-    <string name="statusbar_settings_title">Statusbar</string>
     <string name="bitsyko_layers">Layers Manager</string>
     <string name="ok">Okay</string>
     <string name="quicksettings_title">Quick Settings</string>
@@ -43,16 +42,15 @@
     <string name="recents_settings_title">Recents</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
     <string name="benzo_extras_more">More</string>
+
+    <!-- Navigation bar options -->
     <string name="navbar_settings_title">Navigation Bar</string>
+    <string name="navigation_main_category">Main Options</string>
     <string name="navigation_other_category">Other</string>
 
-    <!-- About phone screen,  Mod Version -->
-    <string name="mod_version">Benzo version</string>
-    <string name="mod_version_default">Unknown</string>
-
-    <!-- GCC kernel version info -->
-    <string name="sm_kernel">Gcc kernel</string>
-    <string name="sm_kernel_default">Unknown</string>
+    <!-- Statusbar options -->
+    <string name="statusbar_settings_title">Statusbar</string>
+    <string name="statusbar_options">Options</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
@@ -66,6 +64,21 @@
 
     <!-- Qucik Settings  -->
     <string name="notification_qstiles_title">Quick Settings</string>
+    <string name="quicksettings_animation_category">Animations</string>
+    <string name="quicksettings_tiles_category">Tile Options</string>
+
+    <!-- Lockscreen Settings  -->
+    <string name="lockscreen_shortcuts_category">Shortcuts</string>
+    <string name="lockscreen_clock_and_date_category">Clock &amp; Date</string>
+    <string name="lockscreen_other_category">Other</string>
+
+    <!-- About phone screen,  Mod Version -->
+    <string name="mod_version">Benzo version</string>
+    <string name="mod_version_default">Unknown</string>
+
+    <!-- GCC kernel version info -->
+    <string name="sm_kernel">Gcc kernel</string>
+    <string name="sm_kernel_default">Unknown</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
@@ -362,9 +375,10 @@
     <string name="volume_keys_control_media_stream_title">Controls media volume</string>
     <string name="volume_keys_control_media_stream_summary">Force the volume keys to always control media stream</string>
 
-    <string name="lockscreen_shortcuts_category">Shortcuts</string>
+    <!-- Lockscreen torch -->
     <string name="keyguard_torch_title">Lockscreen torch</string>
     <string name="keyguard_torch_summary">Longpress power button with screen off turns on torch</string>
+
     <!-- Lockscreen shortcuts -->
     <string name="lockscreen_shortcuts_title">Upper Shortcuts</string>
     <string name="lockscreen_shortcuts_summary">Change the shortcuts right under the lockscreen clock</string>
@@ -894,7 +908,7 @@
     <string name="toast_icon_summary">Display the app icon corresponding with the toast</string>
 
     <!-- Keyboard and Input ASS methods  -->
-    <string name="title_keyboard_input">Advanced options</string>
+    <string name="title_keyboard_input">IME options</string>
     <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
     <string name="disable_fullscreen_keyboard_summary">Landscape keyboard will never take up entire screen</string>
     <string name="keyboard_rotation_toggle_title">Auto keyboard rotation</string>
