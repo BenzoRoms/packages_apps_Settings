@@ -600,8 +600,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         updateFeatureSummary(Settings.Secure.ACCESSIBILITY_DISPLAY_DALTONIZER_ENABLED,
                 mDisplayDaltonizerPreferenceScreen);
 
-        updateFontSizeSummary(mFontSizePreferenceScreen);
-
         updateAutoclickSummary(mAutoclickPreferenceScreen);
 
         // Global gesture
@@ -634,17 +632,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 AccessibilityManager.AUTOCLICK_DELAY_DEFAULT);
         pref.setSummary(ToggleAutoclickPreferenceFragment.getAutoclickPreferenceSummary(
                 getResources(), delay));
-    }
-
-    private void updateFontSizeSummary(Preference pref) {
-        final float currentScale = Settings.System.getFloat(getContext().getContentResolver(),
-                Settings.System.FONT_SCALE, 1.0f);
-        final Resources res = getContext().getResources();
-        final String[] entries = res.getStringArray(R.array.entries_font_size);
-        final String[] strEntryValues = res.getStringArray(R.array.entryvalues_font_size);
-        final int index = ToggleFontSizePreferenceFragment.fontSizeValueToIndex(currentScale,
-                strEntryValues);
-        pref.setSummary(entries[index]);
     }
 
     private void updateLockScreenRotationCheckbox() {
