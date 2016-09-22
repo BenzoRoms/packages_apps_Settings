@@ -51,6 +51,8 @@
     <!-- Statusbar options -->
     <string name="statusbar_settings_title">Statusbar</string>
     <string name="statusbar_options">Options</string>
+    <string name="nightmode_tuner_title">Night mode</string>
+    <string name="nightmode_tuner_summary">Change the screen tint for night time</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
