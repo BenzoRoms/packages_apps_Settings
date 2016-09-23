@@ -1016,7 +1016,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
         if (SUPERSU_FRAGMENT.equals(fragmentName)) {
             Intent superSUIntent = new Intent();
-            superSUIntent.setClassName("eu.chainfire.supersu", "eu.chainfire.supersu.MainActivity");
+            superSUIntent.setClassName("me.phh.superuser", "com.koushikdutta.superuser.MainActivity");
             startActivity(superSUIntent);
             finish();
             return null;
