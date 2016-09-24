@@ -21,11 +21,10 @@
         android:key="navigation_main"
         android:title="@string/navigation_main_category" />
 
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="navigation_bar_enabled"
+        <SwitchPreference
+            android:key="enable_nav_bar"
             android:title="@string/enable_navigation_bar_title"
-            android:summary="@string/enable_navigation_bar_summary"
-            android:defaultValue="true" />
+            android:summary="@string/enable_navigation_bar_summary" />
 
         <PreferenceScreen
             android:title="@string/navbar_tuner_title"
@@ -42,7 +41,8 @@
         <SwitchPreference
             android:key="kill_app_longpress_back"
             android:title="@string/kill_app_longpress_back"
-            android:summary="@string/kill_app_longpress_back_summary"/>
+            android:summary="@string/kill_app_longpress_back_summary"
+            android:dependency="enable_nav_bar"/>
 
        <com.android.settings.SeekBarPreference
             android:key="long_press_kill_delay"

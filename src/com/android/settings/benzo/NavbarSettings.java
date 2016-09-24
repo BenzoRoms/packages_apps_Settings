@@ -15,9 +15,13 @@
 */
 package com.android.settings.benzo;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
@@ -33,9 +37,12 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 public class NavbarSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
-    private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
-    private static final String LONG_PRESS_KILL_DELAY = "long_press_kill_delay";
+    private static final String TAG = "NavBar";
+    private static final String ENABLE_NAVIGATION_BAR    = "enable_nav_bar";
+    private static final String KILL_APP_LONGPRESS_BACK  = "kill_app_longpress_back";
+    private static final String LONG_PRESS_KILL_DELAY    = "long_press_kill_delay";
 
+    private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mKillAppLongPressBack;
     private SeekBarPreference mLongpressKillDelay;
 
@@ -45,9 +52,17 @@ public class NavbarSettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.navbar_settings);
+
+        final Resources res = getActivity().getResources();
+
+        // navigation bar switch
+        mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
+        mEnableNavigationBar.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW, 1) == 1);
+        mEnableNavigationBar.setOnPreferenceChangeListener(this);
 
         // kill-app long press back
         mKillAppLongPressBack = (SwitchPreference) findPreference(KILL_APP_LONGPRESS_BACK);
@@ -65,18 +80,28 @@ public class NavbarSettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mKillAppLongPressBack) {
-            boolean value = (Boolean) objValue;
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mEnableNavigationBar) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_SHOW,
+                    ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mKillAppLongPressBack) {
+            boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(), KILL_APP_LONGPRESS_BACK,
                     value ? 1 : 0);
             return true;
         } else if (preference == mLongpressKillDelay) {
-            int killconf = (Integer) objValue;
+            int killconf = (Integer) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LONG_PRESS_KILL_DELAY, killconf);
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }
