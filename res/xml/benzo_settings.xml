@@ -118,6 +118,14 @@
             android:layout="@layout/preference_benzoextra_navbar"
             />
 
+       <!-- notifications -->
+       <PreferenceScreen
+            android:key="benzo_notifications_category"
+            android:fragment="com.android.settings.benzo.Notifications"
+            android:title="@string/benzo_extras_notifications" 
+            android:layout="@layout/preference_benzoextra_notifications"
+            />
+
         <!-- Recents -->
         <PreferenceScreen
             android:id="@+id/recent_panel"
