@@ -1049,4 +1049,8 @@
     <string name="led_color_red">Red</string>
     <string name="led_color_blue">Blue</string>
 
+    <!-- Lights settings, LED notification -->
+    <string name="qs_fancy_animation_title">Fancy QS animation</string>
+    <string name="qs_fancy_animation_summary">Enable a different animation effect when pulling down the statusbar</string>
+
 </resources>
