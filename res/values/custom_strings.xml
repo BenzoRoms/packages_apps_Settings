@@ -46,6 +46,7 @@
     <string name="benzo_extras_lockscreen">Lockscreen</string>
     <string name="benzo_extras_more">More</string>
     <string name="equalizer_settings_title">ViPER4Android</string>
+    <string name="benzo_extras_notifications">Notifications</string>
 
     <!-- Navigation bar options -->
     <string name="navbar_settings_title">Navigation Bar</string>
