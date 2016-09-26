@@ -600,10 +600,6 @@
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
 
-    <!-- Extra Info -->
-    <string name="lsextrainfo">Extra info</string>
-    <string name="lsextrainfo_summary">Display extra info for cpu, display, etc</string>
-
     <!-- Scramble pin -->
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
