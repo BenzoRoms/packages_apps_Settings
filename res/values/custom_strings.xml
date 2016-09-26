@@ -41,6 +41,7 @@
     <string name="quicksettings_title">Quick Settings</string>
     <string name="kerneladiutor_title">Kernel</string>
     <string name="substratum_title">Substratum</string>
+    <string name="superuser_title">Superuser</string>
     <string name="benzoblock_settings_title">Adblocker</string>
     <string name="recents_settings_title">Recents</string>
     <string name="benzo_extras_lockscreen">Lockscreen</string>
