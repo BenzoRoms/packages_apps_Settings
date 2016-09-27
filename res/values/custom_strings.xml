@@ -1101,4 +1101,8 @@
     <string name="omniswitch_first_time_message">Make sure you have enabled OmniSwitch. You can do this by using \"Settings\" below</string>
     <string name="omniswitch_settings_title">OmniSwitch</string>
 
+    <!-- Wake on Plug -->
+    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
+
 </resources>
