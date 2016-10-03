@@ -26,6 +26,26 @@
         </PreferenceScreen>
 
     <PreferenceCategory
+        android:key="statusbar_options"
+        android:title="@string/statusbar_options"/>
+
+        <SwitchPreference
+            android:key="status_bar_brightness_control"
+            android:summary="@string/status_bar_brightness_control_summary"
+            android:title="@string/status_bar_brightness_control_title" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+             android:key="force_expanded_notifications"
+             android:title="@string/force_expanded_notifications_title"
+             android:summary="@string/force_expanded_notifications_summary" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="status_bar_notif_count"
+            android:title="@string/status_bar_notif_count_title"
+            android:summary="@string/status_bar_notif_count_summary"
+            android:defaultValue="false" />
+
+    <PreferenceCategory
         android:key="battery_settings"
         android:title="@string/battery_title"/>
 
@@ -105,6 +125,46 @@
             android:entries="@array/battery_bar_thickness_entries"
             android:entryValues="@array/battery_bar_thickness_values" />
 
+    <PreferenceCategory
+        android:key="status_bar_benzo_logo"
+        android:title="@string/status_bar_benzo_logo_title"/>
+
+        <SwitchPreference
+            android:key="status_bar_benzo_logo_show"
+            android:title="@string/status_bar_benzo_logo_title" />
+
+        <SwitchPreference
+            android:key="status_bar_benzo_logo_show_on_lock_screen"
+            android:title="@string/status_bar_benzo_logo_keyguard_title" />
+
+        <ListPreference
+            android:key="status_bar_benzo_logo_style"
+            android:title="@string/status_bar_benzo_logo_position"
+            android:dialogTitle="@string/status_bar_benzo_logo_position"
+            android:entries="@array/status_bar_logo_position_entries"
+            android:entryValues="@array/status_bar_logo_position_values" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_benzo_logo_color"
+            android:title="@string/status_bar_benzo_logo_color"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_benzo_logo_color_dark_mode"
+            android:title="@string/status_bar_benzo_logo_color_dark_mode"
+            android:defaultValue="0xff000000" />
+
+        <SwitchPreference
+            android:key="logo_hide_logo"
+            android:title="@string/logo_hide_logo_title"
+            android:summary="@string/logo_hide_logo_summary"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="logo_number_of_notification_icons"
+            android:title="@string/logo_number_of_notification_icons_title"
+            android:entries="@array/logo_number_of_notifications_entries"
+            android:entryValues="@array/logo_number_of_notifications_values" />
 
     <PreferenceCategory
         android:title="@string/status_bar_clock_title"/>
@@ -143,26 +203,6 @@
             android:entries="@array/clock_date_format_entries_values"
             android:entryValues="@array/clock_date_format_entries_values"
             android:dependency="clock_date_display" />
-
-    <PreferenceCategory
-        android:key="statusbar_options"
-        android:title="@string/statusbar_options"/>
-
-        <SwitchPreference
-            android:key="status_bar_brightness_control"
-            android:summary="@string/status_bar_brightness_control_summary"
-            android:title="@string/status_bar_brightness_control_title" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-             android:key="force_expanded_notifications"
-             android:title="@string/force_expanded_notifications_title"
-             android:summary="@string/force_expanded_notifications_summary" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="status_bar_notif_count"
-            android:title="@string/status_bar_notif_count_title"
-            android:summary="@string/status_bar_notif_count_summary"
-            android:defaultValue="false" />
 
 </PreferenceScreen>
 
