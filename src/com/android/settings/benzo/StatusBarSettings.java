@@ -40,6 +40,7 @@ import android.view.WindowManagerGlobal;
 import android.widget.EditText;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -66,6 +67,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
 
+    private static final String STATUS_BAR_BENZO_LOGO_SHOW = "status_bar_benzo_logo_show";
+    private static final String STATUS_BAR_BENZO_LOGO_SHOW_ON_LOCK_SCREEN = "status_bar_benzo_logo_show_on_lock_screen";
+    private static final String KEY_BENZO_LOGO_STYLE = "status_bar_benzo_logo_style";
+    private static final String KEY_BENZO_LOGO_COLOR = "status_bar_benzo_logo_color";
+    private static final String STATUS_BAR_BENZO_LOGO_COLOR_DARK_MODE = "status_bar_benzo_logo_color_dark_mode";
+    private static final String PREF_NUMBER_OF_NOTIFICATION_ICONS = "logo_number_of_notification_icons";
+    private static final String PREF_HIDE_LOGO = "logo_hide_logo";
+
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
     private ListPreference mClockDateDisplay;
@@ -77,6 +86,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private ListPreference mBatteryBarStyle;
     private ListPreference mBatteryBarThickness;
     private SwitchPreference mBatteryBarChargingAnimation;
+
+    private SwitchPreference mShowLogo;
+    private SwitchPreference mShowLogoKeyguard;
+    private ListPreference mLogoStyle;
+    private ColorPickerPreference mLogoColor;
+    private ColorPickerPreference mLogoColorDarkMode;
+    private SwitchPreference mHideLogo;
+    private ListPreference mNumberOfNotificationIcons;
 
     @Override
     protected int getMetricsCategory() {
@@ -90,6 +107,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.statusbar_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        int intColor;
+        String hexColor;
 
         mBatteryBar = (ListPreference) findPreference(PREF_BATT_BAR);
         mBatteryBar.setOnPreferenceChangeListener(this);
@@ -165,6 +185,61 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         }
 
         parseClockDateFormats();
+
+        mShowLogo =
+                (SwitchPreference) findPreference(STATUS_BAR_BENZO_LOGO_SHOW);
+        mShowLogo.setChecked(Settings.System.getInt(resolver,
+                "status_bar_benzo_logo_show", 0) == 1);
+        mShowLogo.setOnPreferenceChangeListener(this);
+
+        mShowLogoKeyguard =
+                (SwitchPreference) findPreference(STATUS_BAR_BENZO_LOGO_SHOW_ON_LOCK_SCREEN);
+        mShowLogoKeyguard.setChecked(Settings.System.getInt(resolver,
+                "status_bar_benzo_logo_show_on_lock_screen", 0) == 1);
+        mShowLogoKeyguard.setOnPreferenceChangeListener(this);
+
+        mLogoStyle = (ListPreference) findPreference(KEY_BENZO_LOGO_STYLE);
+        int LogoStyle = Settings.System.getInt(resolver,
+                "status_bar_benzo_logo_style", 1);
+        mLogoStyle.setValue(String.valueOf(LogoStyle));
+        mLogoStyle.setSummary(mLogoStyle.getEntry());
+        mLogoStyle.setOnPreferenceChangeListener(this);
+
+        mHideLogo =
+                (SwitchPreference) findPreference(PREF_HIDE_LOGO);
+        mHideLogo.setChecked(Settings.System.getInt(resolver,
+               "status_bar_benzo_logo_hide_logo", 1) == 1);
+        mHideLogo.setOnPreferenceChangeListener(this);
+
+        mNumberOfNotificationIcons =
+                (ListPreference) findPreference(PREF_NUMBER_OF_NOTIFICATION_ICONS);
+        int numberOfNotificationIcons = Settings.System.getInt(resolver,
+               "status_bar_benzo_logo_number_of_notification_icons", 4);
+        mNumberOfNotificationIcons.setValue(String.valueOf(numberOfNotificationIcons));
+        mNumberOfNotificationIcons.setSummary(mNumberOfNotificationIcons.getEntry());
+        mNumberOfNotificationIcons.setOnPreferenceChangeListener(this);
+
+        // logo color
+        mLogoColor =
+            (ColorPickerPreference) findPreference(KEY_BENZO_LOGO_COLOR);
+        mLogoColor.setOnPreferenceChangeListener(this);
+        intColor = Settings.System.getInt(resolver,
+                "status_bar_benzo_logo_color", 0xffffffff);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mLogoColor.setSummary(hexColor);
+        mLogoColor.setNewPreviewColor(intColor);
+        mLogoColor.setAlphaSliderVisible(true);
+
+        // logo color dark mode
+        mLogoColorDarkMode =
+                (ColorPickerPreference) findPreference(STATUS_BAR_BENZO_LOGO_COLOR_DARK_MODE);
+        mLogoColorDarkMode.setOnPreferenceChangeListener(this);
+        intColor = Settings.System.getInt(resolver,
+                "status_bar_benzo_logo_color_dark_mode", 0xffffffff);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mLogoColorDarkMode.setSummary(hexColor);
+        mLogoColorDarkMode.setNewPreviewColor(intColor);
+        mLogoColorDarkMode.setAlphaSliderVisible(true);
     }
 
     @Override
@@ -238,6 +313,55 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     Settings.System.STATUS_BAR_CLOCK_DATE_STYLE, clockDateStyle);
             mClockDateStyle.setSummary(mClockDateStyle.getEntries()[index]);
             parseClockDateFormats();
+            return true;
+        } else if (preference == mShowLogo) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_show",
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mShowLogoKeyguard) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_show_on_lock_screen",
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mLogoStyle) {
+            int LogoStyle = Integer.valueOf((String) newValue);
+            int index = mLogoStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, "status_bar_benzo_logo_style", LogoStyle);
+            mLogoStyle.setSummary(mLogoStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mHideLogo) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_hide_logo",
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mNumberOfNotificationIcons) {
+            int intValue = Integer.valueOf((String) newValue);
+            int index = mNumberOfNotificationIcons.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_number_of_notification_icons",
+                    intValue);
+            preference.setSummary(mNumberOfNotificationIcons.getEntries()[index]);
+            return true;
+        } else if (preference == mLogoColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_color", intHex);
+            return true;
+        } else if (preference == mLogoColorDarkMode) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(resolver,
+                    "status_bar_benzo_logo_color_dark_mode", intHex);
             return true;
         } else if (preference == mClockDateFormat) {
             int index = mClockDateFormat.findIndexOfValue((String) newValue);
