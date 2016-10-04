@@ -1105,4 +1105,8 @@
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
     <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
 
+    <!-- BT easy toggle -->
+    <string name="qs_bt_easy_toggle_title">Bluetooth easy toggle</string>
+    <string name="qs_bt_easy_toggle_summary">Makes it so one click will turn Bluetooth on or off instead of taking you to settings</string>
+
 </resources>
