@@ -44,10 +44,12 @@ public class QuickSettings  extends SettingsPreferenceFragment
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
+    private static final String KEY_SYSUI_QQS_COUNT = "sysui_qqs_count_key";
 
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
     private ListPreference mTileAnimationInterpolator;
+    private ListPreference mSysuiQqsCount;
 
     @Override
     protected int getMetricsCategory() {
@@ -86,6 +88,15 @@ public class QuickSettings  extends SettingsPreferenceFragment
         mTileAnimationInterpolator.setValue(String.valueOf(tileAnimationInterpolator));
         updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
         mTileAnimationInterpolator.setOnPreferenceChangeListener(this);
+
+        mSysuiQqsCount = (ListPreference) findPreference(KEY_SYSUI_QQS_COUNT);
+        if (mSysuiQqsCount != null) {
+           mSysuiQqsCount.setOnPreferenceChangeListener(this);
+           int SysuiQqsCount = Settings.Secure.getInt(resolver,
+                    Settings.Secure.QQS_COUNT, 5);
+           mSysuiQqsCount.setValue(Integer.toString(SysuiQqsCount));
+           mSysuiQqsCount.setSummary(mSysuiQqsCount.getEntry());
+        }
     }
 
     @Override
@@ -108,6 +119,15 @@ public class QuickSettings  extends SettingsPreferenceFragment
             Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_INTERPOLATOR,
                     tileAnimationInterpolator, UserHandle.USER_CURRENT);
             updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
+            return true;
+       } else if (preference == mSysuiQqsCount) {
+            String SysuiQqsCount = (String) newValue;
+            int SysuiQqsCountValue = Integer.parseInt(SysuiQqsCount);
+            Settings.Secure.putInt(resolver, Settings.Secure.QQS_COUNT, SysuiQqsCountValue);
+            int SysuiQqsCountIndex = mSysuiQqsCount
+                    .findIndexOfValue(SysuiQqsCount);
+            mSysuiQqsCount
+                    .setSummary(mSysuiQqsCount.getEntries()[SysuiQqsCountIndex]);
             return true;
       }
       return false;
