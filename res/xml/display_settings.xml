@@ -47,6 +47,14 @@
                 settings:keywords="@string/screen_zoom_keywords" />
 
         <PreferenceScreen
+                android:title="@string/nightmode_tuner_title"
+                android:summary="@string/nightmode_tuner_summary" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.systemui"
+                    android:targetClass="com.android.systemui.tuner.ColorAndAppearanceActivity" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
                 android:key="expanded_desktop"
                 android:title="@string/power_menu_expanded_desktop"
                 android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
@@ -56,14 +64,6 @@
                 android:title="@string/title_font_size"
                 android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
                 settings:keywords="@string/keywords_display_font_size" />
-
-        <PreferenceScreen
-                android:title="@string/nightmode_tuner_title"
-                android:summary="@string/nightmode_tuner_summary" >
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.systemui"
-                    android:targetClass="com.android.systemui.tuner.NightModeFragmentActivity" />
-        </PreferenceScreen>
 
         <PreferenceScreen
                 android:key="display_rotation"
