@@ -46,6 +46,7 @@ import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.TwoStatePreference;
@@ -74,6 +75,7 @@ import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 public class SoundSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "SoundSettings";
 
+    private static final String KEY_MISC = "misc";
     private static final String KEY_MEDIA_VOLUME = "media_volume";
     private static final String KEY_ALARM_VOLUME = "alarm_volume";
     private static final String KEY_RING_VOLUME = "ring_volume";
@@ -82,6 +84,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_NOTIFICATION_RINGTONE = "notification_ringtone";
     private static final String KEY_ALARM_RINGTONE = "alarm_ringtone";
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
+    private static final String KEY_HEADSET_NOTIFICATION = "headset_notification";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
     private static final String KEY_ZEN_MODE = "zen_mode";
@@ -134,6 +137,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private PackageManager mPm;
     private UserManager mUserManager;
     private RingtonePreference mRequestPreference;
+    private TwoStatePreference mHeadsetNotification;
 
     @Override
     protected int getMetricsCategory() {
@@ -156,6 +160,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
         addPreferencesFromResource(R.xml.sound_settings);
 
+        final PreferenceCategory misc = (PreferenceCategory) findPreference(KEY_MISC);
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM,
@@ -193,6 +198,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         initRingtones();
         initVibrateWhenRinging();
         initIncreasingRing();
+        initHeadsetNotification(misc);
+
         updateRingerMode();
         updateEffectsSuppressor();
 
@@ -520,6 +527,33 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (mVibrateWhenRinging == null) return;
         mVibrateWhenRinging.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.VIBRATE_WHEN_RINGING, 0) != 0);
+    }
+
+    // === Notification when headset plugged ===
+
+    private void initHeadsetNotification(PreferenceCategory root) {
+        mHeadsetNotification = (TwoStatePreference) root.findPreference(KEY_HEADSET_NOTIFICATION);
+        if (mHeadsetNotification == null) {
+            Log.i(TAG, "Preference not found: " + KEY_HEADSET_NOTIFICATION);
+            return;
+        }
+        mHeadsetNotification.setPersistent(false);
+        updateHeadsetNotification();
+        mHeadsetNotification.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final boolean val = (Boolean) newValue;
+                return Settings.System.putInt(getContentResolver(),
+                                              Settings.System.HEADSET_NOTIFICATION,
+                                              val ? 1 : 0);
+            }
+        });
+    }
+
+    private void updateHeadsetNotification() {
+        if (mHeadsetNotification == null) return;
+        mHeadsetNotification.setChecked(Settings.System.getInt(getContentResolver(),
+                                                              Settings.System.HEADSET_NOTIFICATION, 0) != 0);
     }
 
     // === Callbacks ===
