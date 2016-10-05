@@ -108,4 +108,15 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
 
+    <PreferenceCategory
+        android:key="misc"
+        android:title="@string/category_misc">
+
+        <!-- Display notification when headset is connected -->
+        <SwitchPreference
+            android:key="headset_notification"
+            android:title="@string/headset_notification_title"
+            android:persistent="false" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
