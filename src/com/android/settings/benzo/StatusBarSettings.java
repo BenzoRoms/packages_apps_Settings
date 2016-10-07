@@ -416,7 +416,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         mShowBolt.setEnabled(mBatteryStyleValue < 3);
         mBatteryStyle.setEnabled(mShowBattery != 0);
         mBatteryPercent.setEnabled(mShowBattery != 0);
-        mChargingShow.setEnabled(mShowBattery != 0);
+        mChargingShow.setEnabled(mShowBattery != 0 && mBatteryStyleValue != 3);
         //mChargingCategory.setEnabled(mShowBattery != 0);
     }
 
