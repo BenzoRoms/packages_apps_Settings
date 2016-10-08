@@ -1087,9 +1087,11 @@
     <string name="recents_full_screen_date_title">Show date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in immersive</string>
 
-    <!-- Brightness icon-->
-    <string name="brightness_icon_title">Brightness icon </string>
+    <!-- Brightness -->
+    <string name="brightness_icon_title">Brightness icon</string>
     <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
+    <string name="show_brightness_slider_title">Brightness slider</string>
+    <string name="show_brightness_slider_summary">Show the brightness slider in the pull down to adjust brightness</string>
 
     <!-- OmniSwitch -->
     <string name="omniswitch_category">OmniSwitch</string>
