@@ -15,10 +15,17 @@
     android:title="@string/benzo_extras_notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_show_brightness"
+            android:title="@string/show_brightness_slider_title"
+            android:summary="@string/show_brightness_slider_summary"
+            android:defaultValue="true" />
+
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="qs_show_brightness_icon"
             android:title="@string/brightness_icon_title"
             android:summary="@string/brightness_icon_summary"
+            android:dependency="qs_show_brightness"
             android:defaultValue="false"/>
 
         <PreferenceScreen
