@@ -1027,7 +1027,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
         if (SUPERSU_FRAGMENT.equals(fragmentName)) {
             Intent superSUIntent = new Intent();
-            superSUIntent.setClassName("me.phh.superuser", "com.koushikdutta.superuser.MainActivity");
+            superSUIntent.setClassName("eu.chainfire.supersu", "eu.chainfire.supersu.MainActivity");
             startActivity(superSUIntent);
             finish();
             return null;
@@ -1129,10 +1129,10 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.DevelopmentSettingsActivity.class.getName()),
                 showDev, isAdmin, pm);
 
-        // Remove Superuser if not installed
+        // SuperSU
         boolean suSupported = false;
         try {
-            suSupported = (getPackageManager().getPackageInfo("me.phh.superuser", 0).versionCode >= 0);
+            suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
