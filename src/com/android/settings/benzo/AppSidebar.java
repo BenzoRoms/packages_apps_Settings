@@ -12,7 +12,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.SeekBarPreference;
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class AppSidebar extends SettingsPreferenceFragment implements
@@ -64,15 +64,23 @@ public class AppSidebar extends SettingsPreferenceFragment implements
         updatePositionSummary(position);
 
         mTransparencyPref = (SeekBarPreference) findPreference(KEY_TRANSPARENCY);
+        mTransparencyPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_TRANSPARENCY, 0));
         mTransparencyPref.setOnPreferenceChangeListener(this);
 
         mTriggerWidthPref = (SeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
+        mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_TRIGGER_WIDTH, 20));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
         mTriggerTopPref = (SeekBarPreference) findPreference(KEY_TRIGGER_TOP);
+        mTriggerTopPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_TRIGGER_TOP, 0));
         mTriggerTopPref.setOnPreferenceChangeListener(this);
 
         mTriggerBottomPref = (SeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
+        mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_TRIGGER_HEIGHT, 100));
         mTriggerBottomPref.setOnPreferenceChangeListener(this);
 
         findPreference(KEY_SETUP_ITEMS).setOnPreferenceClickListener(this);
