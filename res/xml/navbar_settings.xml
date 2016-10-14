@@ -52,7 +52,7 @@
             android:summary="@string/kill_app_longpress_back_summary"
             android:dependency="enable_nav_bar"/>
 
-       <com.android.settings.SeekBarPreference
+       <com.android.settings.benzo.SeekBarPreference
             android:key="long_press_kill_delay"
             android:title="@string/long_press_kill_delay"
             android:max="3000"

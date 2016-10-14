@@ -26,4 +26,12 @@
         <attr name="alphaSliderVisible" format="boolean" />
     </declare-styleable>
 
+    <!-- Seekbar -->
+    <declare-styleable name="SeekBarPreference">
+        <attr name="minimum" format="integer" />
+        <attr name="interval" format="integer" />
+        <attr name="unitsLeft" format="string|reference" />
+        <attr name="unitsRight" format="string|reference" />
+    </declare-styleable>
+
 </resources>

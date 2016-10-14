@@ -30,7 +30,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
-import com.android.settings.SeekBarPreference;
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -75,7 +75,7 @@ public class NavbarSettings extends SettingsPreferenceFragment
         mLongpressKillDelay = (SeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
         int killconf = Settings.System.getInt(getContentResolver(),
                 Settings.System.LONG_PRESS_KILL_DELAY, 1000);
-        mLongpressKillDelay.setProgress(killconf);
+        mLongpressKillDelay.setValue(killconf);
         mLongpressKillDelay.setOnPreferenceChangeListener(this);
     }
 

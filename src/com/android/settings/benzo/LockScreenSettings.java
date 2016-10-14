@@ -31,7 +31,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.android.settings.R;
-import com.android.settings.SeekBarPreference;
+import com.android.settings.benzo.SeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
@@ -64,7 +64,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         mMaxKeyguardNotifConfig = (SeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
         int kgconf = Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5);
-        mMaxKeyguardNotifConfig.setProgress(kgconf);
+        mMaxKeyguardNotifConfig.setValue(kgconf);
         mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
 
         mLockscreenShortcutsLaunchType = (ListPreference) findPreference(
