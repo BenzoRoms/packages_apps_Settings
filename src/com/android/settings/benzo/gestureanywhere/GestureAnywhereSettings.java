@@ -28,12 +28,12 @@ import android.provider.Settings;
 import android.view.Gravity;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.SeekBarPreference;
+import com.android.settings.benzo.SeekBarPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class GestureAnywhereSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        OnPreferenceChangeListener {
     private static final String TAG = "GestureAnywhereSettings";
 
     private static final String KEY_ENABLED = "gesture_anywhere_enabled";
@@ -76,21 +76,18 @@ public class GestureAnywhereSettings extends SettingsPreferenceFragment implemen
         updatePositionSummary(position);
 
         mTriggerWidthPref = (SeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
-        int triggerWidth = Settings.System.getInt(getContentResolver(),
-                Settings.System.GESTURE_ANYWHERE_TRIGGER_WIDTH, 20);
-        mTriggerWidthPref.setProgress(triggerWidth);
+        mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.GESTURE_ANYWHERE_TRIGGER_WIDTH, 20));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
         mTriggerTopPref = (SeekBarPreference) findPreference(KEY_TRIGGER_TOP);
-        int triggerTop = Settings.System.getInt(getContentResolver(),
-                Settings.System.GESTURE_ANYWHERE_TRIGGER_TOP, 0);
-        mTriggerTopPref.setProgress(triggerTop);
+        mTriggerTopPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.GESTURE_ANYWHERE_TRIGGER_TOP, 0));
         mTriggerTopPref.setOnPreferenceChangeListener(this);
 
         mTriggerBottomPref = (SeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
-        int triggerBottom = Settings.System.getInt(getContentResolver(),
-                Settings.System.GESTURE_ANYWHERE_TRIGGER_HEIGHT, 100);
-        mTriggerBottomPref.setProgress(triggerBottom);
+        mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.GESTURE_ANYWHERE_TRIGGER_HEIGHT, 100));
         mTriggerBottomPref.setOnPreferenceChangeListener(this);
 
         Preference pref = findPreference(KEY_GESTURES);

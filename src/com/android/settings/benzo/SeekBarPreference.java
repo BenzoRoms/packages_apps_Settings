@@ -2,14 +2,14 @@ package com.android.settings.benzo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.preference.Preference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -30,8 +30,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     private String mUnitsLeft  = "";
     private String mUnitsRight = "";
     private SeekBar mSeekBar;
-    private TextView mTitle;
-
     private TextView mStatusText;
 
     public SeekBarPreference(Context context, AttributeSet attrs) {
@@ -46,14 +44,12 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 
     private void initPreference(Context context, AttributeSet attrs) {
         setValuesFromXml(attrs);
-        mSeekBar = new SeekBar(context, attrs);
-        mSeekBar.setMax(mMaxValue - mMinValue);
-        mSeekBar.setOnSeekBarChangeListener(this);
+        setLayoutResource(R.layout.seek_bar_preference);
     }
 
     private void setValuesFromXml(AttributeSet attrs) {
         final TypedArray typedArray = getContext().obtainStyledAttributes(
-                attrs, R.styleable.SeekBarPreference);
+                      attrs, R.styleable.SeekBarPreference);
 
         mMaxValue = attrs.getAttributeIntValue(ANDROIDNS, "max", 100);
         mMinValue = attrs.getAttributeIntValue(SETTINGS, "minimum", 0);
@@ -74,17 +70,17 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
             String newInterval = attrs.getAttributeValue(SETTINGS, "interval");
             if(newInterval != null)
                 mInterval = Integer.parseInt(newInterval);
-        }
-        catch(Exception e) {
+        } catch(Exception e) {
             Log.e(TAG, "Invalid interval value", e);
         }
+        typedArray.recycle();
     }
 
     private String getAttributeStringValue(AttributeSet attrs, String namespace, String name, String defaultValue) {
         String value = attrs.getAttributeValue(namespace, name);
-        if(value == null)
+        if(value == null) {
             value = defaultValue;
-
+        }
         return value;
     }
 
@@ -92,92 +88,48 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     public void onDependencyChanged(Preference dependency, boolean disableDependent) {
         super.onDependencyChanged(dependency, disableDependent);
         this.setShouldDisableView(true);
-        if (mTitle != null)
-            mTitle.setEnabled(!disableDependent);
-        if (mSeekBar != null)
+        if (mSeekBar != null) {
             mSeekBar.setEnabled(!disableDependent);
+        }
     }
 
     @Override
-    protected View onCreateView(ViewGroup parent){
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
 
-        RelativeLayout layout =  null;
-        try {
-            LayoutInflater mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = (RelativeLayout)mInflater.inflate(R.layout.seek_bar_preference, parent, false);
-            mTitle = (TextView) layout.findViewById(android.R.id.title);
-        }
-        catch(Exception e)
-        {
-            Log.e(TAG, "Error creating seek bar preference", e);
-        }
-        return layout;
-    }
+        mSeekBar = (SeekBar) holder.findViewById(R.id.seekbar);
+        mSeekBar.setMax(mMaxValue - mMinValue);
+        mSeekBar.setOnSeekBarChangeListener(this);
 
-    @Override
-    public void onBindView(View view) {
-        super.onBindView(view);
-        try
-        {
-            // move our seekbar to the new view we've been given
-            ViewParent oldContainer = mSeekBar.getParent();
-            ViewGroup newContainer = (ViewGroup) view.findViewById(R.id.seekBarPrefBarContainer);
+        mStatusText = (TextView)holder.findViewById(R.id.seekBarPrefValue);
+        mStatusText.setText(String.valueOf(mCurrentValue));
+        mStatusText.setMinimumWidth(30);
+        mSeekBar.setProgress(mCurrentValue - mMinValue);
 
-            if (oldContainer != newContainer) {
-                // remove the seekbar from the old view
-                if (oldContainer != null) {
-                    ((ViewGroup) oldContainer).removeView(mSeekBar);
-                }
-                // remove the existing seekbar (there may not be one) and add ours
-                newContainer.removeAllViews();
-                newContainer.addView(mSeekBar, ViewGroup.LayoutParams.FILL_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-            }
-        }
-        catch(Exception ex) {
-            Log.e(TAG, "Error binding view: " + ex.toString());
-        }
-        updateView(view);
-    }
-
-    /**
-     * Update a SeekBarPreference view with our current state
-     * @param view
-     */
-    protected void updateView(View view) {
-
-        try {
-            RelativeLayout layout = (RelativeLayout)view;
-            mStatusText = (TextView)layout.findViewById(R.id.seekBarPrefValue);
-            mStatusText.setText(String.valueOf(mCurrentValue));
-            mStatusText.setMinimumWidth(30);
-            mSeekBar.setProgress(mCurrentValue - mMinValue);
-
-            TextView unitsRight = (TextView)layout.findViewById(R.id.seekBarPrefUnitsRight);
-            unitsRight.setText(mUnitsRight);
-            TextView unitsLeft = (TextView)layout.findViewById(R.id.seekBarPrefUnitsLeft);
-            unitsLeft.setText(mUnitsLeft);
-        }
-        catch(Exception e) {
-            Log.e(TAG, "Error updating seek bar preference", e);
-        }
+        TextView unitsRight = (TextView)holder.findViewById(R.id.seekBarPrefUnitsRight);
+        unitsRight.setText(mUnitsRight);
+        TextView unitsLeft = (TextView)holder.findViewById(R.id.seekBarPrefUnitsLeft);
+        unitsLeft.setText(mUnitsLeft);
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         int newValue = progress + mMinValue;
-        if(newValue > mMaxValue)
+
+        if(newValue > mMaxValue) {
             newValue = mMaxValue;
-        else if(newValue < mMinValue)
+        } else if(newValue < mMinValue) {
             newValue = mMinValue;
-        else if(mInterval != 1 && newValue % mInterval != 0)
+        } else if(mInterval != 1 && newValue % mInterval != 0) {
             newValue = Math.round(((float)newValue)/mInterval)*mInterval;
+        }
 
         // change rejected, revert to the previous value
-        if(!callChangeListener(newValue)){
+        if (!callChangeListener(newValue)) {
             seekBar.setProgress(mCurrentValue - mMinValue);
             return;
         }
+
         // change accepted, store it
         mCurrentValue = newValue;
         mStatusText.setText(String.valueOf(newValue));
@@ -200,15 +152,13 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        if(restoreValue) {
+        if (restoreValue) {
             mCurrentValue = getPersistedInt(mCurrentValue);
-        }
-        else {
+        } else {
             int temp = 0;
             try {
                 temp = (Integer)defaultValue;
-            }
-            catch(Exception ex) {
+            } catch(Exception ex) {
                 Log.e(TAG, "Invalid default value: " + defaultValue.toString());
             }
             persistInt(temp);
@@ -218,6 +168,18 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 
     public void setValue(int value) {
         mCurrentValue = value;
+    }
+
+    public void setMaxValue(int value) {
+        mMaxValue = value;
+    }
+
+    public void setMinValue(int value) {
+        mMinValue = value;
+    }
+
+    public void updateSeekValue() {
+        mSeekBar.setMax(mMaxValue - mMinValue);
     }
 
     @Override
