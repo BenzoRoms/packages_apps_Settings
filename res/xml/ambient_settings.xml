@@ -94,14 +94,20 @@
 
     </PreferenceCategory>
 
-    <SwitchPreference
+    <com.android.settings.preference.SystemSettingSwitchPreference
         android:key="doze_pulse_on_pickup"
         android:title="@string/doze_trigger_pickup_title"
+        android:summaryOn="@string/doze_trigger_pickup_summary_on"
+        android:summaryOff="@string/doze_trigger_pickup_summary_off"
+        android:defaultValue="true"
         android:dependency="doze_overwrite_value" />
 
-    <SwitchPreference
+    <com.android.settings.preference.SystemSettingSwitchPreference
         android:key="doze_pulse_on_notifications"
         android:title="@string/doze_trigger_notification_title"
+        android:summaryOn="@string/doze_trigger_notification_summary_on"
+        android:summaryOff="@string/doze_trigger_notification_summary_off"
+        android:defaultValue="true"
         android:dependency="doze_overwrite_value" />
 
 </PreferenceScreen>
