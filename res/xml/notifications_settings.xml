@@ -15,19 +15,6 @@
     android:title="@string/benzo_extras_notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="qs_show_brightness"
-            android:title="@string/show_brightness_slider_title"
-            android:summary="@string/show_brightness_slider_summary"
-            android:defaultValue="true" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="qs_show_brightness_icon"
-            android:title="@string/brightness_icon_title"
-            android:summary="@string/brightness_icon_summary"
-            android:dependency="qs_show_brightness"
-            android:defaultValue="false"/>
-
         <PreferenceScreen
                 android:title="@string/power_notification_title"
                 android:summary="@string/power_notification_summary" >
@@ -35,20 +22,6 @@
                     android:targetPackage="com.android.systemui"
                     android:targetClass="com.android.systemui.tuner.PowerNotificationControlsActivity" />
         </PreferenceScreen>
-
-        <ListPreference
-            android:key="smart_pulldown"
-            android:title="@string/smart_pulldown_title"
-            android:entries="@array/smart_pulldown_entries"
-            android:entryValues="@array/smart_pulldown_values"
-            android:persistent="false" />
-
-        <ListPreference
-            android:key="quick_pulldown"
-            android:title="@string/quick_pulldown_title"
-            android:entries="@array/quick_pulldown_entries"
-            android:entryValues="@array/quick_pulldown_values"
-            android:persistent="false" />
 
     <PreferenceCategory
         android:title="@string/breathing_notifications_title"/>
@@ -70,5 +43,38 @@
             android:title="@string/voicemail_breath_title"
             android:summary="@string/voicemail_breath_summary"
             android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:title="@string/brightness_notifications_title"/>
+
+        <com.android.settings.preference.SecureSettingSwitchPreference
+            android:key="qs_show_brightness"
+            android:title="@string/show_brightness_slider_title"
+            android:summary="@string/show_brightness_slider_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_icon"
+            android:title="@string/brightness_icon_title"
+            android:summary="@string/brightness_icon_summary"
+            android:dependency="qs_show_brightness"
+            android:defaultValue="false"/>
+
+    <PreferenceCategory
+        android:title="@string/pulldown_options_title"/>
+
+        <ListPreference
+            android:key="quick_pulldown"
+            android:title="@string/quick_pulldown_title"
+            android:entries="@array/quick_pulldown_entries"
+            android:entryValues="@array/quick_pulldown_values"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="smart_pulldown"
+            android:title="@string/smart_pulldown_title"
+            android:entries="@array/smart_pulldown_entries"
+            android:entryValues="@array/smart_pulldown_values"
+            android:persistent="false" />
 
 </PreferenceScreen>
