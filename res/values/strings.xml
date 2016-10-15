@@ -7842,7 +7842,6 @@
     <!-- Message for telling the user the kind of BT device being displayed in list. -->
     <string name="bluetooth_talkback_bluetooth">Bluetooth</string>
 
-<<<<<<< HEAD
     <!-- Used as title on the automatic storage manager settings. [CHAR LIMIT=60] -->
     <string name="automatic_storage_manager_settings">Manage storage</string>
 
