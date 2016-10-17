@@ -25,4 +25,11 @@
             android:title="@string/lock_screen_notifications_title"
             android:summary="%s" />
 
+    <!-- Benzo Extra's otification options -->
+    <PreferenceScreen
+            android:key="benzo_notifications_category"
+            android:title="@string/benzo_extras_notifications_shortcut" 
+            android:summary="@string/benzo_extras_notifications_shortcut_summary"
+            android:fragment="com.android.settings.benzo.Notifications"/>
+
 </PreferenceScreen>
