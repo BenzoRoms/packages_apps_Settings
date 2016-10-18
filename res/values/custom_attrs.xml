@@ -28,10 +28,10 @@
 
     <!-- Seekbar -->
     <declare-styleable name="SeekBarPreference">
-        <attr name="minimum" format="integer" />
         <attr name="interval" format="integer" />
-        <attr name="unitsLeft" format="string|reference" />
-        <attr name="unitsRight" format="string|reference" />
+        <attr name="minimum" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="units" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="IntervalSeekBar">
