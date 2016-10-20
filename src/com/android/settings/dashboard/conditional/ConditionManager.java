@@ -139,7 +139,6 @@ public class ConditionManager {
         addIfMissing(HotspotCondition.class, conditions);
         addIfMissing(DndCondition.class, conditions);
         addIfMissing(BatterySaverCondition.class, conditions);
-        addIfMissing(CellularDataCondition.class, conditions);
         addIfMissing(BackgroundDataCondition.class, conditions);
         addIfMissing(WorkModeCondition.class, conditions);
         Collections.sort(conditions, CONDITION_COMPARATOR);
@@ -161,8 +160,6 @@ public class ConditionManager {
             return new DndCondition(this);
         } else if (BatterySaverCondition.class == clz) {
             return new BatterySaverCondition(this);
-        } else if (CellularDataCondition.class == clz) {
-            return new CellularDataCondition(this);
         } else if (BackgroundDataCondition.class == clz) {
             return new BackgroundDataCondition(this);
         } else if (WorkModeCondition.class == clz) {
