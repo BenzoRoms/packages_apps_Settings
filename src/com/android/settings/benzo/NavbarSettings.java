@@ -73,9 +73,8 @@ public class NavbarSettings extends SettingsPreferenceFragment
 
         // kill-app long press back delay
         mLongpressKillDelay = (SeekBarPreference) findPreference(LONG_PRESS_KILL_DELAY);
-        int killconf = Settings.System.getInt(getContentResolver(),
-                Settings.System.LONG_PRESS_KILL_DELAY, 1000);
-        mLongpressKillDelay.setValue(killconf);
+        mLongpressKillDelay.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LONG_PRESS_KILL_DELAY, 1000));
         mLongpressKillDelay.setOnPreferenceChangeListener(this);
     }
 
@@ -92,7 +91,7 @@ public class NavbarSettings extends SettingsPreferenceFragment
                     value ? 1 : 0);
             return true;
         } else if (preference == mLongpressKillDelay) {
-            int killconf = (Integer) newValue;
+            int killconf = ((Integer)newValue).intValue();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LONG_PRESS_KILL_DELAY, killconf);
             return true;
