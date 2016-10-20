@@ -26,6 +26,13 @@
             android:title="@string/enable_navigation_bar_title"
             android:summary="@string/enable_navigation_bar_summary" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="navigation_bar_menu_arrow_keys"
+            android:title="@string/show_navbar_arrow_keys_title"
+            android:summary="@string/show_navbar_arrow_keys_summary"
+            android:dependency="enable_nav_bar"
+            android:defaultValue="false" />
+
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="overview_nav_bar_gesture"
             android:title="@string/nav_gesture_title"
