@@ -36,6 +36,8 @@
     <string name="dashboard_summary_kerneladiutor">Set options for the kernel</string>
     <string name="dashboard_summary_substratum">Theme engine extraordinaire</string>
     <string name="dashboard_summary_superuser">Setup root access</string>
+    <string name="device_real_model">Model number</string>
+    <string name="device_real_model_default">Unknown</string>
 
     <!-- Benzo Extras -->
     <string name="header_category_benzo">Benzo</string>
