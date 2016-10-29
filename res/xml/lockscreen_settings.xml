@@ -25,6 +25,12 @@
             android:summary="@string/keyguard_statusbar_clock_summary" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="lockscreen_pin_ripple"
+            android:title="@string/lockscreen_pin_ripple_title"
+            android:summary="@string/lockscreen_pin_ripple_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="hide_lockscreen_clock"
             android:title="@string/hide_lockscreen_clock_title"
             android:defaultValue="true" />
