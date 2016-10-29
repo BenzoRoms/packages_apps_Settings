@@ -30,6 +30,8 @@
     <string name="advanced">Advanced</string>
     <string name="profiles_add">Add...</string>
     <string name="profile_choose_app">Choose app</string>
+    <string name="device_real_model">Model number</string>
+    <string name="device_real_model_default">Unknown</string>
 
     <!-- Benzo Extras -->
     <string name="header_category_benzo">Benzo</string>
