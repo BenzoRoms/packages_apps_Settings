@@ -23,6 +23,13 @@
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
     </PreferenceScreen>
 
+        <com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="notification_title_tint"
+                android:title="@string/notification_tint_title"
+                android:summaryOn="@string/notification_tint_summary_on"
+                android:summaryOff="@string/notification_tint_summary_off"
+                android:defaultValue="true" />
+
     <PreferenceCategory
         android:title="@string/breathing_notifications_title"/>
 
