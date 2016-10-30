@@ -1270,4 +1270,9 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutes</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
+
+    <!-- Lockscreen charging current indicator  -->
+    <string name="lockscreen_charging_current_title">Lockscreen charging info</string>
+    <string name="lockscreen_charging_current_summary">Display negociated charger max current and voltage on lockscreen</string>
+
 </resources>
