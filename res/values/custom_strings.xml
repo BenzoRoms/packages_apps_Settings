@@ -87,4 +87,8 @@
     <string name="app_notifications_info_desc">Tap on one of above channels to configure their light colors and other options</string>
     <string name="value_equals_default">Auto</string>
 
+    <!-- Lockscreen charging current indicator  -->
+    <string name="lockscreen_charging_current_title">Lockscreen charging info</string>
+    <string name="lockscreen_charging_current_summary">Display negociated charger max current and voltage on lockscreen</string>
+
 </resources>
