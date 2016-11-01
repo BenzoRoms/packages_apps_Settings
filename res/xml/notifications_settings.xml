@@ -15,13 +15,13 @@
     android:title="@string/benzo_extras_notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-        <PreferenceScreen
-                android:title="@string/power_notification_title"
-                android:summary="@string/power_notification_summary" >
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.systemui"
-                    android:targetClass="com.android.systemui.tuner.PowerNotificationControlsActivity" />
-        </PreferenceScreen>
+    <PreferenceScreen
+            android:title="@string/statusbar_items_title"
+            android:summary="@string/statusbar_items_summary" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
+    </PreferenceScreen>
 
     <PreferenceCategory
         android:title="@string/breathing_notifications_title"/>
