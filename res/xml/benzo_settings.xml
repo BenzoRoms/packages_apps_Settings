@@ -102,6 +102,14 @@
             android:layout="@layout/preference_benzoextra_buttons" 
 	    />
 
+        <!-- Heads Up -->
+        <PreferenceScreen
+            android:key="heads_up_notifications"
+            android:title="@string/benzo_extras_headsup"
+            android:fragment="com.android.settings.benzo.HeadsUpSettings"
+            android:layout="@layout/preference_benzoextra_headsup"
+            />
+
        <!-- Lockscreen -->
        <PreferenceScreen
             android:key="lock_screen_general_category"
