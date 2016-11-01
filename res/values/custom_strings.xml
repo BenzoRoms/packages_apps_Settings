@@ -52,6 +52,7 @@
     <string name="benzo_extras_notifications">Notifications</string>
     <string name="benzo_extras_notifications_shortcut">Benzo notificationss</string>
     <string name="benzo_extras_notifications_shortcut_summary">Shortcut to Benzo Extras notification options</string>
+    <string name="benzo_extras_headsup">Heads Up</string>
 
     <!-- Updater -->
     <string name="updater_title">Updates</string>
