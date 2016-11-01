@@ -49,12 +49,6 @@
             android:summary="@string/volume_keys_control_media_stream_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="sysui_show_full_zen"
-            android:title="@string/vol_zen_title"
-            android:summary="@string/vol_zen_summary"
-            android:defaultValue="false"/>
-
         <ListPreference
             android:key="volume_key_cursor_control"
             android:dialogTitle="@string/volbtn_cursor_control_title"
@@ -72,18 +66,6 @@
             android:key="volume_rocker_music_controls"
             android:summary="@string/volume_rocker_music_controls_summary"
             android:title="@string/volume_rocker_music_controls_title"
-            android:defaultValue="true" />
-
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="sysui_volume_down_silent"
-            android:title="@string/volbtn_down_zen_title"
-            android:summary="@string/volbtn_down_zen_summary"
-            android:defaultValue="true"/>
-
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="sysui_volume_up_silent"
-            android:title="@string/volbtn_up_zen_title"
-            android:summary="@string/volbtn_up_zen_summary"
             android:defaultValue="true" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference

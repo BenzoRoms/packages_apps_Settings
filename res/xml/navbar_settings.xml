@@ -26,13 +26,6 @@
             android:title="@string/enable_navigation_bar_title"
             android:summary="@string/enable_navigation_bar_summary" />
 
-        <com.android.settings.preference.SecureSettingSwitchPreference
-            android:key="overview_nav_bar_gesture"
-            android:title="@string/nav_gesture_title"
-            android:summary="@string/nav_gesture_summary"
-            android:dependency="enable_nav_bar"
-            android:defaultValue="false"/>
-
         <PreferenceScreen
             android:title="@string/navbar_tuner_title"
             android:summary="@string/navbar_tuner_summary"
