@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- General -->
-    <color name="theme_accent">@*android:color/material_deep_teal_500</color>
+    <color name="theme_accent">@*android:color/accent_material_light</color>
     <color name="text_color_white">@android:color/white</color>
 
     <!-- Benzo theme -->
@@ -67,13 +67,5 @@
 
     <!-- Changelog Colors -->
     <color name="changelog_title_color">@color/theme_accent</color>
-
-    <!--Carbon Extra Topics -->
-    <string name="cr_privacy_settings_title">Privacy</string>
-
-    <!-- Hide Apps from Recents -->
-    <string name="hide_apps_from_recents_title">Hide apps from recents</string>
-    <string name="hide_from_recents_add_app">Add App</string>
-    <string name="title_activity_carbon_recents_settings">Recents</string>
 
 </resources>
