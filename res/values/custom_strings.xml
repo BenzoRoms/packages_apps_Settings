@@ -1279,4 +1279,11 @@
     <string name="show_navbar_arrow_keys_title">Show arrow keys while typing</string>
     <string name="show_navbar_arrow_keys_summary">Display left and right cursor buttons in navigation bar while typing.</string>
 
+    <!--Carbon Extra Topics -->
+    <string name="cr_privacy_settings_title">Privacy</string>
+    <!-- Hide Apps from Recents -->
+    <string name="hide_apps_from_recents_title">Hide apps from recents</string>
+    <string name="hide_from_recents_add_app">Add App</string>
+    <string name="title_activity_carbon_recents_settings">Recents</string>
+
 </resources>
