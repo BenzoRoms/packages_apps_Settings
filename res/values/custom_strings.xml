@@ -1066,9 +1066,12 @@
     <string name="omniswitch_first_time_message">Make sure you have enabled OmniSwitch. You can do this by using \"Settings\" below</string>
     <string name="omniswitch_settings_title">OmniSwitch</string>
 
-    <!-- Wake on Plug -->
-    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+    <!-- Wake up options -->
+    <string name="display_category_wakeup_options_title">Wakeup</string>
+    <string name="wake_when_plugged_or_unplugged_title">Wake up device if charger is plugged/unplugged</string>
     <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
+    <string name="proximity_wake_title">Prevent accidental wake up</string>
+    <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen when pressing the power button</string>
 
     <!-- BT easy toggle -->
     <string name="qs_bt_easy_toggle_title">Bluetooth easy toggle</string>
