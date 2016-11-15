@@ -165,6 +165,24 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="category_wakeup_options"
+        android:title="@string/display_category_wakeup_options_title" >
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="proximity_on_wake"
+                android:title="@string/proximity_wake_title"
+                android:summary="@string/proximity_wake_summary"
+                android:defaultValue="false" />
+
+        <com.android.settings.preference.GlobalSettingSwitchPreference
+                android:key="wake_when_plugged_or_unplugged"
+                android:title="@string/wake_when_plugged_or_unplugged_title"
+                android:summary="@string/wake_when_plugged_or_unplugged_summary"
+                android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="external"
         android:title="@string/external_cat_label">
 
@@ -173,12 +191,6 @@
                 android:title="@string/wifi_display_settings_title"
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
-
-        <com.android.settings.preference.GlobalSettingSwitchPreference
-                android:key="wake_when_plugged_or_unplugged"
-                android:title="@string/wake_when_plugged_or_unplugged_title"
-                android:summary="@string/wake_when_plugged_or_unplugged_summary"
-                android:defaultValue="true" />
 
         <DropDownPreference
                 android:key="vr_display_pref"
