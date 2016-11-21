@@ -87,15 +87,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
     private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
-    private static final String STATUSBAR_BATTERY_STYLE = "statusbar_battery_style";
-    private static final String STATUSBAR_BATTERY_PERCENT = "statusbar_battery_percent";
-    private static final String STATUSBAR_CHARGING_COLOR = "statusbar_battery_charging_color";
-    private static final String STATUSBAR_BATTERY_PERCENT_INSIDE = "statusbar_battery_percent_inside";
-    private static final String STATUSBAR_BATTERY_SHOW_BOLT = "statusbar_battery_charging_image";
-    private static final String STATUSBAR_BATTERY_ENABLE = "statusbar_battery_enable";
-    private static final String STATUSBAR_SHOW_CHARGING = "statusbar_battery_charging_color_enable";
-    private static final String STATUSBAR_CATEGORY_CHARGING = "statusbar_category_charging";
-
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
     private ListPreference mClockDateDisplay;
@@ -120,17 +111,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mCustomCarrierLabel;
     private ListPreference mShowCarrierLabel;
     private String mCustomCarrierLabelText;
-
-    private ListPreference mBatteryStyle;
-    private ListPreference mBatteryPercent;
-    private ColorPickerPreference mChargingColor;
-    private SwitchPreference mPercentInside;
-    private SwitchPreference mChargingShow;
-    private SwitchPreference mShowBolt;
-    private int mShowPercent;
-    private int mBatteryStyleValue;
-    private ListPreference mBatteryEnable;
-    private int mShowBattery = 1;
 
     @Override
     protected int getMetricsCategory() {
@@ -227,37 +207,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         } catch (SettingNotFoundException e) {
         }
 
-        mBatteryStyle = (ListPreference) findPreference(STATUSBAR_BATTERY_STYLE);
-        mBatteryStyleValue = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_STYLE, 0);
-
-        mBatteryStyle.setValue(Integer.toString(mBatteryStyleValue));
-        mBatteryStyle.setSummary(mBatteryStyle.getEntry());
-        mBatteryStyle.setOnPreferenceChangeListener(this);
-
-        mBatteryPercent = (ListPreference) findPreference(STATUSBAR_BATTERY_PERCENT);
-        mShowPercent = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_PERCENT, 2);
-
-        mBatteryPercent.setValue(Integer.toString(mShowPercent));
-        mBatteryPercent.setSummary(mBatteryPercent.getEntry());
-        mBatteryPercent.setOnPreferenceChangeListener(this);
-
-        mChargingColor = (ColorPickerPreference) findPreference(STATUSBAR_CHARGING_COLOR);
-        mChargingColor.setOnPreferenceChangeListener(this);
-
-        mPercentInside = (SwitchPreference) findPreference(STATUSBAR_BATTERY_PERCENT_INSIDE);
-        mChargingShow = (SwitchPreference) findPreference(STATUSBAR_SHOW_CHARGING);
-        mShowBolt = (SwitchPreference) findPreference(STATUSBAR_BATTERY_SHOW_BOLT);
-
-        mBatteryEnable = (ListPreference) findPreference(STATUSBAR_BATTERY_ENABLE);
-        mShowBattery = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_ENABLE, 1);
-
-        mBatteryEnable.setValue(Integer.toString(mShowBattery));
-        mBatteryEnable.setSummary(mBatteryEnable.getEntry());
-        mBatteryEnable.setOnPreferenceChangeListener(this);
-
         parseClockDateFormats();
 
         mShowLogo =
@@ -324,8 +273,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         mCustomCarrierLabel = (PreferenceScreen) findPreference(CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
-
-        updateEnablement();
     }
 
     @Override
@@ -358,41 +305,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(
                      resolver, STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
-            return true;
-        } else if (preference == mBatteryStyle) {
-            mBatteryStyleValue = Integer.valueOf((String) newValue);
-            int index = mBatteryStyle.findIndexOfValue((String) newValue);
-            mBatteryStyle.setSummary(
-                    mBatteryStyle.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_STYLE, mBatteryStyleValue);
-            updateEnablement();
-            return true;
-        } else if (preference == mBatteryPercent) {
-            mShowPercent = Integer.valueOf((String) newValue);
-            int index = mBatteryPercent.findIndexOfValue((String) newValue);
-            mBatteryPercent.setSummary(
-                    mBatteryPercent.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_PERCENT, mShowPercent);
-            updateEnablement();
-            return true;
-        } else if (preference == mChargingColor) {
-            String hex = ColorPickerPreference.convertToARGB(Integer
-                    .valueOf(String.valueOf(newValue)));
-            mChargingColor.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(resolver,
-                    Settings.System.STATUSBAR_BATTERY_CHARGING_COLOR, intHex);
-            return true;
-        } else if (preference == mBatteryEnable) {
-            mShowBattery = Integer.valueOf((String) newValue);
-            int index = mBatteryEnable.findIndexOfValue((String) newValue);
-            mBatteryEnable.setSummary(
-                    mBatteryEnable.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_ENABLE, mShowBattery);
-            updateEnablement();
             return true;
         } else if (preference == mStatusBarClock) {
             int clockStyle = Integer.parseInt((String) newValue);
@@ -576,15 +488,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             }
         }
         mClockDateFormat.setEntries(parsedDateEntries);
-    }
-
-    private void updateEnablement() {
-        mPercentInside.setEnabled(mShowBattery != 0 && mBatteryStyleValue < 3 && mShowPercent != 0);
-        mShowBolt.setEnabled(mBatteryStyleValue < 3);
-        mBatteryStyle.setEnabled(mShowBattery != 0);
-        mBatteryPercent.setEnabled(mShowBattery != 0);
-        mChargingShow.setEnabled(mShowBattery != 0 && mBatteryStyleValue != 3);
-        //mChargingCategory.setEnabled(mShowBattery != 0);
     }
 
     public boolean onPreferenceTreeClick(Preference preference) {
