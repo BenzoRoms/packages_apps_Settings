@@ -68,4 +68,7 @@
     <!-- Changelog Colors -->
     <color name="changelog_title_color">@color/theme_accent</color>
 
+    <!-- Gesture settings switchbar background -->
+    <color name="gestures_switchbar_color">@android:color/white</color>
+
 </resources>
