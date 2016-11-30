@@ -54,29 +54,37 @@
         android:key="qs_cat_rows"
         android:title="@string/qs_cat_rows_title"/>
 
-        <ListPreference
+        <com.android.settings.benzo.SeekBarPreference
             android:key="qs_rows_portrait"
             android:title="@string/qs_rows_portrait_title"
-            android:entries="@array/qs_rows_portrait_entries"
-            android:entryValues="@array/qs_rows_portrait_values" />
+            settings:max="4"
+            settings:minimum="1"
+            settings:units=""
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.benzo.SeekBarPreference
             android:key="qs_columns_portrait"
             android:title="@string/qs_columns_portrait_title"
-            android:entries="@array/qs_columns_portrait_entries"
-            android:entryValues="@array/qs_columns_portrait_values" />
+            settings:max="8"
+            settings:minimum="3"
+            settings:units=""
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.benzo.SeekBarPreference
             android:key="qs_rows_landscape"
             android:title="@string/qs_rows_landscape_title"
-            android:entries="@array/qs_rows_landscape_entries"
-            android:entryValues="@array/qs_rows_landscape_values" />
+            settings:max="3"
+            settings:minimum="1"
+            settings:units=""
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.benzo.SeekBarPreference
             android:key="qs_columns_landscape"
             android:title="@string/qs_columns_landscape_title"
-            android:entries="@array/qs_columns_landscape_entries"
-            android:entryValues="@array/qs_columns_landscape_values" />
+            settings:max="8"
+            settings:minimum="3"
+            settings:units=""
+            android:persistent="false" />
 
     <PreferenceCategory
         android:key="quicksettings_tiles"
