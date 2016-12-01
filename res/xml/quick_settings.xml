@@ -86,6 +86,12 @@
             android:summary="@string/qs_expand_indicator_summary"
             android:defaultValue="true" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_date_time_center"
+            android:title="@string/qs_date_time_center_title"
+            android:summary="@string/qs_date_time_center_summary"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="qs_cat_rows"
         android:title="@string/qs_cat_rows_title"/>
