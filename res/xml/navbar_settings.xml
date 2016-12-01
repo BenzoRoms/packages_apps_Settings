@@ -69,7 +69,7 @@
        <com.android.settings.benzo.SeekBarPreference
             android:key="long_press_kill_delay"
             android:title="@string/long_press_kill_delay"
-            android:max="3000"
+            settings:max="3000"
             settings:minimum="250"
             settings:units="ms"
             android:dependency="kill_app_longpress_back"
