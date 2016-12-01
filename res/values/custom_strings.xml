@@ -30,6 +30,11 @@
     <string name="advanced">Advanced</string>
     <string name="profiles_add">Add...</string>
     <string name="profile_choose_app">Choose app</string>
+    <string name="dashboard_summary_benzoextras">Setup ROM options</string>
+    <string name="dashboard_summary_appops">Change application permissions</string>
+    <string name="dashboard_summary_kerneladiutor">Set options for the kernel</string>
+    <string name="dashboard_summary_substratum">Theme engine extraordinaire</string>
+    <string name="dashboard_summary_superuser">Setup root access</string>
 
     <!-- Benzo Extras -->
     <string name="header_category_benzo">Benzo</string>
