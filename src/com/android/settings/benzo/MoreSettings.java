@@ -63,12 +63,7 @@ public class MoreSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == mShowCpuInfo) {
-            writeCpuInfoOptions();
-        } else {
-            return super.onPreferenceTreeClick(preference);
-        }
-        return false;
+        return super.onPreferenceTreeClick(preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
