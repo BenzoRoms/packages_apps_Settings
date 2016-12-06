@@ -98,8 +98,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-                android:key="dashboard_category"
-                android:title="@string/dashboard_category">
+                android:key="ambient_display_category"
+                android:title="@string/ambient_display_category_title">
 
         <SwitchPreference
                 android:key="doze"
@@ -112,6 +112,12 @@
                 android:summary="@string/ambient_display_show_battery_summary"
                 android:dependency="doze"
                 android:defaultValue="true" />
+
+        <Preference
+                android:key="doze_brightness_level"
+                android:title="@string/doze_brightness_level_title"
+                android:persistent="false"
+                android:dependency="doze" />
 
     </PreferenceCategory>
 
