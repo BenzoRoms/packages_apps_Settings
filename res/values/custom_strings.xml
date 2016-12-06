@@ -18,6 +18,7 @@
 
     <!-- General -->
     <string name="ok">Okay</string>
+    <string name="cancel">Cancel</string>
     <string name="reset">Reset</string>
     <string name="default_string">Default</string>
     <string name="add">Add</string>
@@ -1291,5 +1292,9 @@
     <string name="status_bar_battery_percentage_default">Hidden</string>
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+
+    <!-- Doze brightness -->
+    <string name="ambient_display_category_title">Ambient display</string>
+    <string name="doze_brightness_level_title">Brightness level</string>
 
 </resources>
