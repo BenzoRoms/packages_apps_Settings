@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings.Secure;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -41,6 +42,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
+
 /**
  * Top level fragment for gesture settings.
  * This will create individual switch preference for each gesture and handle updates when each
@@ -56,10 +59,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_SWIPE_DOWN_FINGERPRINT = "gesture_swipe_down_fingerprint";
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
+    private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
 
     private List<GesturePreference> mPreferences;
 
     private AmbientDisplayConfiguration mAmbientConfig;
+    private SwitchPreference mTapToWakePreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,6 +113,13 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             removePreference(PREF_KEY_DOUBLE_TWIST);
         }
 
+        // Tap to wake
+        if (isTapToWakeAvailable(getResources())) {
+            mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+            mTapToWakePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_TAP_TO_WAKE);
+        }
     }
 
     @Override
@@ -169,6 +181,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         } else if (PREF_KEY_DOUBLE_TWIST.equals(key)) {
             Secure.putInt(getContentResolver(),
                     Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, enabled ? 1 : 0);
+        } else if (preference == mTapToWakePreference) {
+            Secure.putInt(getContentResolver(),
+                    Secure.DOUBLE_TAP_TO_WAKE, enabled ? 1 : 0);
         }
         return true;
     }
@@ -219,6 +234,10 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         return false;
     }
 
+    private static boolean isTapToWakeAvailable(Resources res) {
+        return res.getBoolean(com.android.internal.R.bool.config_supportDoubleTapWake);
+    }
+
     private void addPreference(String key, boolean enabled) {
         GesturePreference preference = (GesturePreference) findPreference(key);
         preference.setChecked(enabled);
@@ -260,6 +279,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                 }
                 if (!isDoubleTwistAvailable(context)) {
                     result.add(PREF_KEY_DOUBLE_TWIST);
+                }
+                if (!isTapToWakeAvailable(context.getResources())) {
+                    result.add(KEY_TAP_TO_WAKE);
                 }
                 return result;
             }
