@@ -3165,7 +3165,7 @@
         <!-- activity for gesture settings -->
         <activity android:name="Settings$GestureSettingsActivity"
                   android:label="@string/gesture_preference_title"
-                  android:icon="@drawable/ic_settings_gestures"
+                  android:icon="@drawable/ic_dashboard_gestures"
                   android:enabled="@bool/config_gesture_settings_enabled">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
