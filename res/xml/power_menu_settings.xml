@@ -34,16 +34,6 @@
         android:title="@string/power_menu_screenshot_title"
         android:defaultValue="false" />
 
-    <com.android.settings.benzo.SeekBarPreference
-        android:key="screenshot_delay"
-        android:title="@string/powermenu_screenshot_delay_title"
-        settings:max="10000"
-        settings:minimum="0"
-        settings:units="ms"
-        settings:interval="100"
-        android:persistent="false"
-        android:dependency="screenshot" />
-
     <SwitchPreference
         android:key="screenrecord"
         android:title="@string/power_menu_screenrecord_title"

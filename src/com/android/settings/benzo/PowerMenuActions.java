@@ -31,7 +31,6 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.benzo.SeekBarPreference;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.util.cm.PowerMenuConstants;
 
@@ -47,7 +46,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     final static String TAG = "PowerMenuActions";
 
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
-    private static final String POWER_MENU_SCREENSHOT_DELAY = "screenshot_delay";
 
     private SwitchPreference mPowerPref;
     private SwitchPreference mRebootPref;
@@ -61,7 +59,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private SwitchPreference mFlashlightPref;
     private SwitchPreference mSilentPref;
     private SwitchPreference mOnTheGoPowerMenu;
-    private SeekBarPreference mScreenshotDelay;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -83,12 +80,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
         mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
-
-        mScreenshotDelay = (SeekBarPreference) findPreference(POWER_MENU_SCREENSHOT_DELAY);
-        int screenshotDelay = Settings.System.getInt(getContentResolver(),
-                Settings.System.SCREENSHOT_DELAY, 1000);
-        mScreenshotDelay.setValue(screenshotDelay / 1);
-        mScreenshotDelay.setOnPreferenceChangeListener(this);
 
         for (String action : mAllActions) {
         // Remove preferences not present in the overlay
@@ -194,13 +185,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mOnTheGoPowerMenu) {
             boolean value = ((Boolean)newValue).booleanValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
-            return true;
-        } else if (preference == mScreenshotDelay) {
-            int delay = (Integer) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.SCREENSHOT_DELAY, delay * 1);
+            Settings.System.putInt(getContentResolver(), Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
