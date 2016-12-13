@@ -59,6 +59,13 @@
             android:entryValues="@array/status_bar_battery_percentage_values"
             android:defaultValue="0" />
 
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="battery_large_text"
+            android:title="@string/battery_large_text"
+            android:summaryOn="@string/battery_large_text_summary_on"
+            android:summaryOff="@string/battery_large_text_summary_off"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="battery_bar"
         android:title="@string/battery_bar"/>
