@@ -1352,4 +1352,9 @@
     <string name="single_hand_mode_title">One-hand UI mode</string>
     <string name="single_hand_mode_summary">Swipe either right or left on navbar to enable</string>
 
+    <!-- Status Bar Battery Icon Large Percentage Text -->
+    <string name="battery_large_text">Large Battery Icon Percentage</string>
+    <string name="battery_large_text_summary_on">Large text displayed</string>
+    <string name="battery_large_text_summary_off">Normal text displayed</string>
+
 </resources>
