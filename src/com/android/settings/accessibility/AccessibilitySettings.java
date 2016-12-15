@@ -96,8 +96,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             "captioning_preference_screen";
     private static final String DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN =
             "screen_magnification_preference_screen";
-    private static final String FONT_SIZE_PREFERENCE_SCREEN =
-            "font_size_preference_screen";
     private static final String AUTOCLICK_PREFERENCE_SCREEN =
             "autoclick_preference_screen";
     private static final String DISPLAY_DALTONIZER_PREFERENCE_SCREEN =
@@ -189,7 +187,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private Preference mNoServicesMessagePreference;
     private PreferenceScreen mCaptioningPreferenceScreen;
     private PreferenceScreen mDisplayMagnificationPreferenceScreen;
-    private PreferenceScreen mFontSizePreferenceScreen;
     private PreferenceScreen mAutoclickPreferenceScreen;
     private PreferenceScreen mGlobalGesturePreferenceScreen;
     private PreferenceScreen mDisplayDaltonizerPreferenceScreen;
@@ -416,10 +413,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         // Display magnification.
         mDisplayMagnificationPreferenceScreen = (PreferenceScreen) findPreference(
                 DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN);
-
-        // Font size.
-        mFontSizePreferenceScreen = (PreferenceScreen) findPreference(
-                FONT_SIZE_PREFERENCE_SCREEN);
 
         // Autoclick after pointer stops.
         mAutoclickPreferenceScreen = (PreferenceScreen) findPreference(
