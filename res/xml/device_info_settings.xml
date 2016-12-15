@@ -25,8 +25,8 @@
                 android:summary="@string/updater_summary">
                 <intent
                   android:action="android.intent.action.MAIN"
-    		  android:targetPackage="com.benzo.ota"
-                  android:targetClass="com.benzo.ota.activities.MainActivity" />
+    		  android:targetPackage="benzorom.overtheair"
+                  android:targetClass="benzorom.overtheair.activities.MainActivity" />
         </PreferenceScreen>
 
         <!-- Changelog -->
