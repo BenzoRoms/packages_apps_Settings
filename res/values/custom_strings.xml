@@ -1348,4 +1348,8 @@
     <string name="notification_volume_option_title">Notification volume</string>
     <string name="ring_notification_volume_option_title">Ring and notification volume</string>
 
+    <!-- Onehand UI mode -->
+    <string name="single_hand_mode_title">One-hand UI mode</string>
+    <string name="single_hand_mode_summary">Swipe either right or left on navbar to enable</string>
+
 </resources>
