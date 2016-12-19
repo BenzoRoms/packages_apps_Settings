@@ -81,7 +81,7 @@
     <!-- Display settings  -->
     <string name="display_cat_label">Display</string>
     <string name="gesture_cat_label">Gesture</string>
-    <string name="external_cat_label">External</string>
+    <string name="external_cat_label">Headset</string>
 
     <!-- Qucik Settings  -->
     <string name="notification_qstiles_title">Quick Settings</string>
