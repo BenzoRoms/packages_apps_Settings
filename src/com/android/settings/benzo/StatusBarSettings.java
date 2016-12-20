@@ -91,6 +91,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
+    private static final String BATTERY_LARGE_TEXT = "battery_large_text";
 
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
@@ -121,6 +122,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private ListPreference mStatusBarBatteryShowPercent;
     private int mStatusBarBatteryValue;
     private int mStatusBarBatteryShowPercentValue;
+    private SwitchPreference mLargeBatteryText;
 
     @Override
     protected int getMetricsCategory() {
@@ -298,6 +300,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         mStatusBarBatteryShowPercent.setValue(Integer.toString(mStatusBarBatteryShowPercentValue));
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        mLargeBatteryText = (SwitchPreference) findPreference(BATTERY_LARGE_TEXT);
+        mLargeBatteryText.setChecked(Settings.System.getInt(resolver,
+                "battery_large_text", 0) == 1);
+        mLargeBatteryText.setOnPreferenceChangeListener(this);
 
         enableStatusBarBatteryDependents(mStatusBarBatteryValue);
     }
@@ -498,6 +505,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 STATUS_BAR_SHOW_CARRIER, showCarrierLabel);
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             return true;
+        } else if (preference == mLargeBatteryText) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    "battery_large_text",
+                    value ? 1 : 0);
+            return true;
       }
       return false;
     }
@@ -506,8 +519,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
                 batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
             mStatusBarBatteryShowPercent.setEnabled(false);
+            mLargeBatteryText.setEnabled(false);
         } else {
             mStatusBarBatteryShowPercent.setEnabled(true);
+            mLargeBatteryText.setEnabled(true);
         }
     }
 
