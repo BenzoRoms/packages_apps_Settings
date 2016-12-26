@@ -37,7 +37,6 @@
     <string name="dashboard_summary_substratum">Theme engine extraordinaire</string>
     <string name="dashboard_summary_superuser">Setup root access</string>
     <string name="accessibility_settings_summary">Easier access</string>
-    <string name="dev_advanced_settings_summary">For the experienced user</string>
 
     <!-- Benzo Extras -->
     <string name="header_category_benzo">Benzo</string>
@@ -113,6 +112,11 @@
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
 
+    <!-- Advanced settings (former: Developer options) -->
+    <string name="dev_advanced_settings_title">@string/advanced_section_header</string>
+    <string name="dev_advanced_settings_summary">For the experienced user</string>
+    <string name="dev_advanced_already_enabled">No need, advanced settings are enabled by default.</string>
+
     <!-- Power menu -->
     <string name="power_menu_title">Power menu</string>
     <string name="power_menu_power_title">Power off</string>
@@ -129,8 +133,6 @@
     <string name="power_menu_screenrecord_title">Screenrecord</string>
     <string name="power_menu_torch">Flashlight</string>
 
-    <!-- Dev Options Enabled by Default -->
-    <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
     <!-- ADB debugging notifications -->
     <string name="enable_adb_custom">Android debugging</string>
     <string name="enable_adb_summary_custom">Enable the Android Debug Bridge (adb) interface</string>
