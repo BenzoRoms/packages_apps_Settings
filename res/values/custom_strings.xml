@@ -1389,4 +1389,8 @@
     <string name="crypt_keeper_replace_password_title">Replace encryption password</string>
     <string name="crypt_keeper_replace_password_summary">Remove the separate encryption password</string>
 
+    <!-- Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Requires a config change(display size, navbar position, reboot) themes may overwrite</string>
+
 </resources>
