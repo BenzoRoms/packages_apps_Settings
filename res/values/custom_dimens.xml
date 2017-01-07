@@ -108,4 +108,6 @@
     <dimen name="alert_dialog_padding_material">20dp</dimen>
     <dimen name="oval_notification_size">26dp</dimen>
 
+    <dimen name="dashboard_category_padding_bottom">8dip</dimen>
+
 </resources>
