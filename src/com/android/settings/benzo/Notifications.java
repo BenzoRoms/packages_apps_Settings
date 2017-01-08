@@ -51,12 +51,17 @@ public class Notifications extends SettingsPreferenceFragment
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
     private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
+    private static final String CUSTOM_HEADER_PROVIDER = "custom_header_provider";
+    private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
 
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
 
     private ListPreference mDaylightHeaderPack;
     private SeekBarPreference mHeaderShadow;
+    private ListPreference mHeaderProvider;
+    private String mDaylightHeaderProvider;
+    private PreferenceScreen mHeaderBrowse;
 
     @Override
     protected int getMetricsCategory() {
@@ -116,6 +121,22 @@ public class Notifications extends SettingsPreferenceFragment
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 80);
         mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
         mHeaderShadow.setOnPreferenceChangeListener(this);
+
+        mDaylightHeaderProvider = getResources().getString(R.string.daylight_header_provider);
+        String providerName = Settings.System.getString(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER);
+        if (providerName == null) {
+            providerName = mDaylightHeaderProvider;
+        }
+        mHeaderProvider = (ListPreference) findPreference(CUSTOM_HEADER_PROVIDER);
+        valueIndex = mHeaderProvider.findIndexOfValue(providerName);
+        mHeaderProvider.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
+        mHeaderProvider.setSummary(mHeaderProvider.getEntry());
+        mHeaderProvider.setOnPreferenceChangeListener(this);
+        mDaylightHeaderPack.setEnabled(providerName.equals(mDaylightHeaderProvider));
+
+        mHeaderBrowse = (PreferenceScreen) findPreference(CUSTOM_HEADER_BROWSE);
+        mHeaderBrowse.setEnabled(isBrowseHeaderAvailable());
     }
 
     @Override
@@ -143,6 +164,13 @@ public class Notifications extends SettingsPreferenceFragment
             int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
+        } else if (preference == mHeaderProvider) {
+            String value = (String) newValue;
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER, value);
+            int valueIndex = mHeaderProvider.findIndexOfValue(value);
+            mHeaderProvider.setSummary(mHeaderProvider.getEntries()[valueIndex]);
+            mDaylightHeaderPack.setEnabled(value.equals(mDaylightHeaderProvider));
         }
         return false;
     }
@@ -217,5 +245,12 @@ public class Notifications extends SettingsPreferenceFragment
             }
             entries.add(label);
         }
+    }
+
+    private boolean isBrowseHeaderAvailable() {
+        PackageManager pm = getPackageManager();
+        Intent browse = new Intent();
+        browse.setClassName("org.omnirom.omnistyle", "org.omnirom.omnistyle.BrowseHeaderActivity");
+        return pm.resolveActivity(browse, 0) != null;
     }
 }
