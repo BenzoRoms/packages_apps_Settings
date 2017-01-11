@@ -36,6 +36,7 @@ import android.view.View;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.benzo.SeekBarPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -117,9 +118,9 @@ public class Notifications extends SettingsPreferenceFragment
         mDaylightHeaderPack.setOnPreferenceChangeListener(this);
 
         mHeaderShadow = (SeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
-        final int headerShadow = Settings.System.getInt(getContentResolver(),
+        int headerShadow = Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 80);
-        mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
+        mHeaderShadow.setValue(headerShadow);
         mHeaderShadow.setOnPreferenceChangeListener(this);
 
         mDaylightHeaderProvider = getResources().getString(R.string.daylight_header_provider);
@@ -160,10 +161,10 @@ public class Notifications extends SettingsPreferenceFragment
             int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
             mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
         } else if (preference == mHeaderShadow) {
-            Integer headerShadow = (Integer) newValue;
-            int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
+            int headerShadow = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, headerShadow);
+            return true;
         } else if (preference == mHeaderProvider) {
             String value = (String) newValue;
             Settings.System.putString(getContentResolver(),
