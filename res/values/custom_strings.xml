@@ -1391,7 +1391,7 @@
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
-    <string name="pixel_navbar_anim_summary">Requires a config change(display size, navbar position, reboot) themes may overwrite</string>
+    <string name="pixel_navbar_anim_summary">Enables the Pixel\'s home button animations</string>
 
     <!-- Headers -->
     <string name="status_bar_header_title">Headers</string>
