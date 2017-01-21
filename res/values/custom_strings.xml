@@ -567,24 +567,6 @@
     <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
-    <!-- Battery Bar -->
-    <string name="battery_icon">Battery icon style</string>
-    <string name="battery_not_title">Battery icon in notifications</string>
-    <string name="battery_not_summary">Battery icon will show up where the clear all button shows up</string>
-    <string name="battery_bar_title">Battery Bar</string>
-    <string name="battery_bar_location">Battery bar location</string>
-    <string name="battery_bar_color">Battery bar color</string>
-    <string name="battery_bar_style_title">Battery bar style</string>
-    <string name="battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="battery_bar_animate_title">Charging animation</string>
-    <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
-    <string name="battery_bar_hide">Hide</string>
-    <string name="battery_bar_statusbar">Statusbar</string>
-    <string name="battery_bar_topnav">Top of navbar</string>
-    <string name="battery_bar_bottomnav">Bottom of navbar</string>
-    <string name="battery_bar_reg">Regular</string>
-    <string name="battery_bar_center">Center-mirrored</string>
-
     <!-- Scramble pin -->
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
@@ -1451,5 +1433,24 @@
     <!-- Navbar Animation -->
     <string name="usb_mode_dialog_show_title">Show USB mode dialog</string>
     <string name="usb_mode_dialog_show_summary">Shows a chooser dialog when your device is connected to PC via USB</string>
+
+    <!-- Battery Bar -->
+    <string name="battery_bar_title">Battery Bar</string>
+    <string name="battery_icon">Battery icon style</string>
+    <string name="battery_not_title">Battery icon in notifications</string>
+    <string name="battery_not_summary">Battery icon will show up where the clear all button shows up</string>
+    <string name="battery_bar_title">Battery Bar</string>
+    <string name="battery_bar_location">Battery bar location</string>
+    <string name="battery_bar_color">Battery bar color</string>
+    <string name="battery_bar_style_title">Battery bar style</string>
+    <string name="battery_bar_thickness_title">Battery bar thickness</string>
+    <string name="battery_bar_animate_title">Charging animation</string>
+    <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+    <string name="battery_bar_hide">Hide</string>
+    <string name="battery_bar_statusbar">Statusbar</string>
+    <string name="battery_bar_topnav">Top of navbar</string>
+    <string name="battery_bar_bottomnav">Bottom of navbar</string>
+    <string name="battery_bar_reg">Regular</string>
+    <string name="battery_bar_center">Center-mirrored</string>
 
 </resources>

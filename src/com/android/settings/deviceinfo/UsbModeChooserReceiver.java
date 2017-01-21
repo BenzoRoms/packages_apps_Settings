@@ -48,7 +48,7 @@ public class UsbModeChooserReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        final boolean usbModeToggle = Settings.System.getIntForUser(getContext().getContentResolver(),
+        final boolean usbModeToggle = Settings.System.getIntForUser(context.getContentResolver(),
             Settings.System.SHOW_USB_MODE_DIALOG, 1, UserHandle.USER_CURRENT) == 1;
 
         if(action != null && usbModeToggle) {
