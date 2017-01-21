@@ -28,6 +28,14 @@
             android:layout="@layout/preference_benzoextra_appbar" 
             />
 
+        <!-- Bettery Bar -->
+        <PreferenceScreen
+            android:key="battery_bar"
+            android:fragment="com.android.settings.benzo.BatteryBar"
+            android:title="@string/battery_bar_title"
+            android:layout="@layout/preference_benzoextra_batterybar" 
+            />
+
         <!-- Density Changer -->
         <PreferenceScreen
             android:key="density_changer"
