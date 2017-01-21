@@ -63,6 +63,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.accessibility.ToggleFontSizePreferenceFragment;
 import com.android.settings.custom.DisplayRotation;
+import com.android.settings.dashboard.DashboardSummary;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -106,10 +107,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_DOZE_BRIGHTNESS_LEVEL = "doze_brightness_level";
     private static final String KEY_DOZE_WAKEUP_DOUBLETAP = "doze_wakeup_doubletap";
+    private static final String DASHBOARD_COLUMNS = "dashboard_columns";
 
     private Preference mFontSizePref;
 
     private TimeoutListPreference mScreenTimeoutPreference;
+    private ListPreference mDashboardColumns;
     private ListPreference mNightModePreference;
     private Preference mScreenSaverPreference;
     private Preference mDisplayRotationPreference;
@@ -196,6 +199,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else {
             removePreference(KEY_DISPLAY_ROTATION);
         }
+
+        mDashboardColumns = (ListPreference) findPreference(DASHBOARD_COLUMNS);
+        mDashboardColumns.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.DASHBOARD_COLUMNS, DashboardSummary.mNumColumns)));
+        mDashboardColumns.setSummary(mDashboardColumns.getEntry());
+        mDashboardColumns.setOnPreferenceChangeListener(this);
 
         if (isVrDisplayModeAvailable(activity)) {
             DropDownPreference vrDisplayPref =
@@ -488,6 +497,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }
+        }
+        if (preference == mDashboardColumns) {
+            Settings.System.putInt(getContentResolver(), Settings.System.DASHBOARD_COLUMNS,
+                    Integer.valueOf((String) objValue));
+            mDashboardColumns.setValue(String.valueOf(objValue));
+            mDashboardColumns.setSummary(mDashboardColumns.getEntry());
+            return true;
         }
         if (preference == mDozeWakeupDoubleTap) {
             boolean value = (Boolean) objValue;
