@@ -28,7 +28,7 @@
                 android:title="@string/notification_tint_title"
                 android:summaryOn="@string/notification_tint_summary_on"
                 android:summaryOff="@string/notification_tint_summary_off"
-                android:defaultValue="true" />
+                android:defaultValue="false" />
 
     <PreferenceCategory
         android:title="@string/breathing_notifications_title"/>
