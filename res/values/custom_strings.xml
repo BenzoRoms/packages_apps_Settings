@@ -1564,4 +1564,8 @@
     <string name="logcat_app_title">MatLog Logcat</string>
     <string name="logcat_app_summary">Start app to collect logs</string>
 
+    <!-- Pocket judge -->
+    <string name="pocket_judge_title">Pocket detection</string>
+    <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+
 </resources>
