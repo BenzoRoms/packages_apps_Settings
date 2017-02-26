@@ -180,4 +180,5 @@ public class Settings extends SettingsActivity {
     public static class SupportDashboardActivity extends SettingsActivity {}
 
     public static class BenzoSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class LockScreenWeatherSettingsActivity extends SettingsActivity { /* empty */ }
 }
