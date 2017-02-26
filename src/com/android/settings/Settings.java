@@ -169,4 +169,5 @@ public class Settings extends SettingsActivity {
     public static class BenzoSettings extends SettingsActivity { /* empty */ }
     public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
     public static class SuperUserActivity extends SettingsActivity { /* empty */ }
+    public static class OmniJawsSettingsActivity extends SettingsActivity { /* empty */ }
 }

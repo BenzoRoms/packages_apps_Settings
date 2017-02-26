@@ -108,6 +108,13 @@
     <string name="dtc_version">Clang</string>
     <string name="dtc_version_default">None</string>
 
+    <!-- OmniJaws -->
+    <string name="omnijaws_settings_title">OmniJaws</string>
+    <string name="weather_config_title">Service settings</string>
+    <string name="weather_config_summary"></string>
+    <string name="weather_icon_pack_title">Condition icon pack</string>
+    <string name="weather_icon_pack_note">Note\u003a you can install new icon packs from play store by searching for \"Chronus icons\"</string>
+
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
