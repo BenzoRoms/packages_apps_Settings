@@ -56,6 +56,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
+    private String mWeatherIconPackNote;
 
     @Override
     protected int getMetricsCategory() {
@@ -67,6 +68,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.omnijaws_settings);
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        mWeatherIconPackNote = getResources().getString(R.string.weather_icon_pack_note);
 
         mWeatherCategory = (PreferenceCategory) prefScreen.findPreference(CATEGORY_WEATHER);
         if (mWeatherCategory != null && !isOmniJawsServiceInstalled()) {
@@ -94,7 +96,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
                 valueIndex = mWeatherIconPack.findIndexOfValue(settingHeaderPackage);
             }
             mWeatherIconPack.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
-            mWeatherIconPack.setSummary(mWeatherIconPack.getEntry());
+            mWeatherIconPack.setSummary(mWeatherIconPackNote + "\n\n" + mWeatherIconPack.getEntry());
             mWeatherIconPack.setOnPreferenceChangeListener(this);
         }
     }
@@ -105,7 +107,7 @@ public class OmniJawsSettings extends SettingsPreferenceFragment implements
             Settings.System.putString(getContentResolver(),
                     Settings.System.OMNIJAWS_WEATHER_ICON_PACK, value);
             int valueIndex = mWeatherIconPack.findIndexOfValue(value);
-            mWeatherIconPack.setSummary(mWeatherIconPack.getEntries()[valueIndex]);
+            mWeatherIconPack.setSummary(mWeatherIconPackNote + " \n\n" + mWeatherIconPack.getEntries()[valueIndex]);
         }
         return true;
     }
