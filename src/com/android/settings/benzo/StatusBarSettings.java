@@ -89,6 +89,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String BATTERY_LARGE_TEXT = "battery_large_text";
 
 
+    private static final String PREF_STATUSBAR_WEATHER = "status_bar_weather";
+
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
     private ListPreference mClockDateDisplay;
@@ -114,6 +116,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private int mStatusBarBatteryValue;
     private int mStatusBarBatteryShowPercentValue;
     private SwitchPreference mLargeBatteryText;
+
+    private ListPreference mStatusBarWeather;
 
     @Override
     protected int getMetricsCategory() {
@@ -280,6 +284,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         enableStatusBarBatteryDependents(mStatusBarBatteryValue);
 
+       // Status bar weather
+       mStatusBarWeather = (ListPreference) findPreference(PREF_STATUSBAR_WEATHER);
+       int weatherShow = Settings.System.getIntForUser(resolver,
+               Settings.System.STATUSBAR_SHOW_WEATHER_TEMP, 0,
+               UserHandle.USER_CURRENT);
+       mStatusBarWeather.setValue(String.valueOf(weatherShow));
+       if (weatherShow == 0) {
+           mStatusBarWeather.setSummary(R.string.statusbar_weather_summary);
+       } else {
+           mStatusBarWeather.setSummary(mStatusBarWeather.getEntry());
+       }
+          mStatusBarWeather.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -471,6 +487,19 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                     "battery_large_text",
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarWeather) {
+            int weatherShow = Integer.valueOf((String) newValue);
+            int index = mStatusBarWeather.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(resolver,
+                   Settings.System.STATUSBAR_SHOW_WEATHER_TEMP,
+                   weatherShow, UserHandle.USER_CURRENT);
+            if (weatherShow == 0) {
+                mStatusBarWeather.setSummary(R.string.statusbar_weather_summary);
+            } else {
+                mStatusBarWeather.setSummary(
+                mStatusBarWeather.getEntries()[index]);
+            }
             return true;
         }
         return false;
