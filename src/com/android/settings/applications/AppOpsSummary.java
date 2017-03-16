@@ -19,7 +19,6 @@ package com.android.settings.applications;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -29,7 +28,6 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -139,7 +137,7 @@ public class AppOpsSummary extends InstrumentedFragment {
         theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
         final int colorAccent = typedValue.resourceId != 0
                 ? getContext().getColor(typedValue.resourceId)
-                : getContext().getColor(R.color.switch_accent_color);
+                : getContext().getColor(R.color.theme_accent);
         tabs.setTabIndicatorColor(colorAccent);
 
         // We have to do this now because PreferenceFrameLayout looks at it
