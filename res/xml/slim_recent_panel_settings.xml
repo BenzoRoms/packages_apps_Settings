@@ -25,9 +25,8 @@
         <com.android.settings.benzo.SeekBarPreference
             android:key="recents_max_apps"
             android:title="@string/recents_max_apps_title"
-            settings:max="105"
             settings:minimum="5"
-            settings:units=""
+            settings:max="105"
             android:persistent="false" />
 
         <ListPreference
@@ -52,8 +51,8 @@
         <com.android.settings.benzo.SeekBarPreference
             android:key="recent_panel_scale"
             android:title="@string/recent_panel_scale_title"
-            settings:max="160"
             settings:minimum="60"
+            settings:max="160"
             settings:interval="5"
             settings:units="%"
             android:persistent="false" />
@@ -61,16 +60,16 @@
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="recent_panel_bg_color"
             android:title="@string/recent_panel_bg_color_title"
-            android:defaultValue="0xffffffff" />
+            defaultColor="#763367d6" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="recent_card_bg_color"
             android:title="@string/recent_card_bg_color_title"
-            android:defaultValue="0xffffffff" />
+            defaultColor="#00ffffff" />
 
          <!--<net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="recent_card_text_color"
             android:title="@string/recent_card_text_color_title"
-            android:defaultValue="0xffffffff" /-->
+            defaultColor="#00ffffff" />-->
 
 </PreferenceScreen>
