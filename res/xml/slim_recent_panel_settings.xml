@@ -72,4 +72,9 @@
             android:title="@string/recent_card_text_color_title"
             defaultColor="#00ffffff" />-->
 
+        <Preference
+            android:key="slim_icon_pack"
+            android:title="@string/slim_icon_pack_title"
+            android:summary="@string/slim_icon_pack_summary" />
+
 </PreferenceScreen>
