@@ -22,11 +22,12 @@
             android:title="@string/show_running_tasks_title"
             android:defaultValue="false" />
 
-        <com.android.settings.preference.CustomSeekBarPreference
+        <com.android.settings.benzo.SeekBarPreference
             android:key="recents_max_apps"
             android:title="@string/recents_max_apps_title"
-            settings:min="5"
-            android:max="105"
+            settings:max="105"
+            settings:minimum="5"
+            settings:units=""
             android:persistent="false" />
 
         <ListPreference
@@ -53,6 +54,7 @@
             android:title="@string/recent_panel_scale_title"
             settings:max="160"
             settings:minimum="60"
+            settings:interval="5"
             settings:units="%"
             android:persistent="false" />
 
@@ -66,9 +68,9 @@
             android:title="@string/recent_card_bg_color_title"
             android:defaultValue="0xffffffff" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
+         <!--<net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="recent_card_text_color"
             android:title="@string/recent_card_text_color_title"
-            android:defaultValue="0xffffffff" />
+            android:defaultValue="0xffffffff" /-->
 
 </PreferenceScreen>
