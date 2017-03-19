@@ -15,7 +15,6 @@
 */
 package com.android.settings.benzo;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -28,7 +27,6 @@ import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.support.v7.preference.ListPreference;
@@ -41,10 +39,8 @@ import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
 import android.text.Spannable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManagerGlobal;
 import android.widget.EditText;
 
@@ -55,12 +51,10 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.preference.SystemSettingSwitchPreference;
-import com.android.settings.benzo.SeekBarPreference;
 
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -94,9 +88,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     private static final String BATTERY_LARGE_TEXT = "battery_large_text";
 
-    private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
-    private static final String PREF_STATUS_BAR_WEATHER_SIZE = "status_bar_weather_size";
-    private static final String PREF_STATUS_BAR_WEATHER_FONT_STYLE = "status_bar_weather_font_style";
 
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
@@ -123,10 +114,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private int mStatusBarBatteryValue;
     private int mStatusBarBatteryShowPercentValue;
     private SwitchPreference mLargeBatteryText;
-
-    private ListPreference mStatusBarTemperature;
-    private SeekBarPreference mStatusBarTemperatureSize;
-    private ListPreference mStatusBarTemperatureFontStyle;
 
     @Override
     protected int getMetricsCategory() {
@@ -293,25 +280,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         enableStatusBarBatteryDependents(mStatusBarBatteryValue);
 
-        mStatusBarTemperature = (ListPreference) findPreference(STATUS_BAR_TEMPERATURE);
-        int temperatureShow = Settings.System.getIntForUser(resolver,
-                Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0,
-                UserHandle.USER_CURRENT);
-        mStatusBarTemperature.setValue(String.valueOf(temperatureShow));
-        mStatusBarTemperature.setSummary(mStatusBarTemperature.getEntry());
-        mStatusBarTemperature.setOnPreferenceChangeListener(this);
-
-        mStatusBarTemperatureSize = (SeekBarPreference) findPreference(PREF_STATUS_BAR_WEATHER_SIZE);
-        int tempSize = Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_WEATHER_SIZE, 14);
-        mStatusBarTemperatureSize.setValue(tempSize);
-        mStatusBarTemperatureSize.setOnPreferenceChangeListener(this);
-
-        mStatusBarTemperatureFontStyle = (ListPreference) findPreference(PREF_STATUS_BAR_WEATHER_FONT_STYLE);
-        mStatusBarTemperatureFontStyle.setOnPreferenceChangeListener(this);
-        mStatusBarTemperatureFontStyle.setValue(Integer.toString(Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_WEATHER_FONT_STYLE, 0)));
-        mStatusBarTemperatureFontStyle.setSummary(mStatusBarTemperatureFontStyle.getEntry());
     }
 
     @Override
@@ -504,29 +472,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     "battery_large_text",
                     value ? 1 : 0);
             return true;
-
-        } else if (preference == mStatusBarTemperature) {
-            int temperatureShow = Integer.valueOf((String) newValue);
-            int index = mStatusBarTemperature.findIndexOfValue((String) newValue);
-            Settings.System.putIntForUser(resolver,
-                    Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, temperatureShow,
-                    UserHandle.USER_CURRENT);
-            mStatusBarTemperature.setSummary(
-                    mStatusBarTemperature.getEntries()[index]);
-            updateWeatherOptions();
-            return true;
-        } else if (preference == mStatusBarTemperatureSize) {
-            int tempSize = ((Integer)newValue).intValue();
-            Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_WEATHER_SIZE, tempSize);
-            return true;
-        } else if (preference == mStatusBarTemperatureFontStyle) {
-            int val = Integer.parseInt((String) newValue);
-            int index = mStatusBarTemperatureFontStyle.findIndexOfValue((String) newValue);
-            Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_WEATHER_FONT_STYLE, val);
-            mStatusBarTemperatureFontStyle.setSummary(mStatusBarTemperatureFontStyle.getEntries()[index]);
-            return true;
         }
         return false;
     }
@@ -615,15 +560,5 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private void updateWeatherOptions() {
-        if (Settings.System.getInt(getActivity().getContentResolver(),
-            Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0) == 0) {
-            mStatusBarTemperatureSize.setEnabled(false);
-            mStatusBarTemperatureFontStyle.setEnabled(false);
-        } else {
-            mStatusBarTemperatureSize.setEnabled(true);
-            mStatusBarTemperatureFontStyle.setEnabled(true);
-        }
-    }
 }
 
