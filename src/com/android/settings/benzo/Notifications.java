@@ -48,7 +48,6 @@ public class Notifications extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
     private static final String QUICK_PULLDOWN = "quick_pulldown";
-    private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
@@ -64,7 +63,6 @@ public class Notifications extends SettingsPreferenceFragment
     private static final String STATUS_BAR_TICKER_FONT_SIZE  = "status_bar_ticker_font_size";
 
     private ListPreference mQuickPulldown;
-    private ListPreference mSmartPulldown;
 
     private ListPreference mDaylightHeaderPack;
     private SeekBarPreference mHeaderShadow;
@@ -97,13 +95,6 @@ public class Notifications extends SettingsPreferenceFragment
                 Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1, UserHandle.USER_CURRENT);
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
-
-        mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
-        mSmartPulldown.setOnPreferenceChangeListener(this);
-        int smartPulldown = Settings.System.getInt(resolver,
-                Settings.System.QS_SMART_PULLDOWN, 0);
-        mSmartPulldown.setValue(String.valueOf(smartPulldown));
-        updateSmartPulldownSummary(smartPulldown);
 
         // headers
         String settingHeaderPackage = Settings.System.getString(getContentResolver(),
@@ -200,11 +191,6 @@ public class Notifications extends SettingsPreferenceFragment
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
             return true;
-        } else if (preference == mSmartPulldown) {
-            int smartPulldown = Integer.valueOf((String) newValue);
-            Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
-            updateSmartPulldownSummary(smartPulldown);
-            return true;
         } else if (preference == mDaylightHeaderPack) {
             String value = (String) newValue;
             Settings.System.putString(getContentResolver(),
@@ -274,22 +260,6 @@ public class Notifications extends SettingsPreferenceFragment
                     ? R.string.quick_pulldown_left
                     : R.string.quick_pulldown_right);
             mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
-        }
-    }
-
-    private void updateSmartPulldownSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            // Smart pulldown deactivated
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_off));
-        } else if (value == 3) {
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_none_summary));
-        } else {
-            String type = res.getString(value == 1
-                    ? R.string.smart_pulldown_dismissable
-                    : R.string.smart_pulldown_ongoing);
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
         }
     }
 
