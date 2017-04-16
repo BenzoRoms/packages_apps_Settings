@@ -1313,6 +1313,13 @@
     <string name="qs_date_time_center_title">Center Date and Time</string>
     <string name="qs_date_time_center_summary">Requires one or more icons to be disabled</string>
 
+    <!-- Header Weather -->
+    <string name="quicksettings_exp_weather_category">Weather</string>
+    <string name="header_weather_enabled_title">Weather Text</string>
+    <string name="header_weather_enabled_summary">Enable weather info in expanded header</string>
+    <string name="header_weather_image_enabled_title">Weather Image</string>
+    <string name="header_weather_image_enabled_summary">Enable weather image in expanded header</string>
+
     <!-- DoubleTap2Wake Doze -->
     <string name="doze_wakeup_doubletap_title">Double-tap to wake on doze</string>
     <string name="doze_wakeup_doubletap_summary_on">Require a double-tap to wake the device on a doze pulse screen</string>
