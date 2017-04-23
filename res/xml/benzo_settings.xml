@@ -71,14 +71,6 @@
             android:layout="@layout/preference_benzoextra_gesture" 
             />
 
-        <!-- OmniJaws -->
-        <PreferenceScreen
-            android:key="omnijaws_settings"
-            android:fragment="com.android.settings.benzo.OmniJawsSettings"
-            android:title="@string/omnijaws_settings_title"
-            android:layout="@layout/preference_benzoextra_omnijaws" 
-            />
-
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"

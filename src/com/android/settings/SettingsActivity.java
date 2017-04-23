@@ -75,7 +75,7 @@ import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.VrListenerSettings;
 import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.benzo.BenzoSettings;
-import com.android.settings.benzo.OmniJawsSettings;
+import com.android.settings.benzo.LockScreenWeatherSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardContainerFragment;
 import com.android.settings.dashboard.SearchResultsSummary;
@@ -375,7 +375,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             BenzoSettings.class.getName(),
             LightsSettings.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName(),
-            OmniJawsSettings.class.getName(),
+            LockScreenWeatherSettings.class.getName(),
     };
 
 
