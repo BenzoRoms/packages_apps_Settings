@@ -123,10 +123,12 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 
     public void setMax(int max) {
         mMax = max;
+        mSeekBar.setMax(mMax - mMin);
     }
 
     public void setMin(int minimum) {
         mMin = minimum;
+        mSeekBar.setMax(mMax - mMin);
     }
 
     public void setIntervalValue(int value) {
