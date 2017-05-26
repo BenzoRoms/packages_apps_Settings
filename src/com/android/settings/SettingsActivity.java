@@ -232,6 +232,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String SUPERSU_FRAGMENT = "com.android.settings.SuperSU";
     private static final String SUPERUSER_FRAGMENT = "com.android.settings.SuperUser";
+    private static final String MAGISK_FRAGMENT = "com.android.settings.MagiskManager";
 
     private static final String KA_FRAGMENT = "com.android.settings.KernelAdiutor";
 
@@ -1046,6 +1047,14 @@ public class SettingsActivity extends SettingsDrawerActivity
             finish();
             return null;
         }
+        if (MAGISK_FRAGMENT.equals(fragmentName)) {
+            Intent magiskIntent = new Intent();
+            magiskIntent.setClassName("com.topjohnwu.magisk", "com.topjohnwu.magisk.SplashActivity");
+            startActivity(magiskIntent);
+
+            finish();
+            return null;
+        }
         if (KA_FRAGMENT.equals(fragmentName)) {
             Intent kernelAdiutorIntent = new Intent();
             kernelAdiutorIntent.setClassName("com.grarak.kerneladiutor", "com.grarak.kerneladiutor.activities.MainActivity");
@@ -1169,6 +1178,16 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.SuperUserActivity.class.getName()),
                 phhSupported, isAdmin, pm);
+
+        // Magisk
+        boolean magiskSupported = false;
+        try {
+            magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.MagiskActivity.class.getName()),
+                magiskSupported, isAdmin, pm);
 
         // Remove Kernel Adiutor if not installed
         boolean kaSupported = false;
