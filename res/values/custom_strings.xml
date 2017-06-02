@@ -1203,6 +1203,13 @@
     <string name="ambient_display_show_weather_title">Show while dozing</string>
     <string name="ambient_display_show_weather_summary">Show weather information when ambient display is on</string>
 
+    <!-- Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_category">Visualizer</string>
+    <string name="lockscreen_visualizer_enable">Enable lockscreen visualizer</string>
+    <string name="lockscreen_visualizer_enable_summary">Enable lockscreen visualizer when mucis is playing</string>
+    <string name="lockscreen_visualizer_enable_custom">Custom color</string>
+    <string name="lockscreen_visualizer_enable_custom_summary">Use your own color intread of the generated color</string>
+
     <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Carrier Label</string>
     <string name="carrier_label_settings_summary">Customize the carrier label</string>

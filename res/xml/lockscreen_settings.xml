@@ -41,6 +41,29 @@
             android:defaultValue="true" />
 
     <PreferenceCategory
+        android:key="lockscreen_visualizer"
+        android:title="@string/lockscreen_visualizer_category" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="lock_screen_visualizer_show"
+            android:title="@string/lockscreen_visualizer_enable"
+            android:summary="@string/lockscreen_maxnotif_sumary"
+            android:defaultValue="false" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="lock_screen_visualizer_use_custom_color"
+            android:title="@string/lockscreen_visualizer_enable_summary"
+            android:summary="@string/lockscreen_visualizer_enable_custom_summary"
+            android:dependency="lock_screen_visualizer_show"
+            android:defaultValue="false" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="lock_screen_visualizer_custom_color"
+            android:title="@string/color_title"
+            android:dependency="lock_screen_custom_notif"
+            android:defaultValue="0xff000000" />
+
+    <PreferenceCategory
         android:key="lockscreen_other"
         android:title="@string/lockscreen_other_category" />
 
