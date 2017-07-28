@@ -1561,4 +1561,8 @@
     <string name="battery_saver_color_title">Warning color</string>
     <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
 
+    <!-- MatLog Logcat -->
+    <string name="logcat_app_title">MatLog Logcat</string>
+    <string name="logcat_app_summary">Start app to collect logs</string>
+
 </resources>

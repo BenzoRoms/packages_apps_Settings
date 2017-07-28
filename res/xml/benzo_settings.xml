@@ -44,6 +44,17 @@
             android:layout="@layout/preference_benzoextra_density" 
             />
 
+        <!-- MatLog Logcat -->
+        <Preference
+             android:id="@+id/logcat_app"
+             android:title="@string/logcat_app_title" 
+             android:layout="@layout/preference_benzoextra_matlog" >
+             <intent
+                 android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.omnirom.logcat"
+                 android:targetClass="com.pluscubed.logcat.ui.LogcatActivity" />
+        </Preference>
+
         <!-- Network Traffic -->
         <PreferenceScreen
             android:key="nettraffic_settings"
