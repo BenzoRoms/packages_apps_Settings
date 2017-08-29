@@ -20,6 +20,7 @@
     <string name="benzo_settings_title">Benzo Rom</string>
     <string name="benzo_dashboard_summary">Most extra features added into Benzo.</string>
     <string name="recents_settings_title">Recents</string>
+    <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
     <!-- Benzo version -->
     <string name="benzo_version">Benzo version</string>
