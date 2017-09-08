@@ -32,6 +32,9 @@
     <string name="clang_version">Clang</string>
     <string name="clang_version_default">Unknown</string>
 
+    <!-- Button settings  -->
+    <string name="button_settings_title">Buttons</string>
+
     <!-- Expanded desktop -->
     <string name="power_menu_expanded_desktop">Expanded desktop</string>
     <string name="expanded_hide_nothing">Hide nothing</string>

@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2017 Benzo Rom
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2015 Benzo Rom
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
           http://www.apache.org/licenses/LICENSE-2.0
-
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,15 +13,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/benzo_settings_title" >
+    android:title="@string/button_settings_title">
 
-        <!-- Buttons -->
-        <Preference
-	    android:id="@+id/button_settings"
-	    android:fragment="com.android.settings.benzo.ButtonSettings"
-	    android:title="@string/button_settings_title"
-	    android:layout="@layout/preference_benzoextra_buttons"
-	    />
 
 </PreferenceScreen>
