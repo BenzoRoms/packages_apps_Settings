@@ -118,4 +118,7 @@
     <string name="night_bright_low">Low brightness</string>
     <string name="night_bright_medium">Medium brightness</string>
 
+    <!-- Navbar Settings -->
+    <string name="enable_navigation_bar_title">Enable navigation bar</string>
+    <string name="enable_navigation_bar_summary">Option to enable or disable the navigation bar</string>
 </resources>
