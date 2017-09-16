@@ -69,6 +69,10 @@
             android:key="lights"
             android:title="@string/notification_show_lights_title"/>
 
+        <SwitchPreference
+            android:key="show_light_on_zen"
+            android:title="@string/show_light_on_zen_title" />
+
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="custom_light"
             android:title="@string/custom_light_title"
@@ -79,20 +83,20 @@
             android:title="@string/custom_light_on_time_title"
             android:defaultValue="0"
             settings:defaultText="@string/value_equals_default"
-            settings:min="0"
             android:max="3000"
+            settings:min="0"
             settings:interval="100"
-            settings:units="" />
+            settings:units="@string/unit_sec" />
 
         <com.benzo.settings.preference.CustomSeekBarPreference
             android:key="custom_light_off_time"
             android:title="@string/custom_light_off_time_title"
             android:defaultValue="0"
             settings:defaultText="@string/value_equals_default"
-            settings:min="0"
             android:max="3000"
+            settings:min="0"
             settings:interval="100"
-            settings:units="" />
+            settings:units="@string/unit_sec" />
 
     </PreferenceCategory>
 
