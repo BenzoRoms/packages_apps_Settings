@@ -139,6 +139,12 @@
         android:max="255"
         settings:units="" />
 
+    <com.benzo.settings.preference.SecureSettingSwitchPreference
+        android:key="doze_always_on"
+        android:title="@string/doze_always_on_title"
+        android:summary="@string/doze_always_on_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="gesture_pick_up_display_summary"
         android:title="@string/ambient_display_pickup_title"
