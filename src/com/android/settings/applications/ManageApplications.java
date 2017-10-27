@@ -1014,15 +1014,12 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                 if (LIST_TYPES_WITH_INSTANT.contains(mManageApplications.mListType)) {
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER_AND_INSTANT);
-                } else if (!mManageApplications.mShowSystem) {
-                    filterObj = new CompoundFilter(filterObj,
-                            ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
-                } else if (!mManageApplications.mShowSubstratum) {
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_SUBSTRATUM);
-                } else {
+                } else if (!mManageApplications.mShowSystem) {
                     filterObj = new CompoundFilter(filterObj,
-                            ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
+                            ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER_AND_INSTANT);
+                } else if (!mManageApplications.mShowSubstratum) {
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_SUBSTRATUM);
                 }
