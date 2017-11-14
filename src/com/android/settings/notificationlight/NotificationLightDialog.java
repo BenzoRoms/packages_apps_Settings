@@ -83,6 +83,8 @@ public class NotificationLightDialog extends AlertDialog implements
     private int mLedLastSpeedOn;
     private int mLedLastSpeedOff;
 
+    private Context mContext;
+
     /**
      * @param context
      * @param initialColor
@@ -112,8 +114,9 @@ public class NotificationLightDialog extends AlertDialog implements
 
     private void init(Context context, int color, int speedOn, int speedOff,
             boolean onOffChangeable) {
+        mContext = context;
         mNotificationManager =
-                (NotificationManager) context.getSystemService(NotificationManager.class);
+                (NotificationManager) mContext.getSystemService(NotificationManager.class);
 
         mReadyForLed = false;
         mLedLastColor = 0;
@@ -132,8 +135,7 @@ public class NotificationLightDialog extends AlertDialog implements
      * @param speedOff - the flash length in ms
      */
     private void setUp(int color, int speedOn, int speedOff, boolean onOffChangeable) {
-        mInflater = (LayoutInflater) getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = mInflater.inflate(R.layout.dialog_notification_settings, null);
 
         mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
@@ -177,7 +179,7 @@ public class NotificationLightDialog extends AlertDialog implements
         mColorPicker.setVisibility(View.VISIBLE);
         mColorPanelView.setVisibility(View.VISIBLE);
 
-        if (!getContext().getResources().getBoolean(
+        if (!mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_multiColorNotificationLed)) {
             mColorPicker.setVisibility(View.GONE);
             mLightsDialogDivider.setVisibility(View.GONE);
@@ -258,8 +260,8 @@ public class NotificationLightDialog extends AlertDialog implements
         public LedColorAdapter(int ledColorResource, int ledValueResource) {
             mColors = new ArrayList<Pair<String, Integer>>();
 
-            String[] color_names = getContext().getResources().getStringArray(ledColorResource);
-            String[] color_values = getContext().getResources().getStringArray(ledValueResource);
+            String[] color_names = mContext.getResources().getStringArray(ledColorResource);
+            String[] color_values = mContext.getResources().getStringArray(ledValueResource);
 
             for(int i = 0; i < color_values.length; ++i) {
                 try {
@@ -377,14 +379,14 @@ public class NotificationLightDialog extends AlertDialog implements
         final Bundle b = new Bundle();
         b.putBoolean(Notification.EXTRA_FORCE_SHOW_LIGHTS, true);
 
-        final Notification.Builder builder = new Notification.Builder(getContext());
+        final Notification.Builder builder = new Notification.Builder(mContext);
         builder.setLights(color, speedOn, speedOff);
         builder.setExtras(b);
 
         // Set a notification
         builder.setSmallIcon(R.drawable.ic_settings_leds);
-        builder.setContentTitle(getContext().getString(R.string.led_notification_title));
-        builder.setContentText(getContext().getString(R.string.led_notification_text));
+        builder.setContentTitle(mContext.getString(R.string.led_notification_title));
+        builder.setContentText(mContext.getString(R.string.led_notification_text));
         builder.setOngoing(false);
 
         mNotificationManager.notify(1, builder.build());
@@ -403,8 +405,8 @@ public class NotificationLightDialog extends AlertDialog implements
         public PulseSpeedAdapter(int timeNamesResource, int timeValuesResource) {
             times = new ArrayList<Pair<String, Integer>>();
 
-            String[] time_names = getContext().getResources().getStringArray(timeNamesResource);
-            String[] time_values = getContext().getResources().getStringArray(timeValuesResource);
+            String[] time_names = mContext.getResources().getStringArray(timeNamesResource);
+            String[] time_values = mContext.getResources().getStringArray(timeValuesResource);
 
             for(int i = 0; i < time_values.length; ++i) {
                 times.add(new Pair<String, Integer>(time_names[i], Integer.decode(time_values[i])));
@@ -428,7 +430,7 @@ public class NotificationLightDialog extends AlertDialog implements
 
             // Check if we also need to add the custom value entry
             if (getTimePosition(customTime) == -1) {
-                times.add(new Pair<String, Integer>(getContext().getResources()
+                times.add(new Pair<String, Integer>(mContext.getResources()
                         .getString(R.string.custom_time), customTime));
             }
         }
@@ -511,8 +513,8 @@ public class NotificationLightDialog extends AlertDialog implements
     public void onFocusChange(View v, boolean hasFocus) {
         if (!hasFocus) {
             mHexColorInput.removeTextChangedListener(this);
-            InputMethodManager inputMethodManager = (InputMethodManager) getContext()
-                    .getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager) mContext.getSystemService(Activity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
         } else {
             mHexColorInput.addTextChangedListener(this);
